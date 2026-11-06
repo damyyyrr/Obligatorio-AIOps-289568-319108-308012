@@ -1,0 +1,90 @@
+[
+  {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "0.00%",
+    "Container": "5cab8df6959b",
+    "ID": "5cab8df6959b",
+    "MemPerc": "27.22%",
+    "MemUsage": "17.42MiB / 64MiB",
+    "Name": "pharmago-baseline-pharmago-ui-1",
+    "NetIO": "2.81kB / 18.6kB",
+    "PIDs": "13"
+  },
+  {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "0.08%",
+    "Container": "12a89ad0d2eb",
+    "ID": "12a89ad0d2eb",
+    "MemPerc": "52.68%",
+    "MemUsage": "101.1MiB / 192MiB",
+    "Name": "pharmago-baseline-grafana-1",
+    "NetIO": "15.3kB / 3.99kB",
+    "PIDs": "21"
+  },
+  {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "0.01%",
+    "Container": "1a2e90c888d2",
+    "ID": "1a2e90c888d2",
+    "MemPerc": "20.29%",
+    "MemUsage": "38.96MiB / 192MiB",
+    "Name": "pharmago-baseline-pharmago-api-gateway-1",
+    "NetIO": "21.4kB / 423kB",
+    "PIDs": "17"
+  },
+  {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "0.82%",
+    "Container": "085b7f5cb073",
+    "ID": "085b7f5cb073",
+    "MemPerc": "25.32%",
+    "MemUsage": "64.82MiB / 256MiB",
+    "Name": "pharmago-baseline-pharmago-pharmacy-service-1",
+    "NetIO": "30.4kB / 245kB",
+    "PIDs": "18"
+  },
+  {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "0.01%",
+    "Container": "184ca4af3874",
+    "ID": "184ca4af3874",
+    "MemPerc": "39.04%",
+    "MemUsage": "74.96MiB / 192MiB",
+    "Name": "pharmago-baseline-prometheus-1",
+    "NetIO": "866kB / 40.3kB",
+    "PIDs": "17"
+  },
+  {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "0.02%",
+    "Container": "db0fa513c384",
+    "ID": "db0fa513c384",
+    "MemPerc": "25.37%",
+    "MemUsage": "64.95MiB / 256MiB",
+    "Name": "pharmago-baseline-pharmago-users-service-1",
+    "NetIO": "19.1kB / 221kB",
+    "PIDs": "19"
+  },
+  {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "0.00%",
+    "Container": "f16f8392c67f",
+    "ID": "f16f8392c67f",
+    "MemPerc": "48.54%",
+    "MemUsage": "62.12MiB / 128MiB",
+    "Name": "pharmago-baseline-otlp-collector-1",
+    "NetIO": "17.9kB / 13.5kB",
+    "PIDs": "10"
+  },
+  {
+    "BlockIO": "0B / 0B",
+    "CPUPerc": "22.35%",
+    "Container": "24e220373813",
+    "ID": "24e220373813",
+    "MemPerc": "40.62%",
+    "MemUsage": "831.8MiB / 2GiB",
+    "Name": "pharmago-baseline-pharmago-db-1",
+    "NetIO": "15.9kB / 20kB",
+    "PIDs": "147"
+  }
+]

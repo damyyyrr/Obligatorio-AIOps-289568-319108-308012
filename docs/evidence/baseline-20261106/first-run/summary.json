@@ -1,0 +1,46 @@
+{
+  "startedAt": "2026-11-06T17:32:05.9068078-03:00",
+  "completedAt": "2026-11-06T17:32:06.9423855-03:00",
+  "sourceCommit": "dccba6748ef7698c52a20f3132c41e6753858b5d",
+  "workingTree": "Local baseline changes are uncommitted; see implementation notes.",
+  "runId": "baseline-2218b0cdc1e347d08cc2b29d337ea7d0",
+  "passed": false,
+  "checks": [
+    {
+      "name": "http://127.0.0.1:4200/",
+      "passed": true,
+      "detail": "HTTP 200; 369 ms"
+    },
+    {
+      "name": "Angular document",
+      "passed": true,
+      "detail": "Frontend serves the Angular entry document; browser interaction is not covered by this HTTP check."
+    },
+    {
+      "name": "http://127.0.0.1:5000/api/roles",
+      "passed": true,
+      "detail": "HTTP 200; 309 ms"
+    },
+    {
+      "name": "Gateway -> Users -> SQL",
+      "passed": true,
+      "detail": "3 persisted roles returned."
+    },
+    {
+      "name": "http://127.0.0.1:5000/api/drug",
+      "passed": true,
+      "detail": "HTTP 200; 111 ms"
+    },
+    {
+      "name": "Gateway -> Pharmacy -> SQL",
+      "passed": true,
+      "detail": "4 persisted drugs returned."
+    }
+  ],
+  "failure": "Cannot process argument transformation on parameter 'Condition'. Cannot convert value \"System.Object[]\" to type \"System.Boolean\". Boolean parameters accept only Boolean values and numbers, such as $True, $False, 1 or 0.",
+  "limitations": [
+    "Compose only; Kubernetes and physical-node compliance are not evaluated.",
+    "HTTP frontend check does not execute Angular in a browser.",
+    "ELK, complete tracing, alerts, chaos and model evaluation are outside this baseline."
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "job": "api-gateway",
+    "health": "up",
+    "scrapeUrl": "http://pharmago-api-gateway:80/metrics",
+    "lastError": ""
+  },
+  {
+    "job": "otlp-collector",
+    "health": "up",
+    "scrapeUrl": "http://otlp-collector:8889/metrics",
+    "lastError": ""
+  },
+  {
+    "job": "pharmacy-service",
+    "health": "up",
+    "scrapeUrl": "http://pharmago-pharmacy-service:80/metrics",
+    "lastError": ""
+  },
+  {
+    "job": "users-service",
+    "health": "up",
+    "scrapeUrl": "http://pharmago-users-service:80/metrics",
+    "lastError": ""
+  }
+]

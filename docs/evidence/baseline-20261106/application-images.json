@@ -1,0 +1,38 @@
+[
+  {
+    "tag": "pharmago-baseline/users:local",
+    "id": "sha256:ced0b409685d8c1c7c958593445909acad8f6843653190504e97a88ca5d84a3f",
+    "repoDigests": [
+      "pharmago-baseline/users@sha256:ced0b409685d8c1c7c958593445909acad8f6843653190504e97a88ca5d84a3f"
+    ],
+    "created": "2026-11-06T20:19:17.457530508Z",
+    "sizeBytes": 93871652
+  },
+  {
+    "tag": "pharmago-baseline/pharmacy:local",
+    "id": "sha256:1dd96da22cbca125fcaf45a78bf2d36953f56790808c27faee72a9e810eceea2",
+    "repoDigests": [
+      "pharmago-baseline/pharmacy@sha256:1dd96da22cbca125fcaf45a78bf2d36953f56790808c27faee72a9e810eceea2"
+    ],
+    "created": "2026-11-06T20:20:14.723095705Z",
+    "sizeBytes": 93890177
+  },
+  {
+    "tag": "pharmago-baseline/gateway:local",
+    "id": "sha256:0245987f12ffe1cd73209cbe9bc90f07987acfa0054bb2c077c4cb0f483f07e2",
+    "repoDigests": [
+      "pharmago-baseline/gateway@sha256:0245987f12ffe1cd73209cbe9bc90f07987acfa0054bb2c077c4cb0f483f07e2"
+    ],
+    "created": "2026-11-06T20:20:41.423595975Z",
+    "sizeBytes": 88440485
+  },
+  {
+    "tag": "pharmago-baseline/ui:local",
+    "id": "sha256:4df9113571f0ce7f2971ebb95feaff43729364fd5ca61db72237cab96261a7c0",
+    "repoDigests": [
+      "pharmago-baseline/ui@sha256:4df9113571f0ce7f2971ebb95feaff43729364fd5ca61db72237cab96261a7c0"
+    ],
+    "created": "2026-11-06T20:23:57.786969163Z",
+    "sizeBytes": 30187929
+  }
+]

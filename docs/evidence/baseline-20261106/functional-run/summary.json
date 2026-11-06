@@ -1,0 +1,86 @@
+{
+  "startedAt": "2026-11-06T17:32:33.1360505-03:00",
+  "completedAt": "2026-11-06T17:32:35.6501133-03:00",
+  "sourceCommit": "dccba6748ef7698c52a20f3132c41e6753858b5d",
+  "workingTree": "Local baseline changes are uncommitted; see implementation notes.",
+  "runId": "baseline-feba440391a2485497e1431422b527f2",
+  "passed": true,
+  "checks": [
+    {
+      "name": "http://127.0.0.1:4200/",
+      "passed": true,
+      "detail": "HTTP 200; 143 ms"
+    },
+    {
+      "name": "Angular document",
+      "passed": true,
+      "detail": "Frontend serves the Angular entry document; browser interaction is not covered by this HTTP check."
+    },
+    {
+      "name": "http://127.0.0.1:5000/api/roles",
+      "passed": true,
+      "detail": "HTTP 200; 71 ms"
+    },
+    {
+      "name": "Gateway -> Users -> SQL",
+      "passed": true,
+      "detail": "3 persisted roles returned."
+    },
+    {
+      "name": "http://127.0.0.1:5000/api/drug",
+      "passed": true,
+      "detail": "HTTP 200; 65 ms"
+    },
+    {
+      "name": "Gateway -> Pharmacy -> SQL",
+      "passed": true,
+      "detail": "4 persisted drugs returned."
+    },
+    {
+      "name": "Gateway correlation header",
+      "passed": true,
+      "detail": "The gateway preserves the supplied correlation ID."
+    },
+    {
+      "name": "http://127.0.0.1:9090/-/ready",
+      "passed": true,
+      "detail": "HTTP 200; 13 ms"
+    },
+    {
+      "name": "http://127.0.0.1:3000/api/health",
+      "passed": true,
+      "detail": "HTTP 200; 13 ms"
+    },
+    {
+      "name": "Persisted demo login through gateway",
+      "passed": true,
+      "detail": "Login returned HTTP 200 and a nonempty token. Token and password are not saved."
+    },
+    {
+      "name": "Correlated business log",
+      "passed": true,
+      "detail": "Users business event contains the gateway correlation ID."
+    },
+    {
+      "name": "JSON log",
+      "passed": true,
+      "detail": "Business event parses as JSON and includes structured scopes."
+    },
+    {
+      "name": "Prometheus scrape targets",
+      "passed": true,
+      "detail": "Healthy jobs: api-gateway, otlp-collector, pharmacy-service, users-service; missing: ."
+    },
+    {
+      "name": "Successful business request metric",
+      "passed": true,
+      "detail": "Prometheus contains successful /api/drug requests from the gateway; the direct scrape job is selected to avoid double counting."
+    }
+  ],
+  "failure": null,
+  "limitations": [
+    "Compose only; Kubernetes and physical-node compliance are not evaluated.",
+    "HTTP frontend check does not execute Angular in a browser.",
+    "ELK, complete tracing, alerts, chaos and model evaluation are outside this baseline."
+  ]
+}

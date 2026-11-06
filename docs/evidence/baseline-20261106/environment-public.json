@@ -1,0 +1,14 @@
+{
+  "observedAt": "2026-11-06T17:27:28.5730898-03:00",
+  "dockerClient": "27.2.0",
+  "dockerServer": "27.2.0",
+  "compose": "2.29.2-desktop.2",
+  "dockerMemoryBytes": "4026466304",
+  "sourceCommit": "dccba6748ef7698c52a20f3132c41e6753858b5d",
+  "branch": "obligatorio",
+  "hostRamGiB": 7.72,
+  "logicalProcessors": 12,
+  "runtimeScope": "Compose baseline, no Kubernetes/ELK",
+  "configValidation": "docker compose config --quiet passed",
+  "scriptSyntax": "PowerShell parser passed for start, stop, smoke scripts"
+}

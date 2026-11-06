@@ -1,0 +1,66 @@
+[
+  {
+    "tag": "grafana/grafana:10.4.2",
+    "id": "sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e",
+    "repoDigests": [
+      "grafana/grafana@sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+    ],
+    "created": "2024-04-11T15:01:40.765429859Z"
+  },
+  {
+    "tag": "mcr.microsoft.com/mssql/server:2019-latest",
+    "id": "sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069",
+    "repoDigests": [
+      "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+    ],
+    "created": "2026-09-28T04:39:37.96526271Z"
+  },
+  {
+    "tag": "otel/opentelemetry-collector-contrib:0.111.0",
+    "id": "sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029",
+    "repoDigests": [
+      "otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+    ],
+    "created": "2024-10-04T13:21:11.649923016Z"
+  },
+  {
+    "tag": "pharmago-baseline/gateway:local",
+    "id": "sha256:0245987f12ffe1cd73209cbe9bc90f07987acfa0054bb2c077c4cb0f483f07e2",
+    "repoDigests": [
+      "pharmago-baseline/gateway@sha256:0245987f12ffe1cd73209cbe9bc90f07987acfa0054bb2c077c4cb0f483f07e2"
+    ],
+    "created": "2026-11-06T20:20:41.423595975Z"
+  },
+  {
+    "tag": "pharmago-baseline/pharmacy:local",
+    "id": "sha256:1dd96da22cbca125fcaf45a78bf2d36953f56790808c27faee72a9e810eceea2",
+    "repoDigests": [
+      "pharmago-baseline/pharmacy@sha256:1dd96da22cbca125fcaf45a78bf2d36953f56790808c27faee72a9e810eceea2"
+    ],
+    "created": "2026-11-06T20:20:14.723095705Z"
+  },
+  {
+    "tag": "pharmago-baseline/ui:local",
+    "id": "sha256:4df9113571f0ce7f2971ebb95feaff43729364fd5ca61db72237cab96261a7c0",
+    "repoDigests": [
+      "pharmago-baseline/ui@sha256:4df9113571f0ce7f2971ebb95feaff43729364fd5ca61db72237cab96261a7c0"
+    ],
+    "created": "2026-11-06T20:23:57.786969163Z"
+  },
+  {
+    "tag": "pharmago-baseline/users:local",
+    "id": "sha256:ced0b409685d8c1c7c958593445909acad8f6843653190504e97a88ca5d84a3f",
+    "repoDigests": [
+      "pharmago-baseline/users@sha256:ced0b409685d8c1c7c958593445909acad8f6843653190504e97a88ca5d84a3f"
+    ],
+    "created": "2026-11-06T20:19:17.457530508Z"
+  },
+  {
+    "tag": "prom/prometheus:v2.54.1",
+    "id": "sha256:f6639335d34a77d9d9db382b92eeb7fc00934be8eae81dbc03b31cfe90411a94",
+    "repoDigests": [
+      "prom/prometheus@sha256:f6639335d34a77d9d9db382b92eeb7fc00934be8eae81dbc03b31cfe90411a94"
+    ],
+    "created": "2024-08-27T11:20:46.661747523Z"
+  }
+]

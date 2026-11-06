@@ -1,0 +1,12 @@
+{
+  "query": "sum(pharmago_http_requests_total_1{job=\"api-gateway\",endpoint=\"/api/drug\",status_code=\"200\"})",
+  "result": [
+    {
+      "metric": {},
+      "value": [
+        1793997155.562,
+        "2"
+      ]
+    }
+  ]
+}

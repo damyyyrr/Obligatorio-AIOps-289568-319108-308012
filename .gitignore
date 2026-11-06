@@ -57,3 +57,8 @@ k8s/.port-forward.pids
 # === Docker ===
 .docker/
 docker-compose.override.yml
+
+# Local machine inventory unrelated to the published PharmaGo baseline
+docs/evidence/baseline-20261106/previous-resources.json
+docs/evidence/baseline-20261106/existing-project-preserved.txt
+docs/evidence/baseline-20261106/environment.json

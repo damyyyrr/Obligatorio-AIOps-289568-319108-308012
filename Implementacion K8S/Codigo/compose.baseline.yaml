@@ -1,0 +1,155 @@
+name: pharmago-baseline
+
+x-app-environment: &app-environment
+  ASPNETCORE_ENVIRONMENT: Production
+  Logging__Console__FormatterName: json
+  Logging__Console__FormatterOptions__IncludeScopes: "true"
+  Logging__Console__FormatterOptions__UseUtcTimestamp: "true"
+  Logging__Console__FormatterOptions__TimestampFormat: "yyyy-MM-ddTHH:mm:ss.fffZ"
+
+x-logging: &bounded-logging
+  driver: json-file
+  options:
+    max-size: "5m"
+    max-file: "2"
+
+services:
+  pharmago-db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Express
+      MSSQL_SA_PASSWORD: ${PHARMAGO_DB_PASSWORD:?Initialize the local .env first}
+      MSSQL_MEMORY_LIMIT_MB: "1024"
+    ports:
+      - "127.0.0.1:11433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    mem_limit: 2g
+    cpus: 2
+    logging: *bounded-logging
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          export SQLCMDPASSWORD="$${MSSQL_SA_PASSWORD}";
+          if [ -x /opt/mssql-tools18/bin/sqlcmd ]; then
+          /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b -Q 'SELECT 1' -o /dev/null;
+          else /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -b -Q 'SELECT 1' -o /dev/null; fi
+      interval: 10s
+      timeout: 5s
+      start_period: 45s
+      retries: 18
+
+  pharmago-users-service:
+    image: pharmago-baseline/users:local
+    build:
+      context: ./Backend
+      dockerfile: PharmaGo.UsersService/Dockerfile
+    environment:
+      <<: *app-environment
+      ConnectionStrings__DefaultConnection: Server=pharmago-db;Database=PharmaDb;User Id=sa;Password=${PHARMAGO_DB_PASSWORD:?Initialize the local .env first}
+      ServiceUrls__PharmacyService: http://pharmago-pharmacy-service:80
+    ports:
+      - "127.0.0.1:5001:80"
+    depends_on:
+      pharmago-db:
+        condition: service_healthy
+      otlp-collector:
+        condition: service_started
+    mem_limit: 256m
+    cpus: 1
+    logging: *bounded-logging
+
+  pharmago-pharmacy-service:
+    image: pharmago-baseline/pharmacy:local
+    build:
+      context: ./Backend
+      dockerfile: PharmaGo.PharmacyService/Dockerfile
+    environment:
+      <<: *app-environment
+      ConnectionStrings__DefaultConnection: Server=pharmago-db;Database=PharmaDb;User Id=sa;Password=${PHARMAGO_DB_PASSWORD:?Initialize the local .env first}
+      ServiceUrls__UsersService: http://pharmago-users-service:80
+    ports:
+      - "127.0.0.1:5002:80"
+    depends_on:
+      pharmago-db:
+        condition: service_healthy
+      otlp-collector:
+        condition: service_started
+    mem_limit: 256m
+    cpus: 1
+    logging: *bounded-logging
+
+  pharmago-api-gateway:
+    image: pharmago-baseline/gateway:local
+    build:
+      context: ./Backend
+      dockerfile: PharmaGo.ApiGateway/Dockerfile
+    environment: *app-environment
+    ports:
+      - "127.0.0.1:5000:80"
+    depends_on:
+      - pharmago-users-service
+      - pharmago-pharmacy-service
+    mem_limit: 192m
+    cpus: 1
+    logging: *bounded-logging
+
+  pharmago-ui:
+    image: pharmago-baseline/ui:local
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:4200:80"
+    depends_on:
+      - pharmago-api-gateway
+    mem_limit: 64m
+    cpus: 0.5
+    logging: *bounded-logging
+
+  otlp-collector:
+    image: otel/opentelemetry-collector-contrib:0.111.0
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./Backend/otel-collector-config.yaml:/etc/otel-collector-config.yaml:ro
+    mem_limit: 128m
+    cpus: 0.5
+    logging: *bounded-logging
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=2d
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./Backend/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    mem_limit: 192m
+    cpus: 0.5
+    logging: *bounded-logging
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${PHARMAGO_GRAFANA_PASSWORD:?Initialize the local .env first}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus
+    mem_limit: 192m
+    cpus: 0.5
+    logging: *bounded-logging
+
+volumes:
+  sql_data:
+  prometheus_data:
+  grafana_data:

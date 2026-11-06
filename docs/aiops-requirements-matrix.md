@@ -1,0 +1,22 @@
+# Matriz de requisitos de AIOps
+
+Fuente académica: enunciado docente `Obligatorio AIOps.docx`, disponible en los materiales del curso. Código base: `dccba6748ef7698c52a20f3132c41e6753858b5d`. Corte inicial: 06/11/2026. Las rutas de código siguientes parten de `Implementacion K8S/Codigo/`.
+
+Los estados del requisito completo se conservan aunque exista una prueba parcial exitosa. PASS requiere alcance definido y evidencia; EXISTING UNVERIFIED indica código no probado para ese criterio, FAIL una incompatibilidad observada y BLOCKED una condición externa pendiente.
+
+| ID | Requisito | Estado actual | Código e inspección | Prueba y evidencia pendientes |
+|---|---|---|---|---|
+| R01 | Kubernetes, pods independientes, microservicios en nodos físicos distintos y diagrama | FAIL / BLOCKED en separación física Q01 | `k8s/deployments/backend/`: una réplica y afinidad backend/all. El script PowerShell agrupa backend en un nodo | Distribución real y mapa a hosts físicos, diagrama consistente. Compose no lo satisface |
+| R02 | Recuperación automática y protección ante solicitudes fallidas reiteradas | EXISTING UNVERIFIED | Probes en manifests; rate limiting IP/User en gateway | READY → falla → READY medido, tráfico legítimo y 429 controlados, comportamiento multipod |
+| R03 | Reemplazo de componentes con 100% de disponibilidad y técnica explicada | FAIL / BLOCKED en alcance Q02 | Una réplica por servicio; DB `Recreate`; migración al inicio de Users | Rollout y rollback con tráfico funcional, versiones compatibles, tratamiento explícito de DB/migraciones y alcance |
+| R04 | JSON, OTLP/trazas, métricas de pod/nodo, Grafana, logs consultables y al menos cinco alertas | MISSING en trazas y alertas; resto EXISTING UNVERIFIED | Collector solo métricas; scrape por Service; dashboards existentes | Baseline parcial en `evidence/`; luego trazas, ELK/equivalente, cada pod/nodo y cinco transiciones Firing → OK |
+| R05 | Isolation Forest y SVM RBF sobre datasets docentes | MISSING / BLOCKED para aceptación Q03 | Notebook adjunto con TODO; no se presume que exista otro dataset obligatorio | IF/OCSVM reproducibles, protocolo y dataset autorizados, comparación; etiquetas solo para evaluación |
+| R06 | Plan de contención de incidentes | EXISTING UNVERIFIED | Primera versión local en `baseline-incidents.md` | Aplicar runbooks, medir tiempos con convención explícita, comunicación y postmortem en escenarios reales |
+| R07 | Requests, CPU, RAM, storage, interrupción de red y desconexión interna | MISSING en dos escenarios; resto EXISTING UNVERIFIED | Cuatro scripts en `chaos-engineering/` sin validación de seguridad | Seis escenarios acotados con destino, timeout, limpieza, impacto y restauración |
+| R08 | Defensa y explicación de telemetría/respuesta en war-room | BLOCKED hasta instancia de defensa | Defensa prevista 23/11/2026; guion docente no disponible | Simulacro, roles, explicación individual y defensa real |
+
+Otros entregables: GitHub y BDD Cypress+Cucumber, informe <=10 páginas, reflexión sobre prácticas ágiles, declaración de uso de IA y paquete <=40 MB. Ver [el mapa de issues](GITHUB_ISSUES.md). El README del baseline describe las pruebas funcionales disponibles; estas no equivalen aún a BDD en navegador.
+
+## Resultado parcial de baseline
+
+El 06/11/2026 pasaron catorce comprobaciones en Compose a las 17:32 y se repitieron con éxito a las 17:34 (Uruguay) después de detener y volver a iniciar sin seed: tres roles y cuatro medicamentos persistidos, login funcional, correlation ID preservado, evento de negocio JSON, cuatro targets de Prometheus y métrica de petición exitosa. Ver `BASELINE_RESULT.md` y los `summary.json` de `evidence/baseline-20261106/functional-run/` y `after-stop-start/`. Estos resultados no cambian los estados completos de la rúbrica; no hubo pruebas de Kubernetes, HA, caos ni navegador.
