@@ -1,41 +1,61 @@
-# Borradores de issues
+# Mapa de trabajo en GitHub
 
-No publicados. Antes de crear cualquiera en `damyyyrr/Obligatorio-AIOps-289568-319108-308012`, revisar issues existentes y obtener autorización de escritura remota. Estos identificadores son locales, no números de GitHub.
+Publicado el 06/11/2026 en [las issues del fork](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues). Hay **20 issues abiertas: 5 P0, 14 P1 y 1 P2 opcional**. Cada una contiene tareas, dependencias, criterios de cierre y evidencia esperada. Quedaron sin asignar para que el equipo acuerde responsables.
 
-## BASE-01 Arranque aislado y evidencia funcional
+El baseline ya está implementado y verificado: no se creó otra issue pendiente para rehacerlo. Consultar [el reporte](BASELINE_RESULT.md), [el plan maestro](aiops-master-plan.md) y [la matriz](aiops-requirements-matrix.md). La rama de integración y destino de los PR es **`obligatorio`**.
 
-Prioridad P0; etiquetas propuestas: infra, observability, docs.
+## Cómo dividir el trabajo
 
-Tareas: Compose acotado, espera SQL, credenciales locales, builds secuenciales, arranque/parada, seed opt-in y smoke funcional/métricas/logs. Depende de Docker disponible. Cierre: ocho servicios operativos, evidencia reproducible, credenciales ignoradas y datos preservados; no cerrar por archivos escritos.
+Tomar una issue y asignarse como responsable antes de editar archivos compartidos. Crear una rama desde `obligatorio`, enlazar la issue en el PR y registrar las pruebas en `docs/evidence/`. Una persona implementa y otra revisa cuando sea posible; no cerrar por tener solo archivos escritos.
 
-Resultado local 06/11/2026: verificado para el baseline; dos ejecuciones de catorce comprobaciones aprobadas, antes y después de parada/reinicio. Evidencia: `evidence/baseline-20261106/`. No se publicó ni cerró ningún issue remoto. La interacción real del frontend en navegador queda pendiente.
+| Frente | Issues relacionadas | Coordinación necesaria |
+|---|---|---|
+| Infraestructura, datos y disponibilidad | [#2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2), [#3](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/3), [#4](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/4), [#5](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/5), [#7](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/7), [#8](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/8), [#9](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/9), [#10](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/10) | Topología, migraciones, réplicas y rollout comparten manifests; acordar cambios antes de integrarlos |
+| Observabilidad | [#6](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/6), [#11](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/11), [#12](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/12), [#13](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/13) | Coordinar Collector/Prometheus, recursos de logs y consultas usadas por alertas/experimentos |
+| Machine Learning | [#14](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/14); ampliación [#20](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/20) | Independiente del cluster; Q03 condiciona la aceptación del dataset, pero el desarrollo puede comenzar |
+| Pruebas, incidentes y caos | [#15](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15), [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16), [#17](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/17) | BDD puede empezar en Compose; preparar runbooks antes de inyectar fallas y validar después con evidencia |
+| Decisiones, entrega y defensa | [#1](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/1), [#18](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/18), [#19](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/19) | Consultas docentes al principio; informe en continuo; conservar identificada la versión entregada |
 
-## K8S-01 Topología física y scheduling compatible con rollout
+Para empezar en paralelo sin esperar a que termine Kubernetes: [#1](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/1), [#2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2), [#9](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/9), [#10](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/10), [#14](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/14), [#15](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15), [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16). Algunas validaciones finales requieren las dependencias indicadas en cada issue.
 
-Prioridad P0; etiquetas propuestas: kubernetes, infra.
+## Issues y dependencias
 
-Tareas: resolver Q01, inventariar recursos, definir nodos por servicio/réplicas y margen de surge. Depende del baseline y aclaración/infraestructura física. Cierre: manifests validados, pod/node/host mapping y prueba real; dejar bloqueo físico visible si solo se dispone de simulación local.
+| ID del plan de trabajo | Issue | Prioridad | Hito | Dependencias para la integración o cierre |
+|---|---|---|---|---|
+| ACAD-01 | [#1 Confirmar criterios docentes y registrar decisiones Q01–Q04](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/1) | P0 | Plataforma | Puede empezar |
+| K8S-01 | [#2 Hacer reproducible y no destructivo el despliegue Kubernetes](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2) | P0 | Plataforma | Puede empezar |
+| K8S-02 | [#3 Definir topología y separar servicios sin bloquear réplicas ni rollout](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/3) | P0 | Plataforma | [#2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2) |
+| DATA-01 | [#4 Externalizar secretos y verificar persistencia y restauración de datos](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/4) | P0 | Plataforma | [#3](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/3) |
+| DB-01 | [#5 Controlar migraciones y resolver el alcance de disponibilidad de SQL Server](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/5) | P0 | Plataforma | [#4](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/4) |
+| OBS-01 | [#6 Verificar métricas OTLP y cobertura individual de pods y nodos](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/6) | P1 | Plataforma | [#2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2), [#3](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/3) |
+| RES-01 | [#7 Ajustar probes y demostrar recuperación automática de microservicios](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/7) | P1 | Plataforma | [#2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2), [#5](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/5), [#6](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/6) |
+| DEPLOY-01 | [#8 Demostrar rollout y rollback sin fallos funcionales durante la actualización](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/8) | P1 | Plataforma | [#3](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/3), [#5](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/5), [#7](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/7), [#6](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/6) |
+| RES-02 | [#9 Auditar y probar rate limiting por IP/usuario en varias réplicas](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/9) | P1 | Plataforma | Puede empezar |
+| RES-03 | [#10 Definir timeouts y resiliencia segura en llamadas interservicio](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/10) | P1 | Plataforma | Puede empezar |
+| OBS-02 | [#11 Implementar trazas OTLP consultables y propagación de contexto](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/11) | P1 | Telemetría/ML/caos | [#2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2) |
+| OBS-03 | [#12 Centralizar logs JSON y comprobar búsquedas en Kibana o equivalente](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/12) | P1 | Telemetría/ML/caos | [#2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2), [#4](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/4) |
+| OBS-04 | [#13 Provisionar y probar al menos cinco alertas Grafana](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/13) | P1 | Telemetría/ML/caos | [#6](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/6) |
+| ML-01 | [#14 Implementar y comparar Isolation Forest y One-Class SVM RBF](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/14) | P1 | Telemetría/ML/caos | Puede empezar |
+| QA-01 | [#15 Automatizar escenarios BDD con Cypress y Cucumber](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15) | P1 | Telemetría/ML/caos | Puede empezar |
+| OPS-01 | [#16 Completar el plan de incidentes, runbooks y registro de tiempos](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) | P1 | Telemetría/ML/caos | Puede empezar |
+| CHAOS-01 | [#17 Hacer seguros y verificar los seis escenarios de ingeniería del caos](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/17) | P1 | Telemetría/ML/caos | [#7](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/7), [#6](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/6), [#13](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/13), [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) |
+| DOCS-01 | [#18 Consolidar informe, diagrama real y paquete de entrega](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/18) | P1 | Entrega | [#8](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/8), [#11](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/11), [#12](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/12), [#13](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/13), [#14](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/14), [#15](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15), [#17](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/17) |
+| DEF-01 | [#19 Ensayar la defensa war-room del 23 de noviembre](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/19) | P1 | Defensa | [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16), [#17](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/17), [#18](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/18) |
+| ML-02 | [#20 Ampliación opcional del práctico: k-sigma, MAD y análisis de FP/FN](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/20) | P2 | Opcional | [#14](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/14) |
 
-## DB-01 Disponibilidad, persistencia y migraciones
+Las dependencias son enlaces de coordinación y validación; las notas de cada issue aclaran qué partes pueden empezar antes. En particular, [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) debe proporcionar runbooks antes de [#17](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/17), y ambos incorporan luego los resultados del ensayo sin esperar un cierre circular.
 
-Prioridad P0; etiquetas propuestas: kubernetes, resilience.
+## Hitos y fechas
 
-Tareas: Q02, inspección de migraciones al arranque, afinidad de datos hostPath, compatibilidad durante rollout/rollback y solución de DB si corresponde. Depende de topología/alcance. Cierre: pruebas sin pérdida de datos sobre el alcance confirmado; una DB Recreate no se declara altamente disponible.
+1. [Plataforma y disponibilidad](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/milestone/1): objetivo interno **10/11**.
+2. [Telemetría, ML y caos](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/milestone/2): objetivo interno **13/11**.
+3. [Entrega](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/milestone/3): límite oficial **16/11/2026 a las 21:00 de Uruguay**. La fecha del hito es orientativa; este horario es el límite académico.
+4. [Defensa](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/milestone/4): **23/11/2026**, horario a confirmar por docente.
 
-## OBS-01 Telemetría completa en Kubernetes
+P0 corresponde a decisiones y base que condicionan la rúbrica; P1 al trabajo requerido de entrega; P2 a una ampliación opcional. [#20](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/20) no tiene hito para evitar confundirla con una obligación confirmada: si el docente exige ese práctico, actualizar prioridad y fecha.
 
-Prioridad P1; etiquetas propuestas: observability, kubernetes.
+## Completado y seguimiento
 
-Tareas: métricas individuales por pod/nodo, trazas OTLP consultables, logs JSON y ELK/equivalente, cinco reglas Grafana verificadas. Depende de K8S-01. Cierre: inventario/targets coincidentes, trace y correlation IDs verificables y cada alerta Firing → OK. La salida JSON de Docker no cierra por sí sola el requisito completo.
+El baseline publicado construye cuatro imágenes y levanta ocho servicios con credenciales locales fuera de Git, arranque/parada, seed opt-in, métricas y log JSON correlacionado. Pasó catorce comprobaciones y una repetición tras parada/reinicio. Las consultas Q01–Q04, las pruebas en navegador y los criterios de Kubernetes/HA/caos/ML siguen abiertos.
 
-## ML-01 IF y One-Class SVM sobre material docente
-
-Prioridad P1; etiquetas propuestas: ml.
-
-Tareas: Q03, implementar IF/OCSVM con escalado y protocolo identificados, comparar y reproducir resultados. Independiente del despliegue. Cierre: ejecución reproducible sobre dataset autorizado, métricas si existen etiquetas y límites declarados. k-sigma/MAD son ampliación salvo confirmación.
-
-## OPS-01 Seis escenarios de caos y plan de incidentes
-
-Prioridad P1; etiquetas propuestas: chaos, resilience, docs.
-
-Tareas: hacer seguros los cuatro scripts, añadir interrupción de red/desconexión interna, completar runbooks y ensayar war-room. Depende de telemetría, restauración y límites probados. Cierre: seis escenarios con efectos, aborto/limpieza, recuperación y evidencias; no ejecutar contra sistemas externos.
+Las issues reemplazan los seis borradores iniciales agrupados. No se publicaron credenciales generadas ni inventarios de otros proyectos. El notebook en `ml/` es material de entrada con TODO, no una implementación terminada.
