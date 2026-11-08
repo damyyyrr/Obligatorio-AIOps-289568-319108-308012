@@ -1,0 +1,83 @@
+{
+  "timeUtc": "2026-11-08T15:33:20.046740+00:00",
+  "kind": "local checks; no live cluster execution",
+  "checks": [
+    {
+      "name": "17 regression tests after live image-digest fix",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": "test_build_checks_loaded_image_on_each_node (test_manage.WorkflowTests.test_build_checks_loaded_image_on_each_node) ... ok\ntest_build_profile_mismatch_blocks_docker (test_manage.WorkflowTests.test_build_profile_mismatch_blocks_docker) ... ok\ntest_changed_volume_identity_fails (test_manage.WorkflowTests.test_changed_volume_identity_fails) ... ok\ntest_cli_missing_context_exits_before_commands (test_manage.WorkflowTests.test_cli_missing_context_exits_before_commands) ... ok\ntest_context_mismatch_blocks_reads_and_writes (test_manage.WorkflowTests.test_context_mismatch_blocks_reads_and_writes) ... ok\ntest_cri_digest_uses_config_instead_of_oci_index (test_manage.WorkflowTests.test_cri_digest_uses_config_instead_of_oci_index) ... ok\ntest_elasticsearch_timeout_prevents_application_deployment (test_manage.WorkflowTests.test_elasticsearch_timeout_prevents_application_deployment) ... ok\ntest_external_command_failure_propagates_without_stdin (test_manage.WorkflowTests.test_external_command_failure_propagates_without_stdin) ... ok\ntest_invalid_tags (test_manage.WorkflowTests.test_invalid_tags) ... ok\ntest_manifest_inventory_and_references (test_manage.WorkflowTests.test_manifest_inventory_and_references) ... ok\ntest_missing_node_roles_blocks_apply (test_manage.WorkflowTests.test_missing_node_roles_blocks_apply) ... ok\ntest_multiple_hostpath_nodes_block_deployment (test_manage.WorkflowTests.test_multiple_hostpath_nodes_block_deployment) ... ok\ntest_released_volume_not_automatically_recreated (test_manage.WorkflowTests.test_released_volume_not_automatically_recreated) ... ok\ntest_repeat_apply_preserves_pv_and_never_deletes (test_manage.WorkflowTests.test_repeat_apply_preserves_pv_and_never_deletes) ... ok\ntest_sql_timeout_prevents_downstream_workloads (test_manage.WorkflowTests.test_sql_timeout_prevents_downstream_workloads) ... ok\ntest_stops_on_early_apply_error (test_manage.WorkflowTests.test_stops_on_early_apply_error) ... ok\ntest_wrong_volume_owner_blocks_apply (test_manage.WorkflowTests.test_wrong_volume_owner_blocks_apply) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.735s\n\nOK\n"
+    },
+    {
+      "name": "render without cluster",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": ""
+    },
+    {
+      "name": "PowerShell context preflight blocks deployment",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "passed": true,
+      "output": "ERROR: kubectl config failed (1): error: current-context is not set\n"
+    },
+    {
+      "name": "Bash context preflight blocks deployment",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "passed": true,
+      "output": "ERROR: kubectl config failed (1): error: current-context is not set\n"
+    },
+    {
+      "name": "Bash requires explicit context",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "passed": true,
+      "output": "usage: manage.py [-h] [--context CONTEXT] [--image-tag IMAGE_TAG]\n                 [--profile PROFILE] [--ui-only] [--timeout TIMEOUT]\n                 [--output OUTPUT]\n                 {render,apply,build,stop}\nmanage.py: error: --context is required\n"
+    },
+    {
+      "name": "Bash syntax apply-k8s.sh",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": ""
+    },
+    {
+      "name": "Bash syntax build-images.sh",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": ""
+    },
+    {
+      "name": "Bash syntax build-ui.sh",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": ""
+    },
+    {
+      "name": "Bash syntax cleanup.sh",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": ""
+    },
+    {
+      "name": "Bash syntax port-forward.sh",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": ""
+    },
+    {
+      "name": "diff whitespace (repository line-ending settings)",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "output": ""
+    }
+  ]
+}

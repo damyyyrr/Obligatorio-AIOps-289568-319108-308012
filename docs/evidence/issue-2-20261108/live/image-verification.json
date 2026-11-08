@@ -1,0 +1,6 @@
+{
+  "image": "pharmago-users-service:issue2-live-20261108-122720",
+  "dockerId": "sha256:cbaf048df5153891c4108d2ac4800beed755d17ef9e8470627134ed182dffb6c",
+  "configDigest": "sha256:69d54dac2031c76917c7b068e72d393001335b775ade453d38b3f34658083fdf",
+  "verifiedOnNode": true
+}

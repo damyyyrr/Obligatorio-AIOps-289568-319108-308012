@@ -1,0 +1,31 @@
+{
+  "timeUtc": "2026-11-08T15:49:50.284000+00:00",
+  "removedOldAiopsVolumes": [
+    "aiops-obligatorio",
+    "aiops-obligatorio-m02",
+    "aiops-obligatorio-m03",
+    "aiops-obligatorio-m04",
+    "aiops-obligatorio-m05",
+    "aiops-obligatorio-m06",
+    "aiops-obligatorio-m07",
+    "aiops-obligatorio_elasticsearch_data",
+    "aiops-obligatorio_sql_data"
+  ],
+  "originalContainerCount": 26,
+  "allOriginalContainersPreserved": true,
+  "allOtherVolumesPreserved": true,
+  "beforeFreeBytes": 1515003904,
+  "afterFreeBytes": 16998010880,
+  "buildCachePruned": true,
+  "vhdCompaction": {
+    "beforeBytes": 68271734784,
+    "openError": 5,
+    "afterBytes": 68271734784
+  },
+  "freeBytesAfterValidation": 47041044480,
+  "recordedAfterValidationUtc": "2026-11-08T16:38:08.224839+00:00",
+  "finalFreeBytes": 52725579776,
+  "profileFinalState": "Stopped after successful validation; volume preserved",
+  "finalTimeUtc": "2026-11-08T16:39:51.082285+00:00",
+  "allOtherProjectContainersPreservedAfterValidation": true
+}

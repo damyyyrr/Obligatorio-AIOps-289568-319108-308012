@@ -1,0 +1,505 @@
+{
+  "context": "pharmago-issue2",
+  "imageTag": "issue2-live-20261108-125407",
+  "startedAt": "2026-11-08T15:54:07.649062+00:00",
+  "stages": [
+    {
+      "name": "first",
+      "sqlSha256": "d73e093fbf0f7d41944e7588d0bd19620d338fb0828669f8743f0bdd1cbfe996",
+      "volumeUids": {
+        "sql-pv": "9f094bb4-19ba-49d8-b573-51bba6d6b3da",
+        "elasticsearch-pv": "de477fac-a225-4e89-bc3d-1040b166f195",
+        "prometheus-pv": "61a708ae-f27d-49c0-9d13-f4258ac20275",
+        "grafana-pv": "9dee6d24-21fc-43cc-9ce3-0ca5f84edb4f",
+        "elasticsearch-pvc": "2515da39-1ea6-4b07-a32b-3b8b5a115462",
+        "grafana-pvc": "423f51f4-992a-4836-9cb7-02f9e96f1719",
+        "prometheus-pvc": "4d87e5df-80be-440a-ad92-90b98d64b7fa",
+        "sql-pvc": "6e672d8b-c6c0-45c1-b2cf-8104d3c283ff"
+      },
+      "frontendHttp": 200,
+      "catalogCount": 4,
+      "loginHttp": 200,
+      "loginTokenPresent": true,
+      "pods": [
+        {
+          "name": "elasticsearch-7bfbb64c69-8lkxl",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "elasticsearch",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:7f03b6ec0c6f6d9a844550d1b3689e868e11850ac4e668e8583490c96baca8f1"
+            }
+          ]
+        },
+        {
+          "name": "fluent-bit-cw694",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "fluent-bit",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/fluent/fluent-bit@sha256:bc89a87cc9cd40c320644835b83170f49819dc3ea447e38c71dde27a181e7a9b"
+            }
+          ]
+        },
+        {
+          "name": "grafana-56d784598-4x7mp",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "grafana",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/grafana/grafana@sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+            }
+          ]
+        },
+        {
+          "name": "kibana-77c6f7744c-csgkr",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "kibana",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.elastic.co/kibana/kibana@sha256:76773735fa086882909add84132a59d1765686d0fc170b35990acab814cf4a72"
+            }
+          ]
+        },
+        {
+          "name": "node-exporter-57rrg",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "node-exporter",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/prom/node-exporter@sha256:4cb2b9019f1757be8482419002cb7afe028fdba35d47958829e4cfeaf6246d80"
+            }
+          ]
+        },
+        {
+          "name": "otlp-collector-7b576c6f66-w245n",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "otlp-collector",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-api-gateway-7ff6d4698b-kwwgv",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-api-gateway",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:51f55f0acb0e532b78257ad1e39680a6bf223e7396fe1fd181437fd152fc5098"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-db-cc7995754-ff4g5",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-db",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-pharmacy-service-65554c86bb-d42lp",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-pharmacy-service",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:2ea8405ea50d76ac2d4971dc68fbbc43ba68dd97ba50d026f528077b3225667c"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-ui-d4d56b6bb-fg8fh",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-ui",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:350b719eb7f69ba3de0c7e8d9cab4e995bbc8f3c0b35c7c79d15172ec0e4e200"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-users-service-5bf6bb5f-thbts",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-users-service",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:78b884d72759a617d8e0ce60ce377ccd6a363e277bbef13641b6e2f18895c938"
+            }
+          ]
+        },
+        {
+          "name": "prometheus-5649dfd57-r9zn5",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "prometheus",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/prom/prometheus@sha256:f6639335d34a77d9d9db382b92eeb7fc00934be8eae81dbc03b31cfe90411a94"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "second",
+      "sqlSha256": "d73e093fbf0f7d41944e7588d0bd19620d338fb0828669f8743f0bdd1cbfe996",
+      "volumeUids": {
+        "sql-pv": "9f094bb4-19ba-49d8-b573-51bba6d6b3da",
+        "elasticsearch-pv": "de477fac-a225-4e89-bc3d-1040b166f195",
+        "prometheus-pv": "61a708ae-f27d-49c0-9d13-f4258ac20275",
+        "grafana-pv": "9dee6d24-21fc-43cc-9ce3-0ca5f84edb4f",
+        "elasticsearch-pvc": "2515da39-1ea6-4b07-a32b-3b8b5a115462",
+        "grafana-pvc": "423f51f4-992a-4836-9cb7-02f9e96f1719",
+        "prometheus-pvc": "4d87e5df-80be-440a-ad92-90b98d64b7fa",
+        "sql-pvc": "6e672d8b-c6c0-45c1-b2cf-8104d3c283ff"
+      },
+      "frontendHttp": 200,
+      "catalogCount": 4,
+      "loginHttp": 200,
+      "loginTokenPresent": true,
+      "pods": [
+        {
+          "name": "elasticsearch-7bfbb64c69-8lkxl",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "elasticsearch",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:7f03b6ec0c6f6d9a844550d1b3689e868e11850ac4e668e8583490c96baca8f1"
+            }
+          ]
+        },
+        {
+          "name": "fluent-bit-cw694",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "fluent-bit",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/fluent/fluent-bit@sha256:bc89a87cc9cd40c320644835b83170f49819dc3ea447e38c71dde27a181e7a9b"
+            }
+          ]
+        },
+        {
+          "name": "grafana-56d784598-4x7mp",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "grafana",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/grafana/grafana@sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+            }
+          ]
+        },
+        {
+          "name": "kibana-77c6f7744c-csgkr",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "kibana",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.elastic.co/kibana/kibana@sha256:76773735fa086882909add84132a59d1765686d0fc170b35990acab814cf4a72"
+            }
+          ]
+        },
+        {
+          "name": "node-exporter-57rrg",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "node-exporter",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/prom/node-exporter@sha256:4cb2b9019f1757be8482419002cb7afe028fdba35d47958829e4cfeaf6246d80"
+            }
+          ]
+        },
+        {
+          "name": "otlp-collector-7b576c6f66-w245n",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "otlp-collector",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-api-gateway-7ff6d4698b-kwwgv",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-api-gateway",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:51f55f0acb0e532b78257ad1e39680a6bf223e7396fe1fd181437fd152fc5098"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-db-cc7995754-ff4g5",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-db",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-pharmacy-service-65554c86bb-d42lp",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-pharmacy-service",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:2ea8405ea50d76ac2d4971dc68fbbc43ba68dd97ba50d026f528077b3225667c"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-ui-d4d56b6bb-fg8fh",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-ui",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:350b719eb7f69ba3de0c7e8d9cab4e995bbc8f3c0b35c7c79d15172ec0e4e200"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-users-service-5bf6bb5f-thbts",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-users-service",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:78b884d72759a617d8e0ce60ce377ccd6a363e277bbef13641b6e2f18895c938"
+            }
+          ]
+        },
+        {
+          "name": "prometheus-5649dfd57-r9zn5",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "prometheus",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/prom/prometheus@sha256:f6639335d34a77d9d9db382b92eeb7fc00934be8eae81dbc03b31cfe90411a94"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "after-stop",
+      "sqlSha256": "d73e093fbf0f7d41944e7588d0bd19620d338fb0828669f8743f0bdd1cbfe996",
+      "volumeUids": {
+        "sql-pv": "9f094bb4-19ba-49d8-b573-51bba6d6b3da",
+        "elasticsearch-pv": "de477fac-a225-4e89-bc3d-1040b166f195",
+        "prometheus-pv": "61a708ae-f27d-49c0-9d13-f4258ac20275",
+        "grafana-pv": "9dee6d24-21fc-43cc-9ce3-0ca5f84edb4f",
+        "elasticsearch-pvc": "2515da39-1ea6-4b07-a32b-3b8b5a115462",
+        "grafana-pvc": "423f51f4-992a-4836-9cb7-02f9e96f1719",
+        "prometheus-pvc": "4d87e5df-80be-440a-ad92-90b98d64b7fa",
+        "sql-pvc": "6e672d8b-c6c0-45c1-b2cf-8104d3c283ff"
+      },
+      "frontendHttp": 200,
+      "catalogCount": 4,
+      "loginHttp": 200,
+      "loginTokenPresent": true,
+      "pods": [
+        {
+          "name": "elasticsearch-7bfbb64c69-q496h",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "elasticsearch",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:7f03b6ec0c6f6d9a844550d1b3689e868e11850ac4e668e8583490c96baca8f1"
+            }
+          ]
+        },
+        {
+          "name": "fluent-bit-cw694",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "fluent-bit",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/fluent/fluent-bit@sha256:bc89a87cc9cd40c320644835b83170f49819dc3ea447e38c71dde27a181e7a9b"
+            }
+          ]
+        },
+        {
+          "name": "grafana-56d784598-mgcvj",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "grafana",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/grafana/grafana@sha256:7d5faae481a4c6f436c99e98af11534f7fd5e8d3e35213552dd1dd02bc393d2e"
+            }
+          ]
+        },
+        {
+          "name": "kibana-77c6f7744c-nmfng",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "kibana",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.elastic.co/kibana/kibana@sha256:76773735fa086882909add84132a59d1765686d0fc170b35990acab814cf4a72"
+            }
+          ]
+        },
+        {
+          "name": "node-exporter-57rrg",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "node-exporter",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/prom/node-exporter@sha256:4cb2b9019f1757be8482419002cb7afe028fdba35d47958829e4cfeaf6246d80"
+            }
+          ]
+        },
+        {
+          "name": "otlp-collector-7b576c6f66-qxhxt",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "otlp-collector",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-api-gateway-7ff6d4698b-7ddpb",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-api-gateway",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:51f55f0acb0e532b78257ad1e39680a6bf223e7396fe1fd181437fd152fc5098"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-db-cc7995754-khfq8",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-db",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-pharmacy-service-65554c86bb-vplp9",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-pharmacy-service",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:2ea8405ea50d76ac2d4971dc68fbbc43ba68dd97ba50d026f528077b3225667c"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-ui-d4d56b6bb-ks7cv",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-ui",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:350b719eb7f69ba3de0c7e8d9cab4e995bbc8f3c0b35c7c79d15172ec0e4e200"
+            }
+          ]
+        },
+        {
+          "name": "pharmago-users-service-5bf6bb5f-75f6b",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "pharmago-users-service",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "sha256:78b884d72759a617d8e0ce60ce377ccd6a363e277bbef13641b6e2f18895c938"
+            }
+          ]
+        },
+        {
+          "name": "prometheus-5649dfd57-6frtv",
+          "phase": "Running",
+          "containers": [
+            {
+              "name": "prometheus",
+              "ready": true,
+              "restartCount": 0,
+              "imageID": "docker.io/prom/prometheus@sha256:f6639335d34a77d9d9db382b92eeb7fc00934be8eae81dbc03b31cfe90411a94"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "Single virtual node; physical separation is outside issue #2.",
+    "Browser interactions are not covered by these HTTP checks."
+  ],
+  "completedAt": "2026-11-08T16:37:52.963275+00:00"
+}
