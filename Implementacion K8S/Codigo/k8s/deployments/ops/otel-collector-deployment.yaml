@@ -23,7 +23,7 @@ spec:
                 values: [ops, all]
       containers:
       - name: otlp-collector
-        image: otel/opentelemetry-collector-contrib:latest
+        image: otel/opentelemetry-collector-contrib:0.111.0
         ports:
         - containerPort: 4317
           name: otlp-grpc

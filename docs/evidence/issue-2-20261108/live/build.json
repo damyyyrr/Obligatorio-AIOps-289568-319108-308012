@@ -1,0 +1,30 @@
+{
+  "images": [
+    {
+      "image": "pharmago-users-service:issue2-live-20261108-125407",
+      "id": "sha256:5de1a860e4b4fe72a5318558e3747dcc03faa24c9c7e705c85a82063df225a73",
+      "configDigest": "sha256:78b884d72759a617d8e0ce60ce377ccd6a363e277bbef13641b6e2f18895c938"
+    },
+    {
+      "image": "pharmago-pharmacy-service:issue2-live-20261108-125407",
+      "id": "sha256:0d342199a0e428dcaf64b337c39ef6b7da5d4b2c57f0b237a59a9681e6fab750",
+      "configDigest": "sha256:2ea8405ea50d76ac2d4971dc68fbbc43ba68dd97ba50d026f528077b3225667c"
+    },
+    {
+      "image": "pharmago-api-gateway:issue2-live-20261108-125407",
+      "id": "sha256:c111d4dd6ff7aeeb756782f3f5f0a60903d4335f8ab55d5067e5db8d11c64b3d",
+      "configDigest": "sha256:51f55f0acb0e532b78257ad1e39680a6bf223e7396fe1fd181437fd152fc5098"
+    },
+    {
+      "image": "pharmago-ui:issue2-live-20261108-125407",
+      "id": "sha256:7c5521f393c7821b5e2025861a5e082710435e50db4f63298482ab4fcff40eba",
+      "configDigest": "sha256:350b719eb7f69ba3de0c7e8d9cab4e995bbc8f3c0b35c7c79d15172ec0e4e200"
+    }
+  ],
+  "profile": "pharmago-issue2",
+  "action": "build",
+  "context": "pharmago-issue2",
+  "imageTag": "issue2-live-20261108-125407",
+  "timeUtc": "2026-11-08T16:16:26.748792+00:00",
+  "commit": "486bdce4e7edd989456deadba8cf7b3c14d7eccd"
+}

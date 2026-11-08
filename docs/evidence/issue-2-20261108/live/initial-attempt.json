@@ -1,0 +1,17 @@
+{
+  "context": "pharmago-issue2",
+  "imageTag": "issue2-live-20261108-122720",
+  "startedAt": "2026-11-08T15:27:20.218408+00:00",
+  "stages": [],
+  "passed": false,
+  "limitations": [
+    "Single virtual node; physical separation is outside issue #2.",
+    "Browser interactions are not covered by these HTTP checks."
+  ],
+  "completedAt": "2026-11-08T15:29:05.017664+00:00",
+  "initialFailure": "Command failed: [WindowsPath('C:/Users/User/Obligatorio-AIOps-289568-319108-308012/.runtime/k8s-venv/Scripts/python.exe'), WindowsPath('C:/Users/User/Obligatorio-AIOps-289568-319108-308012/Implementacion K8S/Codigo/k8s/manage.py'), 'build'] ERROR: Image pharmago-users-service:issue2-live-20261108-122720 missing on node pharmago-issue2\n",
+  "currentBlocker": "Insufficient host disk space: approximately 1.2 GB at lowest observation, 2.4 GB after stopping the test profile",
+  "imageVerificationAfterFix": "image-verification.json",
+  "profileFinalState": "Stopped; preserved for resuming",
+  "removedOldTestImageTags": 14
+}

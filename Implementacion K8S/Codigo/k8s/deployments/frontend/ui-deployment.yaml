@@ -23,7 +23,7 @@ spec:
                 values: [frontend, all]
       containers:
       - name: pharmago-ui
-        image: pharmago-ui:latest
+        image: pharmago-ui:k8s-local
         imagePullPolicy: Never
         ports:
         - containerPort: 80

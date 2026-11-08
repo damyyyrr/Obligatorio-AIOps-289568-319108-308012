@@ -48,6 +48,8 @@ temp/
 *.tmp
 
 # === Kubernetes / local ===
+.runtime/
+__pycache__/
 k8s/.port-forward.pids
 
 # === Secrets (evitar subir credenciales) ===

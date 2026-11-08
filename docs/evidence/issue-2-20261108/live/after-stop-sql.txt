@@ -1,0 +1,7 @@
+Changed database context to 'PharmaDb'.
+1 PARA001 100 150.00 0
+2 IBUP002 80 280.50 0
+3 AMOX003 50 450.00 0
+4 OMEP004 120 320.00 0
+3
+631264b4-b819-4bee-8995-5acac5d35aed
