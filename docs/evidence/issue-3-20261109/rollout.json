@@ -1,0 +1,345 @@
+{
+  "startedUtc": "2026-11-09T14:53:22.752105+00:00",
+  "finishedUtc": "2026-11-09T14:53:45.912710+00:00",
+  "expectedNodes": {
+    "pharmago-api-gateway": "pharmago-issue3",
+    "pharmago-users-service": "pharmago-issue3-m02",
+    "pharmago-pharmacy-service": "pharmago-issue3-m03"
+  },
+  "podsBefore": {
+    "elasticsearch-7bfbb64c69-2r6qf": {
+      "app": "elasticsearch",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "docker.elastic.co/elasticsearch/elasticsearch:8.11.0"
+    },
+    "fluent-bit-cmmxp": {
+      "app": null,
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "fluent/fluent-bit:2.2.2"
+    },
+    "fluent-bit-pz557": {
+      "app": null,
+      "node": "pharmago-issue3-m03",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "fluent/fluent-bit:2.2.2"
+    },
+    "fluent-bit-w4xfx": {
+      "app": null,
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "fluent/fluent-bit:2.2.2"
+    },
+    "grafana-56d784598-hcpwz": {
+      "app": "grafana",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "grafana/grafana:10.4.2"
+    },
+    "kibana-68c64655b9-8tb4w": {
+      "app": "kibana",
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "docker.elastic.co/kibana/kibana:8.11.0"
+    },
+    "node-exporter-ggfcw": {
+      "app": "node-exporter",
+      "node": "pharmago-issue3-m03",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "prom/node-exporter:v1.7.0"
+    },
+    "node-exporter-lp856": {
+      "app": "node-exporter",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "prom/node-exporter:v1.7.0"
+    },
+    "node-exporter-pm8wk": {
+      "app": "node-exporter",
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "prom/node-exporter:v1.7.0"
+    },
+    "otlp-collector-7cf4fb9d65-j4nnd": {
+      "app": "otlp-collector",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "otel/opentelemetry-collector-contrib:0.111.0"
+    },
+    "pharmago-api-gateway-77c54cf48c-f4x8v": {
+      "app": "pharmago-api-gateway",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "pharmago-api-gateway:issue2-live-20261108-125407"
+    },
+    "pharmago-db-cc7995754-jnhlq": {
+      "app": "pharmago-db",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+    },
+    "pharmago-pharmacy-service-b9d57868-5sql8": {
+      "app": "pharmago-pharmacy-service",
+      "node": "pharmago-issue3-m03",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "pharmago-pharmacy-service:issue2-live-20261108-125407"
+    },
+    "pharmago-ui-d4d56b6bb-h4fms": {
+      "app": "pharmago-ui",
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "pharmago-ui:issue2-live-20261108-125407"
+    },
+    "pharmago-users-service-6b8df5554-hkbls": {
+      "app": "pharmago-users-service",
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "pharmago-users-service:issue2-live-20261108-125407"
+    },
+    "prometheus-5649dfd57-grjcs": {
+      "app": "prometheus",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "prom/prometheus:v2.54.1"
+    }
+  },
+  "overlap": {
+    "pharmago-api-gateway": {
+      "timeUtc": "2026-11-09T14:53:22.923025+00:00",
+      "pods": {
+        "pharmago-api-gateway-77c54cf48c-f4x8v": {
+          "app": "pharmago-api-gateway",
+          "node": "pharmago-issue3",
+          "ready": true,
+          "restarts": 0,
+          "terminating": false,
+          "image": "pharmago-api-gateway:issue2-live-20261108-125407"
+        },
+        "pharmago-api-gateway-c4d5994cc-qbknm": {
+          "app": "pharmago-api-gateway",
+          "node": "pharmago-issue3",
+          "ready": false,
+          "restarts": 0,
+          "terminating": false,
+          "image": "pharmago-api-gateway:issue2-live-20261108-125407"
+        }
+      }
+    },
+    "pharmago-users-service": {
+      "timeUtc": "2026-11-09T14:53:22.924172+00:00",
+      "pods": {
+        "pharmago-users-service-6b8df5554-hkbls": {
+          "app": "pharmago-users-service",
+          "node": "pharmago-issue3-m02",
+          "ready": true,
+          "restarts": 0,
+          "terminating": false,
+          "image": "pharmago-users-service:issue2-live-20261108-125407"
+        },
+        "pharmago-users-service-dc5f6b6c4-bcwgv": {
+          "app": "pharmago-users-service",
+          "node": "pharmago-issue3-m02",
+          "ready": false,
+          "restarts": 0,
+          "terminating": false,
+          "image": "pharmago-users-service:issue2-live-20261108-125407"
+        }
+      }
+    },
+    "pharmago-pharmacy-service": {
+      "timeUtc": "2026-11-09T14:53:22.924186+00:00",
+      "pods": {
+        "pharmago-pharmacy-service-757d644486-jh4q5": {
+          "app": "pharmago-pharmacy-service",
+          "node": "pharmago-issue3-m03",
+          "ready": false,
+          "restarts": 0,
+          "terminating": false,
+          "image": "pharmago-pharmacy-service:issue2-live-20261108-125407"
+        },
+        "pharmago-pharmacy-service-b9d57868-5sql8": {
+          "app": "pharmago-pharmacy-service",
+          "node": "pharmago-issue3-m03",
+          "ready": true,
+          "restarts": 0,
+          "terminating": false,
+          "image": "pharmago-pharmacy-service:issue2-live-20261108-125407"
+        }
+      }
+    }
+  },
+  "maxNonTerminatingPods": {
+    "pharmago-api-gateway": 2,
+    "pharmago-users-service": 2,
+    "pharmago-pharmacy-service": 2
+  },
+  "minimumReadySampled": {
+    "pharmago-api-gateway": 1,
+    "pharmago-users-service": 1,
+    "pharmago-pharmacy-service": 1
+  },
+  "podsAfter": {
+    "elasticsearch-7bfbb64c69-2r6qf": {
+      "app": "elasticsearch",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "docker.elastic.co/elasticsearch/elasticsearch:8.11.0"
+    },
+    "fluent-bit-cmmxp": {
+      "app": null,
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "fluent/fluent-bit:2.2.2"
+    },
+    "fluent-bit-pz557": {
+      "app": null,
+      "node": "pharmago-issue3-m03",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "fluent/fluent-bit:2.2.2"
+    },
+    "fluent-bit-w4xfx": {
+      "app": null,
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "fluent/fluent-bit:2.2.2"
+    },
+    "grafana-56d784598-hcpwz": {
+      "app": "grafana",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "grafana/grafana:10.4.2"
+    },
+    "kibana-68c64655b9-8tb4w": {
+      "app": "kibana",
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "docker.elastic.co/kibana/kibana:8.11.0"
+    },
+    "node-exporter-ggfcw": {
+      "app": "node-exporter",
+      "node": "pharmago-issue3-m03",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "prom/node-exporter:v1.7.0"
+    },
+    "node-exporter-lp856": {
+      "app": "node-exporter",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "prom/node-exporter:v1.7.0"
+    },
+    "node-exporter-pm8wk": {
+      "app": "node-exporter",
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "prom/node-exporter:v1.7.0"
+    },
+    "otlp-collector-7cf4fb9d65-j4nnd": {
+      "app": "otlp-collector",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "otel/opentelemetry-collector-contrib:0.111.0"
+    },
+    "pharmago-api-gateway-c4d5994cc-qbknm": {
+      "app": "pharmago-api-gateway",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "pharmago-api-gateway:issue2-live-20261108-125407"
+    },
+    "pharmago-db-cc7995754-jnhlq": {
+      "app": "pharmago-db",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+    },
+    "pharmago-pharmacy-service-757d644486-jh4q5": {
+      "app": "pharmago-pharmacy-service",
+      "node": "pharmago-issue3-m03",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "pharmago-pharmacy-service:issue2-live-20261108-125407"
+    },
+    "pharmago-ui-d4d56b6bb-h4fms": {
+      "app": "pharmago-ui",
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "pharmago-ui:issue2-live-20261108-125407"
+    },
+    "pharmago-users-service-dc5f6b6c4-bcwgv": {
+      "app": "pharmago-users-service",
+      "node": "pharmago-issue3-m02",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "pharmago-users-service:issue2-live-20261108-125407"
+    },
+    "prometheus-5649dfd57-grjcs": {
+      "app": "prometheus",
+      "node": "pharmago-issue3",
+      "ready": true,
+      "restarts": 0,
+      "terminating": false,
+      "image": "prom/prometheus:v2.54.1"
+    }
+  },
+  "pvsAndPvcsUnchanged": true
+}

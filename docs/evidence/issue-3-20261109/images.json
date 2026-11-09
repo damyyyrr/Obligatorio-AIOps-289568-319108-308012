@@ -1,0 +1,22 @@
+[
+  {
+    "image": "pharmago-users-service:issue2-live-20261108-125407",
+    "node": "pharmago-issue3-m02",
+    "configDigest": "sha256:78b884d72759a617d8e0ce60ce377ccd6a363e277bbef13641b6e2f18895c938"
+  },
+  {
+    "image": "pharmago-pharmacy-service:issue2-live-20261108-125407",
+    "node": "pharmago-issue3-m03",
+    "configDigest": "sha256:2ea8405ea50d76ac2d4971dc68fbbc43ba68dd97ba50d026f528077b3225667c"
+  },
+  {
+    "image": "pharmago-api-gateway:issue2-live-20261108-125407",
+    "node": "pharmago-issue3",
+    "configDigest": "sha256:51f55f0acb0e532b78257ad1e39680a6bf223e7396fe1fd181437fd152fc5098"
+  },
+  {
+    "image": "pharmago-ui:issue2-live-20261108-125407",
+    "node": "pharmago-issue3-m02",
+    "configDigest": "sha256:350b719eb7f69ba3de0c7e8d9cab4e995bbc8f3c0b35c7c79d15172ec0e4e200"
+  }
+]

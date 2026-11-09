@@ -171,6 +171,8 @@ El diseño debe especificar nodos elegibles para Users, Pharmacy y Gateway, si e
 
 Para datos con `hostPath`, documentar el nodo propietario y la recuperación admitida. Ni agregar nodos ni agregar réplicas de aplicación vuelve altamente disponible al SQL Server actual. Una eventual solución de almacenamiento compartido o HA de DB exige diseño y pruebas propios. Si no hay recursos para el requisito físico, demostrar lo local y mantener visible el bloqueo académico.
 
+La issue #3 concreta esta sección en [Topología Kubernetes de PharmaGo](aiops-k8s-topology.md), con el diagrama, el presupuesto y el mapa de nodos a hosts.
+
 Dependencias mínimas:
 - A01/A04 y consultas Q01–Q04 preceden a decisiones de infraestructura; A02/A03 producen el baseline reproducible.
 - A05/A06 preceden a inyecciones de fallas. En K8s, B01/B02/B03 y las métricas mínimas D01/D04 necesarias para el ensayo preceden a B04/B05; B07 precede a escalar servicios que migran la DB.

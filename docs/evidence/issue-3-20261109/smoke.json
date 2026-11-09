@@ -1,0 +1,7 @@
+{
+  "frontendHttp": 200,
+  "catalogHttp": 200,
+  "medicines": 4,
+  "loginHttp": 200,
+  "tokenPresent": true
+}

@@ -1,4 +1,4 @@
-# PharmaGo en Kubernetes — flujo reproducible (issue #2)
+# PharmaGo en Kubernetes — despliegue y topología
 
 PowerShell y Bash ejecutan el mismo `manage.py`. Se requiere Python 3.10+, las dependencias fijadas en `requirements.txt`, kubectl, Docker y Minikube para construir/cargar imágenes. El clúster debe existir y ser accesible. No se instala ni se cambia de contexto automáticamente.
 
@@ -18,7 +18,15 @@ En Linux/macOS, usar `.runtime/k8s-venv/bin/python` y exportar su ruta absoluta 
 
 Elegir un perfil propio y dimensionar CPU/RAM/disco según la suma de requests/límites de los manifiestos y la capacidad libre del host. El conjunto incluye SQL, Elasticsearch, Kibana, Prometheus y Grafana; no se presume que 6 GB sean suficientes. Para un clúster local nuevo, crear explícitamente el perfil con `minikube start -p <perfil> --nodes <cantidad> --memory <MiB-por-nodo> --cpus <cpu-por-nodo>` y seleccionar su contexto con `kubectl config use-context <contexto>`.
 
-Las etiquetas se establecen deliberadamente, nunca por el script. Para desarrollo de un solo nodo: `kubectl --context <contexto> label node <nombre-real> node-type=all`. Para el reparto docente existente, etiquetar nodos reales como `frontend`, `backend` y `ops`. **Este reparto aún concentra los microservicios y no cumple su separación física:** eso se resuelve en #3. Con los hostPath actuales debe haber exactamente un nodo `ops` o `all`; agregar otro permitiría montar directorios distintos. La afinidad física específica y recuperación de volúmenes se completan en #3/#4. No relabelar ni sustituir el nodo propietario de datos existentes.
+El modo predeterminado requiere tres roles de servicio y un único nodo de almacenamiento. Para un clúster nuevo de tres nodos, sustituir los nombres por los de `kubectl get nodes`:
+
+```text
+kubectl --context <contexto> label node <nodo-gateway> node-type=ops pharmago.io/service=gateway
+kubectl --context <contexto> label node <nodo-users> node-type=frontend pharmago.io/service=users
+kubectl --context <contexto> label node <nodo-pharmacy> pharmago.io/service=pharmacy
+```
+
+Ver [topología y dimensionamiento](../../../docs/aiops-k8s-topology.md). Las etiquetas se establecen deliberadamente, nunca por el script. El clúster de desarrollo de un solo nodo se puede seguir usando: etiquetar ese nodo `node-type=all` y pasar `-Topology single-node` (PowerShell) o `--topology single-node` (Bash y render). Este modo no es válido para comprobar la separación.
 
 ## Construcción y carga
 
@@ -59,6 +67,8 @@ bash 'Implementacion K8S/Codigo/k8s/apply-k8s.sh' --context '<contexto>' --image
 
 El contexto actual debe coincidir con el solicitado; todas las llamadas usan además `--context`. Se comprueban nodos Ready, etiquetas y namespace. Un PV `Released`, `Failed`, en eliminación o asociado a otro claim detiene la ejecución antes del apply. Su recuperación requiere diagnóstico manual; no se borra ni se fuerza el rebind.
 
+Los PV nuevos registran el UID del nodo propietario como anotación `pharmago.io/storage-node-uid`. El apply aborta si el UID cambia. Antes de adoptar un PV anterior sin anotación en modo separado, verificar el host y el contenido del directorio original; solo entonces anotar su UID real con `kubectl annotate pv`. El script no adopta esos volúmenes automáticamente. Mantener la etiqueta `node-type=ops` exclusivamente en el nodo propietario; la anotación protege el apply, no modifica la afinidad de los PV existentes ni mueve los datos.
+
 Orden: namespace/almacenamiento/Secret/ConfigMaps/RBAC/Services, SQL con espera, Elasticsearch con espera, resto de Deployments y DaemonSets. Se incluye Fluent Bit y todo su RBAC en ambos sistemas. Cada fallo y cada timeout termina con código distinto de cero. Una falla puede dejar un despliegue parcial: diagnosticar, corregir y repetir el apply; no se hace rollback automático ni limpieza destructiva.
 
 Al finalizar se esperan los rollouts de todos los Deployments y DaemonSets. Se comparan las identidades de PV y de sus claims previamente enlazados y se guarda un JSON en `k8s/.runtime/`, con pods e imágenes observadas, contexto, versión y hora UTC. `--output` (PowerShell: `-OutputPath`) permite elegir otra ruta. Ready y PV UID estable no prueban por sí solos que los datos de negocio estén intactos.
@@ -71,7 +81,7 @@ Al finalizar se esperan los rollouts de todos los Deployments y DaemonSets. Se c
 4. Repetir **exactamente el mismo apply y tag** con otro archivo de salida. Comparar PV/PVC UIDs, consulta SQL, login y catálogo. Las dos ejecuciones deben ser funcionales y conservar registros.
 5. Ejecutar la parada y volver a aplicar; repetir las comprobaciones. Adjuntar comandos, versiones y resultados sanitizados a `docs/evidence/`. Validar en otro equipo o desde una instalación nueva siguiendo esta guía, sin borrar el clúster anterior.
 
-La #2 queda pendiente de aceptación hasta ejecutar esta prueba real. Los tests con dobles de kubectl verifican regresiones del flujo, no persistencia real ni comportamiento del clúster.
+La [validación de la #2](../../../docs/evidence/issue-2-20261108/live/README.md) registró estas pruebas en un nodo de desarrollo. Para la #3 se agrega la comprobación de nodos separados y del pod adicional de cada rollout.
 
 ## Parada y recuperación
 

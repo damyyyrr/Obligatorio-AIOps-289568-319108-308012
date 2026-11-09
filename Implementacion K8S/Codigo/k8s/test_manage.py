@@ -25,11 +25,12 @@ class FakeCluster(manage.Cluster):
         self.snapshots = 0
 
     def preflight(self, workloads=True):
-        pass
+        return node()
 
     def volumes(self):
         self.snapshots += 1
-        return [{"name": "sql-pv", "uid": "changed" if self.changed and self.snapshots == 2 else "pv-1", "claimUid": "pvc-1"}]
+        return [{"name": "sql-pv", "uid": "changed" if self.changed and self.snapshots == 2 else "pv-1",
+                 "claimUid": "pvc-1", "storageNodeUid": "node-uid"}]
 
     def call(self, *args, stdin=None):
         doc = json.loads(stdin) if stdin else None
@@ -106,9 +107,26 @@ class WorkflowTests(unittest.TestCase):
 
     def test_missing_node_roles_blocks_apply(self):
         cluster = manage.Cluster("test-cluster")
-        with patch.object(manage, "run", return_value="test-cluster"), patch.object(cluster, "call", return_value=json.dumps({"items": [node("unlabelled")]})):
-            with self.assertRaisesRegex(RuntimeError, "Label nodes"):
+        with patch.object(manage, "run", return_value="test-cluster"), patch.object(cluster, "call", return_value=json.dumps({"items": [node("ops")]})):
+            with self.assertRaisesRegex(RuntimeError, "Label schedulable Ready nodes"):
                 cluster.preflight()
+
+    def test_all_role_cannot_bypass_separated_topology(self):
+        local = node()
+        with self.assertRaisesRegex(RuntimeError, "only supported with"):
+            manage.validate_topology([local], [local], "separated")
+        self.assertIs(local, manage.validate_topology([local], [local], "single-node"))
+        with self.assertRaisesRegex(RuntimeError, "one-node cluster"):
+            manage.validate_topology([local, node("unused", "second")], [local], "single-node")
+
+    def test_different_storage_node_blocks_before_mutation(self):
+        cluster = FakeCluster()
+        with patch.object(cluster, "volumes", return_value=[
+            {"name": "sql-pv", "uid": "pv-1", "claimUid": "pvc-1", "storageNodeUid": "other-node"}
+        ]):
+            with self.assertRaisesRegex(RuntimeError, "belongs to another storage node"):
+                manage.deploy(cluster, manage.resources("test"), 42)
+        self.assertEqual([], cluster.calls)
 
     def test_released_volume_not_automatically_recreated(self):
         cluster = manage.Cluster("test-cluster")

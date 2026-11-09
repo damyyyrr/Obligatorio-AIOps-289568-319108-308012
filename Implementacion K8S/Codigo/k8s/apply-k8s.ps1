@@ -3,13 +3,14 @@
 param(
     [Parameter(Mandatory=$true)][string]$Context,
     [Parameter(Mandatory=$true)][string]$ImageTag,
+    [ValidateSet('separated', 'single-node')][string]$Topology = 'separated',
     [int]$Timeout = 600,
     [string]$OutputPath,
     [string]$Python = 'python'
 )
 $ErrorActionPreference = 'Stop'
 $arguments = @((Join-Path $PSScriptRoot 'manage.py'), 'apply', '--context', $Context, '--timeout', "$Timeout")
-$arguments += @('--image-tag', $ImageTag)
+$arguments += @('--image-tag', $ImageTag, '--topology', $Topology)
 if ($OutputPath) { $arguments += @('--output', $OutputPath) }
 & $Python @arguments
 exit $LASTEXITCODE

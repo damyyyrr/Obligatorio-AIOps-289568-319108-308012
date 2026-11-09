@@ -5,6 +5,11 @@ metadata:
   namespace: pharmago
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: pharmago-pharmacy-service
@@ -13,14 +18,8 @@ spec:
       labels:
         app: pharmago-pharmacy-service
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node-type
-                operator: In
-                values: [backend, all]
+      nodeSelector:
+        pharmago.io/service: pharmacy
       containers:
       - name: pharmago-pharmacy-service
         image: pharmago-pharmacy-service:k8s-local
