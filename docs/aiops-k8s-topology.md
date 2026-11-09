@@ -55,7 +55,7 @@ Suma por nodo de la topología de tres nodos. Incluye los Deployments asignados 
 
 \* CPU suma los límites definidos: Fluent Bit y Node Exporter no tienen límite de CPU. Los números no incluyen kubelet, control plane, CNI ni servicios ajenos; verificar el espacio libre efectivo por nodo y reservar margen para el sistema y pods terminando. El límite Docker local no cubre todos los máximos de los contenedores a la vez. Minikube con este driver reporta en `allocatable` CPU y RAM de la VM de Docker; la columna local usa los topes reales de cada contenedor. El ensayo comprueba el escenario de rollout, sin garantía de carga máxima.
 
-Los PV declaran 35 GiB en conjunto: SQL 10 GiB, Elasticsearch 10 GiB, Prometheus 10 GiB y Grafana 5 GiB. `hostPath` no reserva ni impone esas cuotas. El presupuesto académico reserva espacio adicional para imágenes, logs y sistema; medir el disco real en el nodo y en el volumen de Docker. No mover `node-type=ops` a otro nodo: los directorios no se mueven. El procedimiento de recuperación y copia de datos corresponde a #4.
+Los PV declaran 35 GiB en conjunto: SQL 10 GiB, Elasticsearch 10 GiB, Prometheus 10 GiB y Grafana 5 GiB. `hostPath` no reserva ni impone esas cuotas. El presupuesto académico reserva espacio adicional para imágenes, logs y sistema; medir el disco real en el nodo y en el volumen de Docker. No mover `node-type=ops` a otro nodo: los directorios no se mueven. Ver la [guía de datos y recuperación](aiops-k8s-recovery.md).
 
 El modo de un solo nodo sigue disponible para desarrollo explícito. SQL, Elasticsearch, Prometheus y Kibana mantienen su estrategia existente. Esta prueba de capacidad y colocación no valida tolerancia a fallas (#7) ni continuidad con tráfico y versiones distintas (#8).
 

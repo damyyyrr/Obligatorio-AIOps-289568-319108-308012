@@ -1,5 +1,6 @@
 """Shared Kubernetes workflow for PowerShell and Bash. Python 3.10+."""
 import argparse
+import base64
 import datetime
 import hashlib
 import json
@@ -23,6 +24,7 @@ APP_IMAGES = {
 PVS = ("sql-pv", "elasticsearch-pv", "prometheus-pv", "grafana-pv")
 SERVICE_ROLE = "pharmago.io/service"
 STORAGE_OWNER = "pharmago.io/storage-node-uid"
+HOSTNAME_LABEL = "kubernetes.io/hostname"
 SERVICE_ROLES = {"gateway", "users", "pharmacy"}
 
 
@@ -84,12 +86,12 @@ def image_config_digest(image):
 
 def resources(tag, topology="separated"):
     paths = [ROOT / "namespace.yaml"]
-    for directory in ("secrets", "configmaps", "persistent-volumes", "services", "deployments"):
+    for directory in ("configmaps", "persistent-volumes", "services", "deployments"):
         paths.extend(sorted((ROOT / directory).rglob("*.yaml")))
     docs = [d for path in paths for d in yaml.safe_load_all(path.read_text(encoding="utf-8")) if d]
     # Apply prerequisites before workloads; RBAC is included in both entrypoints.
     order = {"Namespace": 0, "StorageClass": 1, "PersistentVolume": 2,
-             "PersistentVolumeClaim": 3, "Secret": 4, "ConfigMap": 5,
+             "PersistentVolumeClaim": 3, "ConfigMap": 5,
              "ServiceAccount": 6, "ClusterRole": 7, "ClusterRoleBinding": 8, "Service": 9}
     docs.sort(key=lambda d: order.get(d["kind"], 10))
     for doc in docs:
@@ -108,6 +110,38 @@ def resources(tag, topology="separated"):
     return docs
 
 
+def read_secrets(path):
+    try:
+        values = json.loads(path.read_text(encoding="utf-8-sig"))
+    except json.JSONDecodeError:
+        raise RuntimeError("The local secrets file must be valid JSON") from None
+    except OSError:
+        raise RuntimeError(f"Cannot read local secrets file {path}; see secrets.example.json") from None
+    keys = {"sqlPassword", "grafanaAdminPassword"}
+    if not isinstance(values, dict) or values.keys() != keys:
+        raise RuntimeError("The local secrets file requires sqlPassword and grafanaAdminPassword")
+    if any(not isinstance(value, str) or not value.strip() or value == "REEMPLAZAR"
+           or any(ch in value for ch in "\0\r\n") for value in values.values()):
+        raise RuntimeError("Replace both placeholders with non-empty single-line passwords")
+    return values
+
+
+def secret_resources(values):
+    sql = values["sqlPassword"]
+    # ADO.NET escapes a quote inside a quoted value by doubling it.
+    connection = 'Server=pharmago-db;Database=PharmaDb;User Id=sa;Password="' + sql.replace('"', '""') + '"'
+    credentials = {
+        "db-secret": {"SA_PASSWORD": sql, "CONNECTION_STRING": connection},
+        "grafana-secret": {"ADMIN_PASSWORD": values["grafanaAdminPassword"]},
+    }
+    return [{
+        "apiVersion": "v1", "kind": "Secret", "type": "Opaque",
+        "metadata": {"name": name, "namespace": "pharmago"},
+        "data": {key: base64.b64encode(value.encode("utf-8")).decode("ascii")
+                 for key, value in data.items()},
+    } for name, data in credentials.items()]
+
+
 def validate_topology(nodes, candidates, topology):
     def labels(node):
         return node["metadata"].get("labels", {})
@@ -117,6 +151,9 @@ def validate_topology(nodes, candidates, topology):
     if len(storage) != 1 or storage[0] not in candidates:
         raise RuntimeError("Current hostPath manifests require exactly one schedulable Ready ops/all storage node")
     owner = storage[0]
+    hostname = labels(owner).get(HOSTNAME_LABEL)
+    if not hostname or sum(labels(n).get(HOSTNAME_LABEL) == hostname for n in nodes) != 1:
+        raise RuntimeError("The storage node must have a unique kubernetes.io/hostname label")
     if topology == "single-node":
         if len(nodes) != 1 or labels(owner).get("node-type") != "all":
             raise RuntimeError("single-node requires a one-node cluster labeled node-type=all")
@@ -173,8 +210,50 @@ class Cluster:
                 if claim and (claim.get("namespace"), claim.get("name")) != ("pharmago", expected):
                     raise RuntimeError(f"PV {name} belongs to another claim")
                 found.append({"name": name, "uid": pv["metadata"]["uid"], "claimUid": claim.get("uid"),
-                              "storageNodeUid": pv["metadata"].get("annotations", {}).get(STORAGE_OWNER)})
+                              "storageNodeUid": pv["metadata"].get("annotations", {}).get(STORAGE_OWNER),
+                              "hostPath": pv["spec"].get("hostPath", {}).get("path"),
+                              "nodeAffinity": pv["spec"].get("nodeAffinity")})
         return found
+
+    def plan_secrets(self, desired, sql_volume_exists):
+        changes = []
+        for doc in desired:
+            name = doc["metadata"]["name"]
+            try:
+                found = self.call("-n", "pharmago", "get", "secret", name, "--ignore-not-found", "-o", "json")
+            except RuntimeError as exc:
+                # A fresh cluster has no namespace yet.
+                if 'namespaces "pharmago" not found' not in str(exc):
+                    raise RuntimeError(f"Cannot inspect Secret/{name}") from None
+                found = ""
+            if not found:
+                if name == "db-secret" and sql_volume_exists:
+                    raise RuntimeError("The existing SQL volume needs its original db-secret before deployment")
+                changes.append(("create", doc))
+                continue
+            existing = json.loads(found)
+            old_data = existing.get("data", {})
+            password_key = "SA_PASSWORD" if name == "db-secret" else "ADMIN_PASSWORD"
+            if old_data.get(password_key) != doc["data"][password_key]:
+                raise RuntimeError(f"Local password differs from Secret/{name}; use the current password or rotate both together")
+            metadata = existing["metadata"]
+            annotations = metadata.get("annotations", {})
+            last_applied = annotations.pop("kubectl.kubernetes.io/last-applied-configuration", None)
+            data = {**old_data, **doc["data"]}
+            if data != old_data or last_applied is not None:
+                existing["data"] = data
+                changes.append(("replace", existing))
+        return changes
+
+    def write_secrets(self, changes):
+        for action, doc in changes:
+            name = doc["metadata"]["name"]
+            try:
+                # Avoid copying credentials into last-applied annotations or command arguments.
+                self.call(action, "-f", "-", stdin=json.dumps(doc))
+            except RuntimeError:
+                raise RuntimeError(f"Could not {action} Secret/{name}; verify access and retry") from None
+            print(f"Configured Secret/{name}")
 
     def apply(self, docs):
         # One resource per call: failures stop immediately, including early ConfigMaps/RBAC.
@@ -187,26 +266,47 @@ class Cluster:
         self.call(f"--request-timeout={timeout + 30}s", "-n", "pharmago", "rollout", "status", f"{kind}/{doc['metadata']['name']}", f"--timeout={timeout}s")
 
 
-def deploy(cluster, docs, timeout):
-    owner = cluster.preflight()["metadata"]
-    before = cluster.volumes()
+def pin_storage(base, workloads, before, owner, topology):
+    hostname = owner["labels"][HOSTNAME_LABEL]
     existing = {p["name"]: p for p in before}
     for pv in before:
         recorded = pv["storageNodeUid"]
         if recorded and recorded != owner["uid"]:
             raise RuntimeError(f"PV {pv['name']} belongs to another storage node; verify/recover its data before applying")
-        if not recorded and cluster.topology == "separated":
+        if not recorded and topology == "separated":
             raise RuntimeError(f"PV {pv['name']} lacks {STORAGE_OWNER}; verify the existing data owner before adopting it")
-    base = [d for d in docs if d["kind"] not in ("Deployment", "DaemonSet")]
     for doc in base:
         if doc["kind"] != "PersistentVolume":
             continue
         metadata = doc["metadata"]
         previous = existing.get(metadata["name"])
+        if previous:
+            if previous["hostPath"] != doc["spec"]["hostPath"]["path"] or not previous["nodeAffinity"]:
+                raise RuntimeError(f"PV {metadata['name']} has an unexpected path or node affinity; verify its data owner")
+            # The API does not allow changing the affinity of these existing PVs.
+            doc["spec"]["nodeAffinity"] = previous["nodeAffinity"]
+        else:
+            doc["spec"]["nodeAffinity"] = {"required": {"nodeSelectorTerms": [
+                {"matchExpressions": [{"key": HOSTNAME_LABEL, "operator": "In", "values": [hostname]}]}
+            ]}}
         if not previous or previous["storageNodeUid"]:
             metadata.setdefault("annotations", {})[STORAGE_OWNER] = owner["uid"]
+    for doc in workloads:
+        spec = doc["spec"]["template"]["spec"]
+        if any("persistentVolumeClaim" in v for v in spec.get("volumes", [])):
+            spec.setdefault("nodeSelector", {})[HOSTNAME_LABEL] = hostname
+
+
+def deploy(cluster, docs, timeout, credentials):
+    owner = cluster.preflight()["metadata"]
+    before = cluster.volumes()
+    base = [d for d in docs if d["kind"] not in ("Deployment", "DaemonSet")]
     workloads = [d for d in docs if d["kind"] in ("Deployment", "DaemonSet")]
-    cluster.apply(base)
+    pin_storage(base, workloads, before, owner, cluster.topology)
+    changes = cluster.plan_secrets(secret_resources(credentials), any(p["name"] == "sql-pv" for p in before))
+    cluster.apply([base[0]])  # Namespace must exist before creating its Secrets.
+    cluster.write_secrets(changes)
+    cluster.apply(base[1:])
     # SQL and Elasticsearch must become available before their consumers.
     for name in ("pharmago-db", "elasticsearch"):
         doc = next(d for d in workloads if d["metadata"]["name"] == name)
@@ -268,6 +368,8 @@ def main(argv=None):
     parser.add_argument("--image-tag", type=tag_value)
     parser.add_argument("--profile")
     parser.add_argument("--topology", choices=("separated", "single-node"), default="separated")
+    parser.add_argument("--secrets-file", type=Path, default=ROOT / "secrets.local.json",
+                        help="local JSON credentials file for apply")
     parser.add_argument("--ui-only", action="store_true")
     parser.add_argument("--timeout", type=int, default=600)
     parser.add_argument("--output", type=Path)
@@ -290,7 +392,7 @@ def main(argv=None):
         return
     cluster = Cluster(args.context, args.topology)
     if args.action == "apply":
-        result = deploy(cluster, resources(args.image_tag, args.topology), args.timeout)
+        result = deploy(cluster, resources(args.image_tag, args.topology), args.timeout, read_secrets(args.secrets_file))
     elif args.action == "build":
         result = build(cluster, args.image_tag, args.profile, args.ui_only)
     else:
