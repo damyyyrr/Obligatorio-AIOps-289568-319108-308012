@@ -21,6 +21,9 @@ APP_IMAGES = {
     "pharmago-ui": "Dockerfile",
 }
 PVS = ("sql-pv", "elasticsearch-pv", "prometheus-pv", "grafana-pv")
+SERVICE_ROLE = "pharmago.io/service"
+STORAGE_OWNER = "pharmago.io/storage-node-uid"
+SERVICE_ROLES = {"gateway", "users", "pharmacy"}
 
 
 def run(*args, stdin=None):
@@ -79,7 +82,7 @@ def image_config_digest(image):
                 process.wait(timeout=15)
 
 
-def resources(tag):
+def resources(tag, topology="separated"):
     paths = [ROOT / "namespace.yaml"]
     for directory in ("secrets", "configmaps", "persistent-volumes", "services", "deployments"):
         paths.extend(sorted((ROOT / directory).rglob("*.yaml")))
@@ -92,6 +95,9 @@ def resources(tag):
     for doc in docs:
         if doc["kind"] in ("Deployment", "DaemonSet"):
             spec = doc["spec"]["template"]["spec"]
+            if topology == "single-node" and SERVICE_ROLE in spec.get("nodeSelector", {}):
+                del spec["nodeSelector"][SERVICE_ROLE]
+                spec["nodeSelector"]["node-type"] = "all"
             for container in spec.get("containers", []) + spec.get("initContainers", []):
                 image = container["image"]
                 name = image.split(":")[0]
@@ -102,9 +108,34 @@ def resources(tag):
     return docs
 
 
+def validate_topology(nodes, candidates, topology):
+    def labels(node):
+        return node["metadata"].get("labels", {})
+
+    # Count even unavailable storage nodes: they could become eligible again.
+    storage = [n for n in nodes if labels(n).get("node-type") in ("ops", "all")]
+    if len(storage) != 1 or storage[0] not in candidates:
+        raise RuntimeError("Current hostPath manifests require exactly one schedulable Ready ops/all storage node")
+    owner = storage[0]
+    if topology == "single-node":
+        if len(nodes) != 1 or labels(owner).get("node-type") != "all":
+            raise RuntimeError("single-node requires a one-node cluster labeled node-type=all")
+    else:
+        if labels(owner).get("node-type") == "all":
+            raise RuntimeError("node-type=all is only supported with --topology single-node")
+        roles = {labels(n).get(SERVICE_ROLE) for n in candidates}
+        missing = SERVICE_ROLES - roles
+        if missing:
+            raise RuntimeError(f"Label schedulable Ready nodes with {SERVICE_ROLE}; missing: {', '.join(sorted(missing))}")
+        if not any(labels(n).get("node-type") == "frontend" for n in candidates):
+            raise RuntimeError("Label a schedulable Ready node node-type=frontend for UI and Kibana")
+    return owner
+
+
 class Cluster:
-    def __init__(self, context):
+    def __init__(self, context, topology="separated"):
         self.context = context
+        self.topology = topology
 
     def call(self, *args, stdin=None):
         return run("kubectl", "--context", self.context, "--request-timeout=30s", *args, stdin=stdin)
@@ -118,16 +149,16 @@ class Cluster:
             c["type"] == "Ready" and c["status"] == "True" for c in n["status"].get("conditions", []))]
         if not ready:
             raise RuntimeError("No schedulable Ready nodes")
+        owner = None
         if workloads:
-            roles = {n["metadata"].get("labels", {}).get("node-type") for n in ready}
-            if "all" not in roles and not {"frontend", "backend", "ops"}.issubset(roles):
-                raise RuntimeError("Label nodes explicitly: node-type=all (local development) or frontend/backend/ops")
-            storage_nodes = [n for n in nodes if n["metadata"].get("labels", {}).get("node-type") in ("all", "ops")]
-            if len(storage_nodes) != 1:
-                raise RuntimeError("Current hostPath manifests require exactly one ops/all storage node; pin volumes before adding more")
+            # The Deployment pods have no tolerations for blocking node taints.
+            candidates = [n for n in ready if not any(
+                t["effect"] in ("NoSchedule", "NoExecute") for t in n["spec"].get("taints", []))]
+            owner = validate_topology(nodes, candidates, self.topology)
         ns = self.call("get", "namespace", "pharmago", "--ignore-not-found", "-o", "json")
         if ns and json.loads(ns).get("status", {}).get("phase") == "Terminating":
             raise RuntimeError("Namespace pharmago is Terminating")
+        return owner
 
     def volumes(self):
         found = []
@@ -141,7 +172,8 @@ class Cluster:
                 expected = name.replace("-pv", "-pvc")
                 if claim and (claim.get("namespace"), claim.get("name")) != ("pharmago", expected):
                     raise RuntimeError(f"PV {name} belongs to another claim")
-                found.append({"name": name, "uid": pv["metadata"]["uid"], "claimUid": claim.get("uid")})
+                found.append({"name": name, "uid": pv["metadata"]["uid"], "claimUid": claim.get("uid"),
+                              "storageNodeUid": pv["metadata"].get("annotations", {}).get(STORAGE_OWNER)})
         return found
 
     def apply(self, docs):
@@ -156,9 +188,23 @@ class Cluster:
 
 
 def deploy(cluster, docs, timeout):
-    cluster.preflight()
+    owner = cluster.preflight()["metadata"]
     before = cluster.volumes()
+    existing = {p["name"]: p for p in before}
+    for pv in before:
+        recorded = pv["storageNodeUid"]
+        if recorded and recorded != owner["uid"]:
+            raise RuntimeError(f"PV {pv['name']} belongs to another storage node; verify/recover its data before applying")
+        if not recorded and cluster.topology == "separated":
+            raise RuntimeError(f"PV {pv['name']} lacks {STORAGE_OWNER}; verify the existing data owner before adopting it")
     base = [d for d in docs if d["kind"] not in ("Deployment", "DaemonSet")]
+    for doc in base:
+        if doc["kind"] != "PersistentVolume":
+            continue
+        metadata = doc["metadata"]
+        previous = existing.get(metadata["name"])
+        if not previous or previous["storageNodeUid"]:
+            metadata.setdefault("annotations", {})[STORAGE_OWNER] = owner["uid"]
     workloads = [d for d in docs if d["kind"] in ("Deployment", "DaemonSet")]
     cluster.apply(base)
     # SQL and Elasticsearch must become available before their consumers.
@@ -176,7 +222,8 @@ def deploy(cluster, docs, timeout):
         actual = by_name.get(previous["name"])
         if not actual or actual["uid"] != previous["uid"] or (previous["claimUid"] and actual["claimUid"] != previous["claimUid"]):
             raise RuntimeError("PV or bound PVC identity changed during deployment")
-    return {"volumesBefore": before, "volumesAfter": after,
+    return {"volumesBefore": before, "volumesAfter": after, "topology": cluster.topology,
+            "storageNode": owner["name"],
             "pods": json.loads(cluster.call("-n", "pharmago", "get", "pods", "-o", "json"))}
 
 
@@ -220,6 +267,7 @@ def main(argv=None):
     parser.add_argument("--context")
     parser.add_argument("--image-tag", type=tag_value)
     parser.add_argument("--profile")
+    parser.add_argument("--topology", choices=("separated", "single-node"), default="separated")
     parser.add_argument("--ui-only", action="store_true")
     parser.add_argument("--timeout", type=int, default=600)
     parser.add_argument("--output", type=Path)
@@ -233,16 +281,16 @@ def main(argv=None):
     if args.action == "build" and not args.profile:
         parser.error("--profile is required for Minikube image loading")
     if args.action == "render":
-        value = json.dumps({"apiVersion": "v1", "kind": "List", "items": resources(args.image_tag)}, indent=2)
+        value = json.dumps({"apiVersion": "v1", "kind": "List", "items": resources(args.image_tag, args.topology)}, indent=2)
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(value, encoding="utf-8")
         else:
             print(value)
         return
-    cluster = Cluster(args.context)
+    cluster = Cluster(args.context, args.topology)
     if args.action == "apply":
-        result = deploy(cluster, resources(args.image_tag), args.timeout)
+        result = deploy(cluster, resources(args.image_tag, args.topology), args.timeout)
     elif args.action == "build":
         result = build(cluster, args.image_tag, args.profile, args.ui_only)
     else:

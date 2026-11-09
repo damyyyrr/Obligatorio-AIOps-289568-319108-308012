@@ -1,0 +1,68 @@
+{
+  "gateway": {
+    "node": "pharmago-issue3",
+    "physicalHost": "PC A",
+    "dockerLimitCpuMillicores": 4000,
+    "dockerLimitMemoryMiB": 4200,
+    "kubernetesAllocatable": {
+      "cpu": "12",
+      "memory": "8103120Ki"
+    },
+    "steady": {
+      "requestsCpuMillicores": 1450,
+      "requestsMemoryMiB": 2468,
+      "definedLimitsCpuMillicores": 2950,
+      "definedLimitsMemoryMiB": 5192
+    },
+    "withBackendSurge": {
+      "requestsCpuMillicores": 1550,
+      "requestsMemoryMiB": 2596,
+      "definedLimitsCpuMillicores": 3450,
+      "definedLimitsMemoryMiB": 5576
+    }
+  },
+  "users": {
+    "node": "pharmago-issue3-m02",
+    "physicalHost": "PC A",
+    "dockerLimitCpuMillicores": 2000,
+    "dockerLimitMemoryMiB": 2100,
+    "kubernetesAllocatable": {
+      "cpu": "12",
+      "memory": "8103120Ki"
+    },
+    "steady": {
+      "requestsCpuMillicores": 600,
+      "requestsMemoryMiB": 1508,
+      "definedLimitsCpuMillicores": 1200,
+      "definedLimitsMemoryMiB": 3144
+    },
+    "withBackendSurge": {
+      "requestsCpuMillicores": 700,
+      "requestsMemoryMiB": 1636,
+      "definedLimitsCpuMillicores": 1700,
+      "definedLimitsMemoryMiB": 3528
+    }
+  },
+  "pharmacy": {
+    "node": "pharmago-issue3-m03",
+    "physicalHost": "PC A",
+    "dockerLimitCpuMillicores": 2000,
+    "dockerLimitMemoryMiB": 1100,
+    "kubernetesAllocatable": {
+      "cpu": "12",
+      "memory": "8103120Ki"
+    },
+    "steady": {
+      "requestsCpuMillicores": 300,
+      "requestsMemoryMiB": 356,
+      "definedLimitsCpuMillicores": 500,
+      "definedLimitsMemoryMiB": 840
+    },
+    "withBackendSurge": {
+      "requestsCpuMillicores": 400,
+      "requestsMemoryMiB": 484,
+      "definedLimitsCpuMillicores": 1000,
+      "definedLimitsMemoryMiB": 1224
+    }
+  }
+}

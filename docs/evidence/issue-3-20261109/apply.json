@@ -1,0 +1,34 @@
+{
+  "initialApplyUtc": "2026-11-09T11:53:21.583963-03:00",
+  "repeatApplyUtc": "2026-11-09T11:54:07.736502-03:00",
+  "topology": "separated",
+  "storageNode": "pharmago-issue3",
+  "podsReadyAfterRepeat": 16,
+  "volumesUnchanged": true,
+  "volumesAfter": [
+    {
+      "name": "sql-pv",
+      "uid": "f63dbc89-7a8a-4bb1-a991-cc817a6f97a9",
+      "claimUid": "1668bf91-f4e3-4adc-9e6b-067d19616375",
+      "storageNodeUid": "8d45e403-d891-4c52-a68e-3964af19a8a6"
+    },
+    {
+      "name": "elasticsearch-pv",
+      "uid": "450d0dc2-6715-4aea-b6c3-5f60f2355553",
+      "claimUid": "970f206c-bd44-4308-bb9c-4db5b18726eb",
+      "storageNodeUid": "8d45e403-d891-4c52-a68e-3964af19a8a6"
+    },
+    {
+      "name": "prometheus-pv",
+      "uid": "200ea07f-ef61-44b4-8b38-7be1dfb87aec",
+      "claimUid": "82df203c-08f5-43dd-9fed-3133bf01071c",
+      "storageNodeUid": "8d45e403-d891-4c52-a68e-3964af19a8a6"
+    },
+    {
+      "name": "grafana-pv",
+      "uid": "1b301e2a-94e7-43dc-b57a-ec17bd808a7e",
+      "claimUid": "c6b4fcd4-8e3f-4d77-8044-21a638c53866",
+      "storageNodeUid": "8d45e403-d891-4c52-a68e-3964af19a8a6"
+    }
+  ]
+}

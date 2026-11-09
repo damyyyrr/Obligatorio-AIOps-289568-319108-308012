@@ -22,7 +22,7 @@ spec:
             - matchExpressions:
               - key: node-type
                 operator: In
-                values: [ops, all]
+                values: [frontend, all]
       containers:
       - name: kibana
         image: docker.elastic.co/kibana/kibana:8.11.0
