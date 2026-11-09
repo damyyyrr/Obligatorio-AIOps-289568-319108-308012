@@ -8,7 +8,6 @@ using PharmaGo.DataAccess.Repositories;
 using PharmaGo.Domain.Entities;
 using PharmaGo.UsersService.IBusinessLogic;
 using PharmaGo.IDataAccess;
-using Microsoft.Extensions.Hosting;
 using InstrumentationInterface;
 using Instrumentation;
 
@@ -54,17 +53,6 @@ namespace PharmaGo.UsersService.Factory
             });
             serviceCollection.AddSingleton<ICustomMetrics, CustomMetrics>();
             serviceCollection.AddSingleton<IStructuredLogger, StructuredLogger>();
-        }
-
-        public static IHost MigrateDatabase(this IHost host)
-        {
-            using (var scope = host.Services.CreateScope())
-            {
-                var dbContext = scope.ServiceProvider.GetRequiredService<DbContext>();
-                dbContext.Database.Migrate();
-            }
-
-            return host;
         }
 
     }

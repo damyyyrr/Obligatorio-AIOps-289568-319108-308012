@@ -42,21 +42,34 @@ services:
       retries: 18
 
   pharmago-users-service:
-    image: pharmago-baseline/users:local
+    image: &users-image pharmago-baseline/users:local
     build:
       context: ./Backend
       dockerfile: PharmaGo.UsersService/Dockerfile
     environment:
       <<: *app-environment
-      ConnectionStrings__DefaultConnection: Server=pharmago-db;Database=PharmaDb;User Id=sa;Password=${PHARMAGO_DB_PASSWORD:?Initialize the local .env first}
+      ConnectionStrings__DefaultConnection: &db-connection Server=pharmago-db;Database=PharmaDb;User Id=sa;Password="${PHARMAGO_DB_PASSWORD:?Initialize the local .env first}"
       ServiceUrls__PharmacyService: http://pharmago-pharmacy-service:80
     ports:
       - "127.0.0.1:5001:80"
     depends_on:
-      pharmago-db:
-        condition: service_healthy
+      pharmago-db-migrate:
+        condition: service_completed_successfully
       otlp-collector:
         condition: service_started
+    mem_limit: 256m
+    cpus: 1
+    logging: *bounded-logging
+
+  pharmago-db-migrate:
+    image: *users-image
+    pull_policy: never
+    command: ["--migrate"]
+    environment:
+      ConnectionStrings__DefaultConnection: *db-connection
+    depends_on:
+      pharmago-db:
+        condition: service_healthy
     mem_limit: 256m
     cpus: 1
     logging: *bounded-logging
@@ -68,13 +81,13 @@ services:
       dockerfile: PharmaGo.PharmacyService/Dockerfile
     environment:
       <<: *app-environment
-      ConnectionStrings__DefaultConnection: Server=pharmago-db;Database=PharmaDb;User Id=sa;Password=${PHARMAGO_DB_PASSWORD:?Initialize the local .env first}
+      ConnectionStrings__DefaultConnection: *db-connection
       ServiceUrls__UsersService: http://pharmago-users-service:80
     ports:
       - "127.0.0.1:5002:80"
     depends_on:
-      pharmago-db:
-        condition: service_healthy
+      pharmago-db-migrate:
+        condition: service_completed_successfully
       otlp-collector:
         condition: service_started
     mem_limit: 256m

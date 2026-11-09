@@ -10,3 +10,5 @@ Preparadas el 06/11/2026. No enviadas a terceros y sin respuestas registradas. L
 | Q04 | La letra menciona hasta tres integrantes y el recordatorio hasta dos: ¿cuál es el límite vigente? | Integración del equipo y entrega |
 
 Al recibir una respuesta, registrar fecha, origen, contenido y evidencia; ajustar matriz/plan y conservar la distinción entre interpretación y requisito confirmado.
+
+Seguimiento del 09/11/2026. El equipo indicó que Q02 sigue sin confirmación del docente. La prueba de la #5 cubre las migraciones y el rollback funcional de Users. La aceptación de disponibilidad durante el reemplazo de SQL y observabilidad sigue pendiente.

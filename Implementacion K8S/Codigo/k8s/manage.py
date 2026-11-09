@@ -10,6 +10,8 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
+import uuid
 
 import yaml
 
@@ -265,6 +267,46 @@ class Cluster:
         kind = doc["kind"].lower()
         self.call(f"--request-timeout={timeout + 30}s", "-n", "pharmago", "rollout", "status", f"{kind}/{doc['metadata']['name']}", f"--timeout={timeout}s")
 
+    def migrate(self, users, timeout):
+        name = f"pharmago-db-migrate-{uuid.uuid4().hex[:12]}"
+        self.call("create", "-f", "-", stdin=json.dumps(migration_job(users, name, timeout)))
+        print(f"Waiting for Job/{name}")
+        deadline = time.monotonic() + timeout
+        while time.monotonic() < deadline:
+            job = json.loads(self.call("-n", "pharmago", "get", "job", name, "-o", "json"))
+            conditions = {c["type"] for c in job.get("status", {}).get("conditions", []) if c["status"] == "True"}
+            if conditions & {"Failed", "FailureTarget"}:
+                raise RuntimeError(f"Migration Job/{name} failed. Inspect kubectl logs job/{name} in pharmago.")
+            if "Complete" in conditions:
+                print(f"Completed Job/{name}")
+                return name
+            time.sleep(2)
+        raise RuntimeError(f"Timed out waiting for migration Job/{name} in pharmago.")
+
+
+def migration_job(users, name, timeout):
+    users_pod = users["spec"]["template"]["spec"]
+    source = users_pod["containers"][0]
+    return {
+        "apiVersion": "batch/v1", "kind": "Job",
+        "metadata": {"name": name, "namespace": "pharmago"},
+        "spec": {
+            "backoffLimit": 0, "activeDeadlineSeconds": timeout, "ttlSecondsAfterFinished": 3600,
+            "template": {
+                "metadata": {"labels": {"app": "pharmago-db-migrate"}},
+                "spec": {
+                    "restartPolicy": "Never", "automountServiceAccountToken": False,
+                    "nodeSelector": users_pod["nodeSelector"],
+                    "containers": [{
+                        "name": "migrate", "image": source["image"], "imagePullPolicy": source["imagePullPolicy"],
+                        "args": ["--migrate"], "resources": source["resources"],
+                        "env": [e for e in source["env"] if e["name"] == "ConnectionStrings__DefaultConnection"],
+                    }],
+                },
+            },
+        },
+    }
+
 
 def pin_storage(base, workloads, before, owner, topology):
     hostname = owner["labels"][HOSTNAME_LABEL]
@@ -307,12 +349,15 @@ def deploy(cluster, docs, timeout, credentials):
     cluster.apply([base[0]])  # Namespace must exist before creating its Secrets.
     cluster.write_secrets(changes)
     cluster.apply(base[1:])
-    # SQL and Elasticsearch must become available before their consumers.
-    for name in ("pharmago-db", "elasticsearch"):
-        doc = next(d for d in workloads if d["metadata"]["name"] == name)
-        cluster.apply([doc])
-        cluster.wait(doc, timeout)
-    remaining = [d for d in workloads if d["metadata"]["name"] not in ("pharmago-db", "elasticsearch")]
+    by_name = {d["metadata"]["name"]: d for d in workloads}
+    sql = by_name.pop("pharmago-db")
+    cluster.apply([sql])
+    cluster.wait(sql, timeout)
+    job = cluster.migrate(by_name["pharmago-users-service"], timeout)
+    elasticsearch = by_name.pop("elasticsearch")
+    cluster.apply([elasticsearch])
+    cluster.wait(elasticsearch, timeout)
+    remaining = list(by_name.values())
     cluster.apply(remaining)
     for doc in remaining:
         cluster.wait(doc, timeout)
@@ -322,7 +367,7 @@ def deploy(cluster, docs, timeout, credentials):
         actual = by_name.get(previous["name"])
         if not actual or actual["uid"] != previous["uid"] or (previous["claimUid"] and actual["claimUid"] != previous["claimUid"]):
             raise RuntimeError("PV or bound PVC identity changed during deployment")
-    return {"volumesBefore": before, "volumesAfter": after, "topology": cluster.topology,
+    return {"volumesBefore": before, "volumesAfter": after, "topology": cluster.topology, "migrationJob": job,
             "storageNode": owner["name"],
             "pods": json.loads(cluster.call("-n", "pharmago", "get", "pods", "-o", "json"))}
 

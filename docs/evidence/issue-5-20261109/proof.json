@@ -1,0 +1,147 @@
+{
+  "context": "pharmago-issue3",
+  "migratorImageTag": "issue5-migrations-20261109",
+  "deployMigrationJob": "pharmago-db-migrate-3738f88dd2a9",
+  "firstRollbackAttempt": {
+    "loginHttpDuringTransition": 502,
+    "gateway": "Connection refused to Users:80",
+    "loginHttpAfterEndpointsConverged": 200
+  },
+  "pendingOnExistingDb": 0,
+  "freshDbConcurrency": {
+    "namespace": "pharmago-schema-check-680021f4",
+    "database": "PharmaGoIssue5_680021f4",
+    "bothObservedWaiting": true,
+    "historyRows": 10,
+    "jobs": {
+      "migrate-a": {
+        "lockStatus": 1,
+        "pending": 10,
+        "jobComplete": true
+      },
+      "migrate-b": {
+        "lockStatus": 1,
+        "pending": 0,
+        "jobComplete": true
+      }
+    }
+  },
+  "unchangedSqlPodVolumesHistoryAndRecords": {
+    "querySha256": "372c634bc21f529707cea633176ae92960d663682ad478ae4d9610ed1d0b9458",
+    "migrationIds": [
+      "20220910212258_InitialCreate",
+      "20220917182456_AddSession",
+      "20220917191530_ChangeSession",
+      "20220917232725_CheckSession",
+      "20220918192623_RemoveUseCodeFromUserEntity",
+      "20221001173323_UpdateUserAndInvitationEntity",
+      "20221001183953_UnitMeasurePresentationConversions",
+      "20221002194836_nullablePharmacyOfDrug",
+      "20221010173819_PurchaseV2",
+      "20221013003816_RemoveEnums"
+    ],
+    "sqlPodUid": "8bdbf292-e207-4450-85e4-745ab84e6242",
+    "volumeUids": {
+      "sql-pv": {
+        "pv": "f63dbc89-7a8a-4bb1-a991-cc817a6f97a9",
+        "pvc": "1668bf91-f4e3-4adc-9e6b-067d19616375"
+      },
+      "elasticsearch-pv": {
+        "pv": "450d0dc2-6715-4aea-b6c3-5f60f2355553",
+        "pvc": "970f206c-bd44-4308-bb9c-4db5b18726eb"
+      },
+      "prometheus-pv": {
+        "pv": "200ea07f-ef61-44b4-8b38-7be1dfb87aec",
+        "pvc": "82df203c-08f5-43dd-9fed-3133bf01071c"
+      },
+      "grafana-pv": {
+        "pv": "1b301e2a-94e7-43dc-b57a-ec17bd808a7e",
+        "pvc": "c6b4fcd4-8e3f-4d77-8044-21a638c53866"
+      }
+    }
+  },
+  "users": {
+    "baseline": [
+      {
+        "pod": "pharmago-users-service-788f88cdf7-wc69j",
+        "node": "pharmago-issue3-m02",
+        "image": "pharmago-users-service:issue2-live-20261108-125407",
+        "ready": true
+      }
+    ],
+    "new": [
+      {
+        "pod": "pharmago-users-service-5b64869998-6dj74",
+        "node": "pharmago-issue3-m02",
+        "image": "pharmago-users-service:issue5-migrations-20261109",
+        "ready": true
+      }
+    ],
+    "scaled": [
+      {
+        "pod": "pharmago-users-service-5b64869998-6dj74",
+        "node": "pharmago-issue3-m02",
+        "image": "pharmago-users-service:issue5-migrations-20261109",
+        "ready": true
+      },
+      {
+        "pod": "pharmago-users-service-5b64869998-7xj9x",
+        "node": "pharmago-issue3-m02",
+        "image": "pharmago-users-service:issue5-migrations-20261109",
+        "ready": true
+      }
+    ],
+    "afterRollingRestart": [
+      {
+        "pod": "pharmago-users-service-6c845c9bdf-cjh5x",
+        "node": "pharmago-issue3-m02",
+        "image": "pharmago-users-service:issue5-migrations-20261109",
+        "ready": true
+      },
+      {
+        "pod": "pharmago-users-service-6c845c9bdf-r22vf",
+        "node": "pharmago-issue3-m02",
+        "image": "pharmago-users-service:issue5-migrations-20261109",
+        "ready": true
+      }
+    ],
+    "rollback": [
+      {
+        "pod": "pharmago-users-service-788f88cdf7-7hrh9",
+        "node": "pharmago-issue3-m02",
+        "image": "pharmago-users-service:issue2-live-20261108-125407",
+        "ready": true
+      }
+    ],
+    "final": [
+      {
+        "pod": "pharmago-users-service-5b64869998-x66rx",
+        "node": "pharmago-issue3-m02",
+        "image": "pharmago-users-service:issue5-migrations-20261109",
+        "ready": true
+      }
+    ]
+  },
+  "http": {
+    "baseline": {
+      "catalogHttp": 200,
+      "medicines": 4,
+      "loginHttp": 200
+    },
+    "afterScalingAndRollout": {
+      "catalogHttp": 200,
+      "medicines": 4,
+      "loginHttp": 200
+    },
+    "afterRollback": {
+      "catalogHttp": 200,
+      "medicines": 4,
+      "loginHttp": 200
+    },
+    "final": {
+      "catalogHttp": 200,
+      "medicines": 4,
+      "loginHttp": 200
+    }
+  }
+}
