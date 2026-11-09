@@ -44,6 +44,9 @@ class FakeCluster(manage.Cluster):
         self.calls.append((args, doc))
         if self.fail and ((doc and doc["metadata"]["name"] == self.fail) or self.fail in args):
             raise RuntimeError("injected failure")
+        if args[:4] == ("-n", "pharmago", "get", "job"):
+            condition = "Failed" if self.fail == "migration" else "Complete"
+            return json.dumps({"status": {"conditions": [{"type": condition, "status": "True"}]}})
         return '{"items": []}'
 
 
@@ -101,6 +104,24 @@ class WorkflowTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             manage.deploy(cluster, manage.resources("test"), 42, CREDENTIALS)
         self.assertFalse(any(d and d["kind"] == "Deployment" and d["metadata"]["name"] != "pharmago-db" for _, d in cluster.calls))
+        self.assertFalse(any(d and d["kind"] == "Job" for _, d in cluster.calls))
+
+    def test_migration_failure_stops_before_consumers(self):
+        cluster = FakeCluster(fail="migration")
+        with self.assertRaisesRegex(RuntimeError, "Migration Job/.+ failed"):
+            manage.deploy(cluster, manage.resources("test"), 42, CREDENTIALS)
+        deployments = [d["metadata"]["name"] for _, d in cluster.calls if d and d["kind"] == "Deployment"]
+        self.assertEqual(["pharmago-db"], deployments)
+
+    def test_successful_migration_is_required_before_users_and_pharmacy(self):
+        cluster = FakeCluster()
+        report = manage.deploy(cluster, manage.resources("test"), 42, CREDENTIALS)
+        job_ready = next(i for i, (args, _) in enumerate(cluster.calls)
+                         if args[:5] == ("-n", "pharmago", "get", "job", report["migrationJob"]))
+        for service in ("pharmago-users-service", "pharmago-pharmacy-service"):
+            deployment = next(i for i, (_, d) in enumerate(cluster.calls)
+                              if d and d["kind"] == "Deployment" and d["metadata"]["name"] == service)
+            self.assertLess(job_ready, deployment)
 
     def test_changed_volume_identity_fails(self):
         with self.assertRaisesRegex(RuntimeError, "identity changed"):

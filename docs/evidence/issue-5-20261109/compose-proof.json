@@ -1,0 +1,8 @@
+{
+  "baselineCompose": true,
+  "freshSqlVolume": true,
+  "pendingApplied": 10,
+  "migrationExitCode": 0,
+  "usersAndPharmacyGatedOnJobSuccess": true,
+  "isolatedProjectCleanedUp": true
+}

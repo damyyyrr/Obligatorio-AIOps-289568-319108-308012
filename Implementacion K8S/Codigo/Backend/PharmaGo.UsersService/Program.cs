@@ -1,7 +1,14 @@
 using PharmaGo.UsersService.Factory;
 using PharmaGo.UsersService.Filters;
+using PharmaGo.UsersService;
 using System.Diagnostics.CodeAnalysis;
 using Instrumentation;
+
+if (args.Length > 0 && args[0] == "--migrate")
+{
+    Environment.ExitCode = DatabaseMigration.Run(args.Skip(1).ToArray());
+    return;
+}
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +41,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.MigrateDatabase();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
