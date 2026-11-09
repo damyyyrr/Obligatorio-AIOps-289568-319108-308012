@@ -47,13 +47,15 @@ Elegir un tag nuevo por construcción; se rechaza sobrescribir uno existente. Se
 
 ## Render y despliegue
 
+Antes del primer apply, copiar `secrets.example.json` a `secrets.local.json` y reemplazar ambos valores. Git ignora `secrets.local.json`. Usar una contraseña de SQL Server con la complejidad requerida por SQL y otra para Grafana. Para un clúster con datos previos, usar las contraseñas ya vigentes en SQL y Grafana. Se puede elegir otro archivo ignorado con `-SecretsFile` (PowerShell) o `--secrets-file` (Bash). Ver [guía de datos y recuperación](../../../docs/aiops-k8s-recovery.md).
+
 Inspección sin clúster:
 
 ```powershell
 & $python "$k8s/manage.py" render --image-tag k8s-20261108-01 --output .runtime/k8s-render.json
 ```
 
-El render local contiene el Secret docente existente: no publicarlo. Externalizar credenciales sigue siendo parte de #4. Los manifiestos originales de aplicación tienen el tag de referencia `k8s-local`; el flujo soportado los renderiza con el tag elegido. Las imágenes operativas tienen versión fija; SQL usa el digest ya conservado en `docs/evidence/baseline-20261106/runtime-images.json`. No se hace pull de `latest`.
+El render muestra las referencias a los Secrets y las reglas base de almacenamiento. Usar el script de apply para configurar los Secrets y resolver el nodo de almacenamiento real. Los manifiestos originales de aplicación tienen el tag de referencia `k8s-local`; el flujo soportado los renderiza con el tag elegido. Las imágenes operativas tienen versión fija; SQL usa el digest ya conservado en `docs/evidence/baseline-20261106/runtime-images.json`. No se hace pull de `latest`.
 
 ```powershell
 & "$k8s/apply-k8s.ps1" -Context '<contexto>' -ImageTag k8s-20261108-01 -Python $python -Timeout 600
@@ -67,16 +69,16 @@ bash 'Implementacion K8S/Codigo/k8s/apply-k8s.sh' --context '<contexto>' --image
 
 El contexto actual debe coincidir con el solicitado; todas las llamadas usan además `--context`. Se comprueban nodos Ready, etiquetas y namespace. Un PV `Released`, `Failed`, en eliminación o asociado a otro claim detiene la ejecución antes del apply. Su recuperación requiere diagnóstico manual; no se borra ni se fuerza el rebind.
 
-Los PV nuevos registran el UID del nodo propietario como anotación `pharmago.io/storage-node-uid`. El apply aborta si el UID cambia. Antes de adoptar un PV anterior sin anotación en modo separado, verificar el host y el contenido del directorio original; solo entonces anotar su UID real con `kubectl annotate pv`. El script no adopta esos volúmenes automáticamente. Mantener la etiqueta `node-type=ops` exclusivamente en el nodo propietario; la anotación protege el apply, no modifica la afinidad de los PV existentes ni mueve los datos.
+Los PV nuevos registran el UID del nodo propietario como anotación `pharmago.io/storage-node-uid` y quedan restringidos a su hostname. El apply aborta si el UID cambia. Conserva la afinidad de los PV existentes y restringe los Deployments que usan PVC al hostname verificado. Antes de adoptar un PV anterior sin anotación en modo separado, verificar el host y el contenido del directorio original. Solo entonces anotar su UID real con `kubectl annotate pv`. Mantener la etiqueta `node-type=ops` exclusivamente en el nodo propietario.
 
-Orden: namespace/almacenamiento/Secret/ConfigMaps/RBAC/Services, SQL con espera, Elasticsearch con espera, resto de Deployments y DaemonSets. Se incluye Fluent Bit y todo su RBAC en ambos sistemas. Cada fallo y cada timeout termina con código distinto de cero. Una falla puede dejar un despliegue parcial: diagnosticar, corregir y repetir el apply; no se hace rollback automático ni limpieza destructiva.
+Orden de apply: namespace, Secrets, almacenamiento, ConfigMaps, RBAC, Services, SQL con espera, Elasticsearch con espera, resto de Deployments y DaemonSets. Se incluye Fluent Bit y todo su RBAC en ambos sistemas. Cada fallo y cada timeout termina con código distinto de cero. Una falla puede dejar un despliegue parcial que se puede diagnosticar y reaplicar.
 
 Al finalizar se esperan los rollouts de todos los Deployments y DaemonSets. Se comparan las identidades de PV y de sus claims previamente enlazados y se guarda un JSON en `k8s/.runtime/`, con pods e imágenes observadas, contexto, versión y hora UTC. `--output` (PowerShell: `-OutputPath`) permite elegir otra ruta. Ready y PV UID estable no prueban por sí solos que los datos de negocio estén intactos.
 
 ## Validación de la issue en un clúster de prueba
 
 1. Construir/cargar y aplicar; conservar el JSON y `kubectl --context <contexto> -n pharmago get pods -o wide`.
-2. Abrir dos terminales con `kubectl --context <contexto> -n pharmago port-forward service/pharmago-ui 4200:80` y `kubectl --context <contexto> -n pharmago port-forward service/pharmago-api-gateway 5000:80`. El frontend actual apunta a `http://127.0.0.1:5000`; acceso directo con NodePort no sustituye este paso.
+2. Abrir dos terminales con `kubectl --context <contexto> -n pharmago port-forward service/pharmago-ui 4200:80` y `kubectl --context <contexto> -n pharmago port-forward service/pharmago-api-gateway 5000:80`. El frontend actual apunta a `http://127.0.0.1:5000`. Los Services son ClusterIP y el port-forward escucha en loopback por defecto.
 3. Verificar login y catálogo. En una instalación nueva, cargar datos de prueba de forma explícita usando el SQL docente y la guía del backend; el apply no carga seed ni resetea datos. Conservar una consulta SQL de solo lectura con identificadores y conteos de registros de prueba conocidos, sin datos personales ni credenciales.
 4. Repetir **exactamente el mismo apply y tag** con otro archivo de salida. Comparar PV/PVC UIDs, consulta SQL, login y catálogo. Las dos ejecuciones deben ser funcionales y conservar registros.
 5. Ejecutar la parada y volver a aplicar; repetir las comprobaciones. Adjuntar comandos, versiones y resultados sanitizados a `docs/evidence/`. Validar en otro equipo o desde una instalación nueva siguiendo esta guía, sin borrar el clúster anterior.

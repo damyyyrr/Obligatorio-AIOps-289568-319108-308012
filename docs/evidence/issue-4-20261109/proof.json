@@ -1,0 +1,75 @@
+{
+  "context": "pharmago-issue3",
+  "sourceVolumes": {
+    "elasticsearch-pv": {
+      "pvUid": "450d0dc2-6715-4aea-b6c3-5f60f2355553",
+      "pvcUid": "970f206c-bd44-4308-bb9c-4db5b18726eb",
+      "node": "pharmago-issue3",
+      "nodeUid": "8d45e403-d891-4c52-a68e-3964af19a8a6",
+      "path": "/mnt/data/elasticsearch"
+    },
+    "grafana-pv": {
+      "pvUid": "1b301e2a-94e7-43dc-b57a-ec17bd808a7e",
+      "pvcUid": "c6b4fcd4-8e3f-4d77-8044-21a638c53866",
+      "node": "pharmago-issue3",
+      "nodeUid": "8d45e403-d891-4c52-a68e-3964af19a8a6",
+      "path": "/mnt/data/grafana"
+    },
+    "prometheus-pv": {
+      "pvUid": "200ea07f-ef61-44b4-8b38-7be1dfb87aec",
+      "pvcUid": "82df203c-08f5-43dd-9fed-3133bf01071c",
+      "node": "pharmago-issue3",
+      "nodeUid": "8d45e403-d891-4c52-a68e-3964af19a8a6",
+      "path": "/mnt/data/prometheus"
+    },
+    "sql-pv": {
+      "pvUid": "f63dbc89-7a8a-4bb1-a991-cc817a6f97a9",
+      "pvcUid": "1668bf91-f4e3-4adc-9e6b-067d19616375",
+      "node": "pharmago-issue3",
+      "nodeUid": "8d45e403-d891-4c52-a68e-3964af19a8a6",
+      "path": "/mnt/data/sql"
+    }
+  },
+  "restoreVolume": {
+    "pvUid": "3538d4cd-763d-4e92-ac32-ef56990a82eb",
+    "pvcUid": "af2f8df8-9024-49cd-b59f-d27c80e7ae2d",
+    "node": "pharmago-issue3",
+    "path": "/mnt/data/sql-restore-e8a6177544984b6b8472bbbcf8fcf36a",
+    "namespace": "pharmago-restore-test"
+  },
+  "legacyRecordsAndVolumeUidsPreservedDuringUpgrade": true,
+  "sqlPodRecreatedAndPvsAndPvcsPreserved": true,
+  "before": {
+    "frontendHttp": 200,
+    "catalogHttp": 200,
+    "medicines": 4,
+    "loginHttp": 200,
+    "grafanaAuthenticatedHttp": 200,
+    "clusterIpServices": 11,
+    "secretsHaveNoLastAppliedAnnotation": true
+  },
+  "afterRestart": {
+    "frontendHttp": 200,
+    "catalogHttp": 200,
+    "medicines": 4,
+    "loginHttp": 200,
+    "grafanaAuthenticatedHttp": 200,
+    "clusterIpServices": 11,
+    "secretsHaveNoLastAppliedAnnotation": true
+  },
+  "backup": {
+    "bytes": 4378624,
+    "sha256": "e58de93d42b6cc25b279f1e7696ecf7eecf5a2c8e55ea5528c7fe8a9eef45c1f",
+    "withChecksum": true,
+    "verifiedInTarget": true
+  },
+  "data": {
+    "testMarker": "e8a6177544984b6b8472bbbcf8fcf36a",
+    "medicines": 4,
+    "users": 3,
+    "querySha256": "70f0e7a34f608025a8b75e07eeb759c7ea5e784c110dc11bffeef4d9abf8e7b9",
+    "sameAfterRestart": true,
+    "sameAfterRestore": true,
+    "checkDbPassed": true
+  }
+}

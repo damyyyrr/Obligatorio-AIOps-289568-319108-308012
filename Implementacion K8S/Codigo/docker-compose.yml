@@ -7,9 +7,9 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_PID=Express
-      - SA_PASSWORD=Str0ngP@ssword!
+      - MSSQL_SA_PASSWORD=${PHARMAGO_DB_PASSWORD:?Configurar el archivo .env local}
     ports:
-      - "11433:1433"
+      - "127.0.0.1:11433:1433"
     volumes:
       - sql_data:/var/opt/mssql
     networks:
@@ -21,11 +21,11 @@ services:
       dockerfile: PharmaGo.UsersService/Dockerfile
     container_name: pharmago-users-service
     environment:
-      - ConnectionStrings__DefaultConnection=Server=pharmago-db;Database=PharmaDb;User Id=sa;Password=Str0ngP@ssword!
+      - ConnectionStrings__DefaultConnection=Server=pharmago-db;Database=PharmaDb;User Id=sa;Password="${PHARMAGO_DB_PASSWORD:?Configurar el archivo .env local}"
       - ServiceUrls__PharmacyService=http://pharmago-pharmacy-service:80
       - ASPNETCORE_ENVIRONMENT=Production
     ports:
-      - "5001:80"
+      - "127.0.0.1:5001:80"
     depends_on:
       - pharmago-db
       - otlp-collector
@@ -39,11 +39,11 @@ services:
       dockerfile: PharmaGo.PharmacyService/Dockerfile
     container_name: pharmago-pharmacy-service
     environment:
-      - ConnectionStrings__DefaultConnection=Server=pharmago-db;Database=PharmaDb;User Id=sa;Password=Str0ngP@ssword!
+      - ConnectionStrings__DefaultConnection=Server=pharmago-db;Database=PharmaDb;User Id=sa;Password="${PHARMAGO_DB_PASSWORD:?Configurar el archivo .env local}"
       - ServiceUrls__UsersService=http://pharmago-users-service:80
       - ASPNETCORE_ENVIRONMENT=Production
     ports:
-      - "5002:80"
+      - "127.0.0.1:5002:80"
     depends_on:
       - pharmago-db
       - otlp-collector
@@ -59,7 +59,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
     ports:
-      - "5000:80"      # API Gateway available on localhost:5000
+      - "127.0.0.1:5000:80"      # API Gateway available on localhost:5000
     depends_on:
       - pharmago-users-service
       - pharmago-pharmacy-service
@@ -71,8 +71,8 @@ services:
     image: otel/opentelemetry-collector-contrib:latest
     container_name: otlp-collector
     ports:
-      - "4317:4317"
-      - "8889:8889"
+      - "127.0.0.1:4317:4317"
+      - "127.0.0.1:8889:8889"
     volumes:
       - ./Backend/otel-collector-config.yaml:/etc/otel-collector-config.yaml
     command: ["--config=/etc/otel-collector-config.yaml"]
@@ -93,7 +93,7 @@ services:
       - '--web.console.templates=/etc/prometheus/consoles'
       - '--web.enable-lifecycle'
     ports:
-      - "9090:9090"
+      - "127.0.0.1:9090:9090"
     networks:
       - pharmago-network
 
@@ -101,13 +101,13 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${PHARMAGO_GRAFANA_PASSWORD:?Configurar el archivo .env local}
       - GF_INSTALL_PLUGINS=
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     depends_on:
       - prometheus
     networks:
@@ -123,8 +123,8 @@ services:
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
     ports:
-      - "9200:9200"
-      - "9300:9300"
+      - "127.0.0.1:9200:9200"
+      - "127.0.0.1:9300:9300"
     networks:
       - pharmago-network
     healthcheck:
@@ -138,10 +138,8 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_USERNAME=kibana_system
-      - ELASTICSEARCH_PASSWORD=
     ports:
-      - "5601:5601"
+      - "127.0.0.1:5601:5601"
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -158,8 +156,8 @@ services:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
-      - "5044:5044"
-      - "9600:9600"
+      - "127.0.0.1:5044:5044"
+      - "127.0.0.1:9600:9600"
     depends_on:
       - elasticsearch
     networks:
@@ -178,7 +176,7 @@ services:
       dockerfile: Dockerfile
     container_name: pharmago-ui
     ports:
-      - "4200:80"  # The Angular app will be available on localhost:4200
+      - "127.0.0.1:4200:80"  # The Angular app will be available on localhost:4200
     depends_on:
       - pharmago-api-gateway
     networks:

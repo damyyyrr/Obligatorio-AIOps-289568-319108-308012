@@ -11,8 +11,11 @@ from unittest.mock import patch
 import manage
 
 
+CREDENTIALS = {"sqlPassword": "test-sql-password", "grafanaAdminPassword": "test-grafana-password"}
+
+
 def node(role="all", uid="node-uid"):
-    return {"metadata": {"name": "custom-node", "uid": uid, "labels": {"node-type": role}},
+    return {"metadata": {"name": "custom-node", "uid": uid, "labels": {"node-type": role, manage.HOSTNAME_LABEL: uid}},
             "spec": {}, "status": {"conditions": [{"type": "Ready", "status": "True"}]}}
 
 
@@ -30,7 +33,11 @@ class FakeCluster(manage.Cluster):
     def volumes(self):
         self.snapshots += 1
         return [{"name": "sql-pv", "uid": "changed" if self.changed and self.snapshots == 2 else "pv-1",
-                 "claimUid": "pvc-1", "storageNodeUid": "node-uid"}]
+                 "claimUid": "pvc-1", "storageNodeUid": "node-uid",
+                 "hostPath": "/mnt/data/sql", "nodeAffinity": {"required": {"nodeSelectorTerms": []}}}]
+
+    def plan_secrets(self, desired, sql_volume_exists):
+        return []
 
     def call(self, *args, stdin=None):
         doc = json.loads(stdin) if stdin else None
@@ -77,7 +84,7 @@ class WorkflowTests(unittest.TestCase):
     def test_repeat_apply_preserves_pv_and_never_deletes(self):
         cluster = FakeCluster()
         for _ in range(2):
-            result = manage.deploy(cluster, manage.resources("test"), 42)
+            result = manage.deploy(cluster, manage.resources("test"), 42, CREDENTIALS)
             self.assertEqual(result["volumesBefore"], result["volumesAfter"])
         self.assertFalse(any("delete" in args or "label" in args for args, _ in cluster.calls))
         applied = [doc["metadata"]["name"] for _, doc in cluster.calls if doc and doc["kind"] == "DaemonSet"]
@@ -86,18 +93,18 @@ class WorkflowTests(unittest.TestCase):
     def test_stops_on_early_apply_error(self):
         cluster = FakeCluster(fail="prometheus-config")
         with self.assertRaises(RuntimeError):
-            manage.deploy(cluster, manage.resources("test"), 42)
+            manage.deploy(cluster, manage.resources("test"), 42, CREDENTIALS)
         self.assertFalse(any(d and d["kind"] == "Deployment" for _, d in cluster.calls))
 
     def test_sql_timeout_prevents_downstream_workloads(self):
         cluster = FakeCluster(fail="deployment/pharmago-db")
         with self.assertRaises(RuntimeError):
-            manage.deploy(cluster, manage.resources("test"), 42)
+            manage.deploy(cluster, manage.resources("test"), 42, CREDENTIALS)
         self.assertFalse(any(d and d["kind"] == "Deployment" and d["metadata"]["name"] != "pharmago-db" for _, d in cluster.calls))
 
     def test_changed_volume_identity_fails(self):
         with self.assertRaisesRegex(RuntimeError, "identity changed"):
-            manage.deploy(FakeCluster(changed=True), manage.resources("test"), 42)
+            manage.deploy(FakeCluster(changed=True), manage.resources("test"), 42, CREDENTIALS)
 
     def test_context_mismatch_blocks_reads_and_writes(self):
         with patch.object(manage, "run", return_value="other-cluster") as runner:
@@ -125,8 +132,29 @@ class WorkflowTests(unittest.TestCase):
             {"name": "sql-pv", "uid": "pv-1", "claimUid": "pvc-1", "storageNodeUid": "other-node"}
         ]):
             with self.assertRaisesRegex(RuntimeError, "belongs to another storage node"):
-                manage.deploy(cluster, manage.resources("test"), 42)
+                manage.deploy(cluster, manage.resources("test"), 42, CREDENTIALS)
         self.assertEqual([], cluster.calls)
+
+    def test_legacy_secret_keeps_password_and_removes_last_applied_data(self):
+        cluster = manage.Cluster("test-cluster")
+        desired = manage.secret_resources(CREDENTIALS)[0]
+        old = {**desired, "metadata": {**desired["metadata"], "resourceVersion": "7",
+               "annotations": {"kubectl.kubernetes.io/last-applied-configuration": "old-secret",
+                               "other": "keep"}},
+               "data": {"SA_PASSWORD": desired["data"]["SA_PASSWORD"]}}
+        with patch.object(cluster, "call", return_value=json.dumps(old)):
+            (action, updated), = cluster.plan_secrets([desired], sql_volume_exists=True)
+        self.assertEqual("replace", action)
+        self.assertEqual(desired["data"], updated["data"])
+        self.assertEqual("7", updated["metadata"]["resourceVersion"])
+        self.assertEqual({"other": "keep"}, updated["metadata"]["annotations"])
+
+    def test_different_sql_password_is_rejected_before_apply(self):
+        cluster = manage.Cluster("test-cluster")
+        (desired, _) = manage.secret_resources(CREDENTIALS)
+        with patch.object(cluster, "call", return_value='{"data": {"SA_PASSWORD": "other"}}'):
+            with self.assertRaisesRegex(RuntimeError, "Local password differs"):
+                cluster.plan_secrets([desired], sql_volume_exists=True)
 
     def test_released_volume_not_automatically_recreated(self):
         cluster = manage.Cluster("test-cluster")
@@ -212,7 +240,7 @@ class WorkflowTests(unittest.TestCase):
     def test_elasticsearch_timeout_prevents_application_deployment(self):
         cluster = FakeCluster(fail="deployment/elasticsearch")
         with self.assertRaises(RuntimeError):
-            manage.deploy(cluster, manage.resources("test"), 42)
+            manage.deploy(cluster, manage.resources("test"), 42, CREDENTIALS)
         self.assertFalse(any(d and d["metadata"]["name"] == "pharmago-users-service" and d["kind"] == "Deployment" for _, d in cluster.calls))
 
 

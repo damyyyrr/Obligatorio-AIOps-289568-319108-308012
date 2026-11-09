@@ -55,6 +55,7 @@ k8s/.port-forward.pids
 # === Secrets (evitar subir credenciales) ===
 *.pfx
 .env
+secrets.local.json
 
 # === Docker ===
 .docker/

@@ -28,7 +28,10 @@ spec:
         - containerPort: 80
         env:
         - name: ConnectionStrings__DefaultConnection
-          value: "Server=pharmago-db;Database=PharmaDb;User Id=sa;Password=Str0ngP@ssword!"
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: CONNECTION_STRING
         - name: ServiceUrls__PharmacyService
           value: "http://pharmago-pharmacy-service:80"
         - name: ASPNETCORE_ENVIRONMENT
