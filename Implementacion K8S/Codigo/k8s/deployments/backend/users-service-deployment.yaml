@@ -4,7 +4,7 @@ metadata:
   name: pharmago-users-service
   namespace: pharmago
 spec:
-  replicas: 1
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -25,7 +25,8 @@ spec:
         image: pharmago-users-service:k8s-local
         imagePullPolicy: Never
         ports:
-        - containerPort: 80
+        - name: http
+          containerPort: 80
         env:
         - name: POD_NAME
           valueFrom:
@@ -70,21 +71,24 @@ spec:
             cpu: "500m"
         startupProbe:
           httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 10
-          failureThreshold: 15
+            path: /health/live
+            port: http
+          periodSeconds: 2
+          timeoutSeconds: 2
+          failureThreshold: 60
         readinessProbe:
           httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
+            path: /health/ready
+            port: http
+          periodSeconds: 5
+          timeoutSeconds: 4
+          failureThreshold: 1
         livenessProbe:
           httpGet:
-            path: /health
-            port: 80
-          initialDelaySeconds: 60
-          periodSeconds: 30
+            path: /health/live
+            port: http
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
+          terminationGracePeriodSeconds: 5
 

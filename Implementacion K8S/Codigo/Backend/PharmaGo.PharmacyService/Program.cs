@@ -2,6 +2,7 @@ using PharmaGo.PharmacyService.Factory;
 using PharmaGo.PharmacyService.Filters;
 using System.Diagnostics.CodeAnalysis;
 using Instrumentation;
+using PharmaGo.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,9 @@ builder.Services.AddControllers(options => options.Filters.Add(typeof(ExceptionF
 
 builder.Services.AddControllers();
 
-builder.Services.AddHealthChecks();
+builder.Services.AddHealthChecks().AddTypeActivatedCheck<SqlReadinessCheck>("sql",
+    failureStatus: null, tags: new[] { HealthEndpoints.ReadinessTag }, timeout: TimeSpan.FromSeconds(2),
+    args: new object[] { "SELECT TOP (1) Id FROM dbo.Drugs;" });
 
 builder.Services.AddPharmaGoOpenTelemetryMetrics("PharmaGo.PharmacyService");
 
@@ -45,7 +48,7 @@ app.UseServiceCorrelationScope();
 
 app.UseAuthorization();
 
-app.MapHealthChecks("/health");
+app.MapPharmaGoHealth();
 app.UseMetricsMiddleware();
 
 app.MapControllers();

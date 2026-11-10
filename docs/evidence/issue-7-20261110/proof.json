@@ -1,0 +1,1943 @@
+{
+  "startedUtc": "2026-11-10T14:53:53.600274+00:00",
+  "finishedUtc": "2026-11-10T14:57:04.368083+00:00",
+  "context": "pharmago-issue3",
+  "imageTag": "issue7-recovery-20261110",
+  "replicas": {
+    "pharmago-api-gateway": 1,
+    "pharmago-users-service": 2,
+    "pharmago-pharmacy-service": 2
+  },
+  "sqlPodUidUnchanged": true,
+  "dependencyChecks": {
+    "bothUnavailable": {
+      "users": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 503,
+          "body": "Unhealthy"
+        },
+        "podReady": false,
+        "restarts": 0,
+        "podUid": "cdba32c4-a232-48fa-be2c-78ef1e87c05a"
+      },
+      "pharmacy": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 503,
+          "body": "Unhealthy"
+        },
+        "podReady": false,
+        "restarts": 0,
+        "podUid": "7df53636-d516-469b-b0c7-f82be980cd7e"
+      },
+      "gateway": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 503,
+          "body": "Unhealthy"
+        },
+        "podReady": false,
+        "restarts": 0,
+        "podUid": "d4c2c5ec-7f05-49b9-a98a-6d9b4fd0d3d0"
+      }
+    },
+    "after33Seconds": {
+      "users": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 503,
+          "body": "Unhealthy"
+        },
+        "podReady": false,
+        "restarts": 0,
+        "podUid": "cdba32c4-a232-48fa-be2c-78ef1e87c05a"
+      },
+      "pharmacy": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 503,
+          "body": "Unhealthy"
+        },
+        "podReady": false,
+        "restarts": 0,
+        "podUid": "7df53636-d516-469b-b0c7-f82be980cd7e"
+      },
+      "gateway": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 503,
+          "body": "Unhealthy"
+        },
+        "podReady": false,
+        "restarts": 0,
+        "podUid": "d4c2c5ec-7f05-49b9-a98a-6d9b4fd0d3d0"
+      }
+    },
+    "pharmacyOnly": {
+      "users": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 503,
+          "body": "Unhealthy"
+        },
+        "podReady": false,
+        "restarts": 0,
+        "podUid": "cdba32c4-a232-48fa-be2c-78ef1e87c05a"
+      },
+      "pharmacy": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "podReady": true,
+        "restarts": 0,
+        "podUid": "7df53636-d516-469b-b0c7-f82be980cd7e"
+      },
+      "gateway": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 200,
+          "body": "Degraded"
+        },
+        "podReady": true,
+        "restarts": 0,
+        "podUid": "d4c2c5ec-7f05-49b9-a98a-6d9b4fd0d3d0"
+      }
+    },
+    "bothRestored": {
+      "users": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "podReady": true,
+        "restarts": 0,
+        "podUid": "cdba32c4-a232-48fa-be2c-78ef1e87c05a"
+      },
+      "pharmacy": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "podReady": true,
+        "restarts": 0,
+        "podUid": "7df53636-d516-469b-b0c7-f82be980cd7e"
+      },
+      "gateway": {
+        "live": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "readiness": {
+          "http": 200,
+          "body": "Healthy"
+        },
+        "podReady": true,
+        "restarts": 0,
+        "podUid": "d4c2c5ec-7f05-49b9-a98a-6d9b4fd0d3d0"
+      }
+    }
+  },
+  "experiments": [
+    {
+      "app": "pharmago-api-gateway",
+      "endpoint": "/api/drug",
+      "pod": "pharmago-api-gateway-7f4658b88d-sbjm6",
+      "node": "pharmago-issue3",
+      "fault": "SIGSTOP to dotnet; kubelet liveness restart",
+      "faultUtc": "2026-11-10T14:54:58.307949+00:00",
+      "readyAgainSeconds": 40.57,
+      "states": [
+        {
+          "timeUtc": "2026-11-10T14:54:56.938023+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:54:58.468880+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:54:59.550599+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:00.635394+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:01.714298+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:02.797050+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:03.873508+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:04.954291+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:06.040211+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:07.120082+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:08.195514+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:09.343302+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:10.431758+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:11.527086+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:12.736067+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:16.028327+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:17.112087+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:18.191090+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:19.320897+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:20.399925+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:21.485432+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:22.561074+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:23.645719+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:24.724251+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:25.808786+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:26.885429+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:27.977611+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:29.056795+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:30.139325+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:31.231049+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:32.319632+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:33.397027+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:34.480073+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:35.569223+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:36.663730+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://0d64692826eddf2349dea0b804ddc72b6d2299507ae17e3e845857873bd230be",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:37.743473+00:00",
+          "ready": false,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://aa844b6baa8b3ed2599ff3956d37e76fe78f2a722b6fca7664460ee8bdfae96a",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:55:35Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:38.875357+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://aa844b6baa8b3ed2599ff3956d37e76fe78f2a722b6fca7664460ee8bdfae96a",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:55:35Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:39.953556+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://aa844b6baa8b3ed2599ff3956d37e76fe78f2a722b6fca7664460ee8bdfae96a",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:55:35Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:41.033584+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://aa844b6baa8b3ed2599ff3956d37e76fe78f2a722b6fca7664460ee8bdfae96a",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:55:35Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:42.113327+00:00",
+          "ready": true,
+          "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+          "containerId": "containerd://aa844b6baa8b3ed2599ff3956d37e76fe78f2a722b6fca7664460ee8bdfae96a",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:55:35Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3",
+          "prometheusUp": 1
+        }
+      ],
+      "recovered": {
+        "timeUtc": "2026-11-10T14:55:38.875357+00:00",
+        "ready": true,
+        "uid": "4c816140-4b07-4756-8bed-7ed01790983c",
+        "containerId": "containerd://aa844b6baa8b3ed2599ff3956d37e76fe78f2a722b6fca7664460ee8bdfae96a",
+        "restarts": 1,
+        "lastTermination": {
+          "exitCode": 137,
+          "finishedAt": "2026-11-10T14:55:35Z",
+          "reason": "Error"
+        },
+        "node": "pharmago-issue3",
+        "prometheusUp": 1
+      },
+      "requests": [
+        {
+          "sentUtc": "2026-11-10T14:54:57.031498+00:00",
+          "receivedUtc": "2026-11-10T14:54:58.038826+00:00",
+          "http": 200,
+          "latencyMs": 711.4,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:54:58.392716+00:00",
+          "receivedUtc": "2026-11-10T14:55:00.517874+00:00",
+          "http": 0,
+          "latencyMs": 2001.2,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:00.555670+00:00",
+          "receivedUtc": "2026-11-10T14:55:02.697929+00:00",
+          "http": 0,
+          "latencyMs": 2000.2,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:02.719161+00:00",
+          "receivedUtc": "2026-11-10T14:55:04.844422+00:00",
+          "http": 0,
+          "latencyMs": 2001.3,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:04.878105+00:00",
+          "receivedUtc": "2026-11-10T14:55:07.001333+00:00",
+          "http": 0,
+          "latencyMs": 2001.5,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:07.045197+00:00",
+          "receivedUtc": "2026-11-10T14:55:07.167128+00:00",
+          "http": 0,
+          "latencyMs": 3.1,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:09.200863+00:00",
+          "receivedUtc": "2026-11-10T14:55:09.409529+00:00",
+          "http": 0,
+          "latencyMs": 2.5,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:11.436487+00:00",
+          "receivedUtc": "2026-11-10T14:55:12.367838+00:00",
+          "http": 0,
+          "latencyMs": 2.2,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:13.741533+00:00",
+          "receivedUtc": "2026-11-10T14:55:16.081171+00:00",
+          "http": 0,
+          "latencyMs": 2.1,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:17.034338+00:00",
+          "receivedUtc": "2026-11-10T14:55:17.161966+00:00",
+          "http": 0,
+          "latencyMs": 2.2,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:19.195783+00:00",
+          "receivedUtc": "2026-11-10T14:55:19.375434+00:00",
+          "http": 0,
+          "latencyMs": 2.0,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:21.404373+00:00",
+          "receivedUtc": "2026-11-10T14:55:21.532635+00:00",
+          "http": 0,
+          "latencyMs": 2.2,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:23.565364+00:00",
+          "receivedUtc": "2026-11-10T14:55:23.693882+00:00",
+          "http": 0,
+          "latencyMs": 2.0,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:25.729445+00:00",
+          "receivedUtc": "2026-11-10T14:55:25.859223+00:00",
+          "http": 0,
+          "latencyMs": 2.3,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:27.900976+00:00",
+          "receivedUtc": "2026-11-10T14:55:28.043143+00:00",
+          "http": 0,
+          "latencyMs": 2.2,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:30.063021+00:00",
+          "receivedUtc": "2026-11-10T14:55:30.185496+00:00",
+          "http": 0,
+          "latencyMs": 2.0,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:32.236203+00:00",
+          "receivedUtc": "2026-11-10T14:55:32.369470+00:00",
+          "http": 0,
+          "latencyMs": 2.4,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:34.401738+00:00",
+          "receivedUtc": "2026-11-10T14:55:34.529689+00:00",
+          "http": 0,
+          "latencyMs": 2.1,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:36.583088+00:00",
+          "receivedUtc": "2026-11-10T14:55:36.727072+00:00",
+          "http": 0,
+          "latencyMs": 2.3,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:38.748532+00:00",
+          "receivedUtc": "2026-11-10T14:55:40.933759+00:00",
+          "http": 0,
+          "latencyMs": 2001.4,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:40.958158+00:00",
+          "receivedUtc": "2026-11-10T14:55:41.139853+00:00",
+          "http": 200,
+          "latencyMs": 60.8,
+          "validResponse": true
+        }
+      ],
+      "validResponses": 2,
+      "livenessEvents": [
+        {
+          "reason": "Unhealthy",
+          "message": "Liveness probe failed: Get \"http://10.244.0.11:80/health/live\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)",
+          "time": "2026-11-10T14:55:30Z"
+        },
+        {
+          "reason": "Killing",
+          "message": "Container pharmago-api-gateway failed liveness probe, will be restarted",
+          "time": "2026-11-10T14:55:30Z"
+        }
+      ],
+      "startupLogs": [
+        "Now listening on: http://[::]:80",
+        "Application started. Press Ctrl+C to shut down."
+      ],
+      "otlpBefore": [],
+      "otlpAfter": [
+        {
+          "service": "PharmaGo.PharmacyService",
+          "code": "200",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "app": "pharmago-users-service",
+      "endpoint": "/api/login",
+      "pod": "pharmago-users-service-54bb989fc-srnrh",
+      "node": "pharmago-issue3-m02",
+      "fault": "SIGSTOP to dotnet; kubelet liveness restart",
+      "faultUtc": "2026-11-10T14:55:43.645531+00:00",
+      "readyAgainSeconds": 37.77,
+      "states": [
+        {
+          "timeUtc": "2026-11-10T14:55:42.607268+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:43.821807+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:44.903950+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:46.172495+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:47.251513+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:48.328433+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:49.413019+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:50.885074+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:51.964425+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:53.040614+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:54.127593+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:55.218323+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:56.296391+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:57.388048+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:58.477267+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:55:59.556159+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:00.647725+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:01.756532+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:02.832825+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:03.914749+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:04.996127+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:06.077870+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:07.159566+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:08.260117+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:09.368563+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:10.466784+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:11.560010+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:12.644121+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:13.748731+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:14.872709+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:15.956204+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://6fe36f71a008dab3d732454458e11842b28e14fb4874ebd8ee36ebe804706586",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:17.041116+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:15Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:18.121659+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:15Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:19.239967+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:15Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:20.325947+00:00",
+          "ready": false,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:15Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:21.413742+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:15Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:22.494331+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:15Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:23.574831+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:15Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:24.655955+00:00",
+          "ready": true,
+          "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+          "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:15Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m02",
+          "prometheusUp": 1
+        }
+      ],
+      "recovered": {
+        "timeUtc": "2026-11-10T14:56:21.413742+00:00",
+        "ready": true,
+        "uid": "b7b83326-28e1-446e-ab18-5f1d086ec597",
+        "containerId": "containerd://a40bb895658ef38a44e38b6cbb74329bb772439688e2455c963ecf9e65d8d0be",
+        "restarts": 1,
+        "lastTermination": {
+          "exitCode": 137,
+          "finishedAt": "2026-11-10T14:56:15Z",
+          "reason": "Error"
+        },
+        "node": "pharmago-issue3-m02",
+        "prometheusUp": 1
+      },
+      "requests": [
+        {
+          "sentUtc": "2026-11-10T14:55:42.611758+00:00",
+          "receivedUtc": "2026-11-10T14:55:43.413499+00:00",
+          "http": 200,
+          "latencyMs": 675.8,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:43.744721+00:00",
+          "receivedUtc": "2026-11-10T14:55:45.868611+00:00",
+          "http": 0,
+          "latencyMs": 2001.3,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:50.418137+00:00",
+          "receivedUtc": "2026-11-10T14:55:51.704181+00:00",
+          "http": 200,
+          "latencyMs": 642.9,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:55:57.300666+00:00",
+          "receivedUtc": "2026-11-10T14:55:57.450141+00:00",
+          "http": 200,
+          "latencyMs": 12.6,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:03.837526+00:00",
+          "receivedUtc": "2026-11-10T14:56:03.975469+00:00",
+          "http": 200,
+          "latencyMs": 10.1,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:10.388457+00:00",
+          "receivedUtc": "2026-11-10T14:56:10.542125+00:00",
+          "http": 200,
+          "latencyMs": 8.0,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:16.961248+00:00",
+          "receivedUtc": "2026-11-10T14:56:17.092667+00:00",
+          "http": 200,
+          "latencyMs": 6.7,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:23.499337+00:00",
+          "receivedUtc": "2026-11-10T14:56:23.627282+00:00",
+          "http": 200,
+          "latencyMs": 6.5,
+          "validResponse": true
+        }
+      ],
+      "validResponses": 7,
+      "livenessEvents": [
+        {
+          "reason": "Unhealthy",
+          "message": "Liveness probe failed: Get \"http://10.244.1.9:80/health/live\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)",
+          "time": "2026-11-10T14:56:10Z"
+        },
+        {
+          "reason": "Killing",
+          "message": "Container pharmago-users-service failed liveness probe, will be restarted",
+          "time": "2026-11-10T14:56:10Z"
+        }
+      ],
+      "startupLogs": [
+        "{\"Timestamp\":\"2026-11-10T14:56:16.499Z\",\"EventId\":14,\"LogLevel\":\"Information\",\"Category\":\"Microsoft.Hosting.Lifetime\",\"Message\":\"Now listening on: http://[::]:80\",\"State\":{\"Message\":\"Now listening on: http://[::]:80\",\"address\":\"http://[::]:80\",\"{OriginalFormat}\":\"Now listening on: {address}\"},\"Scopes\":[]}",
+        "{\"Timestamp\":\"2026-11-10T14:56:16.506Z\",\"EventId\":0,\"LogLevel\":\"Information\",\"Category\":\"Microsoft.Hosting.Lifetime\",\"Message\":\"Application started. Press Ctrl\\u002BC to shut down.\",\"State\":{\"Message\":\"Application started. Press Ctrl\\u002BC to shut down.\",\"{OriginalFormat}\":\"Application started. Press Ctrl\\u002BC to shut down.\"},\"Scopes\":[]}"
+      ],
+      "otlpBefore": [],
+      "otlpAfter": [
+        {
+          "service": "PharmaGo.ApiGateway",
+          "code": "200",
+          "value": 6
+        },
+        {
+          "service": "PharmaGo.ApiGateway",
+          "code": "400",
+          "value": 1
+        },
+        {
+          "service": "PharmaGo.UsersService",
+          "code": "200",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "app": "pharmago-pharmacy-service",
+      "endpoint": "/api/drug",
+      "pod": "pharmago-pharmacy-service-86657f77cd-pdgzq",
+      "node": "pharmago-issue3-m03",
+      "fault": "SIGSTOP to dotnet; kubelet liveness restart",
+      "faultUtc": "2026-11-10T14:56:25.506299+00:00",
+      "readyAgainSeconds": 34.95,
+      "states": [
+        {
+          "timeUtc": "2026-11-10T14:56:25.114263+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:25.676261+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:26.753239+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:27.837501+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:28.924184+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:30.007276+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:31.091117+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:32.172135+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:33.259509+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:34.344061+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:35.440159+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:36.527371+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:37.604330+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:38.710984+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:39.803567+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:40.882572+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:41.958748+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:43.041668+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:44.119070+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:45.200295+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:46.293646+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:47.377016+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:48.455694+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:49.537706+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:50.614358+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:51.697993+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:52.779346+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:53.880168+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:54.961419+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:56.045499+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://b6ac139cf4a6c3f94a30dac9883be904e82eb5216e1d534a7ebff54f642a5379",
+          "restarts": 0,
+          "lastTermination": {},
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:57.123583+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://ac0085b8dd7e475f6f67d0b7a5669ba08c2e3124e69d475e084263a190edc0c9",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:55Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:58.205184+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://ac0085b8dd7e475f6f67d0b7a5669ba08c2e3124e69d475e084263a190edc0c9",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:55Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:56:59.336800+00:00",
+          "ready": false,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://ac0085b8dd7e475f6f67d0b7a5669ba08c2e3124e69d475e084263a190edc0c9",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:55Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 0
+        },
+        {
+          "timeUtc": "2026-11-10T14:57:00.445077+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://ac0085b8dd7e475f6f67d0b7a5669ba08c2e3124e69d475e084263a190edc0c9",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:55Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:57:01.531417+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://ac0085b8dd7e475f6f67d0b7a5669ba08c2e3124e69d475e084263a190edc0c9",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:55Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:57:02.643373+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://ac0085b8dd7e475f6f67d0b7a5669ba08c2e3124e69d475e084263a190edc0c9",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:55Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        },
+        {
+          "timeUtc": "2026-11-10T14:57:03.720755+00:00",
+          "ready": true,
+          "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+          "containerId": "containerd://ac0085b8dd7e475f6f67d0b7a5669ba08c2e3124e69d475e084263a190edc0c9",
+          "restarts": 1,
+          "lastTermination": {
+            "exitCode": 137,
+            "finishedAt": "2026-11-10T14:56:55Z",
+            "reason": "Error"
+          },
+          "node": "pharmago-issue3-m03",
+          "prometheusUp": 1
+        }
+      ],
+      "recovered": {
+        "timeUtc": "2026-11-10T14:57:00.445077+00:00",
+        "ready": true,
+        "uid": "0c4c480b-8164-41be-8ba6-9fcdefe21cb1",
+        "containerId": "containerd://ac0085b8dd7e475f6f67d0b7a5669ba08c2e3124e69d475e084263a190edc0c9",
+        "restarts": 1,
+        "lastTermination": {
+          "exitCode": 137,
+          "finishedAt": "2026-11-10T14:56:55Z",
+          "reason": "Error"
+        },
+        "node": "pharmago-issue3-m03",
+        "prometheusUp": 1
+      },
+      "requests": [
+        {
+          "sentUtc": "2026-11-10T14:56:25.131047+00:00",
+          "receivedUtc": "2026-11-10T14:56:25.279205+00:00",
+          "http": 200,
+          "latencyMs": 11.2,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:25.594924+00:00",
+          "receivedUtc": "2026-11-10T14:56:27.724816+00:00",
+          "http": 0,
+          "latencyMs": 2000.1,
+          "validResponse": false
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:27.758134+00:00",
+          "receivedUtc": "2026-11-10T14:56:28.450044+00:00",
+          "http": 200,
+          "latencyMs": 567.4,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:29.929112+00:00",
+          "receivedUtc": "2026-11-10T14:56:30.105977+00:00",
+          "http": 200,
+          "latencyMs": 54.1,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:32.095697+00:00",
+          "receivedUtc": "2026-11-10T14:56:32.228583+00:00",
+          "http": 200,
+          "latencyMs": 9.6,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:34.264425+00:00",
+          "receivedUtc": "2026-11-10T14:56:34.403743+00:00",
+          "http": 200,
+          "latencyMs": 7.6,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:36.444631+00:00",
+          "receivedUtc": "2026-11-10T14:56:36.579469+00:00",
+          "http": 200,
+          "latencyMs": 5.6,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:38.610091+00:00",
+          "receivedUtc": "2026-11-10T14:56:38.763634+00:00",
+          "http": 200,
+          "latencyMs": 5.6,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:40.808271+00:00",
+          "receivedUtc": "2026-11-10T14:56:40.933407+00:00",
+          "http": 200,
+          "latencyMs": 5.3,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:42.963452+00:00",
+          "receivedUtc": "2026-11-10T14:56:43.096601+00:00",
+          "http": 200,
+          "latencyMs": 5.7,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:45.123913+00:00",
+          "receivedUtc": "2026-11-10T14:56:45.253421+00:00",
+          "http": 200,
+          "latencyMs": 5.2,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:47.298761+00:00",
+          "receivedUtc": "2026-11-10T14:56:47.427981+00:00",
+          "http": 200,
+          "latencyMs": 5.3,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:49.460195+00:00",
+          "receivedUtc": "2026-11-10T14:56:49.588517+00:00",
+          "http": 200,
+          "latencyMs": 5.4,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:51.619685+00:00",
+          "receivedUtc": "2026-11-10T14:56:51.750423+00:00",
+          "http": 200,
+          "latencyMs": 5.0,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:53.796692+00:00",
+          "receivedUtc": "2026-11-10T14:56:53.936153+00:00",
+          "http": 200,
+          "latencyMs": 5.8,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:55.966326+00:00",
+          "receivedUtc": "2026-11-10T14:56:56.099032+00:00",
+          "http": 200,
+          "latencyMs": 5.5,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:56:58.128362+00:00",
+          "receivedUtc": "2026-11-10T14:56:58.256323+00:00",
+          "http": 200,
+          "latencyMs": 4.8,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:57:00.344076+00:00",
+          "receivedUtc": "2026-11-10T14:57:00.515645+00:00",
+          "http": 200,
+          "latencyMs": 9.3,
+          "validResponse": true
+        },
+        {
+          "sentUtc": "2026-11-10T14:57:02.546255+00:00",
+          "receivedUtc": "2026-11-10T14:57:02.679525+00:00",
+          "http": 200,
+          "latencyMs": 4.9,
+          "validResponse": true
+        }
+      ],
+      "validResponses": 18,
+      "livenessEvents": [
+        {
+          "reason": "Unhealthy",
+          "message": "Liveness probe failed: Get \"http://10.244.2.6:80/health/live\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)",
+          "time": "2026-11-10T14:56:50Z"
+        },
+        {
+          "reason": "Killing",
+          "message": "Container pharmago-pharmacy-service failed liveness probe, will be restarted",
+          "time": "2026-11-10T14:56:50Z"
+        }
+      ],
+      "startupLogs": [
+        "{\"Timestamp\":\"2026-11-10T14:56:56.530Z\",\"EventId\":14,\"LogLevel\":\"Information\",\"Category\":\"Microsoft.Hosting.Lifetime\",\"Message\":\"Now listening on: http://[::]:80\",\"State\":{\"Message\":\"Now listening on: http://[::]:80\",\"address\":\"http://[::]:80\",\"{OriginalFormat}\":\"Now listening on: {address}\"},\"Scopes\":[]}",
+        "{\"Timestamp\":\"2026-11-10T14:56:56.537Z\",\"EventId\":0,\"LogLevel\":\"Information\",\"Category\":\"Microsoft.Hosting.Lifetime\",\"Message\":\"Application started. Press Ctrl\\u002BC to shut down.\",\"State\":{\"Message\":\"Application started. Press Ctrl\\u002BC to shut down.\",\"{OriginalFormat}\":\"Application started. Press Ctrl\\u002BC to shut down.\"},\"Scopes\":[]}"
+      ],
+      "otlpBefore": [
+        {
+          "service": "PharmaGo.PharmacyService",
+          "code": "200",
+          "value": 2
+        },
+        {
+          "service": "PharmaGo.ApiGateway",
+          "code": "200",
+          "value": 1
+        }
+      ],
+      "otlpAfter": [
+        {
+          "service": "PharmaGo.PharmacyService",
+          "code": "200",
+          "value": 12
+        },
+        {
+          "service": "PharmaGo.ApiGateway",
+          "code": "200",
+          "value": 13
+        },
+        {
+          "service": "PharmaGo.ApiGateway",
+          "code": "400",
+          "value": 1
+        }
+      ]
+    }
+  ]
+}

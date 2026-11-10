@@ -3,6 +3,7 @@ using PharmaGo.UsersService.Filters;
 using PharmaGo.UsersService;
 using System.Diagnostics.CodeAnalysis;
 using Instrumentation;
+using PharmaGo.DataAccess;
 
 if (args.Length > 0 && args[0] == "--migrate")
 {
@@ -21,7 +22,9 @@ builder.Services.AddControllers(options => options.Filters.Add(typeof(ExceptionF
 
 builder.Services.AddControllers();
 
-builder.Services.AddHealthChecks();
+builder.Services.AddHealthChecks().AddTypeActivatedCheck<SqlReadinessCheck>("sql",
+    failureStatus: null, tags: new[] { HealthEndpoints.ReadinessTag }, timeout: TimeSpan.FromSeconds(2),
+    args: new object[] { "SELECT TOP (1) Id FROM dbo.Users;" });
 
 builder.Services.AddPharmaGoOpenTelemetryMetrics("PharmaGo.UsersService");
 
@@ -52,7 +55,7 @@ app.UseServiceCorrelationScope();
 
 app.UseAuthorization();
 
-app.MapHealthChecks("/health");
+app.MapPharmaGoHealth();
 app.UseMetricsMiddleware();
 
 app.MapControllers();

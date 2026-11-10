@@ -87,6 +87,8 @@ La [validación de la #2](../../../docs/evidence/issue-2-20261108/live/README.md
 
 Para consultar Prometheus, comparar targets con el inventario y abrir los paneles provisionados de Grafana, ver la [guía de métricas](../../../docs/aiops-k8s-metrics.md).
 
+Para verificar salud, réplicas y recuperación de Gateway, Users y Pharmacy, ver la [guía de probes](../../../docs/aiops-k8s-probes.md).
+
 ## Parada y recuperación
 
 ```powershell
