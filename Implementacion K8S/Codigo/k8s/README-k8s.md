@@ -85,6 +85,8 @@ Al finalizar se esperan los rollouts de todos los Deployments y DaemonSets. Se c
 
 La [validación de la #2](../../../docs/evidence/issue-2-20261108/live/README.md) registró estas pruebas en un nodo de desarrollo. Para la #3 se agrega la comprobación de nodos separados y del pod adicional de cada rollout.
 
+Para consultar Prometheus, comparar targets con el inventario y abrir los paneles provisionados de Grafana, ver la [guía de métricas](../../../docs/aiops-k8s-metrics.md).
+
 ## Parada y recuperación
 
 ```powershell

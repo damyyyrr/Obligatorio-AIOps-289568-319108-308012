@@ -4,5 +4,8 @@ metadata:
   name: prometheus-cadvisor
 rules:
   - apiGroups: [""]
-    resources: ["nodes", "nodes/proxy"]
-    verbs: ["get", "list"]
+    resources: ["nodes", "pods"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["nodes/proxy"]
+    verbs: ["get"]

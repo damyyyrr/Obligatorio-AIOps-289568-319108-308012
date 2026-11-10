@@ -2,6 +2,7 @@ name: pharmago-baseline
 
 x-app-environment: &app-environment
   ASPNETCORE_ENVIRONMENT: Production
+  OTEL_METRIC_EXPORT_INTERVAL: "15000"
   Logging__Console__FormatterName: json
   Logging__Console__FormatterOptions__IncludeScopes: "true"
   Logging__Console__FormatterOptions__UseUtcTimestamp: "true"

@@ -1,0 +1,470 @@
+{
+  "startedUtc": "2026-11-10T14:28:04.783927+00:00",
+  "finishedUtc": "2026-11-10T14:29:57.826242+00:00",
+  "context": "pharmago-issue3",
+  "imageTag": "issue6-metrics-20261110",
+  "initialInventory": {
+    "nodes": [
+      "pharmago-issue3",
+      "pharmago-issue3-m02",
+      "pharmago-issue3-m03"
+    ],
+    "appPods": [
+      {
+        "pod": "pharmago-api-gateway-78d78fb579-9r972",
+        "node": "pharmago-issue3",
+        "app": "pharmago-api-gateway",
+        "containers": [
+          "pharmago-api-gateway"
+        ]
+      },
+      {
+        "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj",
+        "node": "pharmago-issue3-m03",
+        "app": "pharmago-pharmacy-service",
+        "containers": [
+          "pharmago-pharmacy-service"
+        ]
+      },
+      {
+        "pod": "pharmago-users-service-66dd7bbb5c-ppqb2",
+        "node": "pharmago-issue3-m02",
+        "app": "pharmago-users-service",
+        "containers": [
+          "pharmago-users-service"
+        ]
+      }
+    ],
+    "nodeExporters": [
+      {
+        "pod": "node-exporter-ggfcw",
+        "node": "pharmago-issue3-m03",
+        "app": "node-exporter",
+        "containers": [
+          "node-exporter"
+        ]
+      },
+      {
+        "pod": "node-exporter-lp856",
+        "node": "pharmago-issue3",
+        "app": "node-exporter",
+        "containers": [
+          "node-exporter"
+        ]
+      },
+      {
+        "pod": "node-exporter-pm8wk",
+        "node": "pharmago-issue3-m02",
+        "app": "node-exporter",
+        "containers": [
+          "node-exporter"
+        ]
+      }
+    ],
+    "storageCollectors": [
+      {
+        "pod": "kubelet-storage-78725",
+        "node": "pharmago-issue3-m03",
+        "app": "kubelet-storage",
+        "containers": [
+          "collector"
+        ]
+      },
+      {
+        "pod": "kubelet-storage-7jgh8",
+        "node": "pharmago-issue3",
+        "app": "kubelet-storage",
+        "containers": [
+          "collector"
+        ]
+      },
+      {
+        "pod": "kubelet-storage-rmkww",
+        "node": "pharmago-issue3-m02",
+        "app": "kubelet-storage",
+        "containers": [
+          "collector"
+        ]
+      }
+    ],
+    "collector": [
+      {
+        "pod": "otlp-collector-5b95677785-qjh92",
+        "node": "pharmago-issue3",
+        "app": "otlp-collector",
+        "containers": [
+          "otlp-collector"
+        ]
+      }
+    ]
+  },
+  "targetsBefore": [
+    {
+      "job": "kubernetes-cadvisor",
+      "pod": null,
+      "collectorPod": null,
+      "node": "pharmago-issue3",
+      "health": "up"
+    },
+    {
+      "job": "kubernetes-cadvisor",
+      "pod": null,
+      "collectorPod": null,
+      "node": "pharmago-issue3-m02",
+      "health": "up"
+    },
+    {
+      "job": "kubernetes-cadvisor",
+      "pod": null,
+      "collectorPod": null,
+      "node": "pharmago-issue3-m03",
+      "health": "up"
+    },
+    {
+      "job": "node-exporter",
+      "pod": "node-exporter-ggfcw",
+      "collectorPod": null,
+      "node": "pharmago-issue3-m03",
+      "health": "up"
+    },
+    {
+      "job": "node-exporter",
+      "pod": "node-exporter-lp856",
+      "collectorPod": null,
+      "node": "pharmago-issue3",
+      "health": "up"
+    },
+    {
+      "job": "node-exporter",
+      "pod": "node-exporter-pm8wk",
+      "collectorPod": null,
+      "node": "pharmago-issue3-m02",
+      "health": "up"
+    },
+    {
+      "job": "otlp-collector",
+      "pod": null,
+      "collectorPod": "otlp-collector-5b95677785-qjh92",
+      "node": null,
+      "health": "up"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "pod": "pharmago-api-gateway-78d78fb579-9r972",
+      "collectorPod": null,
+      "node": "pharmago-issue3",
+      "health": "up"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj",
+      "collectorPod": null,
+      "node": "pharmago-issue3-m03",
+      "health": "up"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "pod": "pharmago-users-service-66dd7bbb5c-ppqb2",
+      "collectorPod": null,
+      "node": "pharmago-issue3-m02",
+      "health": "up"
+    }
+  ],
+  "infrastructureCoverage": {
+    "container_cpu_usage_seconds_total{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",container!=\"\",container!=\"POD\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3",
+          "pod": "pharmago-api-gateway-78d78fb579-9r972",
+          "container": "pharmago-api-gateway"
+        },
+        {
+          "node": "pharmago-issue3-m02",
+          "pod": "pharmago-users-service-66dd7bbb5c-ppqb2",
+          "container": "pharmago-users-service"
+        },
+        {
+          "node": "pharmago-issue3-m03",
+          "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj",
+          "container": "pharmago-pharmacy-service"
+        }
+      ],
+      "observedSeries": 43
+    },
+    "container_memory_working_set_bytes{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",container!=\"\",container!=\"POD\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3",
+          "pod": "pharmago-api-gateway-78d78fb579-9r972",
+          "container": "pharmago-api-gateway"
+        },
+        {
+          "node": "pharmago-issue3-m02",
+          "pod": "pharmago-users-service-66dd7bbb5c-ppqb2",
+          "container": "pharmago-users-service"
+        },
+        {
+          "node": "pharmago-issue3-m03",
+          "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj",
+          "container": "pharmago-pharmacy-service"
+        }
+      ],
+      "observedSeries": 43
+    },
+    "container_fs_writes_bytes_total{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",container!=\"\",container!=\"POD\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3",
+          "pod": "pharmago-api-gateway-78d78fb579-9r972",
+          "container": "pharmago-api-gateway"
+        },
+        {
+          "node": "pharmago-issue3-m02",
+          "pod": "pharmago-users-service-66dd7bbb5c-ppqb2",
+          "container": "pharmago-users-service"
+        },
+        {
+          "node": "pharmago-issue3-m03",
+          "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj",
+          "container": "pharmago-pharmacy-service"
+        }
+      ],
+      "observedSeries": 43
+    },
+    "container_network_receive_bytes_total{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",pod!=\"\",container=\"\",interface!=\"lo\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3",
+          "pod": "pharmago-api-gateway-78d78fb579-9r972"
+        },
+        {
+          "node": "pharmago-issue3-m02",
+          "pod": "pharmago-users-service-66dd7bbb5c-ppqb2"
+        },
+        {
+          "node": "pharmago-issue3-m03",
+          "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj"
+        }
+      ],
+      "observedSeries": 43
+    },
+    "container_filesystem_usage_bytes{job=\"otlp-collector\",namespace=\"pharmago\",container!=\"\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3",
+          "pod": "pharmago-api-gateway-78d78fb579-9r972",
+          "container": "pharmago-api-gateway"
+        },
+        {
+          "node": "pharmago-issue3-m02",
+          "pod": "pharmago-users-service-66dd7bbb5c-ppqb2",
+          "container": "pharmago-users-service"
+        },
+        {
+          "node": "pharmago-issue3-m03",
+          "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj",
+          "container": "pharmago-pharmacy-service"
+        }
+      ],
+      "observedSeries": 20
+    },
+    "k8s_pod_filesystem_usage_bytes{job=\"otlp-collector\",namespace=\"pharmago\",pod!=\"\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3",
+          "pod": "pharmago-api-gateway-78d78fb579-9r972"
+        },
+        {
+          "node": "pharmago-issue3-m02",
+          "pod": "pharmago-users-service-66dd7bbb5c-ppqb2"
+        },
+        {
+          "node": "pharmago-issue3-m03",
+          "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj"
+        }
+      ],
+      "observedSeries": 20
+    },
+    "node_cpu_seconds_total{job=\"node-exporter\",mode=\"idle\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3"
+        },
+        {
+          "node": "pharmago-issue3-m02"
+        },
+        {
+          "node": "pharmago-issue3-m03"
+        }
+      ],
+      "observedSeries": 48
+    },
+    "node_memory_MemAvailable_bytes{job=\"node-exporter\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3"
+        },
+        {
+          "node": "pharmago-issue3-m02"
+        },
+        {
+          "node": "pharmago-issue3-m03"
+        }
+      ],
+      "observedSeries": 4
+    },
+    "node_filesystem_avail_bytes{job=\"node-exporter\",mountpoint=~\"/|/var|/mnt/data\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3"
+        },
+        {
+          "node": "pharmago-issue3-m02"
+        },
+        {
+          "node": "pharmago-issue3-m03"
+        }
+      ],
+      "observedSeries": 4
+    },
+    "node_network_receive_bytes_total{job=\"node-exporter\",device!=\"lo\"}": {
+      "expectedCovered": [
+        {
+          "node": "pharmago-issue3"
+        },
+        {
+          "node": "pharmago-issue3-m02"
+        },
+        {
+          "node": "pharmago-issue3-m03"
+        }
+      ],
+      "observedSeries": 29
+    }
+  },
+  "directAppScrapeSamplesRetained": {
+    "pharmago-users-service-66dd7bbb5c-ppqb2": 0,
+    "pharmago-api-gateway-78d78fb579-9r972": 0,
+    "pharmago-pharmacy-service-c675fdfcf-z6pdj": 0
+  },
+  "otlpCounterDeltas": {
+    "catalog": {
+      "PharmaGo.PharmacyService": 3,
+      "PharmaGo.ApiGateway": 3
+    },
+    "login": {
+      "PharmaGo.UsersService": 1,
+      "PharmaGo.ApiGateway": 1
+    }
+  },
+  "rollout": {
+    "oldPod": "pharmago-users-service-66dd7bbb5c-ppqb2",
+    "newPod": "pharmago-users-service-8567f78754-qxnk7",
+    "overlapObserved": true,
+    "seenTargets": [
+      "pharmago-users-service-66dd7bbb5c-ppqb2",
+      "pharmago-users-service-8567f78754-qxnk7"
+    ],
+    "oldTargetRemoved": true,
+    "newPodOtLpSeries": true
+  },
+  "targetsAfter": [
+    {
+      "job": "kubernetes-cadvisor",
+      "pod": null,
+      "collectorPod": null,
+      "node": "pharmago-issue3",
+      "health": "up"
+    },
+    {
+      "job": "kubernetes-cadvisor",
+      "pod": null,
+      "collectorPod": null,
+      "node": "pharmago-issue3-m02",
+      "health": "up"
+    },
+    {
+      "job": "kubernetes-cadvisor",
+      "pod": null,
+      "collectorPod": null,
+      "node": "pharmago-issue3-m03",
+      "health": "up"
+    },
+    {
+      "job": "node-exporter",
+      "pod": "node-exporter-ggfcw",
+      "collectorPod": null,
+      "node": "pharmago-issue3-m03",
+      "health": "up"
+    },
+    {
+      "job": "node-exporter",
+      "pod": "node-exporter-lp856",
+      "collectorPod": null,
+      "node": "pharmago-issue3",
+      "health": "up"
+    },
+    {
+      "job": "node-exporter",
+      "pod": "node-exporter-pm8wk",
+      "collectorPod": null,
+      "node": "pharmago-issue3-m02",
+      "health": "up"
+    },
+    {
+      "job": "otlp-collector",
+      "pod": null,
+      "collectorPod": "otlp-collector-5b95677785-qjh92",
+      "node": null,
+      "health": "up"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "pod": "pharmago-api-gateway-78d78fb579-9r972",
+      "collectorPod": null,
+      "node": "pharmago-issue3",
+      "health": "up"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "pod": "pharmago-pharmacy-service-c675fdfcf-z6pdj",
+      "collectorPod": null,
+      "node": "pharmago-issue3-m03",
+      "health": "up"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "pod": "pharmago-users-service-8567f78754-qxnk7",
+      "collectorPod": null,
+      "node": "pharmago-issue3-m02",
+      "health": "up"
+    }
+  ],
+  "dashboardsBefore": {
+    "pharmago-overview": {
+      "provisioned": true,
+      "panels": 6,
+      "version": 13
+    },
+    "pharmago-infra": {
+      "provisioned": true,
+      "panels": 12,
+      "version": 13
+    }
+  },
+  "dashboardsAfter": {
+    "pharmago-overview": {
+      "provisioned": true,
+      "panels": 6,
+      "version": 13
+    },
+    "pharmago-infra": {
+      "provisioned": true,
+      "panels": 12,
+      "version": 13
+    }
+  },
+  "grafanaPodRecreated": true,
+  "grafanaPvcUidPreserved": true,
+  "prometheusPodUidPreservedOnRepeatApply": true
+}

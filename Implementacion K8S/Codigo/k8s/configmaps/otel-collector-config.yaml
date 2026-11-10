@@ -14,11 +14,13 @@ data:
     exporters:
       prometheus:
         endpoint: "0.0.0.0:8889"
-      debug: {}
+        metric_expiration: 3m
+        resource_to_telemetry_conversion:
+          enabled: true
 
     service:
       pipelines:
         metrics:
           receivers: [otlp]
-          exporters: [prometheus, debug]
+          exporters: [prometheus]
 
