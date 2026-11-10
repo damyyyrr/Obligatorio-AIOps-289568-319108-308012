@@ -3,6 +3,7 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Exporter;
 using AspNetCoreRateLimit;
+using PharmaGo.ApiGateway;
 using PharmaGo.ApiGateway.Middleware;
 using Instrumentation;
 using InstrumentationInterface;
@@ -41,6 +42,9 @@ builder.Services.AddReverseProxy()
     });
 
 builder.Services.AddSingleton<ICustomMetrics, CustomMetrics>();
+builder.Services.AddHttpClient(GatewayReadinessCheck.ClientName, client => client.Timeout = TimeSpan.FromSeconds(2));
+builder.Services.AddHealthChecks().AddCheck<GatewayReadinessCheck>("upstreams",
+    tags: new[] { HealthEndpoints.ReadinessTag }, timeout: TimeSpan.FromSeconds(3));
 
 builder.Services.AddOpenTelemetry()
     .WithMetrics(metricsBuilder => 
@@ -85,17 +89,21 @@ if (app.Environment.IsDevelopment())
 
 app.UseMetricsMiddleware();
 
-if (rateLimitMode.Equals("IP", StringComparison.OrdinalIgnoreCase))
+app.UseWhen(context => !HealthEndpoints.IsHealthProbe(context.Request.Path), routes =>
 {
-    app.UseIpRateLimiting();
-}
-else if (rateLimitMode.Equals("User", StringComparison.OrdinalIgnoreCase))
-{
-    app.UseUserRateLimit();
-}
+    if (rateLimitMode.Equals("IP", StringComparison.OrdinalIgnoreCase))
+    {
+        routes.UseIpRateLimiting();
+    }
+    else if (rateLimitMode.Equals("User", StringComparison.OrdinalIgnoreCase))
+    {
+        routes.UseUserRateLimit();
+    }
+});
 
 app.UseAuthorization();
 
+app.MapPharmaGoHealth();
 app.MapReverseProxy();
 app.MapPrometheusScrapingEndpoint();
 

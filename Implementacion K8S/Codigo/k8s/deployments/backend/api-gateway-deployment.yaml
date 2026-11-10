@@ -25,7 +25,8 @@ spec:
         image: pharmago-api-gateway:k8s-local
         imagePullPolicy: Never
         ports:
-        - containerPort: 80
+        - name: http
+          containerPort: 80
         env:
         - name: POD_NAME
           valueFrom:
@@ -58,21 +59,25 @@ spec:
             memory: "384Mi"
             cpu: "500m"
         startupProbe:
-          tcpSocket:
-            port: 80
-          initialDelaySeconds: 15
-          periodSeconds: 10
-          failureThreshold: 15
+          httpGet:
+            path: /health/live
+            port: http
+          periodSeconds: 2
+          timeoutSeconds: 2
+          failureThreshold: 60
         readinessProbe:
-          tcpSocket:
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 10
-          timeoutSeconds: 5
+          httpGet:
+            path: /health/ready
+            port: http
+          periodSeconds: 5
+          timeoutSeconds: 4
+          failureThreshold: 1
         livenessProbe:
-          tcpSocket:
-            port: 80
-          initialDelaySeconds: 60
-          periodSeconds: 30
-          timeoutSeconds: 5
+          httpGet:
+            path: /health/live
+            port: http
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
+          terminationGracePeriodSeconds: 5
 
