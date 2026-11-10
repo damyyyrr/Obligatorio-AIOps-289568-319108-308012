@@ -45,7 +45,7 @@ En el entorno académico, A, B y C deben ser máquinas físicas distintas confor
 
 Cada pod de Gateway, Users o Pharmacy pide **100m CPU / 128 MiB** y tiene límites de **500m / 384 MiB**. Con una réplica más el surge, cada servicio necesita **200m / 256 MiB** en requests y puede consumir hasta **1000m / 768 MiB**. Con dos réplicas futuras más surge serían **300m / 384 MiB** y **1500m / 1152 MiB**. Dos réplicas en el mismo host no toleran su pérdida. Tener otro nodo elegible por servicio requiere capacidad disponible, imágenes y revisar qué separación exige Q01 para réplicas. No aumentar réplicas de Users ni hacer rollouts con cambios de esquema antes de resolver la migración al arrancar (#5).
 
-Suma por nodo de la topología de tres nodos. Incluye los Deployments asignados y ambos DaemonSets. El pico modela el rollout simultáneo de los tres servicios, sin actualizar UI ni observabilidad a la vez.
+Suma por nodo de la topología de tres nodos en el ensayo de la #3. Incluye los Deployments asignados y los dos DaemonSets de ese ensayo. El pico modela el rollout simultáneo de los tres servicios. Desde la #6, sumar por nodo `50m / 64 MiB` en requests y `200m / 128 MiB` en límites para `kubelet-storage`. [Métricas de Kubernetes](aiops-k8s-metrics.md)
 
 | Nodo | Requests estable (CPU / MiB) | Requests con surge (CPU / MiB) | Límites con surge (CPU* / MiB) | Límite Docker local (CPU / MiB) | Punto de partida académico (CPU / RAM / disco libre) |
 |---|---:|---:|---:|---:|---:|

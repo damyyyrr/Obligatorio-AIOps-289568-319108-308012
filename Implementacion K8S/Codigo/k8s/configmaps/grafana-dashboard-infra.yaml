@@ -5,4 +5,400 @@ metadata:
   namespace: pharmago
 data:
   pharmago-infra.json: |
-    {"title":"PharmaGo - Infra","uid":"pharmago-infra","tags":["pharmago","infra"],"time":{"from":"now-15m","to":"now"},"panels":[{"id":1,"title":"CPU %","type":"timeseries","gridPos":{"x":0,"y":0,"w":12,"h":8},"datasource":{"type":"prometheus","uid":"prometheus"},"targets":[{"expr":"100 - (avg by (instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)","legendFormat":"{{instance}}","refId":"A"}],"fieldConfig":{"defaults":{"unit":"percent","min":0,"max":100}}},{"id":2,"title":"Memoria usada %","type":"timeseries","gridPos":{"x":12,"y":0,"w":12,"h":8},"datasource":{"type":"prometheus","uid":"prometheus"},"targets":[{"expr":"(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100","legendFormat":"{{instance}}","refId":"A"}],"fieldConfig":{"defaults":{"unit":"percent","min":0,"max":100}}},{"id":3,"title":"Disco disponible %","type":"timeseries","gridPos":{"x":0,"y":8,"w":12,"h":8},"datasource":{"type":"prometheus","uid":"prometheus"},"targets":[{"expr":"(node_filesystem_avail_bytes{fstype!~\"tmpfs|overlay\"} / node_filesystem_size_bytes{fstype!~\"tmpfs|overlay\"}) * 100","legendFormat":"{{mountpoint}}","refId":"A"}],"fieldConfig":{"defaults":{"unit":"percent","min":0,"max":100}}},{"id":4,"title":"CPU por pod (pharmago)","type":"timeseries","gridPos":{"x":12,"y":8,"w":12,"h":8},"datasource":{"type":"prometheus","uid":"prometheus"},"targets":[{"expr":"sum by (pod) (rate(container_cpu_usage_seconds_total{namespace=\"pharmago\"}[5m])) * 100","legendFormat":"{{pod}}","refId":"A"}],"fieldConfig":{"defaults":{"unit":"percent","min":0},"overrides":[]},"options":{"legend":{"calcs":["mean","max"],"displayMode":"table","placement":"bottom","showLegend":true}}},{"id":5,"title":"Memoria por pod (pharmago)","type":"timeseries","gridPos":{"x":0,"y":16,"w":12,"h":8},"datasource":{"type":"prometheus","uid":"prometheus"},"targets":[{"expr":"sum by (pod) (container_memory_working_set_bytes{namespace=\"pharmago\"})","legendFormat":"{{pod}}","refId":"A"}],"fieldConfig":{"defaults":{"unit":"bytes","min":0},"overrides":[]},"options":{"legend":{"calcs":["mean","max"],"displayMode":"table","placement":"bottom","showLegend":true}}}],"schemaVersion":38,"version":0}
+    {
+      "uid": "pharmago-infra",
+      "title": "PharmaGo - Infra",
+      "version": 1,
+      "schemaVersion": 38,
+      "refresh": "10s",
+      "time": {
+        "from": "now-15m",
+        "to": "now"
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "timeseries",
+          "title": "CPU por nodo",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "100 * (1 - avg by (node) (rate(node_cpu_seconds_total{job=\"node-exporter\",mode=\"idle\"}[2m])))",
+              "legendFormat": "{{node}}"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "type": "timeseries",
+          "title": "Memoria usada por nodo",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 0,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "100 * (1 - node_memory_MemAvailable_bytes{job=\"node-exporter\"} / node_memory_MemTotal_bytes{job=\"node-exporter\"})",
+              "legendFormat": "{{node}}"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "type": "timeseries",
+          "title": "Espacio disponible por nodo y punto de montaje",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 8,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "node_filesystem_avail_bytes{job=\"node-exporter\",mountpoint=~\"/|/var|/mnt/data\"}",
+              "legendFormat": "{{node}} · {{mountpoint}}"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "type": "timeseries",
+          "title": "Tráfico recibido por interfaz y nodo",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 8,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "Bps"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "rate(node_network_receive_bytes_total{job=\"node-exporter\",device!=\"lo\"}[2m])",
+              "legendFormat": "{{node}} · {{device}}"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "type": "timeseries",
+          "title": "CPU por pod",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 16,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sum by (node, pod) (rate(container_cpu_usage_seconds_total{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",container!=\"\",container!=\"POD\",image!=\"\"}[2m]))",
+              "legendFormat": "{{node}} · {{pod}}"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "type": "timeseries",
+          "title": "Memoria por pod",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 16,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sum by (node, pod) (container_memory_working_set_bytes{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",container!=\"\",container!=\"POD\",image!=\"\"})",
+              "legendFormat": "{{node}} · {{pod}}"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "type": "timeseries",
+          "title": "CPU por contenedor",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 24,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sum by (node, pod, container) (rate(container_cpu_usage_seconds_total{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",container!=\"\",container!=\"POD\",image!=\"\"}[2m]))",
+              "legendFormat": "{{pod}} · {{container}}"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "type": "timeseries",
+          "title": "Memoria por contenedor",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 24,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "container_memory_working_set_bytes{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",container!=\"\",container!=\"POD\",image!=\"\"}",
+              "legendFormat": "{{pod}} · {{container}}"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "type": "timeseries",
+          "title": "Filesystem usado por pod",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 32,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "k8s_pod_filesystem_usage_bytes{job=\"otlp-collector\",namespace=\"pharmago\",pod!=\"\"}",
+              "legendFormat": "{{node}} · {{pod}}"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "type": "timeseries",
+          "title": "Filesystem usado por contenedor",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 32,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "container_filesystem_usage_bytes{job=\"otlp-collector\",namespace=\"pharmago\",container!=\"\"}",
+              "legendFormat": "{{pod}} · {{container}}"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "type": "timeseries",
+          "title": "Escrituras de disco por contenedor",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 40,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "Bps"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sum by (node, pod, container) (rate(container_fs_writes_bytes_total{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",container!=\"\",container!=\"POD\",image!=\"\"}[2m]))",
+              "legendFormat": "{{pod}} · {{container}}"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "type": "timeseries",
+          "title": "Tráfico recibido por pod",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 40,
+            "w": 12,
+            "h": 8
+          },
+          "fieldConfig": {
+            "defaults": {
+              "unit": "Bps"
+            },
+            "overrides": []
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "sum by (node, pod) (rate(container_network_receive_bytes_total{job=\"kubernetes-cadvisor\",namespace=\"pharmago\",pod!=\"\",container=\"\",interface!=\"lo\"}[2m]))",
+              "legendFormat": "{{node}} · {{pod}}"
+            }
+          ]
+        }
+      ]
+    }

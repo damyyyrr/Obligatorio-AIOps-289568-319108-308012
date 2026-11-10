@@ -96,9 +96,16 @@ def resources(tag, topology="separated"):
              "PersistentVolumeClaim": 3, "ConfigMap": 5,
              "ServiceAccount": 6, "ClusterRole": 7, "ClusterRoleBinding": 8, "Service": 9}
     docs.sort(key=lambda d: order.get(d["kind"], 10))
+    configs = {d["metadata"]["name"]: d["data"] for d in docs if d["kind"] == "ConfigMap"}
     for doc in docs:
         if doc["kind"] in ("Deployment", "DaemonSet"):
-            spec = doc["spec"]["template"]["spec"]
+            template = doc["spec"]["template"]
+            spec = template["spec"]
+            if doc["metadata"]["name"] in ("prometheus", "otlp-collector", "grafana", "kubelet-storage"):
+                mounted = {v["configMap"]["name"]: configs[v["configMap"]["name"]]
+                           for v in spec.get("volumes", []) if "configMap" in v}
+                content = json.dumps(mounted, sort_keys=True).encode("utf-8")
+                template["metadata"].setdefault("annotations", {})["pharmago.io/config-sha256"] = hashlib.sha256(content).hexdigest()
             if topology == "single-node" and SERVICE_ROLE in spec.get("nodeSelector", {}):
                 del spec["nodeSelector"][SERVICE_ROLE]
                 spec["nodeSelector"]["node-type"] = "all"

@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
+using OpenTelemetry.Exporter;
 using AspNetCoreRateLimit;
 using PharmaGo.ApiGateway.Middleware;
 using Instrumentation;
@@ -49,7 +50,12 @@ builder.Services.AddOpenTelemetry()
             .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation()
             .AddMeter("PharmaGo.CustomMetrics")
-            .AddPrometheusExporter();
+            .AddPrometheusExporter()
+            .AddOtlpExporter(options =>
+            {
+                options.Endpoint = new Uri("http://otlp-collector:4317");
+                options.Protocol = OtlpExportProtocol.Grpc;
+            });
     });
 
 builder.Services.AddEndpointsApiExplorer();

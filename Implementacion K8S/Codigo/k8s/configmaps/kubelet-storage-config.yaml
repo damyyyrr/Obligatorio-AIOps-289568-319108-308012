@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubelet-storage-config
+  namespace: pharmago
+data:
+  collector.yaml: |
+    receivers:
+      kubeletstats:
+        auth_type: kubeConfig
+        endpoint: "${env:K8S_NODE_NAME}"
+        collection_interval: 15s
+        metric_groups: [pod, container]
+    processors:
+      filter/storage:
+        metrics:
+          include:
+            match_type: strict
+            metric_names: [k8s.pod.filesystem.usage, container.filesystem.usage]
+      resource/node:
+        attributes:
+          - key: k8s.node.name
+            value: "${env:K8S_NODE_NAME}"
+            action: upsert
+    exporters:
+      otlp:
+        endpoint: otlp-collector:4317
+        tls:
+          insecure: true
+    service:
+      pipelines:
+        metrics:
+          receivers: [kubeletstats]
+          processors: [filter/storage, resource/node]
+          exporters: [otlp]
+  kubeconfig: |
+    apiVersion: v1
+    kind: Config
+    clusters:
+      - name: cluster
+        cluster:
+          server: https://kubernetes.default.svc
+          certificate-authority: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    users:
+      - name: collector
+        user:
+          tokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    contexts:
+      - name: collector
+        context:
+          cluster: cluster
+          user: collector
+    current-context: collector
