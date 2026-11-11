@@ -11,7 +11,16 @@ data:
           grpc:
             endpoint: "0.0.0.0:4317"
 
+    processors:
+      batch:
+        timeout: 5s
+
     exporters:
+      # Trazas a Jaeger (issue #11).
+      otlp/jaeger:
+        endpoint: "jaeger:4317"
+        tls:
+          insecure: true
       prometheus:
         endpoint: "0.0.0.0:8889"
         metric_expiration: 3m
@@ -23,4 +32,8 @@ data:
         metrics:
           receivers: [otlp]
           exporters: [prometheus]
+        traces:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [otlp/jaeger]
 

@@ -17,6 +17,13 @@ data:
         jsonData:
           timeInterval: 5s
           queryTimeout: 60s
+      # Trazas (issue #11): buscar por trace ID desde Explore.
+      - name: Jaeger
+        type: jaeger
+        uid: jaeger
+        access: proxy
+        url: http://jaeger:16686
+        editable: true
   dashboards.yml: |
     apiVersion: 1
     providers:

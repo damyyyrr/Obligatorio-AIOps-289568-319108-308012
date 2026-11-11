@@ -1,0 +1,55 @@
+# Backend de trazas consultable por trace ID (issue #11). Recibe OTLP del Collector.
+# Almacenamiento en memoria acotado: las trazas se pierden al reiniciar el pod.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: pharmago
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+  template:
+    metadata:
+      labels:
+        app: jaeger
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-type
+                operator: In
+                values: [ops, all]
+      containers:
+      - name: jaeger
+        image: jaegertracing/all-in-one:1.62.0
+        args: ["--memory.max-traces=20000"]
+        env:
+        - name: COLLECTOR_OTLP_ENABLED
+          value: "true"
+        ports:
+        - containerPort: 4317
+          name: otlp-grpc
+        - containerPort: 16686
+          name: ui
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 14269
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 14269
+          periodSeconds: 10
+          failureThreshold: 3
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: 50m
+          limits:
+            memory: 512Mi
+            cpu: 300m

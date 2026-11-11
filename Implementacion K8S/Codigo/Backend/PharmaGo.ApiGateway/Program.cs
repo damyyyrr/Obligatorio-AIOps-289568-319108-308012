@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using OpenTelemetry.Metrics;
+using OpenTelemetry.Trace;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Exporter;
 using AspNetCoreRateLimit;
@@ -88,7 +89,29 @@ builder.Services.AddHttpClient(GatewayReadinessCheck.ClientName, client => clien
 builder.Services.AddHealthChecks().AddCheck<GatewayReadinessCheck>("upstreams",
     tags: new[] { HealthEndpoints.ReadinessTag }, timeout: TimeSpan.FromSeconds(3));
 
+var otlpEndpoint = new Uri(builder.Configuration["Otlp:Endpoint"] ?? "http://otlp-collector:4317");
+
 builder.Services.AddOpenTelemetry()
+    // Trazas (issue #11): span de entrada y span del reenvío YARP, que propaga traceparent.
+    .WithTracing(tracing => tracing
+        .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("PharmaGo.ApiGateway"))
+        .AddAspNetCoreInstrumentation(options =>
+        {
+            options.Filter = context => !HealthEndpoints.IsInfrastructurePath(context.Request.Path);
+            options.RecordException = true;
+        })
+        .AddHttpClientInstrumentation(options =>
+        {
+            // Las consultas de readiness a los upstreams no forman parte de ninguna operación.
+            options.FilterHttpRequestMessage = request =>
+                request.RequestUri is null || request.RequestUri.AbsolutePath != HealthEndpoints.ReadyPath;
+            options.RecordException = true;
+        })
+        .AddOtlpExporter(options =>
+        {
+            options.Endpoint = otlpEndpoint;
+            options.Protocol = OtlpExportProtocol.Grpc;
+        }))
     .WithMetrics(metricsBuilder => 
     {
         metricsBuilder
@@ -99,7 +122,7 @@ builder.Services.AddOpenTelemetry()
             .AddPrometheusExporter()
             .AddOtlpExporter(options =>
             {
-                options.Endpoint = new Uri("http://otlp-collector:4317");
+                options.Endpoint = otlpEndpoint;
                 options.Protocol = OtlpExportProtocol.Grpc;
             });
     });

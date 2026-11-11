@@ -122,6 +122,14 @@ namespace Instrumentation
                 ["correlation_id"] = correlationId
             };
 
+            // Correlación log ↔ traza (issue #11): mismo trace_id que muestra el backend de trazas.
+            var activity = System.Diagnostics.Activity.Current;
+            if (activity is not null && activity.IdFormat == System.Diagnostics.ActivityIdFormat.W3C)
+            {
+                scopeData["trace_id"] = activity.TraceId.ToHexString();
+                scopeData["span_id"] = activity.SpanId.ToHexString();
+            }
+
             if (metadata != null)
             {
                 foreach (var kvp in metadata)
