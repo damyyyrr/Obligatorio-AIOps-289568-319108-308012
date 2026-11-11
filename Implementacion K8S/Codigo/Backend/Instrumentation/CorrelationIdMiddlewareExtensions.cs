@@ -22,7 +22,11 @@ public static class CorrelationIdMiddlewareExtensions
                 : header.Trim();
             context.Items[HttpContextItemKey] = correlationId;
             context.Response.Headers["X-Correlation-ID"] = correlationId;
-            await next();
+
+            // Mismo campo que en Users/Pharmacy: permite reconstruir la request en Kibana (issue #12).
+            var log = context.RequestServices.GetRequiredService<ILoggerFactory>().CreateLogger("Request");
+            using (log.BeginScope(new Dictionary<string, object> { ["correlation_id"] = correlationId }))
+                await next();
         });
     }
 
