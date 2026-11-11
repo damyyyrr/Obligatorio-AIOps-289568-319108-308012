@@ -5,16 +5,31 @@ using Instrumentation;
 
 namespace PharmaGo.ApiGateway;
 
+/// <summary>
+/// Recuerda si este pod llegó alguna vez a un upstream listo. Singleton: el health check
+/// se crea en cada evaluación.
+/// </summary>
+public sealed class GatewayReadinessState
+{
+    private int _reachedUpstream;
+
+    public bool ReachedUpstream => Volatile.Read(ref _reachedUpstream) == 1;
+
+    public void MarkReachedUpstream() => Interlocked.Exchange(ref _reachedUpstream, 1);
+}
+
 public sealed class GatewayReadinessCheck : IHealthCheck
 {
     public const string ClientName = "readiness";
     private readonly IProxyConfigProvider _proxy;
     private readonly IHttpClientFactory _clients;
+    private readonly GatewayReadinessState _state;
 
-    public GatewayReadinessCheck(IProxyConfigProvider proxy, IHttpClientFactory clients)
+    public GatewayReadinessCheck(IProxyConfigProvider proxy, IHttpClientFactory clients, GatewayReadinessState state)
     {
         _proxy = proxy;
         _clients = clients;
+        _state = state;
     }
 
     public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
@@ -26,13 +41,28 @@ public sealed class GatewayReadinessCheck : IHealthCheck
         var available = await Task.WhenAll(clusters.Select(cluster => IsClusterReady(
             cluster, client, cancellationToken)));
 
-        return available.Count(ready => ready) switch
+        var readyClusters = available.Count(ready => ready);
+        if (readyClusters > 0)
         {
-            2 => HealthCheckResult.Healthy(),
-            1 => HealthCheckResult.Degraded("One upstream is ready."),
-            _ => HealthCheckResult.Unhealthy("No upstream is ready."),
-        };
+            _state.MarkReachedUpstream();
+        }
+
+        return Decide(readyClusters, _state.ReachedUpstream);
     }
+
+    /// <summary>
+    /// Sin upstreams listos el Gateway solo queda NotReady hasta alcanzarlos por primera vez
+    /// (arranque y rollout). Después sigue Ready (Degraded) aunque caigan: hay un único
+    /// Gateway y sacarlo del Service no deriva el tráfico, solo deja a los clientes
+    /// reintentando la conexión. Ready, responde 502/503/504 acotados (issue #10).
+    /// </summary>
+    public static HealthCheckResult Decide(int readyClusters, bool reachedUpstreamBefore) => readyClusters switch
+    {
+        >= 2 => HealthCheckResult.Healthy(),
+        1 => HealthCheckResult.Degraded("One upstream is ready."),
+        _ when reachedUpstreamBefore => HealthCheckResult.Degraded("No upstream is ready; failing requests fast."),
+        _ => HealthCheckResult.Unhealthy("No upstream is ready."),
+    };
 
     private static async Task<bool> IsClusterReady(ClusterConfig cluster, HttpClient client, CancellationToken token)
     {

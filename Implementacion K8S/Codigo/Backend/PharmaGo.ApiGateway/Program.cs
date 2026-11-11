@@ -59,8 +59,14 @@ else if (rateLimitMode.Equals("User", StringComparison.OrdinalIgnoreCase))
     builder.Services.AddSingleton<FixedWindowRateLimiter>();
 }
 
+// Conexión a upstreams acotada (issue #10): un Service sin endpoints puede descartar el SYN
+// en lugar de rechazarlo; sin este límite YARP esperaría el ActivityTimeout completo (10 s).
+var upstreamConnectTimeout = TimeSpan.FromSeconds(
+    builder.Configuration.GetValue("Gateway:UpstreamConnectTimeoutSeconds", 2));
+
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+    .ConfigureHttpClient((_, handler) => handler.ConnectTimeout = upstreamConnectTimeout)
     .AddTransforms(transformBuilder =>
     {
         transformBuilder.AddRequestTransform(context =>
@@ -77,6 +83,7 @@ builder.Services.AddReverseProxy()
     });
 
 builder.Services.AddSingleton<ICustomMetrics, CustomMetrics>();
+builder.Services.AddSingleton<GatewayReadinessState>();
 builder.Services.AddHttpClient(GatewayReadinessCheck.ClientName, client => client.Timeout = TimeSpan.FromSeconds(2));
 builder.Services.AddHealthChecks().AddCheck<GatewayReadinessCheck>("upstreams",
     tags: new[] { HealthEndpoints.ReadinessTag }, timeout: TimeSpan.FromSeconds(3));
