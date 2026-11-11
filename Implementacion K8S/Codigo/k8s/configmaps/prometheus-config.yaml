@@ -56,6 +56,16 @@ data:
             regex: '.+'
             action: drop
 
+      # Estado de Pods (Ready/Running) para alertas (issue #13). honor_labels
+      # conserva namespace/pod del Pod observado y no los del exportador.
+      - job_name: 'kube-state-metrics'
+        honor_labels: true
+        kubernetes_sd_configs: *pharmago-pods
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_label_app, __meta_kubernetes_pod_container_port_number, __meta_kubernetes_pod_phase]
+            regex: 'kube-state-metrics;8080;Running'
+            action: keep
+
       - job_name: 'node-exporter'
         kubernetes_sd_configs: *pharmago-pods
         relabel_configs:

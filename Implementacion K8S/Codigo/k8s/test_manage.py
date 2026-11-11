@@ -265,5 +265,43 @@ class WorkflowTests(unittest.TestCase):
         self.assertFalse(any(d and d["metadata"]["name"] == "pharmago-users-service" and d["kind"] == "Deployment" for _, d in cluster.calls))
 
 
+class AlertingTests(unittest.TestCase):
+    """Issue #13: cinco reglas Grafana persistentes con no-data, errores y duración explícitos."""
+
+    def setUp(self):
+        self.docs = manage.resources("test")
+        configs = {d["metadata"]["name"]: d["data"] for d in self.docs if d["kind"] == "ConfigMap"}
+        self.rules = manage.yaml.safe_load(configs["grafana-alerting"]["alert-rules.yaml"])["groups"][0]["rules"]
+        self.datasources = {d["uid"] for d in manage.yaml.safe_load(configs["grafana-provisioning"]["datasources.yml"])["datasources"]}
+
+    def test_five_rules_with_explicit_states(self):
+        self.assertGreaterEqual(len(self.rules), 5)
+        self.assertEqual(len(self.rules), len({r["uid"] for r in self.rules}))
+        for rule in self.rules:
+            self.assertIn(rule["noDataState"], ("OK", "NoData", "Alerting"))
+            self.assertEqual("Error", rule["execErrState"])
+            self.assertRegex(rule["for"], r"^\d+[sm]$")
+            refs = {q["refId"]: q for q in rule["data"]}
+            self.assertIn(rule["condition"], refs)
+            self.assertIn(refs["A"]["datasourceUid"], self.datasources)
+            self.assertTrue(refs["A"]["model"]["instant"])
+            self.assertEqual("threshold", refs[rule["condition"]]["model"]["type"])
+
+    def test_ready_rule_uses_kubernetes_state_not_scrape_up(self):
+        ready = next(r for r in self.rules if r["uid"] == "pharmago-pod-not-ready")
+        expr = ready["data"][0]["model"]["expr"]
+        self.assertIn("kube_pod_status_ready", expr)
+        self.assertNotIn("up{", expr)
+        self.assertEqual("Alerting", ready["noDataState"])
+        names = {(d["kind"], d["metadata"]["name"]) for d in self.docs}
+        self.assertIn(("Deployment", "kube-state-metrics"), names)
+        self.assertIn(("Role", "kube-state-metrics"), names)
+
+    def test_grafana_mounts_alert_provisioning(self):
+        grafana = next(d for d in self.docs if d["kind"] == "Deployment" and d["metadata"]["name"] == "grafana")
+        mounts = [m["mountPath"] for m in grafana["spec"]["template"]["spec"]["containers"][0]["volumeMounts"]]
+        self.assertIn("/etc/grafana/provisioning/alerting/alert-rules.yaml", mounts)
+
+
 if __name__ == "__main__":
     unittest.main()

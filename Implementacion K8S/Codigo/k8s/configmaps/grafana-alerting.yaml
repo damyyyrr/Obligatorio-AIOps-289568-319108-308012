@@ -1,0 +1,232 @@
+# Cinco reglas de Grafana Unified Alerting provisionadas por archivo (issue #13).
+# Errores 5xx y p95: sin tráfico = OK. CPU/memoria: sin datos = NoData (scrape roto).
+# Ready: sin datos = Alerting. Errores de consulta = Error en todas.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-alerting
+  namespace: pharmago
+data:
+  alert-rules.yaml: |
+    apiVersion: 1
+    groups:
+    - orgId: 1
+      name: pharmago-aiops
+      folder: PharmaGo
+      interval: 10s
+      rules:
+      - uid: pharmago-http-5xx
+        title: 'PharmaGo: tasa de errores HTTP 5xx'
+        condition: C
+        data:
+        - refId: A
+          relativeTimeRange:
+            from: 600
+            to: 0
+          datasourceUid: prometheus
+          model:
+            refId: A
+            expr: 100 * sum by (service_name) (rate(pharmago_http_requests_total{job="otlp-collector", status_code=~"5..", endpoint!~"/health.*"}[1m])) / sum by (service_name) (rate(pharmago_http_requests_total{job="otlp-collector", endpoint!~"/health.*"}[1m])) and on (service_name) (sum by (service_name) (rate(pharmago_http_requests_total{job="otlp-collector", endpoint!~"/health.*"}[1m])) > 0.1)
+            instant: true
+            range: false
+            intervalMs: 1000
+            maxDataPoints: 43200
+        - refId: C
+          relativeTimeRange:
+            from: 0
+            to: 0
+          datasourceUid: __expr__
+          model:
+            refId: C
+            type: threshold
+            expression: A
+            datasource:
+              type: __expr__
+              uid: __expr__
+            conditions:
+            - evaluator:
+                type: gt
+                params:
+                - 5
+        noDataState: OK
+        execErrState: Error
+        for: 30s
+        annotations:
+          summary: '{{ $labels.service_name }} responde 5xx en {{ $values.A.Value | printf "%.1f" }}% de las solicitudes'
+          description: 'Origen: pharmago_http_requests_total (OTLP). Ventana 1m, sin /health, con tráfico mínimo de 0,1 req/s. Sin tráfico = OK.'
+        labels:
+          severity: critical
+          team: pharmago
+        isPaused: false
+      - uid: pharmago-http-p95
+        title: 'PharmaGo: latencia p95 HTTP alta'
+        condition: C
+        data:
+        - refId: A
+          relativeTimeRange:
+            from: 600
+            to: 0
+          datasourceUid: prometheus
+          model:
+            refId: A
+            expr: histogram_quantile(0.95, sum by (service_name, le) (rate(pharmago_http_request_duration_milliseconds_bucket{job="otlp-collector", endpoint!~"/health.*"}[1m]))) and on (service_name) (sum by (service_name) (rate(pharmago_http_requests_total{job="otlp-collector", endpoint!~"/health.*"}[1m])) > 0.1)
+            instant: true
+            range: false
+            intervalMs: 1000
+            maxDataPoints: 43200
+        - refId: C
+          relativeTimeRange:
+            from: 0
+            to: 0
+          datasourceUid: __expr__
+          model:
+            refId: C
+            type: threshold
+            expression: A
+            datasource:
+              type: __expr__
+              uid: __expr__
+            conditions:
+            - evaluator:
+                type: gt
+                params:
+                - 1000
+        noDataState: OK
+        execErrState: Error
+        for: 30s
+        annotations:
+          summary: p95 de {{ $labels.service_name }} en {{ $values.A.Value | printf "%.0f" }} ms
+          description: 'Origen: histograma pharmago_http_request_duration_milliseconds (OTLP). Umbral 1000 ms en ventana 1m, sin /health.'
+        labels:
+          severity: warning
+          team: pharmago
+        isPaused: false
+      - uid: pharmago-pod-cpu
+        title: 'PharmaGo: CPU de Pod cerca del límite'
+        condition: C
+        data:
+        - refId: A
+          relativeTimeRange:
+            from: 600
+            to: 0
+          datasourceUid: prometheus
+          model:
+            refId: A
+            expr: 100 * sum by (pod) (rate(container_cpu_usage_seconds_total{job="kubernetes-cadvisor", namespace="pharmago", pod!="", container=""}[1m])) / sum by (pod) ((container_spec_cpu_quota{job="kubernetes-cadvisor", namespace="pharmago", pod!="", container=""} > 0) / container_spec_cpu_period{job="kubernetes-cadvisor", namespace="pharmago", pod!="", container=""})
+            instant: true
+            range: false
+            intervalMs: 1000
+            maxDataPoints: 43200
+        - refId: C
+          relativeTimeRange:
+            from: 0
+            to: 0
+          datasourceUid: __expr__
+          model:
+            refId: C
+            type: threshold
+            expression: A
+            datasource:
+              type: __expr__
+              uid: __expr__
+            conditions:
+            - evaluator:
+                type: gt
+                params:
+                - 80
+        noDataState: NoData
+        execErrState: Error
+        for: 1m
+        annotations:
+          summary: '{{ $labels.pod }} usa {{ $values.A.Value | printf "%.0f" }}% de su límite de CPU'
+          description: 'Origen: cAdvisor (kubelet). cgroup del Pod (container vacío, válido en Docker y containerd): uso de CPU 1m frente a la suma de resources.limits.cpu. NoData indica que falló el scrape de cAdvisor.'
+        labels:
+          severity: warning
+          team: pharmago
+        isPaused: false
+      - uid: pharmago-pod-memory
+        title: 'PharmaGo: memoria de Pod cerca del límite'
+        condition: C
+        data:
+        - refId: A
+          relativeTimeRange:
+            from: 600
+            to: 0
+          datasourceUid: prometheus
+          model:
+            refId: A
+            expr: 100 * max by (pod) (container_memory_working_set_bytes{job="kubernetes-cadvisor", namespace="pharmago", pod!="", container=""}) / max by (pod) (container_spec_memory_limit_bytes{job="kubernetes-cadvisor", namespace="pharmago", pod!="", container=""} > 0)
+            instant: true
+            range: false
+            intervalMs: 1000
+            maxDataPoints: 43200
+        - refId: C
+          relativeTimeRange:
+            from: 0
+            to: 0
+          datasourceUid: __expr__
+          model:
+            refId: C
+            type: threshold
+            expression: A
+            datasource:
+              type: __expr__
+              uid: __expr__
+            conditions:
+            - evaluator:
+                type: gt
+                params:
+                - 85
+        noDataState: NoData
+        execErrState: Error
+        for: 1m
+        annotations:
+          summary: '{{ $labels.pod }} usa {{ $values.A.Value | printf "%.0f" }}% de su límite de memoria'
+          description: 'Origen: cAdvisor (kubelet). cgroup del Pod: working set frente a la suma de resources.limits.memory; al 100% el kernel mata el proceso (OOMKilled).'
+        labels:
+          severity: warning
+          team: pharmago
+        isPaused: false
+      - uid: pharmago-pod-not-ready
+        title: 'PharmaGo: Pod Running sin condición Ready'
+        condition: C
+        data:
+        - refId: A
+          relativeTimeRange:
+            from: 600
+            to: 0
+          datasourceUid: prometheus
+          model:
+            refId: A
+            expr: max by (pod) (kube_pod_status_ready{job="kube-state-metrics", namespace="pharmago", condition="false"}) * on (pod) max by (pod) (kube_pod_status_phase{job="kube-state-metrics", namespace="pharmago", phase="Running"})
+            instant: true
+            range: false
+            intervalMs: 1000
+            maxDataPoints: 43200
+        - refId: C
+          relativeTimeRange:
+            from: 0
+            to: 0
+          datasourceUid: __expr__
+          model:
+            refId: C
+            type: threshold
+            expression: A
+            datasource:
+              type: __expr__
+              uid: __expr__
+            conditions:
+            - evaluator:
+                type: gt
+                params:
+                - 0
+        noDataState: Alerting
+        execErrState: Error
+        for: 45s
+        annotations:
+          summary: '{{ $labels.pod }} está Running pero no Ready'
+          description: 'Origen: kube-state-metrics (condición Ready del Pod, no up de scrape). 45s tolera arranques normales. Sin datos = Alerting: no se puede confirmar Ready.'
+        labels:
+          severity: critical
+          team: pharmago
+        isPaused: false
