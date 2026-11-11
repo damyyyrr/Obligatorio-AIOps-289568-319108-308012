@@ -91,6 +91,9 @@ internal static class DatabaseMigration
             throw new MigrationRejected("This image cannot migrate the database history. Use the matching migration image.");
         }
 
+        // El DbContext de la aplicación limita cada comando a 8 s (SqlResilience); una migración puede tardar más.
+        database.Database.SetCommandTimeout(TimeSpan.FromMinutes(10));
+
         var pending = known.Length - applied.Length;
         Console.WriteLine($"Pending EF migrations: {pending}.");
         if (pending > 0)

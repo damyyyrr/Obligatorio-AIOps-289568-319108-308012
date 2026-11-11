@@ -32,7 +32,8 @@ namespace PharmaGo.PharmacyService.Factory
             {
                 var serviceUrl = configuration["ServiceUrls:UsersService"] ?? "http://127.0.0.1:5001";
                 client.BaseAddress = new Uri(serviceUrl);
-                client.Timeout = TimeSpan.FromSeconds(30);
+                // Cliente sin uso actual (issue #10). Si se usa: solo lecturas GET, sin reintentos.
+                client.Timeout = TimeSpan.FromSeconds(5);
             });
         }
 
@@ -51,8 +52,12 @@ namespace PharmaGo.PharmacyService.Factory
             serviceCollection.AddDbContext<DbContext, PharmacyGoDbContext>(options =>
             {
                 options.UseSqlServer(
-                    configuration.GetConnectionString("DefaultConnection"),
-                    sqlOptions => { sqlOptions.MigrationsAssembly("PharmaGo.DataAccess"); });
+                    PharmaGo.DataAccess.SqlResilience.ConnectionString(configuration),
+                    sqlOptions =>
+                    {
+                        sqlOptions.MigrationsAssembly("PharmaGo.DataAccess");
+                        PharmaGo.DataAccess.SqlResilience.ApplyCommandTimeout(sqlOptions, configuration);
+                    });
                 options.ConfigureWarnings(w =>
                 {
                     w.Ignore(RelationalEventId.CommandExecuted);

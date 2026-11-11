@@ -1,0 +1,763 @@
+[
+  {
+    "version": "before",
+    "scenario": "sql-freeze",
+    "failure_window_s": 25.6,
+    "gateway_proxied": 373,
+    "client_requests": 401,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=1 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.802,
+          "max_s": 25.066
+        },
+        "during": {
+          "sent": 51,
+          "ok_2xx": 18,
+          "status": {
+            "200": 18,
+            "500": 9,
+            "error": 24
+          },
+          "p50_s": 7.187,
+          "p95_s": 32.029,
+          "max_s": 32.388
+        },
+        "after": {
+          "sent": 109,
+          "ok_2xx": 109,
+          "status": {
+            "200": 109
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.009,
+          "max_s": 1.028
+        },
+        "first_2xx_after_restore_s": 0.3,
+        "stable_2xx_after_restore_s": 0.3
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.832,
+          "max_s": 25.316
+        },
+        "during": {
+          "sent": 51,
+          "ok_2xx": 38,
+          "status": {
+            "200": 38,
+            "500": 7,
+            "502": 3,
+            "error": 3
+          },
+          "p50_s": 15.258,
+          "p95_s": 32.278,
+          "max_s": 32.497
+        },
+        "after": {
+          "sent": 109,
+          "ok_2xx": 108,
+          "status": {
+            "200": 108,
+            "error": 1
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.005,
+          "max_s": 21.048
+        },
+        "first_2xx_after_restore_s": 0.1,
+        "stable_2xx_after_restore_s": 1.1
+      }
+    }
+  },
+  {
+    "version": "after",
+    "scenario": "sql-freeze",
+    "failure_window_s": 25.8,
+    "gateway_proxied": 375,
+    "client_requests": 401,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=0 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.005,
+          "p95_s": 0.014,
+          "max_s": 0.605
+        },
+        "during": {
+          "sent": 51,
+          "ok_2xx": 33,
+          "status": {
+            "200": 33,
+            "500": 10,
+            "504": 3,
+            "error": 5
+          },
+          "p50_s": 9.621,
+          "p95_s": 32.177,
+          "max_s": 32.398
+        },
+        "after": {
+          "sent": 109,
+          "ok_2xx": 109,
+          "status": {
+            "200": 109
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.446,
+          "max_s": 3.157
+        },
+        "first_2xx_after_restore_s": 0.2,
+        "stable_2xx_after_restore_s": 0.2
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.008,
+          "max_s": 0.377
+        },
+        "during": {
+          "sent": 52,
+          "ok_2xx": 19,
+          "status": {
+            "200": 19,
+            "500": 7,
+            "502": 5,
+            "504": 1,
+            "error": 20
+          },
+          "p50_s": 3.089,
+          "p95_s": 15.83,
+          "max_s": 32.287
+        },
+        "after": {
+          "sent": 108,
+          "ok_2xx": 107,
+          "status": {
+            "200": 107,
+            "error": 1
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.006,
+          "max_s": 1.048
+        },
+        "first_2xx_after_restore_s": 0.9,
+        "stable_2xx_after_restore_s": 0.9
+      }
+    }
+  },
+  {
+    "version": "after2",
+    "scenario": "sql-freeze",
+    "failure_window_s": 25.7,
+    "gateway_proxied": 401,
+    "client_requests": 401,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=0 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.01,
+          "max_s": 0.609
+        },
+        "during": {
+          "sent": 51,
+          "ok_2xx": 11,
+          "status": {
+            "200": 11,
+            "500": 30,
+            "502": 6,
+            "504": 4
+          },
+          "p50_s": 5.511,
+          "p95_s": 10.002,
+          "max_s": 10.009
+        },
+        "after": {
+          "sent": 109,
+          "ok_2xx": 109,
+          "status": {
+            "200": 109
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.005,
+          "max_s": 0.528
+        },
+        "first_2xx_after_restore_s": 0.2,
+        "stable_2xx_after_restore_s": 0.2
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.03,
+          "max_s": 0.366
+        },
+        "during": {
+          "sent": 52,
+          "ok_2xx": 11,
+          "status": {
+            "200": 11,
+            "500": 29,
+            "502": 11,
+            "504": 1
+          },
+          "p50_s": 5.004,
+          "p95_s": 7.015,
+          "max_s": 9.662
+        },
+        "after": {
+          "sent": 108,
+          "ok_2xx": 108,
+          "status": {
+            "200": 108
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.005,
+          "max_s": 0.278
+        },
+        "first_2xx_after_restore_s": 0.4,
+        "stable_2xx_after_restore_s": 0.4
+      }
+    }
+  },
+  {
+    "version": "before",
+    "scenario": "pharmacy-freeze",
+    "failure_window_s": 18.7,
+    "gateway_proxied": 401,
+    "client_requests": 401,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=1 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.006,
+          "max_s": 0.006
+        },
+        "during": {
+          "sent": 37,
+          "ok_2xx": 20,
+          "status": {
+            "200": 20,
+            "502": 17
+          },
+          "p50_s": 2.503,
+          "p95_s": 17.032,
+          "max_s": 18.031
+        },
+        "after": {
+          "sent": 123,
+          "ok_2xx": 123,
+          "status": {
+            "200": 123
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.007,
+          "max_s": 0.519
+        },
+        "first_2xx_after_restore_s": 0.3,
+        "stable_2xx_after_restore_s": 0.3
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.006,
+          "max_s": 0.009
+        },
+        "during": {
+          "sent": 37,
+          "ok_2xx": 37,
+          "status": {
+            "200": 37
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.006,
+          "max_s": 0.261
+        },
+        "after": {
+          "sent": 123,
+          "ok_2xx": 123,
+          "status": {
+            "200": 123
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.005,
+          "max_s": 0.007
+        },
+        "first_2xx_after_restore_s": 0.0,
+        "stable_2xx_after_restore_s": 0.0
+      }
+    }
+  },
+  {
+    "version": "after",
+    "scenario": "pharmacy-freeze",
+    "failure_window_s": 18.8,
+    "gateway_proxied": 401,
+    "client_requests": 401,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=0 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.005,
+          "max_s": 0.01
+        },
+        "during": {
+          "sent": 37,
+          "ok_2xx": 9,
+          "status": {
+            "200": 9,
+            "502": 18,
+            "504": 10
+          },
+          "p50_s": 3.081,
+          "p95_s": 10.003,
+          "max_s": 10.401
+        },
+        "after": {
+          "sent": 123,
+          "ok_2xx": 123,
+          "status": {
+            "200": 123
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.526,
+          "max_s": 2.077
+        },
+        "first_2xx_after_restore_s": 0.1,
+        "stable_2xx_after_restore_s": 0.1
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.007,
+          "max_s": 0.01
+        },
+        "during": {
+          "sent": 38,
+          "ok_2xx": 38,
+          "status": {
+            "200": 38
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.152,
+          "max_s": 0.649
+        },
+        "after": {
+          "sent": 122,
+          "ok_2xx": 122,
+          "status": {
+            "200": 122
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.005,
+          "max_s": 0.539
+        },
+        "first_2xx_after_restore_s": 0.4,
+        "stable_2xx_after_restore_s": 0.4
+      }
+    }
+  },
+  {
+    "version": "after2",
+    "scenario": "pharmacy-freeze",
+    "failure_window_s": 18.7,
+    "gateway_proxied": 401,
+    "client_requests": 401,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=0 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.005,
+          "max_s": 0.008
+        },
+        "during": {
+          "sent": 37,
+          "ok_2xx": 3,
+          "status": {
+            "200": 3,
+            "502": 14,
+            "504": 20
+          },
+          "p50_s": 1.501,
+          "p95_s": 10.016,
+          "max_s": 10.018
+        },
+        "after": {
+          "sent": 123,
+          "ok_2xx": 123,
+          "status": {
+            "200": 123
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.006,
+          "max_s": 0.889
+        },
+        "first_2xx_after_restore_s": 0.3,
+        "stable_2xx_after_restore_s": 0.3
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.004,
+          "max_s": 0.004
+        },
+        "during": {
+          "sent": 37,
+          "ok_2xx": 37,
+          "status": {
+            "200": 37
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.01,
+          "max_s": 0.51
+        },
+        "after": {
+          "sent": 123,
+          "ok_2xx": 123,
+          "status": {
+            "200": 123
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.004,
+          "max_s": 0.007
+        },
+        "first_2xx_after_restore_s": 0.0,
+        "stable_2xx_after_restore_s": 0.0
+      }
+    }
+  },
+  {
+    "version": "before",
+    "scenario": "sql-down",
+    "failure_window_s": 40.2,
+    "gateway_proxied": 516,
+    "client_requests": 601,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=1 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.513,
+          "max_s": 1.01
+        },
+        "during": {
+          "sent": 80,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40,
+            "500": 1,
+            "error": 36,
+            "timeout": 3
+          },
+          "p50_s": 64.528,
+          "p95_s": 65.13,
+          "max_s": 120.095
+        },
+        "after": {
+          "sent": 180,
+          "ok_2xx": 154,
+          "status": {
+            "200": 154,
+            "error": 26
+          },
+          "p50_s": 0.003,
+          "p95_s": 32.168,
+          "max_s": 32.491
+        },
+        "first_2xx_after_restore_s": 0.7,
+        "stable_2xx_after_restore_s": 30.7
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.003,
+          "p95_s": 0.004,
+          "max_s": 0.004
+        },
+        "during": {
+          "sent": 81,
+          "ok_2xx": 63,
+          "status": {
+            "200": 63,
+            "500": 1,
+            "error": 11,
+            "timeout": 6
+          },
+          "p50_s": 64.795,
+          "p95_s": 120.062,
+          "max_s": 120.095
+        },
+        "after": {
+          "sent": 179,
+          "ok_2xx": 176,
+          "status": {
+            "200": 176,
+            "error": 3
+          },
+          "p50_s": 0.003,
+          "p95_s": 32.327,
+          "max_s": 32.51
+        },
+        "first_2xx_after_restore_s": 0.4,
+        "stable_2xx_after_restore_s": 19.4
+      }
+    }
+  },
+  {
+    "version": "after",
+    "scenario": "sql-down",
+    "failure_window_s": 40.3,
+    "gateway_proxied": 532,
+    "client_requests": 601,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=0 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.006,
+          "max_s": 0.012
+        },
+        "during": {
+          "sent": 80,
+          "ok_2xx": 35,
+          "status": {
+            "200": 35,
+            "500": 7,
+            "504": 1,
+            "error": 37
+          },
+          "p50_s": 6.612,
+          "p95_s": 65.031,
+          "max_s": 65.192
+        },
+        "after": {
+          "sent": 180,
+          "ok_2xx": 158,
+          "status": {
+            "200": 158,
+            "error": 22
+          },
+          "p50_s": 0.004,
+          "p95_s": 32.044,
+          "max_s": 32.599
+        },
+        "first_2xx_after_restore_s": 0.1,
+        "stable_2xx_after_restore_s": 25.1
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.004,
+          "p95_s": 0.006,
+          "max_s": 0.009
+        },
+        "during": {
+          "sent": 81,
+          "ok_2xx": 64,
+          "status": {
+            "200": 64,
+            "500": 8,
+            "504": 1,
+            "error": 8
+          },
+          "p50_s": 64.642,
+          "p95_s": 65.092,
+          "max_s": 65.35
+        },
+        "after": {
+          "sent": 179,
+          "ok_2xx": 177,
+          "status": {
+            "200": 177,
+            "error": 2
+          },
+          "p50_s": 0.004,
+          "p95_s": 32.202,
+          "max_s": 32.85
+        },
+        "first_2xx_after_restore_s": 0.3,
+        "stable_2xx_after_restore_s": 14.8
+      }
+    }
+  },
+  {
+    "version": "after2",
+    "scenario": "sql-down",
+    "failure_window_s": 40.4,
+    "gateway_proxied": 601,
+    "client_requests": 601,
+    "restarts": "pharmago-api-gateway=0 pharmago-pharmacy-service=0 pharmago-users-service=0 ",
+    "skipped_inflight_cap": 0,
+    "paths": {
+      "api/drug": {
+        "before": {
+          "sent": 41,
+          "ok_2xx": 41,
+          "status": {
+            "200": 41
+          },
+          "p50_s": 0.005,
+          "p95_s": 0.01,
+          "max_s": 0.059
+        },
+        "during": {
+          "sent": 80,
+          "ok_2xx": 1,
+          "status": {
+            "200": 1,
+            "500": 72,
+            "502": 5,
+            "504": 2
+          },
+          "p50_s": 5.006,
+          "p95_s": 8.583,
+          "max_s": 10.011
+        },
+        "after": {
+          "sent": 180,
+          "ok_2xx": 132,
+          "status": {
+            "200": 132,
+            "500": 48
+          },
+          "p50_s": 0.003,
+          "p95_s": 5.005,
+          "max_s": 5.008
+        },
+        "first_2xx_after_restore_s": 24.0,
+        "stable_2xx_after_restore_s": 24.0
+      },
+      "api/roles": {
+        "before": {
+          "sent": 40,
+          "ok_2xx": 40,
+          "status": {
+            "200": 40
+          },
+          "p50_s": 0.005,
+          "p95_s": 0.006,
+          "max_s": 0.02
+        },
+        "during": {
+          "sent": 81,
+          "ok_2xx": 1,
+          "status": {
+            "200": 1,
+            "500": 28,
+            "502": 21,
+            "504": 31
+          },
+          "p50_s": 1.507,
+          "p95_s": 10.005,
+          "max_s": 10.006
+        },
+        "after": {
+          "sent": 179,
+          "ok_2xx": 127,
+          "status": {
+            "200": 127,
+            "502": 15,
+            "504": 37
+          },
+          "p50_s": 0.003,
+          "p95_s": 2.002,
+          "max_s": 10.004
+        },
+        "first_2xx_after_restore_s": 25.8,
+        "stable_2xx_after_restore_s": 27.3
+      }
+    }
+  }
+]
