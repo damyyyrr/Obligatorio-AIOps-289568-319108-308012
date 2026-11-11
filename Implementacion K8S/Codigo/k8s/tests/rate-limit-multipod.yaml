@@ -1,0 +1,117 @@
+# Prueba aislada del rate limiting del Gateway con varias réplicas (issue #9 / RES-02).
+# Usa su propio namespace: no toca el despliegue "pharmago".
+# Upstream: nginx que responde 200 en /health/ready (para que el Gateway quede Ready)
+# y 404 inmediato en el resto, de modo que todo código distinto de 429 = atravesó el limitador.
+#
+#   kubectl apply -f rate-limit-multipod.yaml
+#   kubectl -n pharmago-ratelimit-test scale deploy/gateway --replicas=2
+#   kubectl delete namespace pharmago-ratelimit-test     # limpieza
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pharmago-ratelimit-test
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: upstream-stub
+  namespace: pharmago-ratelimit-test
+data:
+  default.conf: |
+    server {
+      listen 80;
+      location = /health/ready { return 200 'ok'; }
+      location = /health/live  { return 200 'ok'; }
+      location / { return 404; }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upstream-stub
+  namespace: pharmago-ratelimit-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: upstream-stub }
+  template:
+    metadata:
+      labels: { app: upstream-stub }
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.27-alpine
+        ports: [{ containerPort: 80 }]
+        volumeMounts:
+        - { name: conf, mountPath: /etc/nginx/conf.d }
+        resources:
+          requests: { cpu: 20m, memory: 16Mi }
+          limits: { cpu: 200m, memory: 64Mi }
+      volumes:
+      - name: conf
+        configMap: { name: upstream-stub }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: upstream-stub
+  namespace: pharmago-ratelimit-test
+spec:
+  selector: { app: upstream-stub }
+  ports: [{ port: 80, targetPort: 80 }]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: pharmago-ratelimit-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: gateway }
+  template:
+    metadata:
+      labels: { app: gateway }
+    spec:
+      containers:
+      - name: gateway
+        image: pharmago-api-gateway:issue9-ratelimit-20261111
+        imagePullPolicy: Never
+        ports: [{ name: http, containerPort: 80 }]
+        env:
+        - { name: ASPNETCORE_ENVIRONMENT, value: Production }
+        - { name: RateLimiting__Mode, value: IP }
+        - name: ReverseProxy__Clusters__users-cluster__Destinations__destination1__Address
+          value: http://upstream-stub
+        - name: ReverseProxy__Clusters__pharmacy-cluster__Destinations__destination1__Address
+          value: http://upstream-stub
+        readinessProbe:
+          httpGet: { path: /health/ready, port: http }
+          periodSeconds: 3
+        resources:
+          requests: { cpu: 100m, memory: 128Mi }
+          limits: { cpu: 500m, memory: 384Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway
+  namespace: pharmago-ratelimit-test
+spec:
+  selector: { app: gateway }
+  ports: [{ port: 80, targetPort: 80 }]
+---
+# Cliente dentro del clúster: su IP de pod llega intacta al Gateway (ClusterIP, sin SNAT).
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  namespace: pharmago-ratelimit-test
+spec:
+  containers:
+  - name: python
+    image: python:3.11-alpine
+    command: ["sleep", "3600"]
+    resources:
+      requests: { cpu: 50m, memory: 32Mi }
+      limits: { cpu: 500m, memory: 128Mi }

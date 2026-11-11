@@ -1,5 +1,7 @@
 # Guía de Rate Limiting - API Gateway
 
+> **Actualización 11/11/2026 (issue #9):** el Gateway ya **no** usa `X-Forwarded-For`, `X-Real-IP` ni `X-User-Id` enviados por el cliente, y el modo `User` hashea el token completo. La política vigente y la evidencia están en [docs/aiops-rate-limiting.md](../../../docs/aiops-rate-limiting.md). Las secciones de abajo que hablan de esos headers describen el comportamiento anterior.
+
 ## 🎯 Problema: ¿Por IP o por Usuario?
 
 ### ❌ Problema con Rate Limiting por IP

@@ -1,0 +1,371 @@
+{
+  "date": "2026-11-11",
+  "base_commit_obligatorio": "98629037048bdf5d9439342e9ae94a1b554c238a",
+  "runs": [
+    {
+      "version": "new",
+      "mode": "IP",
+      "scenario": "baseline_no_headers",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "58"
+    },
+    {
+      "version": "new",
+      "mode": "IP",
+      "scenario": "login_bruteforce",
+      "sent": 30,
+      "passed_limiter": 10,
+      "rejected_429": 20,
+      "status_counts": {
+        "429": 20,
+        "501": 10
+      },
+      "first_retry_after": "59"
+    },
+    {
+      "version": "new",
+      "mode": "IP",
+      "scenario": "rotating_paths",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      }
+    },
+    {
+      "version": "new",
+      "mode": "IP",
+      "scenario": "spoof_x_forwarded_for_rotating",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "58"
+    },
+    {
+      "version": "new",
+      "mode": "IP",
+      "scenario": "spoof_x_real_ip_rotating",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "58"
+    },
+    {
+      "version": "new",
+      "mode": "User",
+      "scenario": "baseline_no_headers",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "18"
+    },
+    {
+      "version": "new",
+      "mode": "User",
+      "scenario": "concurrent_burst_single_token",
+      "sent": 200,
+      "passed_limiter": 100,
+      "rejected_429": 100,
+      "status_counts": {
+        "404": 100,
+        "429": 100
+      }
+    },
+    {
+      "version": "new",
+      "mode": "User",
+      "scenario": "rotating_paths",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      }
+    },
+    {
+      "version": "new",
+      "mode": "User",
+      "scenario": "rotating_random_tokens",
+      "sent": 450,
+      "passed_limiter": 300,
+      "rejected_429": 150,
+      "status_counts": {
+        "404": 300,
+        "429": 150
+      },
+      "first_retry_after": "3"
+    },
+    {
+      "version": "new",
+      "mode": "User",
+      "scenario": "spoof_x_forwarded_for_rotating",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "12"
+    },
+    {
+      "version": "new",
+      "mode": "User",
+      "scenario": "spoof_x_user_id_rotating",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "7"
+    },
+    {
+      "version": "new-trustedproxy",
+      "mode": "IP",
+      "scenario": "spoof_x_forwarded_for_rotating",
+      "sent": 150,
+      "passed_limiter": 150,
+      "rejected_429": 0,
+      "status_counts": {
+        "404": 150
+      },
+      "first_retry_after": null
+    },
+    {
+      "version": "new-trustedproxy",
+      "mode": "User",
+      "scenario": "spoof_x_forwarded_for_rotating",
+      "sent": 150,
+      "passed_limiter": 150,
+      "rejected_429": 0,
+      "status_counts": {
+        "404": 150
+      },
+      "first_retry_after": null
+    },
+    {
+      "version": "old",
+      "mode": "IP",
+      "scenario": "baseline_no_headers",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "55"
+    },
+    {
+      "version": "old",
+      "mode": "IP",
+      "scenario": "login_bruteforce",
+      "sent": 30,
+      "passed_limiter": 10,
+      "rejected_429": 20,
+      "status_counts": {
+        "429": 20,
+        "501": 10
+      },
+      "first_retry_after": "60"
+    },
+    {
+      "version": "old",
+      "mode": "IP",
+      "scenario": "rotating_paths",
+      "sent": 150,
+      "passed_limiter": 150,
+      "rejected_429": 0,
+      "status_counts": {
+        "404": 150
+      }
+    },
+    {
+      "version": "old",
+      "mode": "IP",
+      "scenario": "spoof_x_forwarded_for_rotating",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "58"
+    },
+    {
+      "version": "old",
+      "mode": "IP",
+      "scenario": "spoof_x_real_ip_rotating",
+      "sent": 150,
+      "passed_limiter": 150,
+      "rejected_429": 0,
+      "status_counts": {
+        "404": 150
+      },
+      "first_retry_after": null
+    },
+    {
+      "version": "old",
+      "mode": "User",
+      "scenario": "baseline_no_headers",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": null
+    },
+    {
+      "version": "old",
+      "mode": "User",
+      "scenario": "concurrent_burst_single_token",
+      "sent": 200,
+      "passed_limiter": 106,
+      "rejected_429": 94,
+      "status_counts": {
+        "404": 106,
+        "429": 94
+      }
+    },
+    {
+      "version": "old",
+      "mode": "User",
+      "scenario": "rotating_paths",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      }
+    },
+    {
+      "version": "old",
+      "mode": "User",
+      "scenario": "rotating_random_tokens",
+      "sent": 450,
+      "passed_limiter": 450,
+      "rejected_429": 0,
+      "status_counts": {
+        "404": 450
+      },
+      "first_retry_after": null
+    },
+    {
+      "version": "old",
+      "mode": "User",
+      "scenario": "spoof_x_forwarded_for_rotating",
+      "sent": 150,
+      "passed_limiter": 150,
+      "rejected_429": 0,
+      "status_counts": {
+        "404": 150
+      },
+      "first_retry_after": null
+    },
+    {
+      "version": "old",
+      "mode": "User",
+      "scenario": "spoof_x_user_id_rotating",
+      "sent": 150,
+      "passed_limiter": 150,
+      "rejected_429": 0,
+      "status_counts": {
+        "404": 150
+      },
+      "first_retry_after": null
+    }
+  ],
+  "replicas": [
+    {
+      "run": "replicas-1-IP",
+      "replicas": 1,
+      "sent": 300,
+      "elapsed_s": 10.6,
+      "passed_limiter": 100,
+      "rejected_429": 200,
+      "per_replica": {
+        "replica-1": {
+          "passed_limiter": 100,
+          "rejected_429": 200
+        }
+      }
+    },
+    {
+      "run": "replicas-1-User",
+      "replicas": 1,
+      "sent": 300,
+      "elapsed_s": 2.33,
+      "passed_limiter": 100,
+      "rejected_429": 200,
+      "per_replica": {
+        "replica-1": {
+          "passed_limiter": 100,
+          "rejected_429": 200
+        }
+      }
+    },
+    {
+      "run": "replicas-2-IP",
+      "replicas": 2,
+      "sent": 300,
+      "elapsed_s": 6.31,
+      "passed_limiter": 200,
+      "rejected_429": 100,
+      "per_replica": {
+        "replica-1": {
+          "passed_limiter": 100,
+          "rejected_429": 50
+        },
+        "replica-2": {
+          "passed_limiter": 100,
+          "rejected_429": 50
+        }
+      }
+    },
+    {
+      "run": "replicas-2-User",
+      "replicas": 2,
+      "sent": 300,
+      "elapsed_s": 3.69,
+      "passed_limiter": 200,
+      "rejected_429": 100,
+      "per_replica": {
+        "replica-1": {
+          "passed_limiter": 100,
+          "rejected_429": 50
+        },
+        "replica-2": {
+          "passed_limiter": 100,
+          "rejected_429": 50
+        }
+      }
+    }
+  ]
+}
