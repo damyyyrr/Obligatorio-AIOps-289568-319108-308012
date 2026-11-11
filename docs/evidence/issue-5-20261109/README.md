@@ -1,5 +1,7 @@
 # Issue #5 — migraciones y rollback de aplicación
 
+**Aclaración de alcance del 11/11/2026:** la issue #5 figura cerrada, pero su ensayo no acredita reemplazo de SQL sin interrupción y Q02 sigue sin respuesta docente registrada. SQL mantuvo el mismo pod; el 502 del recambio de Users se conserva como fallo observado. La #8 verificó después el rollout de aplicación con SQL estable. El [pendiente SQL de R03](../../aiops-sql-migrations.md#disponibilidad-de-sql-y-q02) continúa sin implementar ni probar, independientemente del cierre de estas issues.
+
 Ensayo del 09/11/2026 en `feature/issue-5-migraciones-sql` sobre `525c458` de `obligatorio`. Se reutilizó el perfil local de la #3, con los datos de la #4. Minikube 1.39.0, Kubernetes y kubectl 1.34.1, Docker Engine 29.0.1, containerd 2.3.4, SQL Server 2019 Express y EF Core 6.0.8.
 
 El Job de despliegue terminó con cero migraciones pendientes sobre `PharmaDb`. En una base de ensayo separada se ejecutaron dos Jobs con el mismo esquema inicial. Ambos esperaron un bloqueo tomado desde una sesión SQL de prueba. Al liberarlo, un Job aplicó las diez migraciones y el otro encontró cero pendientes. La base de ensayo quedó con diez entradas únicas en el historial. Una prueba adicional agregó temporalmente un ID de migración desconocido al historial de otra base de ensayo. El Job falló antes de modificar ese historial y se retiró la fila sintética. Ver [control de historial](history-guard.json).

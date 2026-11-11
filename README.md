@@ -4,6 +4,8 @@ Fork de [jirabedra/AIOps](https://github.com/jirabedra/AIOps). La rama de integr
 
 El baseline local de Compose fue verificado el 06/11/2026: ocho servicios activos y catorce comprobaciones funcionales/de telemetría aprobadas antes y después de una parada/reinicio. Kubernetes ya cuenta con validaciones locales de despliegue, datos, métricas, recuperación y [rollout/rollback de aplicación](docs/evidence/issue-8-20261111/README.md). La separación física, el alcance completo de disponibilidad, observabilidad, caos y ML conservan sus pendientes en la matriz.
 
+**Pendiente de «Despliegues seguros» (R03): SQL Server todavía no puede reemplazarse sin interrupción.** Las pruebas de #5 y #8 cubren migraciones y recambios de aplicación con SQL estable. Cerrar esas issues no acredita el requisito completo ni excluye SQL de la letra. Ver [alcance, limitaciones y trabajo pendiente](docs/aiops-sql-migrations.md#disponibilidad-de-sql-y-q02).
+
 ## Empezar
 
 Requisitos: Git, PowerShell y Docker Desktop en modo Linux. El baseline requiere al menos 3,5 GiB asignados al motor; revisar la capacidad del host antes de cambiar sus recursos.
