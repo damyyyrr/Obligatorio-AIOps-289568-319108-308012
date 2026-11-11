@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="PharmaGo.ApiGateway.Test" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Yarp.ReverseProxy" Version="2.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.5.0-rc.1" />

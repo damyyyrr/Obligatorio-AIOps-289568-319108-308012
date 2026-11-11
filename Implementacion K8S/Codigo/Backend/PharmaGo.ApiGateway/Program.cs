@@ -8,6 +8,7 @@ using PharmaGo.ApiGateway.Middleware;
 using Instrumentation;
 using InstrumentationInterface;
 using Yarp.ReverseProxy.Transforms;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,31 @@ builder.Services.Configure<Microsoft.Extensions.Hosting.HostOptions>(options =>
 
 builder.Services.AddMemoryCache();
 
+// X-Forwarded-For/Proto solo se aplican si la conexión viene de un proxy declarado en
+// RateLimiting:TrustedProxies (IPs) o RateLimiting:TrustedNetworks (CIDR). Si ambas listas
+// quedan vacías el middleware NO se registra: ForwardedHeadersMiddleware con listas vacías
+// confía en cualquier origen, y kubectl port-forward entra además por 127.0.0.1 (loopback,
+// confiable por defecto), lo que permitiría falsificar la IP del cliente.
+var trustedProxies = builder.Configuration.GetSection("RateLimiting:TrustedProxies").Get<string[]>() ?? Array.Empty<string>();
+var trustedNetworks = builder.Configuration.GetSection("RateLimiting:TrustedNetworks").Get<string[]>() ?? Array.Empty<string>();
+var useForwardedHeaders = trustedProxies.Length > 0 || trustedNetworks.Length > 0;
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.ForwardLimit = 1;
+    options.KnownProxies.Clear();
+    options.KnownNetworks.Clear();
+    foreach (var proxy in trustedProxies)
+    {
+        options.KnownProxies.Add(System.Net.IPAddress.Parse(proxy));
+    }
+    foreach (var network in trustedNetworks)
+    {
+        var parts = network.Split('/');
+        options.KnownNetworks.Add(new IPNetwork(System.Net.IPAddress.Parse(parts[0]), int.Parse(parts[1])));
+    }
+});
+
 var rateLimitMode = builder.Configuration["RateLimiting:Mode"] ?? "IP";
 
 if (rateLimitMode.Equals("IP", StringComparison.OrdinalIgnoreCase))
@@ -25,7 +51,12 @@ if (rateLimitMode.Equals("IP", StringComparison.OrdinalIgnoreCase))
     builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
     builder.Services.Configure<IpRateLimitPolicies>(builder.Configuration.GetSection("IpRateLimitPolicies"));
     builder.Services.AddInMemoryRateLimiting();
-    builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+    builder.Services.AddSingleton<IRateLimitConfiguration, GatewayRateLimitConfiguration>();
+}
+else if (rateLimitMode.Equals("User", StringComparison.OrdinalIgnoreCase))
+{
+    builder.Services.Configure<UserRateLimitOptions>(builder.Configuration.GetSection(UserRateLimitOptions.SectionName));
+    builder.Services.AddSingleton<FixedWindowRateLimiter>();
 }
 
 builder.Services.AddReverseProxy()
@@ -82,6 +113,10 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+if (useForwardedHeaders)
+{
+    app.UseForwardedHeaders();
+}
 app.UseCors("MyAllowedOrigins");
 app.UseGatewayCorrelationId();
 

@@ -1,49 +1,90 @@
-using Microsoft.Extensions.Caching.Memory;
+using System.Globalization;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.Extensions.Options;
 
 namespace PharmaGo.ApiGateway.Middleware
 {
     /// <summary>
-    /// Rate limiting basado en el token de autenticación del usuario
-    /// en lugar de la IP, para evitar bloquear múltiples usuarios detrás de la misma IP
+    /// Límites del modo "User". Se leen de la sección <c>RateLimiting</c>.
+    /// </summary>
+    public sealed class UserRateLimitOptions
+    {
+        public const string SectionName = "RateLimiting";
+
+        /// <summary>Límite por sesión (token completo) o, sin token, por IP.</summary>
+        public int MaxRequestsPerMinute { get; set; } = 100;
+        public int MaxRequestsPerHour { get; set; } = 1000;
+
+        /// <summary>
+        /// Techo agregado por IP de conexión, aplicado a TODA solicitud (con o sin token).
+        /// Impide evadir el límite rotando valores de Authorization y permite que varios
+        /// usuarios legítimos compartan una IP (NAT) con un margen mayor.
+        /// </summary>
+        public int IpMaxRequestsPerMinute { get; set; } = 300;
+        public int IpMaxRequestsPerHour { get; set; } = 3000;
+    }
+
+    /// <summary>
+    /// Rate limiting por sesión e IP.
+    /// La identidad NO se toma de headers controlados por el cliente (X-User-Id,
+    /// X-Forwarded-For, X-Real-IP): la IP es <see cref="ConnectionInfo.RemoteIpAddress"/>,
+    /// que solo cambia si <c>UseForwardedHeaders</c> recibió la solicitud de un proxy
+    /// configurado como confiable. El token se usa completo y hasheado.
     /// </summary>
     public class UserRateLimitMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly IMemoryCache _cache;
+        private readonly FixedWindowRateLimiter _limiter;
+        private readonly UserRateLimitOptions _options;
         private readonly ILogger<UserRateLimitMiddleware> _logger;
-        
-        // Configuración
-        private const int MaxRequestsPerMinute = 100;
-        private const int MaxRequestsPerHour = 1000;
+        private readonly Func<DateTimeOffset> _clock;
 
         public UserRateLimitMiddleware(
-            RequestDelegate next, 
-            IMemoryCache cache,
+            RequestDelegate next,
+            FixedWindowRateLimiter limiter,
+            IOptions<UserRateLimitOptions> options,
             ILogger<UserRateLimitMiddleware> logger)
+            : this(next, limiter, options, logger, () => DateTimeOffset.UtcNow)
+        {
+        }
+
+        public UserRateLimitMiddleware(
+            RequestDelegate next,
+            FixedWindowRateLimiter limiter,
+            IOptions<UserRateLimitOptions> options,
+            ILogger<UserRateLimitMiddleware> logger,
+            Func<DateTimeOffset> clock)
         {
             _next = next;
-            _cache = cache;
+            _limiter = limiter;
+            _options = options.Value;
             _logger = logger;
+            _clock = clock;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
-            // Obtener identificador del usuario (token o IP como fallback)
-            var identifier = GetUserIdentifier(context);
-            
-            // Verificar límites
-            if (!CheckRateLimit(identifier, out string reason))
+            var ip = GetClientIp(context);
+            var session = GetSessionKey(context);
+            var decision = _limiter.TryAcquire(BuildRules(ip, session), _clock());
+
+            if (!decision.Allowed)
             {
-                _logger.LogWarning($"Rate limit exceeded for {identifier}: {reason}");
-                
+                var retryAfterSeconds = Math.Max(1, (int)Math.Ceiling(decision.RetryAfter.TotalSeconds));
+                _logger.LogWarning(
+                    "Rate limit exceeded for {Subject} from {ClientIp}: {Reason}",
+                    session ?? "anonymous", ip, decision.Reason);
+
                 context.Response.StatusCode = (int)HttpStatusCode.TooManyRequests;
-                context.Response.Headers.Add("X-RateLimit-Reason", reason);
-                await context.Response.WriteAsJsonAsync(new 
-                { 
+                context.Response.Headers["Retry-After"] = retryAfterSeconds.ToString(CultureInfo.InvariantCulture);
+                context.Response.Headers["X-RateLimit-Reason"] = decision.Reason;
+                await context.Response.WriteAsJsonAsync(new
+                {
                     error = "Too many requests",
-                    message = reason,
-                    retryAfter = "60 seconds"
+                    message = decision.Reason,
+                    retryAfter = $"{retryAfterSeconds} seconds",
                 });
                 return;
             }
@@ -51,78 +92,49 @@ namespace PharmaGo.ApiGateway.Middleware
             await _next(context);
         }
 
-        private string GetUserIdentifier(HttpContext context)
+        internal IReadOnlyList<RateLimitRule> BuildRules(string ip, string? session)
         {
-            // 1. Intentar obtener token de autorización
-            if (context.Request.Headers.TryGetValue("Authorization", out var authHeader))
+            var subject = session ?? $"ip:{ip}";
+            return new[]
             {
-                var token = authHeader.ToString().Replace("Bearer ", "");
-                if (!string.IsNullOrEmpty(token))
-                {
-                    return $"user:{token.Substring(0, Math.Min(8, token.Length))}"; // Usar primeros 8 chars
-                }
-            }
-
-            // 2. Intentar obtener X-User-Id (si el frontend lo envía)
-            if (context.Request.Headers.TryGetValue("X-User-Id", out var userId))
-            {
-                return $"user:{userId}";
-            }
-
-            // 3. Fallback a IP (para endpoints públicos como login)
-            var ip = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
-            
-            // Si viene de un proxy, intentar obtener la IP real
-            if (context.Request.Headers.TryGetValue("X-Forwarded-For", out var forwardedFor))
-            {
-                ip = forwardedFor.ToString().Split(',')[0].Trim();
-            }
-            else if (context.Request.Headers.TryGetValue("X-Real-IP", out var realIp))
-            {
-                ip = realIp.ToString();
-            }
-
-            return $"ip:{ip}";
+                new RateLimitRule($"ip-total:{ip}", _options.IpMaxRequestsPerMinute, TimeSpan.FromMinutes(1)),
+                new RateLimitRule($"ip-total:{ip}", _options.IpMaxRequestsPerHour, TimeSpan.FromHours(1)),
+                new RateLimitRule(subject, _options.MaxRequestsPerMinute, TimeSpan.FromMinutes(1)),
+                new RateLimitRule(subject, _options.MaxRequestsPerHour, TimeSpan.FromHours(1)),
+            };
         }
 
-        private bool CheckRateLimit(string identifier, out string reason)
+        internal static string GetClientIp(HttpContext context)
         {
-            var now = DateTime.UtcNow;
-            
-            // Verificar límite por minuto
-            var minuteKey = $"{identifier}:minute:{now:yyyyMMddHHmm}";
-            var minuteCount = _cache.GetOrCreate(minuteKey, entry =>
+            var address = context.Connection.RemoteIpAddress;
+            if (address is null)
             {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(1);
-                return 0;
-            });
-
-            if (minuteCount >= MaxRequestsPerMinute)
-            {
-                reason = $"Exceeded {MaxRequestsPerMinute} requests per minute";
-                return false;
+                return "unknown";
             }
 
-            // Verificar límite por hora
-            var hourKey = $"{identifier}:hour:{now:yyyyMMddHH}";
-            var hourCount = _cache.GetOrCreate(hourKey, entry =>
-            {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
-                return 0;
-            });
+            return (address.IsIPv4MappedToIPv6 ? address.MapToIPv4() : address).ToString();
+        }
 
-            if (hourCount >= MaxRequestsPerHour)
+        /// <summary>
+        /// Clave de sesión derivada del valor completo de Authorization (SHA-256 truncado).
+        /// No se registran ni guardan tokens en claro.
+        /// </summary>
+        internal static string? GetSessionKey(HttpContext context)
+        {
+            var raw = context.Request.Headers.Authorization.ToString();
+            if (raw.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
             {
-                reason = $"Exceeded {MaxRequestsPerHour} requests per hour";
-                return false;
+                raw = raw[7..];
             }
 
-            // Incrementar contadores
-            _cache.Set(minuteKey, minuteCount + 1, TimeSpan.FromMinutes(1));
-            _cache.Set(hourKey, hourCount + 1, TimeSpan.FromHours(1));
+            raw = raw.Trim();
+            if (raw.Length == 0)
+            {
+                return null;
+            }
 
-            reason = string.Empty;
-            return true;
+            var hash = SHA256.HashData(Encoding.UTF8.GetBytes(raw));
+            return $"session:{Convert.ToHexString(hash, 0, 8).ToLowerInvariant()}";
         }
     }
 
@@ -134,4 +146,3 @@ namespace PharmaGo.ApiGateway.Middleware
         }
     }
 }
-
