@@ -25,15 +25,14 @@ data:
         Name              tail
         Tag               kube.*
         Path              /var/log/containers/*.log
-        Parser            docker
+        # docker: json-file (Docker Desktop, cri-dockerd). cri: containerd (Minikube), que
+        # escribe "<time> <stream> <F|P> <log>" y parte líneas largas en registros P (issue #12).
+        multiline.parser  docker, cri
         DB                /var/log/flb_kube.db
         Mem_Buf_Limit     5MB
         # JSON app logs (scopes, State) are often longer than SQL fragments; skipping them removes Message/Category from ES.
         Skip_Long_Lines   Off
         Buffer_Max_Size   1MB
-        # Reensambla líneas partidas por el driver de logs de Docker (>~16KB) en un solo registro.
-        Docker_Mode       On
-        Docker_Mode_Flush 5
         Refresh_Interval   10
 
   filter-kubernetes.conf: |

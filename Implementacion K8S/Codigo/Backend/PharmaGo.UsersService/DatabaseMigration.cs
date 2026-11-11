@@ -15,34 +15,44 @@ internal static class DatabaseMigration
 
     public static int Run(string[] args)
     {
+        ILogger? log = null;
         try
         {
             using var host = Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(logging => logging.SuppressEfAndSqlClientLogs())
                 .ConfigureServices((context, services) => services.RegisterDataAccessServices(context.Configuration))
                 .Build();
+            // Logger JSON de la aplicación (issue #12): la salida del Job también se centraliza.
+            log = host.Services.GetRequiredService<ILoggerFactory>().CreateLogger("PharmaGo.DatabaseMigration");
             using var scope = host.Services.CreateScope();
             var database = scope.ServiceProvider.GetRequiredService<DbContext>();
-            Migrate(database);
+            Migrate(database, log);
             return 0;
         }
         catch (SqlException error)
         {
-            Console.Error.WriteLine($"SQL migration failed (SQL error {error.Number}).");
+            Report(log, $"SQL migration failed (SQL error {error.Number}).");
         }
         catch (InvalidOperationException error)
         {
             // Only messages from our own validation can be printed safely.
-            Console.Error.WriteLine(error is MigrationRejected ? error.Message : "SQL migration failed (invalid operation).");
+            Report(log, error is MigrationRejected ? error.Message : "SQL migration failed (invalid operation).");
         }
         catch (Exception error)
         {
-            Console.Error.WriteLine($"SQL migration failed ({error.GetType().Name}).");
+            Report(log, $"SQL migration failed ({error.GetType().Name}).");
         }
         return 1;
     }
 
-    private static void Migrate(DbContext database)
+    private static void Report(ILogger? log, string message)
+    {
+        // Sin host (falló la configuración) no hay logger: se mantiene stderr.
+        if (log is null) Console.Error.WriteLine(message);
+        else log.LogError("{MigrationMessage}", message);
+    }
+
+    private static void Migrate(DbContext database, ILogger log)
     {
         var settings = new SqlConnectionStringBuilder(database.Database.GetConnectionString());
         var catalog = settings.InitialCatalog;
@@ -66,13 +76,13 @@ internal static class DatabaseMigration
                 "@Resource = @resource, @LockMode = 'Exclusive', @LockOwner = 'Session', @LockTimeout = @timeout; SELECT @status;";
             command.Parameters.Add("@resource", SqlDbType.NVarChar, 255).Value = LockResource;
             command.Parameters.Add("@timeout", SqlDbType.Int).Value = LockTimeoutSeconds * 1000;
-            Console.WriteLine("Waiting for the SQL migration lock.");
+            log.LogInformation("Waiting for the SQL migration lock.");
             var status = (int)command.ExecuteScalar()!;
             if (status < 0)
             {
                 throw new MigrationRejected($"SQL migration lock could not be acquired (status {status}).");
             }
-            Console.WriteLine($"SQL migration lock acquired (status {status}).");
+            log.LogInformation("SQL migration lock acquired (status {LockStatus}).", status);
         }
 
         // Let the EF SQL Server provider provision a fresh catalog with its normal settings.
@@ -95,12 +105,12 @@ internal static class DatabaseMigration
         database.Database.SetCommandTimeout(TimeSpan.FromMinutes(10));
 
         var pending = known.Length - applied.Length;
-        Console.WriteLine($"Pending EF migrations: {pending}.");
+        log.LogInformation("Pending EF migrations: {PendingMigrations}.", pending);
         if (pending > 0)
         {
             database.Database.Migrate();
         }
-        Console.WriteLine("SQL migration completed.");
+        log.LogInformation("SQL migration completed.");
     }
 
     private sealed class MigrationRejected : InvalidOperationException
