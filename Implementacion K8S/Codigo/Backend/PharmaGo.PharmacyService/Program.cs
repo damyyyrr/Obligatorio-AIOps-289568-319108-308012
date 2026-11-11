@@ -24,6 +24,7 @@ builder.Services.AddHealthChecks().AddTypeActivatedCheck<SqlReadinessCheck>("sql
     args: new object[] { "SELECT TOP (1) Id FROM dbo.Drugs;" });
 
 builder.Services.AddPharmaGoOpenTelemetryMetrics("PharmaGo.PharmacyService");
+builder.Services.AddPharmaGoOpenTelemetryTracing(builder.Configuration, "PharmaGo.PharmacyService");
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

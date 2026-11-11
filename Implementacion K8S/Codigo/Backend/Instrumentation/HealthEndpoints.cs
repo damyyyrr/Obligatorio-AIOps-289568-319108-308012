@@ -23,4 +23,8 @@ public static class HealthEndpoints
 
     public static bool IsHealthProbe(PathString path)
         => path == LivePath || path == ReadyPath || path == LegacyPath;
+
+    /// <summary>Probes y scraping: se excluyen de las trazas para no generar ruido (issue #11).</summary>
+    public static bool IsInfrastructurePath(PathString path)
+        => IsHealthProbe(path) || path.StartsWithSegments("/metrics");
 }
