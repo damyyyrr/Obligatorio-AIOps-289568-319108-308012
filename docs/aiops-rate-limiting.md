@@ -29,7 +29,7 @@ Ambos modos responden **429** con `Retry-After`. El modo `User` agrega además `
 
 ## Límite local, no global
 
-Los contadores viven **en memoria de cada pod del Gateway**. Con N réplicas y balanceo uniforme, un mismo cliente obtiene hasta **N × límite** por ventana (medido: 2 réplicas → 200 de 300 en lugar de 100). Hoy el Gateway corre con `replicas: 1`, así que en la práctica el límite es global. Si se escala el Gateway hay que elegir una de estas opciones:
+Los contadores viven **en memoria de cada pod del Gateway**. Con N réplicas y balanceo uniforme, un mismo cliente obtiene hasta **N × límite** por ventana (medido en Kubernetes: 2 pods detrás del Service → 200 de 300, en lugar de 100 con 1 pod). Hoy el Gateway corre con `replicas: 1`, así que en la práctica el límite es global. Si se escala el Gateway hay que elegir una de estas opciones:
 
 1. dividir los límites por la cantidad de réplicas (aproximado, depende del balanceo);
 2. usar afinidad por IP en el Service (`sessionAffinity: ClientIP`);

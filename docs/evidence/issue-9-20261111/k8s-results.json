@@ -1,0 +1,107 @@
+{
+  "date": "2026-11-11",
+  "cluster": "Docker Desktop 29.0.1, Kubernetes v1.34.1, 1 nodo (kubeadm)",
+  "image": "pharmago-api-gateway:issue9-ratelimit-20261111 (sha256:05be0aa9acf5)",
+  "namespace": "pharmago-ratelimit-test (eliminado al terminar)",
+  "client": "pod en el clúster, solicitudes al Service ClusterIP 'gateway'",
+  "spoof_1pod": [
+    {
+      "scenario": "baseline_no_headers",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "60"
+    },
+    {
+      "scenario": "login_bruteforce",
+      "sent": 30,
+      "passed_limiter": 10,
+      "rejected_429": 20,
+      "status_counts": {
+        "404": 10,
+        "429": 20
+      },
+      "first_retry_after": "60"
+    },
+    {
+      "scenario": "rotating_paths",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      }
+    },
+    {
+      "scenario": "spoof_x_forwarded_for_rotating",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "60"
+    },
+    {
+      "scenario": "spoof_x_real_ip_rotating",
+      "sent": 150,
+      "passed_limiter": 100,
+      "rejected_429": 50,
+      "status_counts": {
+        "404": 100,
+        "429": 50
+      },
+      "first_retry_after": "60"
+    }
+  ],
+  "replicas": [
+    {
+      "run": "k8s-1-pod-IP",
+      "replicas": 1,
+      "sent": 300,
+      "elapsed_s": 0.91,
+      "passed_limiter": 100,
+      "rejected_429": 200
+    },
+    {
+      "run": "k8s-1-pod-User",
+      "replicas": 1,
+      "sent": 300,
+      "elapsed_s": 3.91,
+      "passed_limiter": 100,
+      "rejected_429": 200
+    },
+    {
+      "run": "k8s-2-pod-IP",
+      "replicas": 1,
+      "sent": 300,
+      "elapsed_s": 0.59,
+      "passed_limiter": 200,
+      "rejected_429": 100
+    },
+    {
+      "run": "k8s-2-pod-User",
+      "replicas": 1,
+      "sent": 300,
+      "elapsed_s": 1.97,
+      "passed_limiter": 200,
+      "rejected_429": 100
+    }
+  ],
+  "per_pod_429_from_logs": {
+    "IP-2pods": [
+      46,
+      54
+    ],
+    "User-2pods": [
+      50,
+      50
+    ]
+  }
+}

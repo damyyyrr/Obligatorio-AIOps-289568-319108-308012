@@ -2,7 +2,7 @@
 
 Ensayo del **11/11/2026** en la rama `feature/issue-9-rate-limiting`, creada desde `obligatorio` (`9862903`). Se compiló el Gateway de `obligatorio` sin cambios (**antes**) y el de la rama (**después**) con `dotnet publish -c Release` (SDK 10.0.401, target `net6.0`, ejecutado con `DOTNET_ROLL_FORWARD=Major` sobre ASP.NET Core 10). Cada escenario usó un proceso nuevo del Gateway, con contadores vacíos, en `ASPNETCORE_ENVIRONMENT=Production`. Como upstream se usó un servidor HTTP local que responde 404 al instante: cualquier código distinto de 429 indica que la solicitud **atravesó el limitador**. Todas las solicitudes salieron de una única IP real (127.0.0.1). Política resultante: [aiops-rate-limiting.md](../../aiops-rate-limiting.md). Datos: [results.json](results.json).
 
-**No se ejecutó en Kubernetes**: Docker Desktop no estaba activo en esta máquina. La parte multipod se simuló con dos procesos del Gateway en round-robin; falta repetirla con `kubectl scale deploy/pharmago-api-gateway --replicas=2` (ver pendientes).
+La parte multipod se probó primero con dos procesos locales en round-robin y después **en Kubernetes** con la imagen Docker real. Ver [Kubernetes multipod](#kubernetes-multipod).
 
 ## Intentos de evasión (150 solicitudes salvo que se indique)
 
@@ -52,6 +52,31 @@ Fueron 300 solicitudes del mismo cliente, iniciadas al comienzo de un minuto:
 
 El contador es **por instancia**. El Gateway del clúster corre con `replicas: 1`, así que el límite efectivo hoy es global. Escalarlo multiplica el cupo; las opciones están en la política.
 
+## Kubernetes multipod
+
+Entorno: Docker Desktop 29.0.1 con Kubernetes v1.34.1, un nodo (kubeadm). La imagen se construyó desde el commit de esta rama con el Dockerfile del Gateway: `pharmago-api-gateway:issue9-ratelimit-20261111`, ID `sha256:05be0aa9acf5`, 318 MB.
+
+Se usó el manifiesto aislado [rate-limit-multipod.yaml](../../../Implementacion%20K8S/Codigo/k8s/tests/rate-limit-multipod.yaml), con namespace propio `pharmago-ratelimit-test`, eliminado al terminar. El despliegue `pharmago` no se tocó. Contiene:
+
+- el Gateway;
+- un nginx como upstream: 200 en `/health/ready` y 404 en el resto;
+- un pod cliente que llama al **Service ClusterIP** `gateway`, con la IP del pod intacta.
+
+Antes de cada corrida se reinició el Deployment para empezar con contadores vacíos. Datos: [k8s-results.json](k8s-results.json).
+
+**Intentos de evasión con 1 pod, modo IP:** sin headers, `X-Real-IP` rotado, `X-Forwarded-For` rotado y rutas distintas dieron todos **100 pasan / 50 reciben 429**. Login: 10 / 20. Coincide con la prueba local.
+
+**Réplicas:** 300 solicitudes por el Service, iniciadas al comienzo de un minuto.
+
+| Modo | Pods | Atravesaron | 429 | 429 por pod (logs) |
+|---|---:|---:|---:|---|
+| IP | 1 | 100 | 200 | 200 |
+| IP | 2 | **200** | 100 | 46 + 54 |
+| User | 1 | 100 | 200 | 200 |
+| User | 2 | **200** | 100 | 50 + 50 |
+
+kube-proxy repartió las conexiones (146/154 y 150/150) y cada pod aplicó su propio límite de 100. Queda confirmado en el clúster que el límite es **local a cada pod**.
+
 ## Validaciones
 
 - **Gateway: 15/15 pruebas** (`PharmaGo.ApiGateway.Test`, proyecto nuevo agregado a `PharmaGo.sln`).
@@ -79,7 +104,17 @@ python ../../../scripts/probe-rate-limit.py --base http://127.0.0.1:5099 --mode 
 python ../../../scripts/probe-rate-limit-replicas.py --base http://127.0.0.1:5099 --base http://127.0.0.1:5100 --count 300 --out rep.json
 ```
 
+Para Kubernetes, construir la imagen con `docker build -f PharmaGo.ApiGateway/Dockerfile -t pharmago-api-gateway:issue9-ratelimit-20261111 .` y luego:
+
+```bash
+kubectl apply -f "Implementacion K8S/Codigo/k8s/tests/rate-limit-multipod.yaml"
+kubectl -n pharmago-ratelimit-test cp probe-rate-limit-replicas.py client:/tmp/
+kubectl -n pharmago-ratelimit-test scale deploy/gateway --replicas=2
+kubectl -n pharmago-ratelimit-test exec client -- python /tmp/probe-rate-limit-replicas.py --base http://gateway --count 300 --out /tmp/r.json
+kubectl delete namespace pharmago-ratelimit-test
+```
+
 ## Pendiente para cerrar el issue
 
-- [ ] Repetir la tabla de réplicas en el clúster: `kubectl -n pharmago scale deploy/pharmago-api-gateway --replicas=2` y lanzar el sondeo desde un pod del clúster contra el Service. Con ClusterIP, kube-proxy reparte las conexiones; el resultado esperado es más de 100 y como máximo 200.
+- [x] Repetir la tabla de réplicas en el clúster con 2 pods detrás del Service (hecho en Docker Desktop).
 - [ ] Definir con el equipo si se mantiene `replicas: 1` (límite global de hecho) o si se adopta afinidad o Redis al escalar.
