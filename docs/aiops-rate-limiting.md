@@ -29,11 +29,21 @@ Ambos modos responden **429** con `Retry-After`. El modo `User` agrega además `
 
 ## Límite local, no global
 
-Los contadores viven **en memoria de cada pod del Gateway**. Con N réplicas y balanceo uniforme, un mismo cliente obtiene hasta **N × límite** por ventana (medido en Kubernetes: 2 pods detrás del Service → 200 de 300, en lugar de 100 con 1 pod). Hoy el Gateway corre con `replicas: 1`, así que en la práctica el límite es global. Si se escala el Gateway hay que elegir una de estas opciones:
+Los contadores viven **en memoria de cada pod del Gateway**. Con N réplicas y balanceo uniforme, un mismo cliente obtiene hasta **N × límite** por ventana. Medido en Kubernetes: con 2 pods detrás del Service pasan 200 de 300; con 1 pod, 100.
 
-1. dividir los límites por la cantidad de réplicas (aproximado, depende del balanceo);
-2. usar afinidad por IP en el Service (`sessionAffinity: ClientIP`);
-3. usar un almacén distribuido (Redis, `AddDistributedRateLimiting`) para tener un límite global real.
+### Decisión de escalado
+
+**Se mantiene el Gateway con `replicas: 1`.** Así el límite en memoria funciona como un límite global, sin componentes nuevos. Se descartaron las otras opciones por lo que pide la letra:
+
+| Opción | Decisión | Motivo |
+|---|---|---|
+| `sessionAffinity: ClientIP` en el Service | **Descartada (medido)** | kube-proxy la implementa con el módulo `recent` de iptables, que el kernel WSL2 de Docker Desktop no trae (`Extension recent is not supported`). Como kube-proxy aplica todas las reglas en una sola carga, esta falla deja sin red a **todos** los Services del clúster, no solo al Gateway: el Gateway y otro Service sin afinidad dejaron de responder hasta quitarla. Minikube con driver Docker comparte ese kernel. Pone en riesgo la disponibilidad del 100 % (R03). |
+| Redis (`AddDistributedRateLimiting`) | Descartada | Agrega un componente con estado del que dependería **cada** solicitud. Si cae, el Gateway queda sin protección (fail-open) o rechaza tráfico (fail-closed, contra R03). Ese Redis necesitaría además su propia alta disponibilidad. El plan pide auditar y corregir lo existente antes de sumar sistemas. |
+| Más réplicas con límites divididos | No se aplica ahora | Hoy no hace falta: un pod del Gateway aguanta la carga del obligatorio. Si en algún momento se escala, se ajusta por configuración sin tocar código: `IpRateLimiting__GeneralRules__N__Limit` y `RateLimiting__MaxRequestsPerMinute` divididos por la cantidad de réplicas. Es una aproximación, porque kube-proxy no reparte exactamente igual (146/154 en la prueba). |
+
+**Efecto del rollout:** con `maxSurge: 1` conviven 2 pods del Gateway durante unos segundos y el pod nuevo arranca con los contadores vacíos. En esa ventana un cliente puede obtener hasta 2× el límite. Se acepta, porque es breve y prioriza la disponibilidad (R03) sobre la exactitud del contador.
+
+**Acceso por `kubectl port-forward`:** el frontend llama a `http://127.0.0.1:5000` y el Gateway ve **127.0.0.1 para todos los usuarios**. En modo `IP` todos comparten un cupo de 100/min y 10 logins/min. Alcanza para la demo y la defensa. Se mantiene el modo `IP` porque es el único con regla propia contra fuerza bruta en `POST /api/login`. Si se publica el sistema detrás de un Ingress, hay que declarar el proxy confiable (ver abajo).
 
 Las ventanas son **fijas**: en el cambio de minuto un cliente puede concentrar hasta 2 × límite en pocos segundos. Se observó una vez: 450 tokens rotados aceptados en 6 s que cruzaron el minuto, frente a 300 dentro de un mismo minuto. Se acepta para este alcance.
 

@@ -117,4 +117,15 @@ kubectl delete namespace pharmago-ratelimit-test
 ## Pendiente para cerrar el issue
 
 - [x] Repetir la tabla de réplicas en el clúster con 2 pods detrás del Service (hecho en Docker Desktop).
-- [ ] Definir con el equipo si se mantiene `replicas: 1` (límite global de hecho) o si se adopta afinidad o Redis al escalar.
+- [x] Estrategia de escalado decidida: se mantiene `replicas: 1`, sin afinidad ni Redis. Ver la [decisión](../../aiops-rate-limiting.md#decisión-de-escalado).
+
+## Prueba de `sessionAffinity: ClientIP`
+
+Se agregó la afinidad al Service del Gateway y se desplegó el manifiesto de prueba con 2 pods. Resultado:
+
+- Las solicitudes al Service **con** afinidad y a otro Service **sin** afinidad hacia los mismos pods dieron timeout.
+- Los pods respondían `Healthy` por su IP directa, y el Service del upstream seguía funcionando.
+
+kube-proxy registró `Extension recent is not supported, missing kernel module?` y `Failed to execute iptables-restore`, reintentando cada 30 s. Como aplica todas las reglas en una sola carga, la regla de afinidad hizo fallar la sincronización completa.
+
+Al borrar el namespace, kube-proxy volvió a sincronizar sin errores. Se revirtió la afinidad y se repitió la prueba sin ella: el Service respondió `Healthy` y dio 100 pasan / 50 reciben 429. Por eso la afinidad quedó descartada.
