@@ -2,6 +2,8 @@
 
 La issue #7 separa la respuesta del proceso de su capacidad de atender operaciones. Kubernetes deja de enviar tráfico a un pod que pierde readiness. Si falla liveness de forma sostenida, el kubelet reinicia su contenedor. [Probes de Kubernetes](https://v1-34.docs.kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/) · [Health checks de ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-6.0)
 
+La #8 agrega una espera de drenaje al terminar pods y verifica tráfico durante recambios planificados. El [procedimiento de rollout](aiops-k8s-rollout.md) y su evidencia complementan la recuperación de procesos medida aquí.
+
 | Probe | Endpoint | Intervalo | Timeout | Fallos consecutivos |
 |---|---|---:|---:|---:|
 | Startup | `/health/live` | 2 s | 2 s | 60 |

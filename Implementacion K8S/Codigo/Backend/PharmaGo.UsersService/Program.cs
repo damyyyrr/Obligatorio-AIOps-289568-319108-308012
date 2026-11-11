@@ -13,6 +13,10 @@ if (args.Length > 0 && args[0] == "--migrate")
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Leave time for endpoint propagation (preStop) and in-flight requests before SIGKILL.
+builder.Services.Configure<Microsoft.Extensions.Hosting.HostOptions>(options =>
+    options.ShutdownTimeout = TimeSpan.FromSeconds(20));
+
 builder.Logging.SuppressEfAndSqlClientLogs();
 
 builder.Services.AddHttpContextAccessor();
