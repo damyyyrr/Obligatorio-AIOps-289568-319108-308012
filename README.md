@@ -2,7 +2,7 @@
 
 Fork de [jirabedra/AIOps](https://github.com/jirabedra/AIOps). La rama de integración del equipo es **`obligatorio`**, basada en `feature/k8s`. `main` conserva la referencia original mínima del curso.
 
-El baseline local de Compose fue verificado el 06/11/2026: ocho servicios activos y catorce comprobaciones funcionales/de telemetría aprobadas antes y después de una parada/reinicio. Kubernetes, alta disponibilidad, observabilidad completa, caos y ML siguen pendientes según la matriz.
+El baseline local de Compose fue verificado el 06/11/2026: ocho servicios activos y catorce comprobaciones funcionales/de telemetría aprobadas antes y después de una parada/reinicio. Kubernetes ya cuenta con validaciones locales de despliegue, datos, métricas, recuperación y [rollout/rollback de aplicación](docs/evidence/issue-8-20261111/README.md). La separación física, el alcance completo de disponibilidad, observabilidad, caos y ML conservan sus pendientes en la matriz.
 
 ## Empezar
 

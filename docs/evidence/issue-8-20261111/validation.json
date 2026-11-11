@@ -1,0 +1,76 @@
+{
+  "baseCommit": "2e6ef27cfede8297b19a9f7147d8a3120d164a2c",
+  "pythonTestsPassed": 26,
+  "dotnet": {
+    "current": {
+      "total": 291,
+      "passed": 290,
+      "failed": 1,
+      "failures": [
+        {
+          "name": "Test_GetOneByExpression",
+          "outcome": "Failed",
+          "message": "Assert.IsNotNull failed. "
+        }
+      ]
+    },
+    "baseline": {
+      "total": 291,
+      "passed": 290,
+      "failed": 1,
+      "failures": [
+        {
+          "name": "Test_GetOneByExpression",
+          "outcome": "Failed",
+          "message": "Assert.IsNotNull failed. "
+        }
+      ]
+    }
+  },
+  "dotnetFailurePassesInIsolation": true,
+  "images": [
+    {
+      "image": "pharmago-api-gateway:issue8-drain-20261111",
+      "node": "pharmago-issue3",
+      "configDigest": "sha256:c8b59925b3bc32b5513711c01929986120dfdf78d1b1f7de57d1ec5ac99d4885"
+    },
+    {
+      "image": "pharmago-users-service:issue8-drain-20261111",
+      "node": "pharmago-issue3-m02",
+      "configDigest": "sha256:57591f184700bda3ebd3e05bd37b2b48fd33cfd8ed14eaa13c01e976fb590e63"
+    },
+    {
+      "image": "pharmago-pharmacy-service:issue8-drain-20261111",
+      "node": "pharmago-issue3-m03",
+      "configDigest": "sha256:4a59a55f77d444557403ee9dc4a1a04a0e647e6ccfa1f85c3eea37271c58b2b4"
+    }
+  ],
+  "serverDryRun": [
+    "deployment.apps/pharmago-api-gateway configured (server dry run)",
+    "deployment.apps/pharmago-pharmacy-service configured (server dry run)",
+    "deployment.apps/pharmago-users-service configured (server dry run)"
+  ],
+  "finalDeployments": [
+    {
+      "name": "pharmago-users-service",
+      "replicas": 2,
+      "readyReplicas": 2,
+      "revision": "16",
+      "image": "pharmago-users-service:issue7-recovery-20261110"
+    },
+    {
+      "name": "pharmago-pharmacy-service",
+      "replicas": 2,
+      "readyReplicas": 2,
+      "revision": "9",
+      "image": "pharmago-pharmacy-service:issue7-recovery-20261110"
+    },
+    {
+      "name": "pharmago-api-gateway",
+      "replicas": 1,
+      "readyReplicas": 1,
+      "revision": "8",
+      "image": "pharmago-api-gateway:issue7-recovery-20261110"
+    }
+  ]
+}

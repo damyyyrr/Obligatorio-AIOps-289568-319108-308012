@@ -89,6 +89,8 @@ Para consultar Prometheus, comparar targets con el inventario y abrir los panele
 
 Para verificar salud, réplicas y recuperación de Gateway, Users y Pharmacy, ver la [guía de probes](../../../docs/aiops-k8s-probes.md).
 
+Para recambios planificados, seguir la [guía de rollout y rollback](../../../docs/aiops-k8s-rollout.md). Incluye drenaje, compatibilidad, tráfico funcional acotado y `verify_rollout.py`, que vuelve a las revisiones guardadas y produce evidencia sanitizada. No sustituir esa comprobación por un health check.
+
 ## Parada y recuperación
 
 ```powershell

@@ -6,6 +6,10 @@ using PharmaGo.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Leave time for endpoint propagation (preStop) and in-flight requests before SIGKILL.
+builder.Services.Configure<Microsoft.Extensions.Hosting.HostOptions>(options =>
+    options.ShutdownTimeout = TimeSpan.FromSeconds(20));
+
 builder.Logging.SuppressEfAndSqlClientLogs();
 
 builder.Services.AddHttpContextAccessor();

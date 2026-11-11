@@ -5,6 +5,8 @@ metadata:
   namespace: pharmago
 spec:
   replicas: 1
+  minReadySeconds: 10
+  progressDeadlineSeconds: 240
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -18,12 +20,17 @@ spec:
       labels:
         app: pharmago-api-gateway
     spec:
+      terminationGracePeriodSeconds: 40
       nodeSelector:
         pharmago.io/service: gateway
       containers:
       - name: pharmago-api-gateway
         image: pharmago-api-gateway:k8s-local
         imagePullPolicy: Never
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "sleep 10"]
         ports:
         - name: http
           containerPort: 80
