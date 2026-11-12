@@ -17,7 +17,7 @@ Los estados del requisito completo se conservan aunque exista una prueba parcial
 
 Otros entregables: GitHub y BDD Cypress+Cucumber, informe <=10 páginas, reflexión sobre prácticas ágiles, declaración de uso de IA y paquete <=40 MB. Ver [el mapa de issues](GITHUB_ISSUES.md).
 
-BDD — issue #15, 12/11/2026: **PREPARADO / ejecución real pendiente en otra PC**. Cuatro escenarios de login y consulta, herramientas fijadas, scripts de resultados y CI. Pasan Gherkin, resolución de pasos y bundle; no se ejecutó navegador, build Angular ni CI. [Guía de ejecución](../Implementacion%20K8S/Codigo/Frontend/e2e/README.md) · [Preparación y evidencia pendiente](evidence/issue-15-20261112/README.md). Los smoke HTTP históricos no equivalen a BDD aprobado.
+BDD — issue #15, 12/11/2026: **PASS funcional local, 4/4 escenarios en Electron**. Login válido, contraseña incorrecta con reintento, catálogo/detalle y 404 con regreso al catálogo sobre Angular → gateway → SQL reales. Build Angular y ocho servicios del baseline aprobados; resumen desde commit limpio, sin omisiones, con duraciones reales corregidas para Cypress 15. Tres regresiones del resumen y dos controles negativos aprobados. [Guía](../Implementacion%20K8S/Codigo/Frontend/e2e/README.md) · [Evidencia sanitizada](evidence/issue-15-20261112/live-after-fix/README.md). Esto no prueba disponibilidad bajo fallas ni los seis ensayos de caos. El job remoto `live` manual no se ejecutó.
 
 ## Resultado parcial de baseline
 

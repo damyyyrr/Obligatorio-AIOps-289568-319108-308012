@@ -4,7 +4,7 @@
 
 Se preparan cuatro escenarios BDD de acceso y consulta con Cypress/Cucumber, dependencias aisladas de Angular, datos del seed de laboratorio, selectores estables, resumen de ejecución y CI. Se corrige el acceso a un resultado vacío después de un login rechazado. La [guía de traspaso](../Implementacion%20K8S/Codigo/Frontend/e2e/README.md) permite ejecutar y diagnosticar desde otra PC.
 
-Pasan Gherkin, resolución de pasos y compilación del feature. Por indicación del usuario y falta de RAM, no se inicia infraestructura ni navegador; build Angular, CI y cuatro escenarios reales quedan pendientes. La [evidencia de preparación](evidence/issue-15-20261112/README.md) conserva esa distinción. #15 sigue abierta y el PR queda en borrador hasta la validación del compañero.
+La preparación inicial se conserva como registro histórico. En la validación posterior se construyeron las cuatro imágenes, se inició el baseline con SQL y seed y se ejecutaron los cuatro escenarios en Electron: **4/4 PASS**, sin omisiones, desde el commit limpio `9a420f1`. Se corrigió el reporte de duración para la API pública de Cypress 15 y pasaron tres regresiones, además de los controles de preparación. La [evidencia real](evidence/issue-15-20261112/live-after-fix/README.md) incluye resumen, captura y límites del ensayo. El PR queda listo para revisión e integración; la issue se cierra después de integrarlo.
 
 ## Incremento del 12 de noviembre de 2026 — issue #14
 

@@ -1,5 +1,7 @@
 # Issue #15 — preparación y traspaso, 12/11/2026
 
+**Actualización posterior: cuatro escenarios reales aprobados y reporte corregido.** Ver [ejecución desde commit limpio, resumen y captura](live-after-fix/README.md). El resto de este archivo conserva la preparación original, cuando todavía no se había iniciado el navegador.
+
 Rama: feature/issue-15-automatizar-escenarios, creada desde obligatorio en 54d5a17c68cb7ede122b92862ad156163a0b09d9. [Guía ejecutable para el compañero](../../../Implementacion%20K8S/Codigo/Frontend/e2e/README.md).
 
 ## Estado

@@ -1,6 +1,6 @@
 # BDD: Cypress + Cucumber — issue #15
 
-**Preparado; ejecución real pendiente en otra PC.** La validación local de preparación no demuestra comportamiento del navegador. Ver [registro de preparación](../../../../docs/evidence/issue-15-20261112/README.md).
+**Validado en navegador real: 4/4 PASS.** Ver [resumen, captura y corrección del reporte](../../../../docs/evidence/issue-15-20261112/live-after-fix/README.md). La [preparación original](../../../../docs/evidence/issue-15-20261112/README.md) se conserva como historial. Repetir la suite al modificar escenarios o comportamiento de aplicación.
 
 La suite recorre Angular → gateway → Users/Pharmacy → SQL con los cuatro escenarios de [pharmago.feature](features/pharmago.feature). Comprueba tanto las respuestas reales como los resultados visibles: panel/sesión del administrador, rechazo de contraseña con reintento en la misma página, catálogo/detalle y error 404 con regreso al catálogo. No hay respuestas simuladas ni un manejador que oculte excepciones de Angular.
 
@@ -25,6 +25,7 @@ cd Frontend/e2e
 npm ci --no-audit --no-fund
 npm run check
 npm run check:guards
+npm run check:results
 npm run test:demo
 ```
 
@@ -39,7 +40,7 @@ El modo test:demo lee la credencial Administrator del seed ya existente, solo co
 - npm run open:demo abre el runner interactivo para observar cada paso; seleccionar E2E, Electron y pharmago.feature. npm run open usa las credenciales del entorno.
 - npm run test:demo ejecuta en Electron headless; es un navegador real aunque no abra una ventana. El wrapper elimina ELECTRON_RUN_AS_NODE solamente de su propio proceso.
 - Cada intento crea .runtime/runs/<fecha-id>/summary.json. PASS exige exactamente cuatro escenarios aprobados, sin fallidos, pendientes ni omitidos. FAIL indica resultados de la suite; BLOCKED indica que no terminó la preparación/ejecución.
-- El resumen registra commit, árbol modificado, versiones, tiempos, conteos y estados. No copia la configuración, el entorno ni las respuestas con tokens. La captura catalogo-detalle.png muestra únicamente el detalle público. No se graban videos ni capturas automáticas de fallos de login.
+- El resumen registra commit, árbol modificado, versiones, tiempos, conteos y estados. `durationMs` usa `TestResult.duration` de Cypress 15; un dato ausente/inválido se registra como null, nunca se inventa cero. No copia la configuración, el entorno ni las respuestas con tokens. La captura catalogo-detalle.png muestra únicamente el detalle público. No se graban videos ni capturas automáticas de fallos de login.
 - Ante un fallo, revisar la salida local, diagnostic.txt si existe y el runner interactivo. Si falta un data-cy, reconstruir la UI desde esta rama. Un 400 Invalid Password exige revisar la cuenta/seed; un 404 esperado es parte del cuarto escenario; un 429 exige detener otros generadores y esperar el límite del gateway.
 - Las llamadas interceptadas solo se observan: cy.wait sincroniza sin pausas fijas ni reintentos de escenarios. La contraseña se escribe con log:false. El runner interactivo puede mostrar solicitudes y sesiones en memoria: no publicar grabaciones, capturas del login, objetos completos de Cypress ni logs de contenedores sin revisarlos.
 - La suite limpia cookies/localStorage entre escenarios mediante testIsolation. No compra, modifica stock ni borra datos. El login puede crear o reutilizar la sesión del usuario de laboratorio en SQL.
@@ -58,7 +59,9 @@ El workflow bdd.yml tiene comprobaciones automáticas para PRs a obligatorio: Gh
 
 npm run check:guards verifica dos rechazos sin infraestructura: un paso sin definición no puede aprobar el control de preparación; la falta de credenciales impide abrir el navegador y genera BLOCKED. Los intentos de estos controles quedan en .runtime y no se publican como pruebas funcionales.
 
-Para terminar #15, el compañero debe:
+`npm run check:results` valida el contrato del resumen con Cypress 15: duración del test aunque los intentos solo tengan estado, datos ausentes/invalidos como null y exclusión de detalles privados. Forma parte del CI de preparación. El ensayo local headless de los cuatro escenarios ya está aprobado y publicado en la evidencia; el job manual remoto y la observación interactiva no se ejecutaron en ese ensayo.
+
+Para repetir o validar una revisión posterior:
 
 1. Ejecutar desde un commit limpio, comprobar PASS con 4/4 y observar al menos una vez los escenarios en el runner.
 2. Revisar resumen y captura antes de copiarlos a una carpeta fechada de docs/evidence/issue-15-...; excluir archivos privados de .runtime.
