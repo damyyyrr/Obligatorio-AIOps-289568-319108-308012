@@ -4,15 +4,19 @@ test_burst_without_rate_limit_effect_cannot_pass (test_chaos.EvidenceTests.test_
 test_cancel_before_remote_start_prevents_late_requests (test_chaos.EvidenceTests.test_cancel_before_remote_start_prevents_late_requests) ... ok
 test_cleanup_failure_cannot_be_reported_as_verified (test_chaos.EvidenceTests.test_cleanup_failure_cannot_be_reported_as_verified) ... ok
 test_cli_error_does_not_leak_exec_output_or_stdin (test_chaos.EvidenceTests.test_cli_error_does_not_leak_exec_output_or_stdin) ... ok
+test_disconnect_requires_new_service_connection_cut_not_just_selector_change (test_chaos.EvidenceTests.test_disconnect_requires_new_service_connection_cut_not_just_selector_change) ... ok
+test_expected_fingerprints_are_checked_per_target_and_path (test_chaos.EvidenceTests.test_expected_fingerprints_are_checked_per_target_and_path) ... ok
 test_expired_absolute_deadline_allows_cleanup_of_uncertain_resource_rpc (test_chaos.EvidenceTests.test_expired_absolute_deadline_allows_cleanup_of_uncertain_resource_rpc) ... ok
 test_expired_absolute_deadline_prevents_remote_start (test_chaos.EvidenceTests.test_expired_absolute_deadline_prevents_remote_start) ... ok
 test_failure_after_journal_creation_still_restores_and_releases_own_lock (test_chaos.EvidenceTests.test_failure_after_journal_creation_still_restores_and_releases_own_lock) ... ok
 test_fingerprint_ignores_list_order (test_chaos.EvidenceTests.test_fingerprint_ignores_list_order) ... ok
 test_foreign_cancel_file_is_not_overwritten (test_chaos.EvidenceTests.test_foreign_cancel_file_is_not_overwritten) ... ok
+test_network_probe_measures_new_backend_and_gateway_connections_separately (test_chaos.EvidenceTests.test_network_probe_measures_new_backend_and_gateway_connections_separately) ... ok
+test_network_requires_real_backend_cut_even_if_gateway_is_healthy (test_chaos.EvidenceTests.test_network_requires_real_backend_cut_even_if_gateway_is_healthy) ... ok
 test_non_enforced_network_policy_cannot_pass (test_chaos.EvidenceTests.test_non_enforced_network_policy_cannot_pass) ... ok
 test_probe_never_emits_login_token_or_password (test_chaos.EvidenceTests.test_probe_never_emits_login_token_or_password) ... ok
 test_process_running_without_cpu_metric_effect_is_not_pass (test_chaos.EvidenceTests.test_process_running_without_cpu_metric_effect_is_not_pass) ... ok
-{"timeUtc": "2026-11-12T21:23:17.744028+00:00", "event": "inject-requested", "mechanism": "cpu"}
+{"timeUtc": "2026-11-12T22:22:48.135110+00:00", "event": "inject-requested", "mechanism": "cpu"}
 test_resource_rpc_receives_absolute_deadline (test_chaos.EvidenceTests.test_resource_rpc_receives_absolute_deadline) ... ok
 test_settled_resource_rpc_is_restored_again_before_control_is_removed (test_chaos.EvidenceTests.test_settled_resource_rpc_is_restored_again_before_control_is_removed) ... ok
 test_storage_must_reach_budgeted_bytes (test_chaos.EvidenceTests.test_storage_must_reach_budgeted_bytes) ... ok
@@ -42,6 +46,6 @@ test_request_recovery_stops_only_original_load_pod (test_chaos.RecoveryTests.tes
 test_service_replacement_never_patched (test_chaos.RecoveryTests.test_service_replacement_never_patched) ... ok
 
 ----------------------------------------------------------------------
-Ran 41 tests in 0.186s
+Ran 45 tests in 0.158s
 
 OK

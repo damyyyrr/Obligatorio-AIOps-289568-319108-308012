@@ -1,16 +1,16 @@
 # Implementación de AIOps
 
-## Incremento del 12 de noviembre de 2026 — issue #17
-
-Se reemplazan los cuatro scripts heredados por wrappers de un controlador con simulación sin infraestructura, contexto local explícito, límites de carga, prechecks de capacidad/observabilidad, identidad de recursos, journal y watchdog. Se agregan corte de tráfico con NetworkPolicy y desconexión del Service Pharmacy. La [guía](../Implementacion%20K8S/Codigo/chaos-engineering/README.md) describe preparación, ejecución individual, aborto y recuperación, y las [evidencias](evidence/issue-17-20261112/README.md) distinguen regresiones/simulación de ensayos reales.
-
-La preparación original se conserva como historial. En la revisión posterior se corrigió la carrera de aborto/arranque tardío para CPU/RAM/disco, se preservó LF al transportar scripts desde Windows y se agregaron regresiones del controlador y del agente real aislado: 41 + 5 tests aprobados, también en CI Linux. Se creó un laboratorio nuevo con Calico en el equipo de aproximadamente 16 GiB, se construyeron las cuatro imágenes y se validó el stack completo, métricas y cinco alertas sanas/inactivas. El primer intento integral se detuvo antes de inyectar porque solo quedaban 1,67 GiB libres en el host frente al piso de 2 GiB. [Correcciones y evidencia](evidence/issue-17-20261112/fix-after-review/README.md). #17/R07 y la validación integral de #16/R06 siguen pendientes; no se atribuyen seis experimentos ni recuperación estable a tests aislados o a un precheck rechazado.
-
 ## Incremento del 12 de noviembre de 2026 — issue #14
 
 Se implementan y ejecutan Isolation Forest y One-Class SVM RBF sobre las 300 ventanas sintéticas del notebook docente, preservando el original y su protocolo: StandardScaler y ambos modelos se ajustan sobre toda la muestra, sin etiquetas ni selección de parámetros con ellas. La [guía ML](../ml/README.md) enlaza CLI, notebook ejecutado y dependencias fijadas. Los [resultados](evidence/issue-14-20261112/results/RESULTS.md) incluyen scores/flags por ventana, métricas, todos los FP/FN, tablas por tipo, gráficos y parámetros/versiones/hashes.
 
 Pasaron 20 pruebas y dos ejecuciones CLI produjeron salidas numéricas idénticas; el notebook terminó sus siete celdas de código. F1 observado: IF 0,578313 y OCSVM 0,439024, evaluados sobre la misma muestra de entrenamiento, sin afirmar generalización. La [evidencia](evidence/issue-14-20261112/README.md) conserva alcance y procedencia. R05 tiene validación técnica del material disponible; Q03 y la aceptación académica permanecen pendientes. La ampliación del práctico sigue en #20. No se inició infraestructura.
+
+## Incremento del 12 de noviembre de 2026 — issue #17
+
+Se reemplazan los cuatro scripts heredados por wrappers de un controlador con simulación sin infraestructura, contexto local explícito, límites de carga, prechecks de capacidad/observabilidad, identidad de recursos, journal y watchdog. Se agregan corte de tráfico con NetworkPolicy y desconexión del Service Pharmacy. La [guía](../Implementacion%20K8S/Codigo/chaos-engineering/README.md) describe preparación, ejecución individual, aborto y recuperación, y las [evidencias](evidence/issue-17-20261112/README.md) distinguen regresiones/simulación de ensayos reales.
+
+La revisión posterior corrigió aborto/arranque tardío, transporte LF desde Windows y medición por destino/conexión. Pasaron 45 + 5 + 26 tests del controlador, agente aislado y configuración, también en CI Linux. Después del primer precheck rechazado por memoria, el usuario liberó margen y se completaron **seis ensayos reales PASS** en un laboratorio nuevo con Calico: efectos observados, 120 s estables, limpieza independiente y PV/PVC/configuración conservados. Durante las pruebas se corrigió un HTTP 500 de Grafana/SQLite activando WAL, sin ocultar errores. Red y Service se verifican sobre conexiones nuevas, con la continuidad del Gateway existente registrada aparte. [Fichas, fuentes, intentos fallidos y evidencia](evidence/issue-17-20261112/fix-after-review/README.md). #17 queda lista para revisión/integración técnica local; #16/R06 conserva la revisión humana de roles/comunicaciones y tAck no registrado.
 
 ## Incremento del 12 de noviembre de 2026 — issue #16
 

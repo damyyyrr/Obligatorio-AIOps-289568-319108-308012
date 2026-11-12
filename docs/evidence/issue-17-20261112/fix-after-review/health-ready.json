@@ -1,0 +1,85 @@
+{
+  "hostFreeGiB": 3.6,
+  "notReady": [],
+  "targets": [
+    {
+      "job": "pharmago-app-pods",
+      "up": "1"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "up": "1"
+    },
+    {
+      "job": "otlp-collector",
+      "up": "1"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "up": "1"
+    },
+    {
+      "job": "kubernetes-cadvisor",
+      "up": "1"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "up": "1"
+    },
+    {
+      "job": "node-exporter",
+      "up": "1"
+    },
+    {
+      "job": "kube-state-metrics",
+      "up": "1"
+    },
+    {
+      "job": "pharmago-app-pods",
+      "up": "1"
+    }
+  ],
+  "seriesCounts": {
+    "cpu": 19,
+    "memory": 19,
+    "storage": 19,
+    "diskFree": 1,
+    "nodeMemoryFree": 1
+  },
+  "rules": {
+    "http": 200,
+    "rules": [
+      {
+        "name": "PharmaGo: tasa de errores HTTP 5xx",
+        "state": "inactive",
+        "health": "ok"
+      },
+      {
+        "name": "PharmaGo: latencia p95 HTTP alta",
+        "state": "inactive",
+        "health": "ok"
+      },
+      {
+        "name": "PharmaGo: CPU de Pod cerca del l\u00edmite",
+        "state": "inactive",
+        "health": "ok"
+      },
+      {
+        "name": "PharmaGo: memoria de Pod cerca del l\u00edmite",
+        "state": "inactive",
+        "health": "ok"
+      },
+      {
+        "name": "PharmaGo: Pod Running sin condici\u00f3n Ready",
+        "state": "inactive",
+        "health": "ok"
+      }
+    ]
+  },
+  "jaeger": {
+    "http": 200
+  },
+  "elasticsearch": {
+    "http": 200
+  }
+}

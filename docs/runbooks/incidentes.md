@@ -1,6 +1,6 @@
 # Runbooks de incidentes de PharmaGo
 
-Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/incidente.md). Los mecanismos de #17 están en [la guía del controlador](../../Implementacion%20K8S/Codigo/chaos-engineering/README.md); su validación integral en clúster sigue pendiente. Requieren contexto/namespace, roles, inventario, límite temporal y reversión registrados antes de actuar. La revisión estática no acredita seis experimentos aprobados.
+Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/incidente.md). Los mecanismos de #17 están en [la guía](../../Implementacion%20K8S/Codigo/chaos-engineering/README.md) y cuentan con [seis ensayos técnicos locales aprobados](../evidence/issue-17-20261112/fix-after-review/README.md). Requieren contexto/namespace, roles, inventario, límite temporal y reversión registrados antes de actuar. La ejecución automatizada no acredita reconocimiento ni comunicaciones humanas: la revisión por compañero de #16 continúa pendiente.
 
 ## RB-01: exceso de solicitudes o solicitudes fallidas reiteradas
 
@@ -50,6 +50,8 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 
 **Detectar:** timeouts, conexión rechazada, targets o rutas inaccesibles. Un port-forward roto no demuestra corte de red interno.
 
+**Observación de #17:** Calico bloqueó conexiones nuevas del cliente al Service Pharmacy, mientras el catálogo por Gateway siguió respondiendo. El comportamiento de conexiones establecidas no se deduce de la creación de una NetworkPolicy. Medir y registrar ambas rutas; no reiniciar el Gateway para forzar artificialmente el resultado.
+
 1. **Diagnosticar:** comparar camino externo y Service interno desde el cliente de pruebas identificado. Revisar `svc`, EndpointSlices, Ready, DNS, red de nodo y salto afectado (cliente→Gateway o Gateway→backend); contrastar logs/trazas y [timeouts](../aiops-interservice-resilience.md).
 2. **Contener:** detener la inyección registrada. #17 debe guardar regla/selección previa e inversa específica. No vaciar iptables, borrar todas las NetworkPolicies, reiniciar kube-proxy ni cambiar el contexto global.
 3. **Restaurar:** revertir exactamente objeto/regla/proceso temporal preservando configuración previa. Verificar identidad antes. Si solo perdió port-forward, reconectar con contexto explícito y verificar que el servicio era accesible internamente.
@@ -60,6 +62,8 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 ## RB-06: desconexión interna de SQL o un microservicio
 
 **Detectar:** Users/Pharmacy NotReady, 500/502/503/504, spans SQL lentos o sin endpoints. Gateway puede seguir Ready/Degraded con ambos backends caídos. Si cae Pharmacy, comprobar si roles/login siguen atendidos.
+
+**Observación de #17:** al agregar el selector temporal, el Service Pharmacy quedó sin endpoints y fallaron las conexiones nuevas, pero la ruta existente del Gateway siguió atendiendo. Validar conexiones nuevas y existentes por separado. Retirar únicamente la clave propia, comprobar selector/UID originales y verificar los 120 s estables; esto no equivale a detener SQL ni a eliminar pods.
 
 1. **Diagnosticar:** identificar dependencia y operación. Revisar SQL, Job de migración, endpoints, eventos, logs y trace ID. Distinguir pausa de contenedor, escala a cero, bloqueo de proceso, corte de red y SQL sin capacidad. Liveness sana/readiness fallida no justifica reiniciar todos los consumidores.
 2. **Contener:** detener carga/estímulo; evitar reintentos masivos y escrituras duplicadas de resultado incierto. Conservar rutas disponibles, sin retirar manualmente el único Gateway para ocultar errores. Comunicar alcance parcial o total.

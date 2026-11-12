@@ -1,0 +1,11 @@
+{
+  "runId": "e310ad7a3e5d430b92e2511b365829a5",
+  "duringIsolation": {
+    "endpointSliceEndpoints": null,
+    "serviceSelector": {"app": "pharmago-pharmacy-service", "pharmago.io/chaos-isolated": "e310ad7a3e5d430b92e2511b365829a5"},
+    "newDirectPharmacyConnection": {"result": "URLError", "http": 0, "timeoutSeconds": 3},
+    "gatewayCatalogHttp": 200,
+    "gatewayRolesHttp": 200
+  },
+  "interpretation": "The Service had no endpoints and a new connection failed; the existing Gateway route remained available. The final probe distinguishes the two paths and requires restoration of both."
+}

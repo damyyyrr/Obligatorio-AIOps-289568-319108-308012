@@ -1,0 +1,334 @@
+{
+  "scenarios": [
+    {
+      "scenario": "requests",
+      "runId": "f6830db128044859a2effc101ada4c28",
+      "status": "PASS",
+      "cleanup": "verified",
+      "sourceCommit": "a807b0498d5fcd06eee81e0eb2cf5794873028e1",
+      "dirtyTree": false,
+      "tAck": null,
+      "tRestore": "2026-11-12T21:49:16.409559+00:00",
+      "tVerified": "2026-11-12T21:51:24.310780+00:00",
+      "report": "real-trials/requests/report.json",
+      "sourceHashesVerified": true,
+      "injectionSeconds": 62.0822,
+      "duringHttp": {
+        "/api/drug": {
+          "200": 8
+        },
+        "/api/roles": {
+          "200": 8
+        }
+      },
+      "duringRoutes": [
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/drug",
+          "codes": {
+            "200": 8
+          }
+        },
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/roles",
+          "codes": {
+            "200": 8
+          }
+        }
+      ],
+      "burstHttp": {
+        "200": 100,
+        "429": 140
+      },
+      "maxInjectedStorageBytes": 0,
+      "alertStatesSeen": [
+        "inactive"
+      ],
+      "pvPvcConfigPreserved": true
+    },
+    {
+      "scenario": "cpu",
+      "runId": "829dfa1adc1648b2aaa85992d1d8b9a1",
+      "status": "PASS",
+      "cleanup": "verified",
+      "sourceCommit": "a807b0498d5fcd06eee81e0eb2cf5794873028e1",
+      "dirtyTree": false,
+      "tAck": null,
+      "tRestore": "2026-11-12T21:54:00.262903+00:00",
+      "tVerified": "2026-11-12T21:56:07.040654+00:00",
+      "report": "real-trials/cpu/report.json",
+      "sourceHashesVerified": true,
+      "injectionSeconds": 132.211617,
+      "duringHttp": {
+        "/api/drug": {
+          "200": 17
+        },
+        "/api/roles": {
+          "200": 17
+        }
+      },
+      "duringRoutes": [
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/drug",
+          "codes": {
+            "200": 17
+          }
+        },
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/roles",
+          "codes": {
+            "200": 17
+          }
+        }
+      ],
+      "maxInjectedStorageBytes": 0,
+      "resourceMetric": "cpu",
+      "resourceBaselineMax": 0.0019567361394905343,
+      "resourceDuringMax": 0.5001935899941372,
+      "alertStatesSeen": [
+        "firing",
+        "inactive",
+        "pending"
+      ],
+      "pvPvcConfigPreserved": true
+    },
+    {
+      "scenario": "ram",
+      "runId": "6053f9c07c23412b8dbfa7153c49d2b1",
+      "status": "PASS",
+      "cleanup": "verified",
+      "sourceCommit": "a807b0498d5fcd06eee81e0eb2cf5794873028e1",
+      "dirtyTree": false,
+      "tAck": null,
+      "tRestore": "2026-11-12T21:57:30.979586+00:00",
+      "tVerified": "2026-11-12T21:59:37.429731+00:00",
+      "report": "real-trials/ram/report.json",
+      "sourceHashesVerified": true,
+      "injectionSeconds": 61.100845,
+      "duringHttp": {
+        "/api/drug": {
+          "200": 8
+        },
+        "/api/roles": {
+          "200": 8
+        }
+      },
+      "duringRoutes": [
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/drug",
+          "codes": {
+            "200": 8
+          }
+        },
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/roles",
+          "codes": {
+            "200": 8
+          }
+        }
+      ],
+      "maxInjectedStorageBytes": 0,
+      "resourceMetric": "memory",
+      "resourceBaselineMax": 87429120.0,
+      "resourceDuringMax": 122404864.0,
+      "alertStatesSeen": [
+        "inactive"
+      ],
+      "pvPvcConfigPreserved": true
+    },
+    {
+      "scenario": "storage",
+      "runId": "0fb25ceeec1a4227999ea7a5522cf021",
+      "status": "PASS",
+      "cleanup": "verified",
+      "sourceCommit": "0a47b7b674c8b49cac9ba84578d8b1a0511ccc6f",
+      "dirtyTree": false,
+      "tAck": null,
+      "tRestore": "2026-11-12T22:07:08.508700+00:00",
+      "tVerified": "2026-11-12T22:09:13.947918+00:00",
+      "report": "real-trials/storage/report.json",
+      "sourceHashesVerified": true,
+      "injectionSeconds": 61.375306,
+      "duringHttp": {
+        "/api/drug": {
+          "200": 8
+        },
+        "/api/roles": {
+          "200": 8
+        }
+      },
+      "duringRoutes": [
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/drug",
+          "codes": {
+            "200": 8
+          }
+        },
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/roles",
+          "codes": {
+            "200": 8
+          }
+        }
+      ],
+      "maxInjectedStorageBytes": 33554432,
+      "alertStatesSeen": [
+        "inactive"
+      ],
+      "pvPvcConfigPreserved": true
+    },
+    {
+      "scenario": "network",
+      "runId": "aae7f96d23c44472b927f25ef97c0cb4",
+      "status": "PASS",
+      "cleanup": "verified",
+      "sourceCommit": "1280e451d3e5b4dfee042022836f8ac5a54a8387",
+      "dirtyTree": false,
+      "tAck": null,
+      "tRestore": "2026-11-12T22:16:52.926665+00:00",
+      "tVerified": "2026-11-12T22:18:58.043845+00:00",
+      "report": "real-trials/network/report.json",
+      "sourceHashesVerified": true,
+      "injectionSeconds": 77.444488,
+      "duringHttp": {
+        "/api/drug": {
+          "0": 4,
+          "200": 4
+        },
+        "/api/roles": {
+          "200": 4
+        }
+      },
+      "duringRoutes": [
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/drug",
+          "codes": {
+            "200": 4
+          }
+        },
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/roles",
+          "codes": {
+            "200": 4
+          }
+        },
+        {
+          "target": "pharmago-pharmacy-service",
+          "path": "/api/drug",
+          "codes": {
+            "0": 4
+          }
+        }
+      ],
+      "burstHttp": {},
+      "maxInjectedStorageBytes": 0,
+      "alertStatesSeen": [
+        "inactive"
+      ],
+      "pvPvcConfigPreserved": true
+    },
+    {
+      "scenario": "disconnect",
+      "runId": "856fd2e231484c108eef989dcc6a32a2",
+      "status": "PASS",
+      "cleanup": "verified",
+      "sourceCommit": "b808ed45bbe406a9257e2f28e57c10dd2fc54a04",
+      "dirtyTree": false,
+      "tAck": null,
+      "tRestore": "2026-11-12T22:24:05.004781+00:00",
+      "tVerified": "2026-11-12T22:26:10.111242+00:00",
+      "report": "real-trials/disconnect/report.json",
+      "sourceHashesVerified": true,
+      "injectionSeconds": 66.312326,
+      "duringHttp": {
+        "/api/drug": {
+          "0": 9,
+          "200": 9
+        },
+        "/api/roles": {
+          "200": 9
+        }
+      },
+      "duringRoutes": [
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/drug",
+          "codes": {
+            "200": 9
+          }
+        },
+        {
+          "target": "pharmago-api-gateway",
+          "path": "/api/roles",
+          "codes": {
+            "200": 9
+          }
+        },
+        {
+          "target": "pharmago-pharmacy-service",
+          "path": "/api/drug",
+          "codes": {
+            "0": 9
+          }
+        }
+      ],
+      "burstHttp": {},
+      "maxInjectedStorageBytes": 0,
+      "alertStatesSeen": [
+        "inactive"
+      ],
+      "pvPvcConfigPreserved": true
+    }
+  ],
+  "passed": 6,
+  "expected": 6,
+  "grafanaWalFixCommit": "bd99261",
+  "failedStorageTrialPreserved": "failed-storage-before-wal.json",
+  "failedAttempts": [
+    {
+      "scenario": "requests",
+      "runId": "01be9d67ba7f4743aa5b400f50e9b641",
+      "classification": "BLOCKED before injection",
+      "report": "failed-attempts/requests-01be9d67ba7f4743aa5b400f50e9b641/report.json"
+    },
+    {
+      "scenario": "storage",
+      "runId": "0aeb0eda233f4f768c1da646081045c8",
+      "classification": "FAIL",
+      "report": "failed-attempts/storage-0aeb0eda233f4f768c1da646081045c8/report.json"
+    },
+    {
+      "scenario": "disconnect",
+      "runId": "2866a46860da451f938e7ee821836021",
+      "classification": "FAIL",
+      "report": "failed-attempts/disconnect-2866a46860da451f938e7ee821836021/report.json"
+    },
+    {
+      "scenario": "network",
+      "runId": "3ffeab92bdf14a1f84c0f8a9cba37858",
+      "classification": "FAIL",
+      "report": "failed-attempts/network-3ffeab92bdf14a1f84c0f8a9cba37858/report.json"
+    },
+    {
+      "scenario": "network",
+      "runId": "a399eff37516439eb259199a0e2e6a7c",
+      "classification": "FAIL",
+      "report": "failed-attempts/network-a399eff37516439eb259199a0e2e6a7c/report.json"
+    },
+    {
+      "scenario": "disconnect",
+      "runId": "e310ad7a3e5d430b92e2511b365829a5",
+      "classification": "FAIL",
+      "report": "failed-attempts/disconnect-e310ad7a3e5d430b92e2511b365829a5/report.json"
+    }
+  ]
+}
