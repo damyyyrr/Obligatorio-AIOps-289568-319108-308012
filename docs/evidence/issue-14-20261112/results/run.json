@@ -1,0 +1,201 @@
+{
+  "executedUtc": "2026-11-12T16:22:27.297265+00:00",
+  "sourceCommit": "54d5a17c68cb7ede122b92862ad156163a0b09d9",
+  "dirtyTreeAtRun": true,
+  "dataset": {
+    "origin": "notebook docente adjunto; dataset sintético checkout, celda 4",
+    "notebook": "ml/practico_detectores_aiops.ipynb",
+    "notebookCanonicalJsonSha256": "332402e002c3876a696b064337710ef72b6a2dce0f63886204e0da41a4e49ea6",
+    "seed": 42,
+    "rows": 300,
+    "features": [
+      "requests",
+      "error_rate",
+      "latency_ms",
+      "cpu_pct"
+    ],
+    "true_anomalies_for_evaluation_only": 53,
+    "timestamp": "synthetic, timezone-naive; not production events"
+  },
+  "protocol": {
+    "fit": "StandardScaler and both models fitted on all 300 windows, including contaminated windows",
+    "evaluation": "same 300 windows; descriptive in-sample comparison, no held-out test",
+    "training_labels": false,
+    "features_only": [
+      "requests",
+      "error_rate",
+      "latency_ms",
+      "cpu_pct"
+    ],
+    "tuning_with_labels": false,
+    "academic_acceptance": "pending Q03; no teacher confirmation recorded"
+  },
+  "models": {
+    "features": [
+      "requests",
+      "error_rate",
+      "latency_ms",
+      "cpu_pct"
+    ],
+    "scaler": {
+      "class": "StandardScaler",
+      "fit_rows": 300,
+      "mean": [
+        128.49666666666667,
+        0.01117889860195352,
+        110.4650619797436,
+        41.74479625216882
+      ],
+      "scale": [
+        32.48656115312232,
+        0.007208745219822465,
+        38.48045117433201,
+        12.5602942603135
+      ],
+      "variance": [
+        1055.3766555555558,
+        5.196600764431323e-05,
+        1480.7451225801499,
+        157.76099190566424
+      ]
+    },
+    "isolation_forest": {
+      "parameters": {
+        "bootstrap": false,
+        "contamination": 0.1,
+        "max_features": 1.0,
+        "max_samples": 256,
+        "n_estimators": 300,
+        "n_jobs": 1,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "offset": -0.5512945086570996,
+      "anomaly_score_threshold": 0.5512945086570996,
+      "score": "-score_samples; larger means more anomalous",
+      "flag": "predict(X) == -1"
+    },
+    "one_class_svm": {
+      "parameters": {
+        "cache_size": 200,
+        "coef0": 0.0,
+        "degree": 3,
+        "gamma": "scale",
+        "kernel": "rbf",
+        "max_iter": -1,
+        "nu": 0.1,
+        "shrinking": true,
+        "tol": 0.001,
+        "verbose": false
+      },
+      "support_vectors": 39,
+      "fit_status": 0,
+      "anomaly_score_threshold": 0.0,
+      "score": "-decision_function; larger means more anomalous",
+      "flag": "predict(X) == -1"
+    }
+  },
+  "metrics": [
+    {
+      "model": "Isolation Forest",
+      "windows": 300,
+      "true_anomalies": 53,
+      "alerts": 30,
+      "tp": 24,
+      "fp": 6,
+      "fn": 29,
+      "tn": 241,
+      "precision": 0.8,
+      "recall": 0.4528301886792453,
+      "f1": 0.5783132530120482
+    },
+    {
+      "model": "One-Class SVM RBF",
+      "windows": 300,
+      "true_anomalies": 53,
+      "alerts": 29,
+      "tp": 18,
+      "fp": 11,
+      "fn": 35,
+      "tn": 236,
+      "precision": 0.6206896551724138,
+      "recall": 0.33962264150943394,
+      "f1": 0.43902439024390244
+    }
+  ],
+  "environment": {
+    "python": "3.11.0",
+    "system": "Windows",
+    "packages": {
+      "asttokens": "3.0.2",
+      "attrs": "26.1.0",
+      "colorama": "0.4.6",
+      "comm": "0.2.3",
+      "contourpy": "1.3.3",
+      "cycler": "0.12.1",
+      "debugpy": "1.8.22",
+      "executing": "2.3.0",
+      "fastjsonschema": "2.22.3",
+      "fonttools": "4.68.0",
+      "ipykernel": "6.30.1",
+      "ipython": "9.18.1",
+      "ipython_pygments_lexers": "1.1.1",
+      "jedi": "0.20.1",
+      "joblib": "1.5.2",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "jupyter_client": "8.10.0",
+      "jupyter_core": "5.9.1",
+      "kiwisolver": "1.5.1",
+      "matplotlib": "3.10.7",
+      "matplotlib-inline": "0.2.2",
+      "nbclient": "0.10.2",
+      "nbformat": "5.10.4",
+      "nest-asyncio": "1.6.0",
+      "numpy": "2.3.4",
+      "packaging": "26.3",
+      "pandas": "2.3.3",
+      "parso": "0.8.7",
+      "pillow": "13.0.0",
+      "pip": "22.3",
+      "platformdirs": "4.14.5",
+      "prompt_toolkit": "3.0.53",
+      "psutil": "7.2.2",
+      "pure_eval": "0.2.4",
+      "Pygments": "2.21.0",
+      "pyparsing": "3.3.3",
+      "python-dateutil": "4.0.0",
+      "pytz": "2026.6",
+      "pyzmq": "27.3.0",
+      "referencing": "0.37.0",
+      "rpds-py": "2026.9.1",
+      "scikit-learn": "1.7.2",
+      "scipy": "1.16.3",
+      "setuptools": "65.5.0",
+      "stack-data": "0.6.3",
+      "threadpoolctl": "3.6.0",
+      "tornado": "6.6.1",
+      "traitlets": "5.16.1",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "wcwidth": "0.9.4"
+    }
+  },
+  "sourceHashes": {
+    "dataset.py": "3ff0f198bdbcec434fc71de1231b73b589de65e26fd04bb94af860953819d062",
+    "detectors.py": "352ffc10d6730e7fc00f7ff80f9ab2c6bf88e706593bd2807001172ebd783001",
+    "plots.py": "854a307806407b98ede897cb44accd73a92837a3a401ccae385a25c42ee6e508",
+    "run.py": "7d11baa6e0acdd2e3f25a9160c7be9238ae3e81388c7e387f4992cce23354365"
+  },
+  "artifactHashes": {
+    "by_kind.csv": "0cdcf6b47126908dda5fc89113f9d9860192c0f81f548fcd92b87b75b525b9a7",
+    "comparison.png": "9c3ddb0d54e2a3f98da190322f765b04b02b46b720e97fa7d8a92f90a555dff5",
+    "dataset.csv": "f04f5c615d4be889abbc34409c5245bf735fd325415fdc2aed8ebcf541a260ba",
+    "errors.json": "cdd45ace852712e753f8e34e0338b077635259db56a037a7cbb75d4af2ac868d",
+    "metrics.csv": "972aa850d821eca59920c826a8407872b68a443a7aadc579224a575d49dfab1c",
+    "predictions.csv": "75076b1482247ed0303b07146b45f0730aad017c457e24ad2954fffe6c3c0cee",
+    "projection.png": "dff341af57242912ab1d6bd1c54d1fc2695b9e103a12536348b4895b2e98d126",
+    "scores_timeline.png": "cbddc675ed6fdb2264c3df85b6e2cd02d84181e3eced08265236a31b1f69c37d"
+  }
+}
