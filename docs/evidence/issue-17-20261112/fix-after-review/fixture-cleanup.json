@@ -1,0 +1,12 @@
+{
+  "fixtures": [
+    {
+      "name": "pharmago-chaos-client",
+      "uid": "ec6b1c3c-5fc0-4fd9-b1a3-39e199a69fe2"
+    },
+    {
+      "name": "pharmago-chaos-load",
+      "uid": "31d41833-2b20-4129-83a2-581ae26b1633"
+    }
+  ]
+}

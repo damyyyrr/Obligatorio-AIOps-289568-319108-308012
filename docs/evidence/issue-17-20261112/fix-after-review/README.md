@@ -63,6 +63,12 @@ Cada `report.json` es una vista compacta con estados, muestras y comprobaciones 
 
 Las fichas aportan hipótesis, comando, efecto, alertas, tiempos observados, restauración y conclusión. `tAck` permanece null: no se inventaron reconocimiento humano, TTA, comunicaciones ni promedios. La evidencia técnica local de #17 queda lista para revisión e integración. La validación por compañero de roles y comunicaciones del proceso #16 permanece pendiente. El laboratorio es de un nodo en una PC; no demuestra separación física, caída de nodo ni disponibilidad en producción.
 
+## Cierre del laboratorio y compatibilidad
+
+La verificación de limpieza se realizó con los pods vivos, antes de retirar fixtures: confirmó ausencia de procesos/archivos/control del generador, agentes, políticas temporales y lock, además del selector original. Después se retiraron los [dos clientes propios con precondiciones de UID/resourceVersion](fixture-cleanup.json), se detuvo únicamente el perfil `pharmago-issue17-validation` preservando namespace, objetos y volúmenes y se restauró la ausencia inicial de contexto activo. Los otros perfiles no se modificaron.
+
+Las dos ramas de PR se comprobaron con `git merge-tree --write-tree`: los cambios de BDD y caos se combinan sin conflictos de contenido. El incremento de #17 en el plan se ubicó después del de ML para conservar el incremento independiente de BDD. Esta comprobación crea un árbol de prueba; no fusiona los PR en `obligatorio`.
+
 ## Primer intento integral: precheck bloqueado por memoria libre
 
 El apply completo terminó con todos los pods Ready, SQL con datos de demostración, Elasticsearch green, Jaeger disponible, nueve targets `up=1`, métricas de CPU/RAM/storage de 19 pods, métricas de nodo y cinco alertas sanas/inactivas. La captura [health-before.json](health-before.json) registra ese estado y **1,67 GiB libres en el host**. La dotación total de 16 GiB no equivale a memoria disponible para inyectar carga.
