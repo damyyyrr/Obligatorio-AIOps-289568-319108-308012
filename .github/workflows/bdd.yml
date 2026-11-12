@@ -1,0 +1,89 @@
+name: BDD PharmaGo
+on:
+  pull_request:
+    branches: [obligatorio]
+    paths:
+      - 'Implementacion K8S/Codigo/Frontend/**'
+      - '.github/workflows/bdd.yml'
+  workflow_dispatch:
+    inputs:
+      run_live:
+        description: 'Construir el baseline y ejecutar los cuatro escenarios reales'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  preparation:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: Implementacion K8S/Codigo/Frontend/e2e
+    env:
+      CYPRESS_INSTALL_BINARY: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+          cache-dependency-path: 'Implementacion K8S/Codigo/Frontend/e2e/package-lock.json'
+      - run: npm ci --no-audit --no-fund
+      - run: npm run check
+      - run: npm run check:guards
+  angular-build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: Implementacion K8S/Codigo/Frontend
+    env:
+      NG_BUILD_MAX_WORKERS: '2'
+      NODE_OPTIONS: '--max-old-space-size=1536'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '16.20.2'
+          cache: npm
+          cache-dependency-path: 'Implementacion K8S/Codigo/Frontend/package-lock.json'
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build -- --configuration production
+  live:
+    if: github.event_name == 'workflow_dispatch' && inputs.run_live
+    needs: [preparation, angular-build]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Construir e iniciar baseline de laboratorio con seed
+        shell: pwsh
+        working-directory: Implementacion K8S/Codigo
+        run: ./scripts/start-baseline.ps1 -SeedDemoData
+      - name: Ejecutar BDD real en Electron
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: Implementacion K8S/Codigo/Frontend/e2e
+          command: npm run test:demo
+      - name: Guardar únicamente resumen y captura pública
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bdd-live
+          retention-days: 7
+          if-no-files-found: warn
+          path: |
+            Implementacion K8S/Codigo/Frontend/e2e/.runtime/runs/**/summary.json
+            Implementacion K8S/Codigo/Frontend/e2e/.runtime/runs/**/screenshots/**/catalogo-detalle.png
+      - name: Detener este baseline conservando datos
+        if: always()
+        shell: pwsh
+        working-directory: Implementacion K8S/Codigo
+        run: |
+          if (Test-Path -LiteralPath .env) {
+            ./scripts/stop-baseline.ps1
+          }

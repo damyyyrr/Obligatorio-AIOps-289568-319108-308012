@@ -7,6 +7,7 @@
     <c-row>
       <c-col>
         <c-card 
+        data-cy="drug-card"
         [cBorder]="{top: {color: 'info', width: 3}}" 
         class="mb-3" 
         *ngFor="let drug of drugs">
@@ -21,10 +22,10 @@
               </h5>
               <p cCardText> 
                 <b>Symptoms:</b> {{ drug.symptom }} <br>
-                <b>Price:</b> {{ drug.price | currency}}
+                <b>Price:</b> <span data-cy="drug-price">{{ drug.price | currency}}</span>
               </p>
               <div [ngStyle]="{ 'text-align': 'end' }">
-              <button cButton color="primary" [routerLink]="['/home/detail', drug.id]">
+              <button data-cy="drug-details-link" cButton color="primary" [routerLink]="['/home/detail', drug.id]">
                 View Details
                 <svg cIcon name="cil-plus"></svg>
               </button>

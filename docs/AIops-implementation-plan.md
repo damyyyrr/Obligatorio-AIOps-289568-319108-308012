@@ -1,5 +1,11 @@
 # Implementación de AIOps
 
+## Incremento del 12 de noviembre de 2026 — issue #15
+
+Se preparan cuatro escenarios BDD de acceso y consulta con Cypress/Cucumber, dependencias aisladas de Angular, datos del seed de laboratorio, selectores estables, resumen de ejecución y CI. Se corrige el acceso a un resultado vacío después de un login rechazado. La [guía de traspaso](../Implementacion%20K8S/Codigo/Frontend/e2e/README.md) permite ejecutar y diagnosticar desde otra PC.
+
+Pasan Gherkin, resolución de pasos y compilación del feature. Por indicación del usuario y falta de RAM, no se inicia infraestructura ni navegador; build Angular, CI y cuatro escenarios reales quedan pendientes. La [evidencia de preparación](evidence/issue-15-20261112/README.md) conserva esa distinción. #15 sigue abierta y el PR queda en borrador hasta la validación del compañero.
+
 ## Incremento del 12 de noviembre de 2026 — issue #16
 
 Se amplía el [plan de incidentes](baseline-incidents.md) a Kubernetes y Compose con roles, severidades, canal, escalamiento y aborto, criterios funcionales de restauración y convención de tiempos del curso. Los [seis runbooks](runbooks/incidentes.md) cubren requests, CPU, RAM, disco, red y desconexión interna. Hay plantillas de [ficha/bitácora y comunicaciones](templates/incidente.md) y [postmortem](templates/postmortem.md).

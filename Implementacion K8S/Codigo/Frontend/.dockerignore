@@ -5,3 +5,5 @@ coverage
 *.log
 .env
 .git
+e2e
+.runtime

@@ -16,6 +16,7 @@
                   <input 
                   [ngModelOptions]="{standalone: true}"
                   [(ngModel)]="user"
+                  data-cy="login-username"
                   [value]="user"
                   autoComplete="username" cFormControl placeholder="Username" />
                 </c-input-group>
@@ -26,6 +27,7 @@
                   <input
                     [ngModelOptions]="{standalone: true}"
                     [(ngModel)]="password"
+                    data-cy="login-password"
                     [value]="password"
                     autoComplete="current-password"
                     cFormControl
@@ -37,6 +39,7 @@
                   <c-col xs="6">
                     <button (click)=" goLogin()" 
                     cButton 
+                    data-cy="login-submit"
                     class="px-4" 
                     color="primary">
                       Login

@@ -15,7 +15,9 @@ Los estados del requisito completo se conservan aunque exista una prueba parcial
 | R07 | Requests, CPU, RAM, storage, interrupción de red y desconexión interna | MISSING en dos escenarios; resto EXISTING UNVERIFIED | Cuatro scripts en `chaos-engineering/` sin validación de seguridad | Seis escenarios acotados con destino, timeout, limpieza, impacto y restauración |
 | R08 | Defensa y explicación de telemetría/respuesta en war-room | BLOCKED hasta instancia de defensa | Defensa prevista 23/11/2026; guion docente no disponible | Simulacro, roles, explicación individual y defensa real |
 
-Otros entregables: GitHub y BDD Cypress+Cucumber, informe <=10 páginas, reflexión sobre prácticas ágiles, declaración de uso de IA y paquete <=40 MB. Ver [el mapa de issues](GITHUB_ISSUES.md). El README del baseline describe las pruebas funcionales disponibles; estas no equivalen aún a BDD en navegador.
+Otros entregables: GitHub y BDD Cypress+Cucumber, informe <=10 páginas, reflexión sobre prácticas ágiles, declaración de uso de IA y paquete <=40 MB. Ver [el mapa de issues](GITHUB_ISSUES.md).
+
+BDD — issue #15, 12/11/2026: **PREPARADO / ejecución real pendiente en otra PC**. Cuatro escenarios de login y consulta, herramientas fijadas, scripts de resultados y CI. Pasan Gherkin, resolución de pasos y bundle; no se ejecutó navegador, build Angular ni CI. [Guía de ejecución](../Implementacion%20K8S/Codigo/Frontend/e2e/README.md) · [Preparación y evidencia pendiente](evidence/issue-15-20261112/README.md). Los smoke HTTP históricos no equivalen a BDD aprobado.
 
 ## Resultado parcial de baseline
 

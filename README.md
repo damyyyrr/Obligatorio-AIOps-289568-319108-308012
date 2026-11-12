@@ -22,6 +22,7 @@ Ver la [guía de arranque y diagnóstico](<Implementacion K8S/Codigo/BASELINE.md
 ## Trabajo del equipo
 
 - [Issues del obligatorio](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues) y [mapa de trabajo](docs/GITHUB_ISSUES.md).
+- [BDD Cypress + Cucumber: ejecución y traspaso de #15](Implementacion%20K8S/Codigo/Frontend/e2e/README.md), preparado para validar en otra PC.
 - [Plan maestro](docs/aiops-master-plan.md), [estado de implementación](docs/AIops-implementation-plan.md) y [matriz de requisitos](docs/aiops-requirements-matrix.md).
 - [Consultas académicas pendientes](docs/aiops-open-questions.md), [plan de incidentes](docs/baseline-incidents.md), [seis runbooks](docs/runbooks/incidentes.md) y [práctico de ML](ml/README.md).
 

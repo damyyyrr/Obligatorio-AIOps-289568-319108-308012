@@ -1,0 +1,30 @@
+{
+  "name": "pharmago-bdd",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.16 <23"
+  },
+  "scripts": {
+    "check": "node scripts/check.cjs",
+    "check:guards": "node scripts/verify-guards.cjs",
+    "test": "node scripts/run.cjs",
+    "test:demo": "node scripts/run.cjs --demo",
+    "open": "node scripts/open.cjs",
+    "open:demo": "node scripts/open.cjs --demo"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "26.0.0",
+    "@cucumber/cucumber": "13.3.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.8",
+    "cypress": "15.18.0",
+    "esbuild": "0.28.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "features/[filepath].cjs"
+    ],
+    "filterSpecs": true,
+    "omitFiltered": true
+  }
+}
