@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { randomUUID } = require("node:crypto");
 const { execFileSync } = require("node:child_process");
+const summarizeTest = require("./results.cjs");
 
 process.chdir(path.join(__dirname, ".."));
 const output = path.resolve(".runtime/runs", new Date().toISOString().replace(/[:.]/g, "-") + "-" + randomUUID().slice(0, 8));
@@ -43,10 +44,7 @@ function save() {
   summary.browserVersion = result.browserVersion;
   summary.counts = { total: result.totalTests, passed: result.totalPassed, failed: result.totalFailed,
     pending: result.totalPending, skipped: result.totalSkipped };
-  summary.scenarios = result.runs.flatMap((run) => run.tests.map((test) => ({
-    title: test.title.join(" > "), state: test.state,
-    durationMs: test.attempts.reduce((sum, attempt) => sum + (attempt.wallClockDuration || 0), 0),
-  })));
+  summary.scenarios = result.runs.flatMap((run) => run.tests.map(summarizeTest));
   // No guardar el objeto completo de Cypress: incluye config, entorno y detalles privados.
   summary.status = result.totalTests === 4 && result.totalPassed === 4 && result.totalFailed === 0 &&
     result.totalPending === 0 && result.totalSkipped === 0 && result.runs.every((run) => !run.error) ? "PASS" : "FAIL";

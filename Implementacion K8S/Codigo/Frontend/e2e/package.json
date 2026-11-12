@@ -8,6 +8,7 @@
   "scripts": {
     "check": "node scripts/check.cjs",
     "check:guards": "node scripts/verify-guards.cjs",
+    "check:results": "node --test scripts/results.test.cjs",
     "test": "node scripts/run.cjs",
     "test:demo": "node scripts/run.cjs --demo",
     "open": "node scripts/open.cjs",
