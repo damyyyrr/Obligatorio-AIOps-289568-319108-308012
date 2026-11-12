@@ -12,6 +12,16 @@ python "$chaos/chaos.py" cpu --context pharmago-issue17
 python -m unittest discover -s $chaos -p 'test_*.py' -v
 ```
 
+`test_chaos.py` contiene 41 pruebas sin infraestructura. Las cinco pruebas de `test_fault_agent.py` se omiten salvo opt-in explícito: ejecutan el shell real en un contenedor efímero con 256 MiB, 0,5 CPU, sin red y sin datos de la aplicación. Requieren una imagen local con las herramientas del contenedor Pharmacy (incluido `flock`):
+
+```powershell
+$env:PHARMAGO_AGENT_TEST_IMAGE = 'pharmago-baseline/pharmacy:local'
+python -m unittest discover -s $chaos -p 'test_fault_agent.py' -v
+Remove-Item Env:PHARMAGO_AGENT_TEST_IMAGE
+```
+
+Comprueban cancelación antes del arranque de CPU/RAM/disco, aborto con procesos activos, plazo absoluto incluso después de retirar el tombstone, corte de un agente ya iniciado y preservación de controles ajenos. No son los seis experimentos sobre PharmaGo. El workflow `Chaos safety` repite los tests y wrappers en Linux, con un agente aislado sobre la imagen base .NET 6.
+
 Sin `--execute` solo se imprime el plan: no se llama a kubectl/Docker ni se escribe en el clúster. Un contexto no especificado, límites inválidos o un operador no identificado para ejecución se rechazan. Los cuatro scripts originales ahora son wrappers de este controlador; **ya no aceptan los argumentos posicionales anteriores** ni disparan carga al ejecutarlos sin opciones. Bash usa `PHARMAGO_PYTHON` o `python`.
 
 | Escenario | Wrapper | Efecto y reversión |
@@ -80,13 +90,15 @@ Límites no ampliables por flags: duración 1..180 s, RAM hasta 128 MiB y hasta 
 
 Antes de mutar se escribe `.runtime/chaos/<runId>/journal.json` y se adquiere un lock de laboratorio. Un watchdog local independiente debe confirmar preparación. Revierte si vence el plazo de inyección; al presupuesto total de 600 s intenta también retirar el lock propio. Los procesos remotos tienen timeout/deadline independientes. El generador de requests usa cancelación persistente para impedir arranques tardíos después de un aborto.
 
-Ctrl+C/SIGTERM solicita aborto y ejecuta finally: detener generador, limpiar agente, quitar política o selector propios y verificar identidad. Puede haber hasta 12 s de solicitudes HTTP ya en vuelo; no se considera que el aborto revoque operaciones ya enviadas. El watchdog no puede reparar durante apagado del host o API server inaccesible: queda journal y puede requerirse recuperación manual. No se garantiza limpieza por solo cerrar una terminal.
+Ctrl+C/SIGTERM solicita aborto y ejecuta finally: detener generador, limpiar agente, quitar política o selector propios y verificar identidad. CPU/RAM/disco también conservan cancelación persistente; `flock` serializa comprobación, arranque, registro de PIDs y limpieza. Todos los RPC de carga reciben un deadline absoluto: un arranque remoto tardío no puede reiniciar el estímulo después del aborto o del vencimiento. El envío de scripts por stdin conserva bytes LF desde Windows; no se usa traducción de texto CRLF.
+
+Con un RPC incierto de requests, CPU, RAM o disco se mantienen cancelación, lock y journal sin declarar `cleanup=verified`, hasta confirmar su fin o alcanzar deadline + 15 s. Antes de retirar los controles, el controlador confirma que el watchdog terminó; si no lo confirma, requiere recuperación manual. Puede haber hasta 12 s de solicitudes HTTP ya en vuelo; no se considera que el aborto revoque operaciones ya enviadas. El watchdog no puede reparar durante apagado del host o API server inaccesible: queda journal y puede requerirse recuperación manual. No se garantiza limpieza por solo cerrar una terminal.
 
 ```powershell
 python "$chaos/chaos.py" --recover '.runtime/chaos/<runId>/journal.json' --execute
 ```
 
-La recuperación es idempotente, comprueba namespace/UID/propietario y no adopta recursos ajenos. Un Service reemplazado o un selector concurrente detienen la reparación sin sobrescribirlos. El borrado de política/lock usa DeleteOptions con precondiciones UID y resourceVersion. Para un RPC de carga incierto se conserva la cancelación hasta deadline + 15 s; repetir recuperación luego de ese plazo, sin borrar el control a mano. Con `MANUAL_RECOVERY_REQUIRED` no iniciar otro ensayo. Escalar por [los runbooks](../../../docs/runbooks/incidentes.md); no borrar datos ni vaciar reglas generales de red.
+La recuperación es idempotente, comprueba namespace/UID/propietario y no adopta recursos ajenos. Un Service reemplazado o un selector concurrente detienen la reparación sin sobrescribirlos. El borrado de política/lock usa DeleteOptions con precondiciones UID y resourceVersion. Para cualquier RPC de carga incierto se conserva la cancelación hasta deadline + 15 s; repetir recuperación luego de ese plazo, sin borrar el control a mano ni correr recuperaciones simultáneas. Con `MANUAL_RECOVERY_REQUIRED` no iniciar otro ensayo. Escalar por [los runbooks](../../../docs/runbooks/incidentes.md); no borrar datos ni vaciar reglas generales de red.
 
 ## Resultados y aceptación
 

@@ -1,0 +1,37 @@
+name: Chaos safety
+on:
+  pull_request:
+    branches: [obligatorio]
+    paths:
+      - 'Implementacion K8S/Codigo/chaos-engineering/**'
+      - '.github/workflows/chaos.yml'
+permissions:
+  contents: read
+jobs:
+  controller-and-agent:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: Implementacion K8S/Codigo/chaos-engineering
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Controlador sin cluster
+        run: python -m unittest discover -p test_chaos.py -v
+      - name: Sintaxis y seis wrappers sin mutaciones
+        shell: bash
+        run: |
+          set -euo pipefail
+          for script in *.sh; do bash -n "$script"; done
+          for script in load-requests cpu-spike ram-spike volume-spike network-interruption component-disconnect; do
+            bash "$script.sh" --context ci-offline
+          done
+      - name: Imagen base del agente (sin servicios de aplicacion)
+        run: docker pull mcr.microsoft.com/dotnet/aspnet:6.0
+      - name: Aborto, deadline y limpieza del agente real aislado
+        env:
+          PHARMAGO_AGENT_TEST_IMAGE: mcr.microsoft.com/dotnet/aspnet:6.0
+        run: python -m unittest discover -p test_fault_agent.py -v
