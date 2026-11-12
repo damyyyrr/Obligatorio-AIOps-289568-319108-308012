@@ -108,6 +108,18 @@ class FaultAgentTests(unittest.TestCase):
                                text=True, capture_output=True, check=True, timeout=10).stdout
         self.assertEqual(value, "foreign")
 
+    def test_absolute_deadline_truncates_a_running_agent(self):
+        run_id = uuid.uuid4().hex
+        started = time.monotonic()
+        result = self.agent("run", "cpu", run_id, seconds=8, until=int(time.time()) + 3)
+        self.assertTrue(result["injected"])
+        self.assertLess(time.monotonic() - started, 7)
+        self.assert_no_processes_or_payload(run_id)
+        self.agent("clear", "cpu", run_id)
+        for suffix in (".cancel", ".lock"):
+            subprocess.run(["docker", "exec", self.name, "test", "!", "-e",
+                            "/tmp/pharmago-chaos-" + run_id + suffix], check=True, timeout=10)
+
 
 if __name__ == "__main__":
     unittest.main()
