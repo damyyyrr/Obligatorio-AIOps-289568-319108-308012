@@ -46,7 +46,7 @@ def execute(output):
     nbformat.validate(notebook)
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
-    nbformat.write(notebook, output)
+    output.write_text(nbformat.writes(notebook), encoding="utf-8", newline="\n")
     count = sum(c.cell_type == "code" for c in notebook.cells)
     print(f"PASS: {count} celdas de código ejecutadas; notebook guardado en {output}")
 

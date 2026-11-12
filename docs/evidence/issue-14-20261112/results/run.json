@@ -1,6 +1,6 @@
 {
-  "executedUtc": "2026-11-12T16:22:27.297265+00:00",
-  "sourceCommit": "54d5a17c68cb7ede122b92862ad156163a0b09d9",
+  "executedUtc": "2026-11-12T16:29:30.233393+00:00",
+  "sourceCommit": "6bf1a3e977128326bdde706750ca5cdcb21009b4",
   "dirtyTreeAtRun": true,
   "dataset": {
     "origin": "notebook docente adjunto; dataset sintético checkout, celda 4",
@@ -183,16 +183,16 @@
     }
   },
   "sourceHashes": {
-    "dataset.py": "3ff0f198bdbcec434fc71de1231b73b589de65e26fd04bb94af860953819d062",
+    "dataset.py": "6c63b1846d96397767a37f9318f9bf59f6c106eaa2c9be4fc9bf07a538d2f417",
     "detectors.py": "352ffc10d6730e7fc00f7ff80f9ab2c6bf88e706593bd2807001172ebd783001",
     "plots.py": "854a307806407b98ede897cb44accd73a92837a3a401ccae385a25c42ee6e508",
-    "run.py": "7d11baa6e0acdd2e3f25a9160c7be9238ae3e81388c7e387f4992cce23354365"
+    "run.py": "1d5dfd77f9c8e838127ac0a72938ab1da8bcefe47f85e1670e261203f805a2f4"
   },
   "artifactHashes": {
     "by_kind.csv": "0cdcf6b47126908dda5fc89113f9d9860192c0f81f548fcd92b87b75b525b9a7",
     "comparison.png": "9c3ddb0d54e2a3f98da190322f765b04b02b46b720e97fa7d8a92f90a555dff5",
     "dataset.csv": "f04f5c615d4be889abbc34409c5245bf735fd325415fdc2aed8ebcf541a260ba",
-    "errors.json": "cdd45ace852712e753f8e34e0338b077635259db56a037a7cbb75d4af2ac868d",
+    "errors.json": "0b4e010e055c96eab3d3341c4f099e3cc70d8d0c6a636521c88982fed1a06419",
     "metrics.csv": "972aa850d821eca59920c826a8407872b68a443a7aadc579224a575d49dfab1c",
     "predictions.csv": "75076b1482247ed0303b07146b45f0730aad017c457e24ad2954fffe6c3c0cee",
     "projection.png": "dff341af57242912ab1d6bd1c54d1fc2695b9e103a12536348b4895b2e98d126",

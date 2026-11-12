@@ -59,7 +59,7 @@ def export(output):
                               **{feature: float(data.loc[index, feature]) for feature in FEATURES},
                               "score": float(predictions.loc[index, f"score_{key}"]),
                               "flag": bool(predictions.loc[index, f"flag_{key}"])})
-    (output / "errors.json").write_text(json.dumps(cases, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (output / "errors.json").write_text(json.dumps(cases, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     commit = subprocess.run(["git", "-C", str(HERE), "rev-parse", "HEAD"], capture_output=True,
                             text=True, check=True, timeout=10).stdout.strip()
     dirty = subprocess.run(["git", "-C", str(HERE), "status", "--porcelain"], capture_output=True,
@@ -79,7 +79,7 @@ def export(output):
     run["artifactHashes"] = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(output.iterdir())
                              if p.name in ("dataset.csv", "predictions.csv", "metrics.csv", "by_kind.csv", "errors.json",
                                            "scores_timeline.png", "projection.png", "comparison.png")}
-    (output / "run.json").write_text(json.dumps(run, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (output / "run.json").write_text(json.dumps(run, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     summary = """# Comparación de Isolation Forest y One-Class SVM RBF
 
 Datos: 300 ventanas sintéticas del notebook docente, semilla 42; 53 ventanas etiquetadas como anómalas solo para evaluación. Fechas sintéticas, sin zona horaria. El dataset no proviene de PharmaGo ni de los ensayos Kubernetes.
@@ -108,7 +108,7 @@ El scaler y los dos modelos se ajustaron sobre las mismas 300 ventanas, incluida
 
 ![Métricas y matrices de confusión](comparison.png)
 """
-    (output / "RESULTS.md").write_text(summary, encoding="utf-8")
+    (output / "RESULTS.md").write_text(summary, encoding="utf-8", newline="\n")
     return run
 
 

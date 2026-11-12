@@ -1,6 +1,6 @@
 # Issue #14: ejecución de Isolation Forest y One-Class SVM RBF
 
-Implementación en `feature/issue-14-algoritmos`, creada desde `54d5a17c68cb7ede122b92862ad156163a0b09d9` de `obligatorio`. Ejecución del **12/11/2026**, Python 3.11.0 en Windows. Los resultados se capturaron con el árbol modificado antes del commit de la implementación; `results/run.json` conserva ese estado, hashes de fuentes/artefactos y versiones exactas.
+Implementación en `feature/issue-14-algoritmos`, creada desde `54d5a17c68cb7ede122b92862ad156163a0b09d9` de `obligatorio`. Ejecución del **12/11/2026**, Python 3.11.0 en Windows. Los resultados se capturaron con el árbol modificado durante el incremento; `results/run.json` conserva ese estado, hashes de fuentes/artefactos y versiones exactas. Las fuentes y salidas de texto nuevas usan LF explícito para conservar sus hashes al versionarlas y clonarlas en Windows.
 
 **Resultado técnico reproducido; aceptación académica pendiente de Q03.** El criterio de cierre de #14 admite identificar explícitamente esa aceptación pendiente. No se declara R05 aceptado por el docente ni se cierra la consulta #1.
 
