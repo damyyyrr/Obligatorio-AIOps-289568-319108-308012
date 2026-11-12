@@ -1,0 +1,33 @@
+{
+  "cli_runs": 2,
+  "identical_files": [
+    "dataset.csv",
+    "predictions.csv",
+    "metrics.csv",
+    "by_kind.csv",
+    "errors.json",
+    "scores_timeline.png",
+    "projection.png",
+    "comparison.png",
+    "RESULTS.md"
+  ],
+  "models_metadata_identical": true,
+  "dataset_metadata_identical": true,
+  "exported_metrics_recomputed": true,
+  "artifact_and_source_hashes_verified": true,
+  "notebook": {
+    "code_cells": 7,
+    "errors": 0,
+    "png_outputs_matching_cli": 3
+  },
+  "unit_tests": {
+    "run": 20,
+    "failures": 0,
+    "errors": 0
+  },
+  "local_markdown_links_checked": 79,
+  "protocol": "same 300 windows for fit/evaluation; no labels in training",
+  "academic_acceptance": "pending Q03",
+  "git_blob_hashes_match": true,
+  "canonical_text_newlines": "LF"
+}

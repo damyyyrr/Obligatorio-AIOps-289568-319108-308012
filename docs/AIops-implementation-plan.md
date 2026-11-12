@@ -6,6 +6,12 @@ Se reemplazan los cuatro scripts heredados por wrappers de un controlador con si
 
 El equipo local tiene aproximadamente 8 GiB físicos, motor Docker de 3,75 GiB y se observó alrededor de 1,2 GiB libre sin cargas. No había un clúster configurado. Se inició Docker Desktop para inspección, sin iniciar el baseline, Minikube ni contenedores de caos. Los ensayos sobre la aplicación se difieren a un entorno con capacidad; #17/R07 y la validación integral de #16/R06 permanecen pendientes. No se afirman transiciones Firing/OK ni recuperación del sistema a partir de los tests sin clúster.
 
+## Incremento del 12 de noviembre de 2026 — issue #14
+
+Se implementan y ejecutan Isolation Forest y One-Class SVM RBF sobre las 300 ventanas sintéticas del notebook docente, preservando el original y su protocolo: StandardScaler y ambos modelos se ajustan sobre toda la muestra, sin etiquetas ni selección de parámetros con ellas. La [guía ML](../ml/README.md) enlaza CLI, notebook ejecutado y dependencias fijadas. Los [resultados](evidence/issue-14-20261112/results/RESULTS.md) incluyen scores/flags por ventana, métricas, todos los FP/FN, tablas por tipo, gráficos y parámetros/versiones/hashes.
+
+Pasaron 20 pruebas y dos ejecuciones CLI produjeron salidas numéricas idénticas; el notebook terminó sus siete celdas de código. F1 observado: IF 0,578313 y OCSVM 0,439024, evaluados sobre la misma muestra de entrenamiento, sin afirmar generalización. La [evidencia](evidence/issue-14-20261112/README.md) conserva alcance y procedencia. R05 tiene validación técnica del material disponible; Q03 y la aceptación académica permanecen pendientes. La ampliación del práctico sigue en #20. No se inició infraestructura.
+
 ## Incremento del 12 de noviembre de 2026 — issue #16
 
 Se amplía el [plan de incidentes](baseline-incidents.md) a Kubernetes y Compose con roles, severidades, canal, escalamiento y aborto, criterios funcionales de restauración y convención de tiempos del curso. Los [seis runbooks](runbooks/incidentes.md) cubren requests, CPU, RAM, disco, red y desconexión interna. Hay plantillas de [ficha/bitácora y comunicaciones](templates/incidente.md) y [postmortem](templates/postmortem.md).
