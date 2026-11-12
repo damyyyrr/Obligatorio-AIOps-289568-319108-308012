@@ -210,7 +210,7 @@ class EvidenceTests(unittest.TestCase):
             with self.assertRaises(RuntimeError): trial.check_effect()
 
     def test_network_probe_measures_new_backend_and_gateway_connections_separately(self):
-        with patch("probe.request", return_value=({"http": 200}, [{"id": 1}])) as request:
+        with patch("probe.request", side_effect=lambda *_: ({"http": 200}, [{"id": 1}])) as request:
             results = probe.sample({"directPharmacy": True})
         self.assertEqual([c.args[0] for c in request.call_args_list], [
             "http://pharmago-pharmacy-service/api/drug", "http://pharmago-api-gateway/api/drug",
