@@ -1,6 +1,6 @@
 # Runbooks de incidentes de PharmaGo
 
-Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/incidente.md). Son procedimientos de respuesta; los mecanismos de inyección y sus ensayos pertenecen a #17. Requieren contexto/namespace, roles, inventario, límite temporal y reversión registrados antes de actuar. La revisión estática no acredita seis experimentos aprobados.
+Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/incidente.md). Los mecanismos de #17 están en [la guía del controlador](../../Implementacion%20K8S/Codigo/chaos-engineering/README.md); su validación integral en clúster sigue pendiente. Requieren contexto/namespace, roles, inventario, límite temporal y reversión registrados antes de actuar. La revisión estática no acredita seis experimentos aprobados.
 
 ## RB-01: exceso de solicitudes o solicitudes fallidas reiteradas
 
@@ -18,7 +18,7 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 **Detectar:** `pharmago-pod-cpu`, p95 elevado, throttling o probes lentos. CPU del nodo y CPU del contenedor son medidas distintas.
 
 1. **Diagnosticar:** [consultas](../aiops-k8s-metrics.md) y dashboard Infra por pod/nodo; comparar con límites, réplicas y eventos. `kubectl --context $ctx -n $ns top pod $pod --containers` requiere Metrics Server; su ausencia no significa CPU cero.
-2. **Contener:** detener el PID/generador de CPU registrado por #17 y comprobar que terminó. Cerrar `kubectl exec` no prueba que sus hijos terminen. El `cpu-spike.sh` heredado deja bucles sin limpieza garantizada y no se considera una herramienta aprobada.
+2. **Contener:** detener el PID/generador de CPU registrado por #17 y comprobar que terminó. Cerrar `kubectl exec` no prueba que sus hijos terminen. La versión heredada de `cpu-spike.sh` dejaba bucles sin limpieza garantizada; ahora el wrapper usa el controlador, agente con PID identificado, trap/timeout y recuperación por journal. Su validación real aún está pendiente.
 3. **Restaurar:** si la inyección persiste dentro de un pod stateless y se perdió el PID, coordinación puede recrear solo el servicio elegido con el procedimiento acotado al final. Detener antes cualquier proceso que pudiera reinyectar. No aumentar CPU/réplicas a ciegas ni operar sobre todo el nodo.
 4. **Validar:** consumo próximo al baseline, sin nuevos fallos de probes, alerta vuelve a OK con datos y ventana funcional completa. Distinguir retiro del estímulo de efecto de un reinicio.
 
@@ -28,7 +28,7 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 
 **Detectar:** `pharmago-pod-memory`, OOMKilled, reinicios o MemoryPressure. Exit 137 por sí solo no prueba OOM; contrastar motivo/eventos y consumo, porque también puede ser SIGKILL por otra causa.
 
-1. **Diagnosticar:** memoria frente al límite, memoria libre del nodo/host, `describe pod`, terminación anterior y logs previos. Distinguir heap, tmpfs (`/dev/shm`) y disco (`/tmp`). El fallback de `ram-spike.sh` puede llenar disco: aplicar RB-04 si corresponde.
+1. **Diagnosticar:** memoria frente al límite, memoria libre del nodo/host, `describe pod`, terminación anterior y logs previos. Distinguir heap, tmpfs (`/dev/shm`) y disco (`/tmp`). La versión heredada de `ram-spike.sh` tenía fallback a disco; el nuevo agente usa dd/FIFO sin ese fallback. Si el incidente proviene de scripts antiguos o de otro origen, comprobar también RB-04.
 2. **Contener:** detener el proceso retenedor identificado. Si creó un archivo, verificar pertenencia/ruta según RB-04 antes de retirarlo. No usar `pkill` general ni matar SQL/Elasticsearch para liberar RAM.
 3. **Restaurar:** permitir recuperación por kubelet; si se repite, detener inyección y diagnosticar, sin mantener un crash loop. Recrear un servicio stateless solo cuando sea necesario, mediante el procedimiento acotado. Conservar logs previos si la estabilidad del host lo permite.
 4. **Validar:** memoria recuperada, dotación esperada, sin nuevos OOM/reinicios/presión y ventana funcional. Running tras OOM no acredita Ready. Esperar OK real con métricas frescas.

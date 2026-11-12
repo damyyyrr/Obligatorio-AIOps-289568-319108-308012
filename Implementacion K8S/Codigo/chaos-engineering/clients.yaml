@@ -1,0 +1,64 @@
+# Aplicar solo en el laboratorio identificado, nunca crea ni borra el namespace.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pharmago-chaos-client
+  namespace: pharmago
+  labels:
+    app: pharmago-chaos-client
+    pharmago.io/chaos-client: "true"
+spec:
+  automountServiceAccountToken: false
+  restartPolicy: Never
+  activeDeadlineSeconds: 14400
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65534
+  containers:
+  - name: client
+    image: python:3.11.10-slim-bookworm
+    command: ["python", "-c", "import time; time.sleep(14400)"]
+    volumeMounts: [{name: control, mountPath: /tmp}]
+    securityContext:
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+    resources:
+      requests: {cpu: 25m, memory: 32Mi}
+      limits: {cpu: 250m, memory: 96Mi}
+  volumes:
+  - name: control
+    emptyDir: {sizeLimit: 4Mi}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pharmago-chaos-load
+  namespace: pharmago
+  labels:
+    app: pharmago-chaos-load
+    pharmago.io/chaos-client: "true"
+spec:
+  automountServiceAccountToken: false
+  restartPolicy: Never
+  activeDeadlineSeconds: 14400
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 65534
+  containers:
+  - name: client
+    image: python:3.11.10-slim-bookworm
+    command: ["python", "-c", "import time; time.sleep(14400)"]
+    volumeMounts: [{name: control, mountPath: /tmp}]
+    securityContext:
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+    resources:
+      requests: {cpu: 25m, memory: 32Mi}
+      limits: {cpu: 250m, memory: 96Mi}
+  volumes:
+  - name: control
+    emptyDir: {sizeLimit: 4Mi}

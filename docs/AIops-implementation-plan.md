@@ -1,5 +1,11 @@
 # Implementación de AIOps
 
+## Incremento del 12 de noviembre de 2026 — issue #17
+
+Se reemplazan los cuatro scripts heredados por wrappers de un controlador con simulación sin infraestructura, contexto local explícito, límites de carga, prechecks de capacidad/observabilidad, identidad de recursos, journal y watchdog. Se agregan corte de tráfico con NetworkPolicy y desconexión del Service Pharmacy. La [guía](../Implementacion%20K8S/Codigo/chaos-engineering/README.md) describe preparación, ejecución individual, aborto y recuperación, y las [evidencias](evidence/issue-17-20261112/README.md) distinguen regresiones/simulación de ensayos reales.
+
+El equipo local tiene aproximadamente 8 GiB físicos, motor Docker de 3,75 GiB y se observó alrededor de 1,2 GiB libre sin cargas. No había un clúster configurado. Se inició Docker Desktop para inspección, sin iniciar el baseline, Minikube ni contenedores de caos. Los ensayos sobre la aplicación se difieren a un entorno con capacidad; #17/R07 y la validación integral de #16/R06 permanecen pendientes. No se afirman transiciones Firing/OK ni recuperación del sistema a partir de los tests sin clúster.
+
 ## Incremento del 12 de noviembre de 2026 — issue #16
 
 Se amplía el [plan de incidentes](baseline-incidents.md) a Kubernetes y Compose con roles, severidades, canal, escalamiento y aborto, criterios funcionales de restauración y convención de tiempos del curso. Los [seis runbooks](runbooks/incidentes.md) cubren requests, CPU, RAM, disco, red y desconexión interna. Hay plantillas de [ficha/bitácora y comunicaciones](templates/incidente.md) y [postmortem](templates/postmortem.md).

@@ -24,6 +24,7 @@ Ver la [guía de arranque y diagnóstico](<Implementacion K8S/Codigo/BASELINE.md
 - [Issues del obligatorio](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues) y [mapa de trabajo](docs/GITHUB_ISSUES.md).
 - [Plan maestro](docs/aiops-master-plan.md), [estado de implementación](docs/AIops-implementation-plan.md) y [matriz de requisitos](docs/aiops-requirements-matrix.md).
 - [Consultas académicas pendientes](docs/aiops-open-questions.md), [plan de incidentes](docs/baseline-incidents.md), [seis runbooks](docs/runbooks/incidentes.md) y [práctico de ML](ml/README.md).
+- [Seis escenarios de caos y recuperación](<Implementacion K8S/Codigo/chaos-engineering/README.md>): implementados y con regresiones sin clúster; ensayos reales pendientes en un entorno con capacidad.
 
 Cada integrante toma una issue pendiente y se asigna como responsable. Crear una rama desde `obligatorio`, referenciar la issue en commits y abrir el PR contra `obligatorio`. Revisar dependencias antes de empezar; coordinar cambios compartidos en Compose/manifests y no cerrar una issue por tener archivos escritos sin probarlos. Las prioridades y los hitos permiten filtrar el trabajo sin asignar personas por suposición.
 

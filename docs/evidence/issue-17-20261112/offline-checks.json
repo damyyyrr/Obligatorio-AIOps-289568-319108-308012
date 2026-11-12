@@ -1,0 +1,56 @@
+{
+  "sourceBaseCommit": "54d5a17c68cb7ede122b92862ad156163a0b09d9",
+  "workingTreeAtChecks": "modified; not a deployed release",
+  "unitTests": {
+    "run": 35,
+    "failures": 0,
+    "errors": 0,
+    "scope": "offline guards, recovery identities, evidence classification; mocked cluster/HTTP"
+  },
+  "shellSyntax": {
+    "files": 7,
+    "result": "PASS",
+    "tool": "Git Bash -n; no injection executed"
+  },
+  "wrappers": {
+    "scenarios": [
+      "requests",
+      "cpu",
+      "ram",
+      "storage",
+      "network",
+      "disconnect"
+    ],
+    "result": "PASS",
+    "mode": "DRY_RUN_OFFLINE; no kubectl/Docker calls"
+  },
+  "clientsYaml": {
+    "documents": 2,
+    "result": "PASS; parsed with PyYAML, limits/deadline/security checked; not applied"
+  },
+  "liveStatus": "NOT_RUN_ENVIRONMENT_CAPACITY",
+  "liveRuns": [],
+  "sourceSha256": {
+    "Implementacion K8S/Codigo/chaos-engineering/chaos.py": "1c83091825f610687c814f1f3a3e76ce9f6e41e9a5d9407fbadfb79594adc95f",
+    "Implementacion K8S/Codigo/chaos-engineering/clients.yaml": "6513f133793d73da1cdc7ee3b6023e6677ca7aaf534f7df7a5dbd9d22b5a8e6f",
+    "Implementacion K8S/Codigo/chaos-engineering/component-disconnect.sh": "949d23f05e5c1d2a3dd14057ebe14ff1eb1b966af6aab3abacd67241512af5c3",
+    "Implementacion K8S/Codigo/chaos-engineering/cpu-spike.sh": "55d751fe5f67b7e5849a15745660aac6cb4dd338bd211122978061bafe30120e",
+    "Implementacion K8S/Codigo/chaos-engineering/fault.sh": "b499148b667527b41c592bc59f9a5ec7b9a937f25069630a7ca69b6928db94e5",
+    "Implementacion K8S/Codigo/chaos-engineering/load-requests.sh": "813c0ccb5b67621204813151b6d7c81d4ef1a9a2b23bfb1ca9b848c274268f04",
+    "Implementacion K8S/Codigo/chaos-engineering/network-interruption.sh": "76196c62af299e3b3a6ea55d2b57ae43306376fed2c366421adf237a07cac81f",
+    "Implementacion K8S/Codigo/chaos-engineering/probe.py": "56eb16b016565946d1175dc2a73f9103129419d889088350f1fa202a39fba729",
+    "Implementacion K8S/Codigo/chaos-engineering/ram-spike.sh": "198fa9af490caf0f22ed82348ac8c5fe5db264c298fc9b15c2a285509a123c9d",
+    "Implementacion K8S/Codigo/chaos-engineering/test_chaos.py": "d06edc76a098c7b331ffa09ea926d68ac223e71bfe634747b4129e47b7d489ea",
+    "Implementacion K8S/Codigo/chaos-engineering/volume-spike.sh": "c366ef9df35f8493b28469f3c7693892e6c91089c7de38e8b979a76f52500c45"
+  },
+  "limitations": [
+    "No live fault, CNI enforcement, cleanup, alert transition or application restoration claimed.",
+    "No host/Kubernetes configuration or business data changed.",
+    "Docker Desktop was started only for inspection; running containers and configured contexts remained zero."
+  ],
+  "documentation": {
+    "localLinksChecked": 72,
+    "powershellBlocksParsed": 5,
+    "result": "PASS; commands not executed"
+  }
+}
