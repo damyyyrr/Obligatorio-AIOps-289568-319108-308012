@@ -1,0 +1,95 @@
+{
+  "kind": "retrospective-analysis-not-a-new-chaos-run",
+  "source": "docs/evidence/issue-7-20261110/proof.json",
+  "sourceCanonicalJsonSha256": "296acf70df527cc7fadf0e2bdde292913c3d54d59220af70be6ec65b62866a6a",
+  "sourceContext": "pharmago-issue3",
+  "sourceImageTag": "issue7-recovery-20261110",
+  "reference": "faultUtc; injection time, not independently measured user-impact onset",
+  "detection": "receipt of first recorded invalid business response after injection; not human acknowledgement or Grafana Firing",
+  "limitations": [
+    "No new infrastructure operation, human acknowledgement or communication is claimed.",
+    "Ready and first successful request are not a sustained service-restoration measurement.",
+    "The source does not validate the new 120-second stability policy or all six runbooks.",
+    "Missing timestamps and incident intervals remain null; no averages are computed."
+  ],
+  "observations": [
+    {
+      "app": "pharmago-api-gateway",
+      "endpoint": "/api/drug",
+      "sourcePointer": "/experiments/0",
+      "tInject": "2026-11-10T14:54:58.307949+00:00",
+      "tFirstInvalidResponseObserved": "2026-11-10T14:55:00.517874+00:00",
+      "tFirstPodNotReadyObserved": "2026-11-10T14:55:06.040211+00:00",
+      "tFirstValidResponseAfterDetection": "2026-11-10T14:55:41.139853+00:00",
+      "tPodReadyAgainObserved": "2026-11-10T14:55:38.875357+00:00",
+      "secondsFromInjection": {
+        "firstInvalidResponse": 2.209925,
+        "firstPodNotReady": 7.732262,
+        "firstValidResponseAfterDetection": 42.831904,
+        "podReadyAgain": 40.567408
+      },
+      "recordedRequestsIncludingBeforeInjection": 21,
+      "validResponsesIncludingBeforeInjection": 2,
+      "tStartOfUserImpact": null,
+      "tAck": null,
+      "tRepairOfRootCause": null,
+      "tRestoreWith120SecondWindow": null,
+      "tVerified": null,
+      "ttdFromMeasuredUserImpactSeconds": null,
+      "ttaSeconds": null,
+      "ttRestoreSeconds": null
+    },
+    {
+      "app": "pharmago-users-service",
+      "endpoint": "/api/login",
+      "sourcePointer": "/experiments/1",
+      "tInject": "2026-11-10T14:55:43.645531+00:00",
+      "tFirstInvalidResponseObserved": "2026-11-10T14:55:45.868611+00:00",
+      "tFirstPodNotReadyObserved": "2026-11-10T14:55:51.964425+00:00",
+      "tFirstValidResponseAfterDetection": "2026-11-10T14:55:51.704181+00:00",
+      "tPodReadyAgainObserved": "2026-11-10T14:56:21.413742+00:00",
+      "secondsFromInjection": {
+        "firstInvalidResponse": 2.22308,
+        "firstPodNotReady": 8.318894,
+        "firstValidResponseAfterDetection": 8.05865,
+        "podReadyAgain": 37.768211
+      },
+      "recordedRequestsIncludingBeforeInjection": 8,
+      "validResponsesIncludingBeforeInjection": 7,
+      "tStartOfUserImpact": null,
+      "tAck": null,
+      "tRepairOfRootCause": null,
+      "tRestoreWith120SecondWindow": null,
+      "tVerified": null,
+      "ttdFromMeasuredUserImpactSeconds": null,
+      "ttaSeconds": null,
+      "ttRestoreSeconds": null
+    },
+    {
+      "app": "pharmago-pharmacy-service",
+      "endpoint": "/api/drug",
+      "sourcePointer": "/experiments/2",
+      "tInject": "2026-11-10T14:56:25.506299+00:00",
+      "tFirstInvalidResponseObserved": "2026-11-10T14:56:27.724816+00:00",
+      "tFirstPodNotReadyObserved": "2026-11-10T14:56:32.172135+00:00",
+      "tFirstValidResponseAfterDetection": "2026-11-10T14:56:28.450044+00:00",
+      "tPodReadyAgainObserved": "2026-11-10T14:57:00.445077+00:00",
+      "secondsFromInjection": {
+        "firstInvalidResponse": 2.218517,
+        "firstPodNotReady": 6.665836,
+        "firstValidResponseAfterDetection": 2.943745,
+        "podReadyAgain": 34.938778
+      },
+      "recordedRequestsIncludingBeforeInjection": 19,
+      "validResponsesIncludingBeforeInjection": 18,
+      "tStartOfUserImpact": null,
+      "tAck": null,
+      "tRepairOfRootCause": null,
+      "tRestoreWith120SecondWindow": null,
+      "tVerified": null,
+      "ttdFromMeasuredUserImpactSeconds": null,
+      "ttaSeconds": null,
+      "ttRestoreSeconds": null
+    }
+  ]
+}
