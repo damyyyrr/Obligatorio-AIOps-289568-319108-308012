@@ -1,5 +1,11 @@
 # Implementación de AIOps
 
+## Incremento del 12 de noviembre de 2026 — issue #16
+
+Se amplía el [plan de incidentes](baseline-incidents.md) a Kubernetes y Compose con roles, severidades, canal, escalamiento y aborto, criterios funcionales de restauración y convención de tiempos del curso. Los [seis runbooks](runbooks/incidentes.md) cubren requests, CPU, RAM, disco, red y desconexión interna. Hay plantillas de [ficha/bitácora y comunicaciones](templates/incidente.md) y [postmortem](templates/postmortem.md).
+
+La [evidencia de #16](evidence/issue-16-20261112/README.md) distingue revisión de procedimientos y reconstrucción reproducible de tres ensayos históricos de #7 frente a ejecución nueva. No se inyectaron fallas, enviaron mensajes ni operaron contenedores. Reconocimiento humano, corrección causal y restauración con ventana estable no registrados quedan indeterminados. La preparación permite comenzar #17; el cierre de #16/R06 requiere su aplicación integral con esos ensayos.
+
 ## Incremento del 11 de noviembre de 2026 — issue #8
 
 Gateway, Users y Pharmacy incorporan drenaje antes de SIGTERM, timeout de apagado y permanencia mínima en Ready. El ensayo local de actualización y rollback registró 226/226 respuestas funcionalmente válidas en 282,139 s. Se observaron versiones coexistentes, se restauraron las tres plantillas y se conservaron el esquema, los registros comprobados y los volúmenes. La [guía](aiops-k8s-rollout.md) incluye el generador reproducible y la [evidencia](evidence/issue-8-20261111/README.md) registra todas las muestras, revisiones y validaciones.
