@@ -235,6 +235,18 @@ class EvidenceTests(unittest.TestCase):
             self.assertFalse(trial.sample())
             self.assertTrue(trial.cluster.rpc.call_args.args[1]["directPharmacy"])
 
+    def test_disconnect_requires_new_service_connection_cut_not_just_selector_change(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.trial(directory, "disconnect")
+            common = {"valid": True, "receivedUtc": "2026-11-12T10:00:20Z", "target": "pharmago-api-gateway"}
+            trial.report["samples"] = [dict(common, path="/api/drug", http=200), dict(common, path="/api/roles", http=200)]
+            with self.assertRaises(RuntimeError): trial.check_effect()
+            trial.report["samples"].append(dict(common, path="/api/drug", target=chaos.TARGET, http=0, valid=False))
+            trial.check_effect()
+            trial.cluster.rpc = Mock(return_value=[])
+            trial.sample()
+            self.assertTrue(trial.cluster.rpc.call_args.args[1]["directPharmacy"])
+
     def test_burst_without_rate_limit_effect_cannot_pass(self):
         with tempfile.TemporaryDirectory() as directory:
             trial = self.trial(directory, "requests")

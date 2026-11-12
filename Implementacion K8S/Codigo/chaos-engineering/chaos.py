@@ -316,7 +316,7 @@ class Trial:
 
     def sample(self, login=False):
         samples = self.cluster.rpc("pharmago-chaos-client", {"action": "sample", "login": login,
-            "directPharmacy": self.args.scenario == "network", **self.secret})
+            "directPharmacy": self.args.scenario in ("network", "disconnect"), **self.secret})
         for item in samples:
             key = (item.get("target", "pharmago-api-gateway"), item["path"])
             if key in self.expected:
@@ -360,10 +360,11 @@ class Trial:
         injected_at = next(e["timeUtc"] for e in self.report["events"] if e["event"] == "inject-requested")
         during = [s for s in self.report["samples"] if injected_at <= s["receivedUtc"] < self.report["faultRestoredUtc"]]
         if scenario in ("network", "disconnect"):
-            target = TARGET if scenario == "network" else "pharmago-api-gateway"
+            target = TARGET
             if not any(s["path"] == "/api/drug" and s.get("target", "pharmago-api-gateway") == target
                        and s["http"] != 200 for s in during):
-                raise RuntimeError("No se observó corte de tráfico; comprobar enforcement del CNI en red")
+                raise RuntimeError("No se observó corte de conexiones nuevas; comprobar enforcement del CNI en red"
+                                   if scenario == "network" else "No se observó corte de conexiones nuevas al Service desconectado")
             if not any(s["path"] == "/api/roles" and s["http"] == 200 and s["valid"] for s in during):
                 raise RuntimeError("No se verificó la ruta Users no afectada durante el corte")
         elif scenario == "requests":
