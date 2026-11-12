@@ -85,12 +85,14 @@ class Cluster:
 
     def kub(self, *args, stdin=None, timeout=35):
         result = subprocess.run(["kubectl", "--context", self.context, "-n", NAMESPACE,
-                                 "--request-timeout=" + ("0" if args[0] == "exec" else "25s"), *args], input=stdin, text=True,
-                                encoding="utf-8", capture_output=True, timeout=timeout)
+                                 "--request-timeout=" + ("0" if args[0] == "exec" else "25s"), *args],
+                                input=stdin.encode("utf-8") if stdin is not None else None,
+                                capture_output=True, timeout=timeout)
         if result.returncode:
             # Nunca reflejar stdin/stdout/stderr: exec puede contener credenciales/respuestas.
             raise RuntimeError(f"kubectl {args[0]} falló ({result.returncode}); revisar localmente")
-        return result.stdout
+        # text=True transforma LF en CRLF al escribir stdin desde Windows y rompe sh.
+        return result.stdout.decode("utf-8")
 
     def get(self, resource, name=None):
         args = ["get", resource] + ([name] if name else []) + ["-o", "json"]
@@ -253,7 +255,7 @@ def watchdog(path):
     final_deadline = initial["overallDeadlineEpoch"]
     while time.time() < final_deadline:
         journal = json.loads(path.read_text(encoding="utf-8"))
-        if journal.get("finished"):
+        if journal.get("finished") or journal.get("finishing"):
             return
         if time.time() >= deadline and not journal.get("faultRestored"):
             try:
@@ -264,17 +266,23 @@ def watchdog(path):
         time.sleep(2)
     journal = json.loads(path.read_text(encoding="utf-8"))
     restore_fault(cluster, journal)
-    clear_request_control(cluster, journal)
+    clear_remote_control(cluster, journal)
     owned_delete(cluster, "configmap", LOCK, journal["runId"], journal["lockUid"])
 
 
-def clear_request_control(cluster, journal):
-    if journal["scenario"] != "requests":
-        return
-    pod = cluster.optional("pod", "pharmago-chaos-load")
-    if pod and pod["metadata"]["uid"] == journal["loadPodUid"]:
-        if not cluster.rpc("pharmago-chaos-load", {"action": "stop", "runId": journal["runId"], "clear": True}).get("cleared"):
-            raise RuntimeError("No se confirmó retirada del control del generador")
+def clear_remote_control(cluster, journal):
+    if journal["scenario"] == "requests":
+        pod = cluster.optional("pod", "pharmago-chaos-load")
+        if pod and pod["metadata"]["uid"] == journal["loadPodUid"]:
+            if not cluster.rpc("pharmago-chaos-load", {"action": "stop", "runId": journal["runId"], "clear": True}).get("cleared"):
+                raise RuntimeError("No se confirmó retirada del control del generador")
+    elif journal["scenario"] in ("cpu", "ram", "storage"):
+        pod = cluster.optional("pod", journal["pod"])
+        if pod and pod["metadata"]["uid"] == journal["podUid"]:
+            result = json.loads(cluster.exec_script(journal["pod"], (HERE / "fault.sh").read_text(),
+                ["sh", "-s", "--", "clear", journal["scenario"], journal["runId"], "1", "1"], TARGET))
+            if not result.get("cleared"):
+                raise RuntimeError("No se confirmó retirada del control del agente")
 
 
 class Trial:
@@ -468,7 +476,8 @@ class Trial:
                 "untilEpoch": self.journal["faultDeadlineEpoch"]}, timeout=self.args.duration + 30)
         return lambda: self.cluster.exec_script(self.journal["pod"], (HERE / "fault.sh").read_text(),
             ["timeout", "--signal=TERM", "--kill-after=5s", str(self.args.duration + 10), "sh", "-s", "--",
-             "run", scenario, self.run_id, str(self.args.duration), str(self.args.megabytes)], TARGET,
+             "run", scenario, self.run_id, str(self.args.duration), str(self.args.megabytes),
+             str(int(self.journal["faultDeadlineEpoch"]))], TARGET,
             timeout=self.args.duration + 25)
 
     def recover_window(self):
@@ -558,15 +567,20 @@ class Trial:
                 try:
                     restore_fault(self.cluster, self.journal)
                     self.journal["faultRestored"] = True
-                    if self.args.scenario == "requests":
-                        if self.future is not None:
-                            try:
-                                self.future.result(timeout=30)
-                            except Exception:
-                                # Si el RPC falló, no asumir que el servidor nunca lo recibió.
-                                if time.time() < self.journal["faultDeadlineEpoch"] + 15:
-                                    raise RuntimeError("Generador de resultado incierto: conservar cancelación hasta deadline + 15s")
-                        clear_request_control(self.cluster, self.journal)
+                    if self.future is not None:
+                        try:
+                            self.future.result(timeout=30)
+                        except Exception:
+                            # Timeout/cancelación local no confirma el fin de un RPC remoto.
+                            if time.time() < self.journal["faultDeadlineEpoch"] + 15:
+                                raise RuntimeError("RPC de resultado incierto: conservar cancelación y lock hasta deadline + 15s")
+                        restore_fault(self.cluster, self.journal)
+                    if watch:
+                        # No retirar tombstones mientras el watchdog aún pueda recrearlos.
+                        self.journal["finishing"] = True
+                        self.save()
+                        watch.wait(timeout=10)
+                    clear_remote_control(self.cluster, self.journal)
                     owned_delete(self.cluster, "configmap", LOCK, self.run_id, self.journal["lockUid"])
                     self.journal["finished"] = True
                     self.report["cleanup"] = "verified"
@@ -574,8 +588,6 @@ class Trial:
                     self.report.update(status="FAIL", cleanup="MANUAL_RECOVERY_REQUIRED", cleanupError=type(error).__name__)
             self.report["finishedUtc"] = now()
             self.save()
-            if watch and self.journal and self.journal.get("finished"):
-                watch.wait(timeout=10)
         return self.report["status"] == "PASS"
 
 
@@ -607,9 +619,9 @@ def main():
             journal = json.loads(args.recover.read_text(encoding="utf-8"))
             cluster = Cluster(journal["context"])
             restore_fault(cluster, journal)
-            if journal["scenario"] == "requests" and time.time() < journal["faultDeadlineEpoch"] + 15:
+            if journal["scenario"] in ("requests", "cpu", "ram", "storage") and time.time() < journal["faultDeadlineEpoch"] + 15:
                 raise RuntimeError("Cancelación aplicada: esperar deadline + 15s antes de retirar controles de un RPC incierto")
-            clear_request_control(cluster, journal)
+            clear_remote_control(cluster, journal)
             owned_delete(cluster, "configmap", LOCK, journal["runId"], journal["lockUid"])
             journal.update(faultRestored=True, finished=True)
             atomic_json(args.recover, journal)

@@ -235,6 +235,14 @@ class EvidenceTests(unittest.TestCase):
             cluster.kub("exec", "client", stdin="private-password")
         self.assertNotIn("private", str(error.exception))
 
+    def test_windows_stdin_preserves_linux_lf_bytes_and_decodes_utf8_output(self):
+        cluster = chaos.Cluster("test")
+        result = subprocess.CompletedProcess([], 0, 'respuestá\n'.encode("utf-8"), b"")
+        with patch("chaos.subprocess.run", return_value=result) as run:
+            self.assertEqual(cluster.kub("exec", "client", stdin="set -eu\nprintf ok\n"), "respuestá\n")
+        self.assertEqual(run.call_args.kwargs["input"], b"set -eu\nprintf ok\n")
+        self.assertNotIn("text", run.call_args.kwargs)
+
     def test_burst_limits_checked_before_http(self):
         with patch("probe.request", side_effect=AssertionError("Unexpected HTTP")), self.assertRaises(ValueError):
             probe.burst({"count": 241, "concurrency": 4, "duration": 60})
@@ -294,6 +302,75 @@ class EvidenceTests(unittest.TestCase):
             with patch("probe.Path", side_effect=lambda p: tmp if p == "/tmp" else Path(p)), self.assertRaises(ValueError):
                 probe.stop_burst({"runId": RUN})
             self.assertEqual(marker.read_text(), "foreign")
+
+    def aborted_remote_trial(self, directory, scenario, remote_error, expired=False, watchdog_error=None):
+        trial = self.trial(directory, scenario)
+        trial.journal["faultDeadlineEpoch"] = time.time() + (-60 if expired else 60)
+        (trial.directory / "watchdog-ready.json").write_text("{}")
+        trial.preflight = Mock()
+        trial.inject = Mock(return_value=lambda: None)
+        future = Mock()
+        future.result.side_effect = remote_error
+        pool, watch = Mock(), Mock()
+        pool.submit.return_value = future
+        watch.poll.return_value = None
+        watch.wait.side_effect = watchdog_error
+        with patch("chaos.subprocess.Popen", return_value=watch), \
+                patch("chaos.ThreadPoolExecutor", return_value=pool), \
+                patch("chaos.assert_capacity", side_effect=RuntimeError("Abort after dispatch")), \
+                patch("chaos.restore_fault") as restore, patch("chaos.clear_remote_control") as clear, \
+                patch("chaos.owned_delete") as release, contextlib.redirect_stdout(io.StringIO()):
+            self.assertFalse(trial.run())
+        return trial, future, restore, clear, release
+
+    def test_abort_keeps_cancel_lock_and_watchdog_for_every_uncertain_remote_rpc(self):
+        for scenario in ("requests", "cpu", "ram", "storage"):
+            with self.subTest(scenario=scenario), tempfile.TemporaryDirectory() as directory:
+                trial, future, restore, clear, release = self.aborted_remote_trial(directory, scenario, TimeoutError())
+                future.result.assert_called_once_with(timeout=30)
+                restore.assert_called_once()
+                clear.assert_not_called()
+                release.assert_not_called()
+                self.assertFalse(trial.journal.get("finished", False))
+                self.assertEqual(trial.report["cleanup"], "MANUAL_RECOVERY_REQUIRED")
+
+    def test_expired_absolute_deadline_allows_cleanup_of_uncertain_resource_rpc(self):
+        for scenario in ("requests", "cpu", "ram", "storage"):
+            with self.subTest(scenario=scenario), tempfile.TemporaryDirectory() as directory:
+                trial, future, restore, clear, release = self.aborted_remote_trial(directory, scenario, TimeoutError(), expired=True)
+                self.assertEqual(restore.call_count, 2)
+                clear.assert_called_once_with(trial.cluster, trial.journal)
+                release.assert_called_once()
+                self.assertTrue(trial.journal["finished"])
+                self.assertEqual(trial.report["cleanup"], "verified")
+
+    def test_settled_resource_rpc_is_restored_again_before_control_is_removed(self):
+        for scenario in ("cpu", "ram", "storage"):
+            with self.subTest(scenario=scenario), tempfile.TemporaryDirectory() as directory:
+                trial, future, restore, clear, release = self.aborted_remote_trial(directory, scenario, None)
+                self.assertEqual(restore.call_count, 2)
+                clear.assert_called_once()
+                release.assert_called_once()
+                self.assertTrue(trial.journal["finished"])
+
+    def test_resource_rpc_receives_absolute_deadline(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.trial(directory, "cpu")
+            trial.journal["faultDeadlineEpoch"] = 1794513723.8
+            trial.cluster.get = Mock(return_value={"metadata": {"uid": "pod-1"}})
+            trial.cluster.exec_script = Mock()
+            trial.inject()()
+            arguments = trial.cluster.exec_script.call_args.args[2]
+            self.assertEqual(arguments[-1], "1794513723")
+
+    def test_watchdog_must_stop_before_controls_and_lab_lock_are_removed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial, _, _, clear, release = self.aborted_remote_trial(directory, "cpu", None,
+                watchdog_error=subprocess.TimeoutExpired("watchdog", 10))
+            clear.assert_not_called()
+            release.assert_not_called()
+            self.assertFalse(trial.journal.get("finished", False))
+            self.assertEqual(trial.report["cleanup"], "MANUAL_RECOVERY_REQUIRED")
 
 
 if __name__ == "__main__":
