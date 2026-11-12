@@ -1,0 +1,25 @@
+{
+  "runId": "01be9d67ba7f4743aa5b400f50e9b641",
+  "scenario": "requests",
+  "startedUtc": "2026-11-12T21:44:48.394030+00:00",
+  "operatorDeclared": "Codex-assisted automated lab validation; human ack not recorded",
+  "tAck": null,
+  "samples": [],
+  "observations": [],
+  "events": [
+    {
+      "timeUtc": "2026-11-12T21:44:48.538951+00:00",
+      "event": "abort",
+      "errorType": "RuntimeError",
+      "reason": "Precheck: menos de 2 GiB de RAM libre en el host; no se inyectará carga"
+    }
+  ],
+  "status": "FAIL",
+  "liveValidation": true,
+  "sourceHashes": {
+    "chaos.py": "29d855ae2d9c2442abfcacfbf27ddd9fa4844f84000cde825555b0e78a4c27bd",
+    "fault.sh": "7dd9dc14d8d964979e7ec67455d99531d5f1babc90a9ab589ce761bcfb5a5810",
+    "probe.py": "04177176ec29343d71cdac86b0470b06693a810f97069634be4926d683c9d9d0"
+  },
+  "finishedUtc": "2026-11-12T21:44:48.540982+00:00"
+}
