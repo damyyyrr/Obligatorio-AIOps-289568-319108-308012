@@ -315,10 +315,12 @@ class Trial:
             atomic_json(self.journal_path, self.journal)
 
     def sample(self, login=False):
-        samples = self.cluster.rpc("pharmago-chaos-client", {"action": "sample", "login": login, **self.secret})
+        samples = self.cluster.rpc("pharmago-chaos-client", {"action": "sample", "login": login,
+            "directPharmacy": self.args.scenario == "network", **self.secret})
         for item in samples:
-            if item["path"] in self.expected:
-                item["valid"] = item["valid"] and item.get("fingerprint") == self.expected[item["path"]]
+            key = (item.get("target", "pharmago-api-gateway"), item["path"])
+            if key in self.expected:
+                item["valid"] = item["valid"] and item.get("fingerprint") == self.expected[key]
         self.report["samples"].extend(samples)
         return all(s["http"] == 200 and s["valid"] for s in samples)
 
@@ -358,7 +360,9 @@ class Trial:
         injected_at = next(e["timeUtc"] for e in self.report["events"] if e["event"] == "inject-requested")
         during = [s for s in self.report["samples"] if injected_at <= s["receivedUtc"] < self.report["faultRestoredUtc"]]
         if scenario in ("network", "disconnect"):
-            if not any(s["path"] == "/api/drug" and s["http"] != 200 for s in during):
+            target = TARGET if scenario == "network" else "pharmago-api-gateway"
+            if not any(s["path"] == "/api/drug" and s.get("target", "pharmago-api-gateway") == target
+                       and s["http"] != 200 for s in during):
                 raise RuntimeError("No se observó corte de tráfico; comprobar enforcement del CNI en red")
             if not any(s["path"] == "/api/roles" and s["http"] == 200 and s["valid"] for s in during):
                 raise RuntimeError("No se verificó la ruta Users no afectada durante el corte")
@@ -419,7 +423,8 @@ class Trial:
         before = snapshot(self.cluster)
         if not self.sample(login=True):
             raise RuntimeError("Baseline funcional inválido; no inyectar otro fallo")
-        self.expected = {s["path"]: s["fingerprint"] for s in self.report["samples"] if "fingerprint" in s}
+        self.expected = {(s.get("target", "pharmago-api-gateway"), s["path"]): s["fingerprint"]
+                         for s in self.report["samples"] if "fingerprint" in s}
         telemetry = self.observe()["telemetry"]
         targets = telemetry["targets"]["series"]
         jobs = {x["metric"].get("job") for x in targets}

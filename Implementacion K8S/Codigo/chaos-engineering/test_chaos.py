@@ -209,6 +209,32 @@ class EvidenceTests(unittest.TestCase):
                                         "receivedUtc": "2026-11-12T10:00:20Z"}]
             with self.assertRaises(RuntimeError): trial.check_effect()
 
+    def test_network_probe_measures_new_backend_and_gateway_connections_separately(self):
+        with patch("probe.request", return_value=({"http": 200}, [{"id": 1}])) as request:
+            results = probe.sample({"directPharmacy": True})
+        self.assertEqual([c.args[0] for c in request.call_args_list], [
+            "http://pharmago-pharmacy-service/api/drug", "http://pharmago-api-gateway/api/drug",
+            "http://pharmago-api-gateway/api/roles"])
+        self.assertEqual([r["target"] for r in results], [chaos.TARGET, "pharmago-api-gateway", "pharmago-api-gateway"])
+
+    def test_network_requires_real_backend_cut_even_if_gateway_is_healthy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.trial(directory, "network")
+            common = {"valid": True, "receivedUtc": "2026-11-12T10:00:20Z", "target": "pharmago-api-gateway"}
+            trial.report["samples"] = [dict(common, path="/api/drug", http=200), dict(common, path="/api/roles", http=200)]
+            with self.assertRaises(RuntimeError): trial.check_effect()
+            trial.report["samples"].append(dict(common, path="/api/drug", target=chaos.TARGET, http=0, valid=False))
+            trial.check_effect()
+
+    def test_expected_fingerprints_are_checked_per_target_and_path(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.trial(directory, "network")
+            trial.expected = {(chaos.TARGET, "/api/drug"): "backend", ("pharmago-api-gateway", "/api/drug"): "gateway"}
+            trial.cluster.rpc = Mock(return_value=[{"target": chaos.TARGET, "path": "/api/drug", "http": 200,
+                "valid": True, "fingerprint": "gateway"}])
+            self.assertFalse(trial.sample())
+            self.assertTrue(trial.cluster.rpc.call_args.args[1]["directPharmacy"])
+
     def test_burst_without_rate_limit_effect_cannot_pass(self):
         with tempfile.TemporaryDirectory() as directory:
             trial = self.trial(directory, "requests")

@@ -46,15 +46,20 @@ def request(url, payload=None, headers=None):
 
 def sample(data):
     results = []
-    for path in ("/api/drug", "/api/roles"):
-        result, value = request("http://pharmago-api-gateway" + path)
-        result.update(path=path, valid=isinstance(value, list) and bool(value),
+    routes = [("pharmago-api-gateway", "/api/drug"), ("pharmago-api-gateway", "/api/roles")]
+    if data.get("directPharmacy"):
+        # Conexión nueva al backend: una conexión reutilizada por YARP puede sobrevivir
+        # a la actualización de NetworkPolicy. Registrar ambas rutas, sin confundirlas.
+        routes.insert(0, ("pharmago-pharmacy-service", "/api/drug"))
+    for target, path in routes:
+        result, value = request("http://" + target + path)
+        result.update(path=path, target=target, valid=isinstance(value, list) and bool(value),
                       fingerprint=fingerprint(value) if isinstance(value, list) else None)
         results.append(result)
     if data.get("login"):
         result, value = request("http://pharmago-api-gateway/api/login",
                                 {"userName": data["username"], "password": data["password"]})
-        result.update(path="/api/login", valid=bool(isinstance(value, dict) and value.get("token")
+        result.update(path="/api/login", target="pharmago-api-gateway", valid=bool(isinstance(value, dict) and value.get("token")
                                                    and value.get("userName") == data["username"]))
         results.append(result)
     return results
