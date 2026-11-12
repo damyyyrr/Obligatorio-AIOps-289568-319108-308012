@@ -1,5 +1,7 @@
 # Issue #17: implementación y verificaciones sin clúster
 
+**Revisión posterior:** la carrera de aborto está corregida y pasaron 41 tests del controlador y cinco del agente real aislado, también en CI Linux. Ver [correcciones y preparación del laboratorio nuevo](fix-after-review/README.md). El resto de este archivo conserva la inspección original, realizada con menos capacidad y sin clúster.
+
 Rama `feature/issue-17-ingenieria-caos`, desde `54d5a17c68cb7ede122b92862ad156163a0b09d9` de `obligatorio` (PR #36 integrado). Fecha de revisión: **12/11/2026**. Los checks se hicieron con el árbol modificado; los hashes en [offline-checks.json](offline-checks.json) identifican los archivos verificados. No se presentan como imágenes desplegadas.
 
 ## Estado real
