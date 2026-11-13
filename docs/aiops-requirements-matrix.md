@@ -15,7 +15,9 @@ Los estados del requisito completo se conservan aunque exista una prueba parcial
 | R07 | Requests, CPU, RAM, storage, interrupción de red y desconexión interna | MISSING en dos escenarios; resto EXISTING UNVERIFIED | Cuatro scripts en `chaos-engineering/` sin validación de seguridad | Seis escenarios acotados con destino, timeout, limpieza, impacto y restauración |
 | R08 | Defensa y explicación de telemetría/respuesta en war-room | BLOCKED hasta instancia de defensa | Defensa prevista 23/11/2026; guion docente no disponible | Simulacro, roles, explicación individual y defensa real |
 
-Otros entregables: GitHub y BDD Cypress+Cucumber, informe <=10 páginas, reflexión sobre prácticas ágiles, declaración de uso de IA y paquete <=40 MB. Ver [el mapa de issues](GITHUB_ISSUES.md). El README del baseline describe las pruebas funcionales disponibles; estas no equivalen aún a BDD en navegador.
+Otros entregables: GitHub y BDD Cypress+Cucumber, informe <=10 páginas, reflexión sobre prácticas ágiles, declaración de uso de IA y paquete <=40 MB. Ver [el mapa de issues](GITHUB_ISSUES.md).
+
+BDD — issue #15, 12/11/2026: **PASS funcional local, 4/4 escenarios en Electron**. Login válido, contraseña incorrecta con reintento, catálogo/detalle y 404 con regreso al catálogo sobre Angular → gateway → SQL reales. Build Angular y ocho servicios del baseline aprobados; resumen desde commit limpio, sin omisiones, con duraciones reales corregidas para Cypress 15. Tres regresiones del resumen y dos controles negativos aprobados. [Guía](../Implementacion%20K8S/Codigo/Frontend/e2e/README.md) · [Evidencia sanitizada](evidence/issue-15-20261112/live-after-fix/README.md). Esto no prueba disponibilidad bajo fallas ni los seis ensayos de caos. El job remoto `live` manual no se ejecutó.
 
 ## Resultado parcial de baseline
 

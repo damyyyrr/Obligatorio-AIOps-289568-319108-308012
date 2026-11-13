@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-12T21:20:56.361Z",
+  "mode": "live",
+  "status": "PASS",
+  "browserExecuted": true,
+  "scenarios": [
+    {
+      "title": "Acceso y consulta de medicamentos de PharmaGo > Un administrador ingresa con credenciales válidas",
+      "state": "passed",
+      "durationMs": 2351
+    },
+    {
+      "title": "Acceso y consulta de medicamentos de PharmaGo > Una contraseña incorrecta no permite iniciar sesión",
+      "state": "passed",
+      "durationMs": 1976
+    },
+    {
+      "title": "Acceso y consulta de medicamentos de PharmaGo > El catálogo permite abrir el detalle de un medicamento",
+      "state": "passed",
+      "durationMs": 802
+    },
+    {
+      "title": "Acceso y consulta de medicamentos de PharmaGo > Un medicamento inexistente muestra un error recuperable",
+      "state": "passed",
+      "durationMs": 2190
+    }
+  ],
+  "commit": "9a420f175b6bd4ea69f02c8c168b455a47af7ce0",
+  "workingTreeDirty": false,
+  "nodeVersion": "v22.16.0",
+  "cypressVersion": "15.18.0",
+  "browserName": "electron",
+  "browserVersion": "138.0.7204.251",
+  "counts": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "pending": 0,
+    "skipped": 0
+  },
+  "finishedAt": "2026-11-12T21:21:11.863Z"
+}

@@ -1,0 +1,9 @@
+{
+  "code": "PARA001",
+  "name": "Paracetamol 500mg",
+  "pharmacy": "Farmacia Central",
+  "price": 150,
+  "symptom": "Dolor y fiebre",
+  "presentation": "Tabletas",
+  "missingId": 2147483647
+}

@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "bdd:check": "npm --prefix e2e run check",
+    "bdd": "npm --prefix e2e test",
+    "bdd:demo": "npm --prefix e2e run test:demo"
   },
   "private": true,
   "dependencies": {

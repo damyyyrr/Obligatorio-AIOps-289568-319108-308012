@@ -33,6 +33,9 @@ export class LoginComponent implements OnInit {
   goLogin(): void {
     let loginRequest = new LoginRequest(this.user, this.password);
     this.loginService.login(loginRequest).subscribe((login) => {
+      // El servicio ya muestra el error; un resultado vacío no crea una sesión.
+      if (!login) return;
+
       this.commonService.updateToastData(
         'Welcome: ' + login.userName,
         'success',

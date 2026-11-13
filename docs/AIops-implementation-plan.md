@@ -1,5 +1,11 @@
 # Implementación de AIOps
 
+## Incremento del 12 de noviembre de 2026 — issue #15
+
+Se preparan cuatro escenarios BDD de acceso y consulta con Cypress/Cucumber, dependencias aisladas de Angular, datos del seed de laboratorio, selectores estables, resumen de ejecución y CI. Se corrige el acceso a un resultado vacío después de un login rechazado. La [guía de traspaso](../Implementacion%20K8S/Codigo/Frontend/e2e/README.md) permite ejecutar y diagnosticar desde otra PC.
+
+La preparación inicial se conserva como registro histórico. En la validación posterior se construyeron las cuatro imágenes, se inició el baseline con SQL y seed y se ejecutaron los cuatro escenarios en Electron: **4/4 PASS**, sin omisiones, desde el commit limpio `9a420f1`. Se corrigió el reporte de duración para la API pública de Cypress 15 y pasaron tres regresiones, además de los controles de preparación. La [evidencia real](evidence/issue-15-20261112/live-after-fix/README.md) incluye resumen, captura y límites del ensayo. El PR queda listo para revisión e integración; la issue se cierra después de integrarlo.
+
 ## Incremento del 12 de noviembre de 2026 — issue #14
 
 Se implementan y ejecutan Isolation Forest y One-Class SVM RBF sobre las 300 ventanas sintéticas del notebook docente, preservando el original y su protocolo: StandardScaler y ambos modelos se ajustan sobre toda la muestra, sin etiquetas ni selección de parámetros con ellas. La [guía ML](../ml/README.md) enlaza CLI, notebook ejecutado y dependencias fijadas. Los [resultados](evidence/issue-14-20261112/results/RESULTS.md) incluyen scores/flags por ventana, métricas, todos los FP/FN, tablas por tipo, gráficos y parámetros/versiones/hashes.
