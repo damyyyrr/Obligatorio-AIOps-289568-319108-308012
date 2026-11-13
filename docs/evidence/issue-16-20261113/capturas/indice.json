@@ -1,0 +1,261 @@
+[
+  {
+    "file": "capturas/antes-alertas-20261113.png",
+    "sha256": "d131fce449cb46470a9b4892e3d584e42920d99312151977cef953c3ffbc9cf1",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T14:59:54.136481+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/antes-cpu-20261113.png",
+    "sha256": "c64da32d9b273b2450c4116129a31a61d7b4532cfdfea480bd20cac5d1253552",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T14:58:24.542648+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/antes-http-20261113-150201.png",
+    "sha256": "9f2f68d0b68e190ac663efa4fff23c2edcbbb3574a46153bd561ab7ebcabdaf8",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T15:02:01.837701+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/cierre-anotaciones-disconnect-ram-20261113.png",
+    "sha256": "6a0886c37b27e42effa50d51c2c38724b7cc122c1f6d2e25bc0e1564383f9952",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T18:22:21.7390540Z",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/cierre-laboratorio-20261113.png",
+    "sha256": "cde309812a96c3f5eb8fb181dfbc71f680b360aaed29b35b38f2f1efb1b487cc",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T18:24:40.7501963Z",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/cpu-subida-y-bajada-20261113-150915.png",
+    "sha256": "30e5a77511e4c65266db2e01606e7b373cfaeb30feac6de04a6d1c96e4beedb7",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T15:09:15.127592+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/despues-alertas-20261113-151058.png",
+    "sha256": "e2a1faafadfa69ba24486d9eaec1c247c78c854e5cc4f0fbe95d940cac9833b0",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T15:10:58.495892+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/despues-pods-http-20261113-151257.png",
+    "sha256": "b2212fcf3e0ca988a7c8c502ed2915f6b13a7333d643ca902d6a89e7c1cf9d46",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T15:12:57.068438+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/disconnect-antes-20261113-181109.png",
+    "sha256": "eb7cb2fdcb46e814ec287e787230b2d9ccc6c9bb896229b74925e8945c0b9ae6",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T18:11:09.806704+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/disconnect-antes-durante-despues-20261113-181417.png",
+    "sha256": "4a6c1ad97bc7b3b521716bf1fbc3a181dee7ea843cc9181bf4b66d5b8f185ff2",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T18:14:17.139056+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/disconnect-despues-pods-http-20261113-181854.png",
+    "sha256": "94b519fa08f0ca7a5021fb0dbfa17c705cba1ee15d01838d4a5c7989773abe7d",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T18:18:54.833211+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/disconnect-durante-20261113-181246.png",
+    "sha256": "90db22f393aada01940a9bc52161bd824443dda139036ee6ee9e719259dd09bf",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T18:12:46.402722+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/disconnect-plan-20261113-181109.png",
+    "sha256": "7f1adc94e09d0eb1c706ed6a0f17328f3479a852bf5acd3ecdb0a45b11a4d82a",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T18:11:09.814428+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/disconnect-resultado-20261113-181637.png",
+    "sha256": "fa60d36c4ed1c124b2cf7d356085a45e0d1790ffe4bca08eecdedf6f7aaacbba",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T18:16:37.675565+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/durante-cpu-20261113-150735.png",
+    "sha256": "9b6548cac14e2cd163afc224f8e99899b00e5bd3048be0f848c230e76c372e5f",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T15:07:35.351130+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/network-antes-20261113-174415.png",
+    "sha256": "acaae05d2015ac94bf72359517453e6555a29c6075d547f963ef9be943b81e5a",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:44:15.228537+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/network-antes-durante-despues-20261113-175209.png",
+    "sha256": "aefb257a1e0c3fa0049c1261aae441a2badd0097ab8857e3c29f06060b54bf0a",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:52:09.113593+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/network-despues-pods-http-20261113-175509.png",
+    "sha256": "11dae75031f74e1267d870f5508603ff49275f52d902e32416d8ce27f027cc50",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:55:09.905726+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/network-durante-20261113-175044.png",
+    "sha256": "5f35b37baa2b4e225dc8435672853b4b697c1ed96c209894751bd73fc98c9602",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:50:44.914790+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/network-resultado-20261113-175421.png",
+    "sha256": "fbb4bb98260f87b397448e1b80970954dd624cd4350ecb3eb256b248112e5f7b",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:54:21.776035+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/ram-antes-20261113-170518.png",
+    "sha256": "7957ebb7b734ff2d0671dbaed7cc4c98f1136d4812257ff54aaaa27ea635a316",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:05:18.977895+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/ram-antes-pod-5zzkh-20261113-170833.png",
+    "sha256": "2422886e2eb330273c83f0e439fcd9a65db6dbba4310cba32e5ae9b3d1bc88c4",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:08:33.148027+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/ram-despues-pods-http-20261113-171526.png",
+    "sha256": "b3aec58fda145417994291f11f506db2d9596905f252fbefc4fe02acacadbd4e",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:15:26.390360+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/ram-durante-20261113-171135.png",
+    "sha256": "c40035ccf981d0111a69d8ac0256c05f75eaa0a9acb0f7f4e7da2b30b76af8a8",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:11:35.748463+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/ram-resultado-20261113-171432.png",
+    "sha256": "b620cbf75e0a6dcd79a03cfb7aeb89ab52b086c935d92c839742a87c500080c0",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:14:32.283007+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/ram-subida-y-bajada-20261113-171206.png",
+    "sha256": "4ed88f2497d643546795339b1e1582d334a4f2a4ab267396fa567736461b3497",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:12:06.065717+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/requests-antes-20261113-161604.png",
+    "sha256": "fade1c931b0a2496e371c4e167e6aabeb9ff4cd7f54d2b1fa273d054a985a165",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T16:16:04.987253+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/requests-despues-pods-http-20261113-162508.png",
+    "sha256": "20cec71a0b1b373808202f4804654407465e9da1258fbd7cbbfe3116987bdf5e",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T16:25:08.596080+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/requests-durante-20261113-162004.png",
+    "sha256": "dfb4e6006a9ab01d4b34e1755cf4145dd788cbba3fbf11af8ec4df7e0b214c58",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T16:20:04.303230+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/requests-overview-recuperacion-20261113-162211.png",
+    "sha256": "c4a8a366fcf9876e1891bb88ca4cb388facf46c1c63b5c22da1e9bc8af53248c",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T16:22:11.227330+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/requests-resultado-20261113-162308.png",
+    "sha256": "ab128210dd9a02d1f4c8a1ef689c8054d62f02e4be88bc2c29cf66a24dc3e5d8",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T16:23:08.705246+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/storage-antes-20261113-173041.png",
+    "sha256": "7716e236c909b269c535e2cdd0c039eb30877f4baec266bd1630a649b5723095",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:30:41.435097+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/storage-antes-pod-5zzkh-20261113-173207.png",
+    "sha256": "977a09ba68b2a31463860c0291d7839b8942fefe9239176877003f86d0a2f806",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:32:07.406407+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/storage-despues-pods-http-20261113-173854.png",
+    "sha256": "4aac75aa4b8778037f6832206036ebca526d873eff292a9efced0766cd4a149f",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:38:54.809769+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/storage-durante-20261113-173433.png",
+    "sha256": "1f0b44250a353171baae62690b6421d34a18de7ea09bb1f9e7f139e9d46577fc",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:34:33.780078+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/storage-resultado-20261113-173752.png",
+    "sha256": "04d5ceb1cad995c87bcdbeff5fbb9a2d6958aebaa7215376d0b258595878c97a",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:37:52.946707+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  },
+  {
+    "file": "capturas/storage-subida-y-bajada-20261113-173752.png",
+    "sha256": "ce6b5af7ca141ceacaa517c17a79d931593e932443fe54fd14ddfc2a8c9ee024",
+    "source": "Captura proporcionada por el operador en el chat; bytes originales",
+    "collectedUtc": "2026-11-13T17:37:52.940351+00:00",
+    "timeMeaning": "La hora de recolección y el nombre del archivo no son timestamps de inyección ni reconocimiento."
+  }
+]

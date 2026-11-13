@@ -1,0 +1,10 @@
+{
+  "runId": "600eb90cc6134f89bd88d1c870883eae",
+  "scenario": "requests",
+  "operatorDeclared": "Joaquin Decia (responsable); ejecucion asistida por agente",
+  "status": "PASS",
+  "cleanup": "verified",
+  "startedUtc": "2026-11-13T15:37:52.902049+00:00",
+  "finishedUtc": "2026-11-13T15:41:14.771581+00:00",
+  "tAck": null
+}

@@ -1,0 +1,9 @@
+{
+  "checkedUtc": "2026-11-13T18:29:15.276222+00:00",
+  "result": "PASS",
+  "exactLocalSecretValuesScanned": 3,
+  "textScope": "Siete reportes originales descomprimidos, journals, bitácora y conectividad; se revisa además todo el texto final del paquete antes de publicar.",
+  "secretValuesPublished": false,
+  "credentialFilesPublished": false,
+  "screenshots": "37 PNG aportados en el chat: paneles, resultados y cierre; no se incluye la pantalla de acceso con contraseña visible."
+}

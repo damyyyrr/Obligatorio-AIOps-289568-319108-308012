@@ -1,0 +1,19 @@
+{
+  "runId": "cda2bb158a3c4a038860ea19039589a8",
+  "context": "pharmago-issue17-validation",
+  "namespaceUid": "84584fad-1d20-4d0f-9b4c-3a2c3fd04448",
+  "scenario": "cpu",
+  "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh",
+  "podUid": "d3199605-8a62-474c-a927-e271667085e5",
+  "loadPodUid": "2e75dd1c-3c6f-457d-a8c9-2578791c19ce",
+  "serviceUid": "05214d65-8837-459c-92f6-f85692259db8",
+  "selectorBefore": {
+    "app": "pharmago-pharmacy-service"
+  },
+  "lockUid": "112effa1-2dd9-4e76-9194-db55c7ef2f1b",
+  "faultDeadlineEpoch": 1794582437.3582098,
+  "overallDeadlineEpoch": 1794582862.3582127,
+  "faultRestored": true,
+  "finished": true,
+  "finishing": true
+}

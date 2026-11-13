@@ -88,3 +88,15 @@ if ($LASTEXITCODE -ne 0) { throw 'Recambio incompleto: conservar evidencia y esc
 ```
 
 Volver al plan para validar funcionalidad, estabilidad y limpieza. Si falla, no repetir en bucle. #17 debe verificar cada runbook con el mecanismo efectivamente usado y corregirlo con sus resultados.
+
+## Aprendizajes de la ejecución guiada del 13/11/2026
+
+La [ejecución de los seis casos por el operador](../evidence/issue-16-20261113/README.md) registró dificultades de uso y estas aclaraciones. Los seis casos dieron PASS y limpieza verified; la sesión fue guiada y no constituye revisión independiente por otra persona.
+
+1. **Variables por terminal.** PowerShell no comparte variables entre ventanas. Desde la raíz, inicializar `$ctx = 'pharmago-issue17-validation'` y `$codigo = Join-Path (Get-Location) 'Implementacion K8S/Codigo'` solo si ese es el laboratorio que se ha verificado. En una segunda ventana usar rutas absolutas a los helpers locales; no asumir el mismo directorio ni las mismas variables. Si se usa un worktree, `$codigo` debe apuntar al código de ese worktree, con ruta entre comillas.
+2. **Inicio y baseline.** Tras iniciar Minikube pueden aparecer estados transitorios. Esperar que todos los pods esperados estén Ready, comprobar operaciones reales y evaluación de alertas antes de inyectar. `Running` aislado no alcanza. No avanzar si persiste un error de configuración.
+3. **Acceso a Grafana.** Usar el valor de la credencial privada, no el nombre de una clave como `grafanaAdminPassword`. Evitar capturas que muestren contraseñas. Mantener abierta la terminal del port-forward mientras se usa el panel.
+4. **Gráficas de recursos.** En un intervalo que incluya antes/durante/después, localizar el nombre y UID del objetivo en el journal; desplazar la leyenda o aislar su serie para que otros pods no oculten el cambio. La hora y escala de una captura no sustituyen las muestras del reporte. Capturar subida y regreso al baseline, además de resultado y comprobaciones finales.
+5. **Solicitudes y alertas.** Acompañar 429 con solicitudes por servicio/pod, 5xx, latencia y scrape. Una tasa en req/s no es el conteo total; la latencia media no es p95. Los 429 esperados demuestran rechazo por cuota, no indisponibilidad general. No alterar umbrales para obtener una captura Firing.
+6. **Red y Service.** Comprobar conexiones nuevas directas a Pharmacy y roles por Gateway antes, durante y después; conexiones ya abiertas del Gateway pueden sobrevivir. Distinguir timeout de conexión rechazada. Si se ejecutó `durante` después de la reversión, preservar la fila original y añadir otra consulta `despues`; usar timestamps para interpretarlas.
+7. **Bitácora y cierre.** Registrar solo lo observado, con hora actual. Una revisión tardía se identifica como retrospectiva, sin retrodatación ni reconocimiento inventado. Después de confirmar recuperación y limpieza, retirar únicamente clientes propios con identidad comprobada y detener el perfil conservando datos. Conservar captura de cierre y no confundir apagar el laboratorio con borrar sus volúmenes.

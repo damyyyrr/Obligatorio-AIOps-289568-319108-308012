@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-13",
+  "environment": "Minikube local, un nodo, Calico, namespace pharmago",
+  "context": "pharmago-issue17-validation",
+  "operator": "Joaquin Decia",
+  "manualTrialCount": 6,
+  "passedManualTrialCount": 6,
+  "screenshots": 37,
+  "trials": [
+    {
+      "scenario": "cpu",
+      "runId": "cda2bb158a3c4a038860ea19039589a8",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-13T15:04:17.273064+00:00",
+      "injectionRequestedUtc": "2026-11-13T15:04:23.179537+00:00",
+      "faultRestoredUtc": "2026-11-13T15:06:37.147898+00:00",
+      "tRestore": "2026-11-13T15:06:39.651500+00:00",
+      "tVerified": "2026-11-13T15:08:47.455518+00:00",
+      "finishedUtc": "2026-11-13T15:08:49.745391+00:00",
+      "stableVerificationSeconds": 127.804018
+    },
+    {
+      "scenario": "requests",
+      "runId": "6a3b5bc65d4043c689ba37646f811628",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-13T16:18:01.594997+00:00",
+      "injectionRequestedUtc": "2026-11-13T16:18:06.055014+00:00",
+      "faultRestoredUtc": "2026-11-13T16:19:13.469760+00:00",
+      "tRestore": "2026-11-13T16:19:15.730471+00:00",
+      "tVerified": "2026-11-13T16:21:22.814228+00:00",
+      "finishedUtc": "2026-11-13T16:21:27.251052+00:00",
+      "stableVerificationSeconds": 127.083757
+    },
+    {
+      "scenario": "ram",
+      "runId": "975be87309ed41abae983497375b2a8f",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-13T17:09:57.637047+00:00",
+      "injectionRequestedUtc": "2026-11-13T17:10:02.685326+00:00",
+      "faultRestoredUtc": "2026-11-13T17:11:03.482251+00:00",
+      "tRestore": "2026-11-13T17:11:05.982824+00:00",
+      "tVerified": "2026-11-13T17:13:08.343750+00:00",
+      "finishedUtc": "2026-11-13T17:13:11.117941+00:00",
+      "stableVerificationSeconds": 122.360926
+    },
+    {
+      "scenario": "storage",
+      "runId": "61159cbb42bc4491bcc92a93b9299b56",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-13T17:33:09.218645+00:00",
+      "injectionRequestedUtc": "2026-11-13T17:33:14.046412+00:00",
+      "faultRestoredUtc": "2026-11-13T17:34:15.769242+00:00",
+      "tRestore": "2026-11-13T17:34:18.168651+00:00",
+      "tVerified": "2026-11-13T17:36:19.263003+00:00",
+      "finishedUtc": "2026-11-13T17:36:22.334872+00:00",
+      "stableVerificationSeconds": 121.094352
+    },
+    {
+      "scenario": "network",
+      "runId": "04b212284ef74d4fa5e30dccd80e7c78",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-13T17:49:33.650297+00:00",
+      "injectionRequestedUtc": "2026-11-13T17:49:38.650091+00:00",
+      "faultRestoredUtc": "2026-11-13T17:50:57.580608+00:00",
+      "tRestore": "2026-11-13T17:51:00.885975+00:00",
+      "tVerified": "2026-11-13T17:53:08.614325+00:00",
+      "finishedUtc": "2026-11-13T17:53:11.206342+00:00",
+      "stableVerificationSeconds": 127.72835
+    },
+    {
+      "scenario": "disconnect",
+      "runId": "213770c063314506a986c05861373319",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-13T18:11:35.660423+00:00",
+      "injectionRequestedUtc": "2026-11-13T18:11:40.517043+00:00",
+      "faultRestoredUtc": "2026-11-13T18:12:42.301865+00:00",
+      "tRestore": "2026-11-13T18:12:45.024118+00:00",
+      "tVerified": "2026-11-13T18:14:47.458326+00:00",
+      "finishedUtc": "2026-11-13T18:14:48.573215+00:00",
+      "stableVerificationSeconds": 122.434208
+    }
+  ],
+  "additionalAgentExecutedTrial": {
+    "runId": "600eb90cc6134f89bd88d1c870883eae",
+    "countedAsManual": false
+  },
+  "closure": {
+    "source": "capturas/cierre-laboratorio-20261113.png",
+    "actionBy": "Joaquin Decia",
+    "clientsRemoved": true,
+    "minikubeStopped": true,
+    "volumesDeleted": false,
+    "timestampOfActionUtc": null,
+    "note": "La captura confirma el resultado; no se inventa una hora exacta de apagado."
+  }
+}

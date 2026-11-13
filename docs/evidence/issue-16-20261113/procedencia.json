@@ -1,0 +1,105 @@
+{
+  "packagedUtc": "2026-11-13T18:29:15.276222+00:00",
+  "sourceCommit": "90ae6745066a107d2bc8dc014ef2b5dda1064008",
+  "sourceRecords": [
+    {
+      "file": "ensayos/network/report.json.gz",
+      "sourceRunId": "04b212284ef74d4fa5e30dccd80e7c78",
+      "uncompressedSha256": "ec05fe9b9284b3e17a28cea6ea1a02fd74fb82578529072dd8f8676e95248ba0",
+      "preservation": "original bytes in gzip"
+    },
+    {
+      "file": "ensayos/network/journal.json",
+      "sourceRunId": "04b212284ef74d4fa5e30dccd80e7c78",
+      "sha256": "0af707a0ffc3e59be0652aab5f6bbe4b88647fedf5f659dd63155147f52ee83d",
+      "preservation": "original bytes"
+    },
+    {
+      "file": "ensayos/disconnect/report.json.gz",
+      "sourceRunId": "213770c063314506a986c05861373319",
+      "uncompressedSha256": "14b79c1efa6fed9be356f13d6145bf081896c7e4c10de0f467e1e28c54aee8e3",
+      "preservation": "original bytes in gzip"
+    },
+    {
+      "file": "ensayos/disconnect/journal.json",
+      "sourceRunId": "213770c063314506a986c05861373319",
+      "sha256": "38e878bf89a076f297704e4d16b168c16b5f52e946b451e5a403955fd5887936",
+      "preservation": "original bytes"
+    },
+    {
+      "file": "ejecucion-asistida/requests/report.json.gz",
+      "sourceRunId": "600eb90cc6134f89bd88d1c870883eae",
+      "uncompressedSha256": "39485b7626f1e4f873d3b20ac1c091e78aa1894093299383f212fccd0782579b",
+      "preservation": "original bytes in gzip"
+    },
+    {
+      "file": "ejecucion-asistida/requests/journal.json",
+      "sourceRunId": "600eb90cc6134f89bd88d1c870883eae",
+      "sha256": "7b5a673fdd6a98d2b16858dad39cbf97fa8b730f2f158d431fa7cb36b58731ce",
+      "preservation": "original bytes"
+    },
+    {
+      "file": "ensayos/storage/report.json.gz",
+      "sourceRunId": "61159cbb42bc4491bcc92a93b9299b56",
+      "uncompressedSha256": "dfbdc00f7c806c63b32498f55264fb072081079cff920f24afdfd52c48c9352a",
+      "preservation": "original bytes in gzip"
+    },
+    {
+      "file": "ensayos/storage/journal.json",
+      "sourceRunId": "61159cbb42bc4491bcc92a93b9299b56",
+      "sha256": "74397bc9eede6a0e126df355a1f9cb42bb86bbeb50afff0827874f30a24af8d6",
+      "preservation": "original bytes"
+    },
+    {
+      "file": "ensayos/requests/report.json.gz",
+      "sourceRunId": "6a3b5bc65d4043c689ba37646f811628",
+      "uncompressedSha256": "2556465677709e9782558d5f880c969410c0d23149624440f5fba474f99fd07e",
+      "preservation": "original bytes in gzip"
+    },
+    {
+      "file": "ensayos/requests/journal.json",
+      "sourceRunId": "6a3b5bc65d4043c689ba37646f811628",
+      "sha256": "78aab36b3cf90f7f69880cc56323836848e443530e85412cb71ed334108379ea",
+      "preservation": "original bytes"
+    },
+    {
+      "file": "ensayos/ram/report.json.gz",
+      "sourceRunId": "975be87309ed41abae983497375b2a8f",
+      "uncompressedSha256": "f12307a20d8e58fd77910ee42c347b919cf4eecc33ceb3a131686abab92fd064",
+      "preservation": "original bytes in gzip"
+    },
+    {
+      "file": "ensayos/ram/journal.json",
+      "sourceRunId": "975be87309ed41abae983497375b2a8f",
+      "sha256": "c23722018742110951f1a091d8b32b1461ca96a0d343720084cf9903588ae339",
+      "preservation": "original bytes"
+    },
+    {
+      "file": "ensayos/cpu/report.json.gz",
+      "sourceRunId": "cda2bb158a3c4a038860ea19039589a8",
+      "uncompressedSha256": "4edce90d9b8c972213bf97f4087394027061334480e60f1a8c2e6f82e520177f",
+      "preservation": "original bytes in gzip"
+    },
+    {
+      "file": "ensayos/cpu/journal.json",
+      "sourceRunId": "cda2bb158a3c4a038860ea19039589a8",
+      "sha256": "cbdd45f67fe6130e7c1dab85f738863c03d3a56c4a594998ebbd8445b0665b78",
+      "preservation": "original bytes"
+    },
+    {
+      "file": "bitacora.md",
+      "sha256": "3692d0efa7b2d1cde8421d8688ce6ad98b6967b723f213df93fd5327fe0e6248",
+      "preservation": "original bytes, UTF-8 with BOM"
+    },
+    {
+      "file": "conectividad.jsonl",
+      "sha256": "9b5de4d520922cdd25a1cccfda4b95b5c45e985ed732b9a4189a82a59dfe67bc",
+      "preservation": "original bytes, UTF-8 with BOM"
+    }
+  ],
+  "screenshots": "capturas/indice.json",
+  "bytePreservation": "Reportes completos comprimidos sin modificar JSON; journals, bitácora, conectividad y PNG conservan bytes originales.",
+  "excluded": "Credenciales, Secrets, kubeconfig, seed, inventario completo de clientes, logs redundantes y rutas locales de archivos privados no se publican.",
+  "humanTiming": "Notas registradas por operador a su hora real; no sustituyen tAck null del controlador.",
+  "assistance": "Codex preparó helpers locales, guió al operador, interpretó evidencia y la incorporó al repositorio; una ejecución adicional del agente se conserva separada."
+}

@@ -1,5 +1,7 @@
 # OPS-01: preparación del proceso de incidentes
 
+**Actualización 13/11/2026:** se incorporaron [seis ensayos ejecutados por el operador, capturas, bitácora y cierre del laboratorio](../issue-16-20261113/README.md). Los seis dieron PASS y limpieza verified. Este documento conserva la revisión histórica del 12/11; sus pendientes de ejecución se evalúan con la nueva evidencia. La revisión independiente por un compañero sigue sin demostrarse; los reconocimientos ausentes y las notas retrospectivas se identifican explícitamente.
+
 Revisión documental del **12/11/2026**, rama `feature/issue-16-incidentes-runbooks`, desde `9164d8d5ee2395d86bcf9997f471da390c57e637` de `obligatorio`. Relacionada con #16; su validación integral se completa con #17. No se inyectaron fallas ni se iniciaron/detuvieron servicios para este cambio. No se enviaron comunicaciones a terceros.
 
 ## Entregables y trazabilidad
