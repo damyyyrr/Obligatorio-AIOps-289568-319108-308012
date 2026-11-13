@@ -1,0 +1,68 @@
+{
+  "startedUtc": "2026-11-13T01:53:50.384344+00:00",
+  "queriedUtc": "2026-11-13T01:53:56.444215+00:00",
+  "path": "/api/drug",
+  "traceId": "b361ca929f605f5e1a62f6985ec02f33",
+  "correlationId": "evidence-success-pharmacy-06c8789522961442",
+  "httpStatus": 200,
+  "elapsedSeconds": 0.02420786599998337,
+  "jaegerFound": true,
+  "spans": [
+    {
+      "spanId": "3309e0cef635f2d7",
+      "parentIds": [
+        "eb3544f948908c19"
+      ],
+      "service": "PharmaGo.PharmacyService",
+      "operation": "api/Drug",
+      "startTimeUs": 1794534830390666,
+      "durationUs": 4633,
+      "tags": {
+        "http.status_code": 200,
+        "span.kind": "server"
+      }
+    },
+    {
+      "spanId": "eb3544f948908c19",
+      "parentIds": [
+        "03811287fd7d0446"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "HTTP GET",
+      "startTimeUs": 1794534830390411,
+      "durationUs": 5162,
+      "tags": {
+        "http.status_code": 200,
+        "span.kind": "client"
+      }
+    },
+    {
+      "spanId": "03811287fd7d0446",
+      "parentIds": [
+        "0123456789abcdef"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "/api/drug",
+      "startTimeUs": 1794534830389268,
+      "durationUs": 18827,
+      "tags": {
+        "http.status_code": 200,
+        "span.kind": "server"
+      }
+    },
+    {
+      "spanId": "9d0ba4e9def5a1fb",
+      "parentIds": [
+        "3309e0cef635f2d7"
+      ],
+      "service": "PharmaGo.PharmacyService",
+      "operation": "PharmaDb",
+      "startTimeUs": 1794534830394353,
+      "durationUs": 603,
+      "tags": {
+        "db.system": "mssql",
+        "span.kind": "client"
+      }
+    }
+  ]
+}

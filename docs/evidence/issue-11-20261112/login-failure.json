@@ -1,0 +1,70 @@
+{
+  "startedUtc": "2026-11-13T01:57:14.106342+00:00",
+  "queriedUtc": "2026-11-13T01:57:22.656191+00:00",
+  "path": "/api/login",
+  "traceId": "96d05eb4640ff5ec6fe890e98732365d",
+  "correlationId": "evidence-login-failure-61ee5fadd3e81460",
+  "httpStatus": 404,
+  "elapsedSeconds": 0.5428420520000259,
+  "jaegerFound": true,
+  "spans": [
+    {
+      "spanId": "0404617be8570ff6",
+      "parentIds": [
+        "7b2cdf619f96095a"
+      ],
+      "service": "PharmaGo.UsersService",
+      "operation": "api/Login",
+      "startTimeUs": 1794535034148801,
+      "durationUs": 500305,
+      "tags": {
+        "http.status_code": 404,
+        "span.kind": "server"
+      }
+    },
+    {
+      "spanId": "7b2cdf619f96095a",
+      "parentIds": [
+        "531a478e0f729306"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "HTTP POST",
+      "startTimeUs": 1794535034145896,
+      "durationUs": 502034,
+      "tags": {
+        "error": true,
+        "http.status_code": 404,
+        "otel.status_code": "ERROR",
+        "span.kind": "client"
+      }
+    },
+    {
+      "spanId": "531a478e0f729306",
+      "parentIds": [
+        "0123456789abcdef"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "/api/login",
+      "startTimeUs": 1794535034144983,
+      "durationUs": 503516,
+      "tags": {
+        "http.status_code": 404,
+        "span.kind": "server"
+      }
+    },
+    {
+      "spanId": "918b2cfa311ddc6d",
+      "parentIds": [
+        "0404617be8570ff6"
+      ],
+      "service": "PharmaGo.UsersService",
+      "operation": "PharmaDb",
+      "startTimeUs": 1794535034591062,
+      "durationUs": 44270,
+      "tags": {
+        "db.system": "mssql",
+        "span.kind": "client"
+      }
+    }
+  ]
+}

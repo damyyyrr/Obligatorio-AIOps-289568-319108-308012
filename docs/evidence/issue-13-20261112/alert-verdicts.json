@@ -1,0 +1,113 @@
+{
+  "generatedUtc": "2026-11-13T02:16:20.206986+00:00",
+  "evaluationInterval": "10s",
+  "observationInterval": "5s plus kubectl/API overhead",
+  "rules": [
+    {
+      "uid": "pharmago-http-5xx",
+      "title": "PharmaGo: tasa de errores HTTP 5xx",
+      "scenario": "errors",
+      "baselineState": "inactive",
+      "injectedUtc": "2026-11-13T01:59:09.809058+00:00",
+      "restoredUtc": "2026-11-13T02:00:55.006641+00:00",
+      "firstFiringObservedUtc": "2026-11-13T02:00:28.627456+00:00",
+      "firstOkAfterRestoreObservedUtc": "2026-11-13T02:02:08.904273+00:00",
+      "for": "30s",
+      "noDataState": "OK",
+      "execErrState": "Error",
+      "query": "100 * sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", status_code=~\"5..\", endpoint!~\"/health.*\"}[1m])) / sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) and on (service_name) (sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) > 0.1)",
+      "threshold": {
+        "type": "gt",
+        "params": [
+          5
+        ]
+      },
+      "pass": true
+    },
+    {
+      "uid": "pharmago-http-p95",
+      "title": "PharmaGo: latencia p95 HTTP alta",
+      "scenario": "latency",
+      "baselineState": "inactive",
+      "injectedUtc": "2026-11-13T02:07:31.655559+00:00",
+      "restoredUtc": "2026-11-13T02:09:28.737638+00:00",
+      "firstFiringObservedUtc": "2026-11-13T02:08:26.084130+00:00",
+      "firstOkAfterRestoreObservedUtc": "2026-11-13T02:10:36.182711+00:00",
+      "for": "30s",
+      "noDataState": "OK",
+      "execErrState": "Error",
+      "query": "histogram_quantile(0.95, sum by (service_name, le) (rate(pharmago_http_request_duration_milliseconds_bucket{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m]))) and on (service_name) (sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) > 0.1)",
+      "threshold": {
+        "type": "gt",
+        "params": [
+          1000
+        ]
+      },
+      "pass": true
+    },
+    {
+      "uid": "pharmago-pod-cpu",
+      "title": "PharmaGo: CPU de Pod cerca del límite",
+      "scenario": "cpu",
+      "baselineState": "inactive",
+      "injectedUtc": "2026-11-13T01:55:08.243218+00:00",
+      "restoredUtc": "2026-11-13T01:57:23.414504+00:00",
+      "firstFiringObservedUtc": "2026-11-13T01:57:08.469306+00:00",
+      "firstOkAfterRestoreObservedUtc": "2026-11-13T01:57:50.019639+00:00",
+      "for": "1m",
+      "noDataState": "NoData",
+      "execErrState": "Error",
+      "query": "100 * sum by (pod) (rate(container_cpu_usage_seconds_total{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"}[1m])) / sum by (pod) ((container_spec_cpu_quota{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"} > 0) / container_spec_cpu_period{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"})",
+      "threshold": {
+        "type": "gt",
+        "params": [
+          80
+        ]
+      },
+      "pass": true
+    },
+    {
+      "uid": "pharmago-pod-memory",
+      "title": "PharmaGo: memoria de Pod cerca del límite",
+      "scenario": "memory",
+      "baselineState": "inactive",
+      "injectedUtc": "2026-11-13T02:11:55.221176+00:00",
+      "restoredUtc": "2026-11-13T02:14:10.395196+00:00",
+      "firstFiringObservedUtc": "2026-11-13T02:13:19.866442+00:00",
+      "firstOkAfterRestoreObservedUtc": "2026-11-13T02:14:42.259577+00:00",
+      "for": "1m",
+      "noDataState": "NoData",
+      "execErrState": "Error",
+      "query": "100 * max by (pod) (container_memory_working_set_bytes{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"}) / max by (pod) (container_spec_memory_limit_bytes{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"} > 0)",
+      "threshold": {
+        "type": "gt",
+        "params": [
+          85
+        ]
+      },
+      "pass": true
+    },
+    {
+      "uid": "pharmago-pod-not-ready",
+      "title": "PharmaGo: Pod Running sin condición Ready",
+      "scenario": "ready",
+      "baselineState": "inactive",
+      "injectedUtc": "2026-11-13T02:03:38.257722+00:00",
+      "restoredUtc": "2026-11-13T02:04:59.313633+00:00",
+      "firstFiringObservedUtc": "2026-11-13T02:04:47.588411+00:00",
+      "firstOkAfterRestoreObservedUtc": "2026-11-13T02:05:22.851821+00:00",
+      "for": "45s",
+      "noDataState": "Alerting",
+      "execErrState": "Error",
+      "query": "max by (pod) (kube_pod_status_ready{job=\"kube-state-metrics\", namespace=\"pharmago\", condition=\"false\"}) * on (pod) max by (pod) (kube_pod_status_phase{job=\"kube-state-metrics\", namespace=\"pharmago\", phase=\"Running\"})",
+      "threshold": {
+        "type": "gt",
+        "params": [
+          0
+        ]
+      },
+      "pass": true
+    }
+  ],
+  "pass": true
+}

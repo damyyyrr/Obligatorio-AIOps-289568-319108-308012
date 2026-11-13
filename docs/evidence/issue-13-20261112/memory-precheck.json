@@ -1,0 +1,16 @@
+[
+  {
+    "ts": "2026-11-13T02:06:03.144128+00:00",
+    "hostAvailableBytes": 1384742912,
+    "minimumBytes": 2147483648,
+    "pass": false,
+    "action": "Memory fault not injected; awaiting host memory margin"
+  },
+  {
+    "ts": "2026-11-13T02:09:41.446785+00:00",
+    "hostAvailableBytes": 2439888896,
+    "minimumBytes": 2147483648,
+    "pass": true,
+    "action": "Memory fault may run"
+  }
+]

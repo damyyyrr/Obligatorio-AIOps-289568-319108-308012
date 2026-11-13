@@ -1,0 +1,412 @@
+{
+  "pv": [
+    {
+      "name": "elasticsearch-pv",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "2e25748a8e56f0b61fa6300c8924c77ed395ca42741fc5086b4beb017a4599b7",
+      "afterSha256": "2e25748a8e56f0b61fa6300c8924c77ed395ca42741fc5086b4beb017a4599b7"
+    },
+    {
+      "name": "grafana-pv",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "0b62d692f2d38666c2009ca3e77e7a9d12b1b664f288eb5abd1ea54dc58cb536",
+      "afterSha256": "0b62d692f2d38666c2009ca3e77e7a9d12b1b664f288eb5abd1ea54dc58cb536"
+    },
+    {
+      "name": "prometheus-pv",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "e7c2a97817d63c4645a80292f7890d617de8ccf00ddd4fe22eb07939feeab446",
+      "afterSha256": "e7c2a97817d63c4645a80292f7890d617de8ccf00ddd4fe22eb07939feeab446"
+    },
+    {
+      "name": "sql-pv",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "25022219ee5a542fd74f455955cc7ff386fa5ada4c2849727556f23cc92ff259",
+      "afterSha256": "25022219ee5a542fd74f455955cc7ff386fa5ada4c2849727556f23cc92ff259"
+    }
+  ],
+  "pvc": [
+    {
+      "name": "elasticsearch-pvc",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "e114194119f6fd78b9544f6fa341a341418ab8873316520be13ba75838bc4ce1",
+      "afterSha256": "e114194119f6fd78b9544f6fa341a341418ab8873316520be13ba75838bc4ce1"
+    },
+    {
+      "name": "grafana-pvc",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "8e193afb082f35bc436add80016f13dd8725000fe6409ed7262af054c749b0de",
+      "afterSha256": "8e193afb082f35bc436add80016f13dd8725000fe6409ed7262af054c749b0de"
+    },
+    {
+      "name": "prometheus-pvc",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "7479813a69fb9574a26bdfedc1ced46979f4b7efe0789f0d11f722fc94e11cb4",
+      "afterSha256": "7479813a69fb9574a26bdfedc1ced46979f4b7efe0789f0d11f722fc94e11cb4"
+    },
+    {
+      "name": "sql-pvc",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "301ecdb34bb3060dcdc315898527443b8bbe9b6817b35919b0552ac59a02f273",
+      "afterSha256": "301ecdb34bb3060dcdc315898527443b8bbe9b6817b35919b0552ac59a02f273"
+    }
+  ],
+  "configmaps": [
+    {
+      "name": "fluent-bit-config",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "129c1679f908557eb7e96e89b782fb0732a9ae0e741eb185c1b06c55ee9e83de",
+      "afterSha256": "129c1679f908557eb7e96e89b782fb0732a9ae0e741eb185c1b06c55ee9e83de"
+    },
+    {
+      "name": "grafana-alerting",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "bb5df38df192f94131d58d3e7e4ea57bd4b56a2de2821b97a5af3eac141bfdce",
+      "afterSha256": "bb5df38df192f94131d58d3e7e4ea57bd4b56a2de2821b97a5af3eac141bfdce"
+    },
+    {
+      "name": "grafana-dashboard-infra",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "53749999f259f277f23d6adc0033d9854e651accc5f66fca72e20f6c328f88e6",
+      "afterSha256": "53749999f259f277f23d6adc0033d9854e651accc5f66fca72e20f6c328f88e6"
+    },
+    {
+      "name": "grafana-dashboards",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "0b37278315292db99ad3e04f0ddd4c8eda25b002273adfed5fff97a28c5a1921",
+      "afterSha256": "0b37278315292db99ad3e04f0ddd4c8eda25b002273adfed5fff97a28c5a1921"
+    },
+    {
+      "name": "grafana-provisioning",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "d3a26ddc85d6b8461e75df7ad3d4090082877486376216a6869326ef0617ca64",
+      "afterSha256": "d3a26ddc85d6b8461e75df7ad3d4090082877486376216a6869326ef0617ca64"
+    },
+    {
+      "name": "kube-root-ca.crt",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "68d0a5535e96412beace184066adcb00df9e592bbcbc747bc841ed7343cec578",
+      "afterSha256": "68d0a5535e96412beace184066adcb00df9e592bbcbc747bc841ed7343cec578"
+    },
+    {
+      "name": "kubelet-storage-config",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "6b38ed0b70ace72cefc2edafc0a100f6b2d0a155749a8daac061a5bc579918aa",
+      "afterSha256": "6b38ed0b70ace72cefc2edafc0a100f6b2d0a155749a8daac061a5bc579918aa"
+    },
+    {
+      "name": "otel-collector-config",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "f39729500eafc7e13d7365c8861de39aa3db13430bfda73aec2dcd9941a04269",
+      "afterSha256": "f39729500eafc7e13d7365c8861de39aa3db13430bfda73aec2dcd9941a04269"
+    },
+    {
+      "name": "prometheus-config",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "53b7a9b94abffd95204daf94563a8ae369281f1e15804d389e3ccbfd63661cad",
+      "afterSha256": "53b7a9b94abffd95204daf94563a8ae369281f1e15804d389e3ccbfd63661cad"
+    }
+  ],
+  "services": [
+    {
+      "name": "elasticsearch",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "7606edc178d32aeea3b66ab5d5667528f1ec61afbc1aea663c793b58405282e9",
+      "afterSha256": "7606edc178d32aeea3b66ab5d5667528f1ec61afbc1aea663c793b58405282e9"
+    },
+    {
+      "name": "grafana",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "da81938f2828b10cd9aba3d38923d8827e17b8291b23c24b669baa7e34d3caf2",
+      "afterSha256": "da81938f2828b10cd9aba3d38923d8827e17b8291b23c24b669baa7e34d3caf2"
+    },
+    {
+      "name": "jaeger",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "120e9ad91243306b652e44151cb1d2b750c5ae85335e398c8c1443956929f5dc",
+      "afterSha256": "120e9ad91243306b652e44151cb1d2b750c5ae85335e398c8c1443956929f5dc"
+    },
+    {
+      "name": "kibana",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "1337af5fc3b212163fd3d653af346c5e9e87de5cd8563813e4948791a25bdd19",
+      "afterSha256": "1337af5fc3b212163fd3d653af346c5e9e87de5cd8563813e4948791a25bdd19"
+    },
+    {
+      "name": "node-exporter",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "bd12e5a5d1e0ce5e784508748bb63b404de98f5e0f8b8fc70a4ceddce156eaae",
+      "afterSha256": "bd12e5a5d1e0ce5e784508748bb63b404de98f5e0f8b8fc70a4ceddce156eaae"
+    },
+    {
+      "name": "otlp-collector",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "0d72f7a1b1d296f6892ed4a32e903fc4de666bc0f7bd41e381cd44233a675706",
+      "afterSha256": "0d72f7a1b1d296f6892ed4a32e903fc4de666bc0f7bd41e381cd44233a675706"
+    },
+    {
+      "name": "pharmago-api-gateway",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "0520ffb26ade66b65fedb589ff23eec07bd5e76281674d6023d1115371101c65",
+      "afterSha256": "0520ffb26ade66b65fedb589ff23eec07bd5e76281674d6023d1115371101c65"
+    },
+    {
+      "name": "pharmago-db",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "d75357c896da2c9f205ae1fbd3891b8cc1a53e7c6a1773ceafb8c28357162411",
+      "afterSha256": "d75357c896da2c9f205ae1fbd3891b8cc1a53e7c6a1773ceafb8c28357162411"
+    },
+    {
+      "name": "pharmago-pharmacy-service",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "fcfa8f3df57755d063bf8679cd7007d3f6df8c583916e5fb7d01cf52784d7912",
+      "afterSha256": "fcfa8f3df57755d063bf8679cd7007d3f6df8c583916e5fb7d01cf52784d7912"
+    },
+    {
+      "name": "pharmago-ui",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "c5b1c756684350a161155714bf2dea7cb784cdb0522043b7700b24a27eb4550e",
+      "afterSha256": "c5b1c756684350a161155714bf2dea7cb784cdb0522043b7700b24a27eb4550e"
+    },
+    {
+      "name": "pharmago-users-service",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "7c185d12c97bc8df2134738283d7061d9165df577d26c629828105a9c97d4d4a",
+      "afterSha256": "7c185d12c97bc8df2134738283d7061d9165df577d26c629828105a9c97d4d4a"
+    },
+    {
+      "name": "prometheus",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "20300cb3fd6dcab9e66290aee837046ecb511fd489c99b30204c1c8fbde60d13",
+      "afterSha256": "20300cb3fd6dcab9e66290aee837046ecb511fd489c99b30204c1c8fbde60d13"
+    }
+  ],
+  "deployments": [
+    {
+      "name": "elasticsearch",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "2c762b628ed88750f136fb53b26b241093f14f570c2ef6ee1ea11becf8f38611",
+      "afterSha256": "2c762b628ed88750f136fb53b26b241093f14f570c2ef6ee1ea11becf8f38611"
+    },
+    {
+      "name": "grafana",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "83e576379fca72924047b58ae11ce8b34a71f2a42027e398a29e03cca31d1f1a",
+      "afterSha256": "83e576379fca72924047b58ae11ce8b34a71f2a42027e398a29e03cca31d1f1a"
+    },
+    {
+      "name": "jaeger",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "7c965885b9a844ed93e01475b044511a4d7524229d59830cc745a78c9bc84096",
+      "afterSha256": "7c965885b9a844ed93e01475b044511a4d7524229d59830cc745a78c9bc84096"
+    },
+    {
+      "name": "kibana",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "df9be1a7ddd081af2329bf31c303770e70998df6cc4a1e66283605fdb207cdf2",
+      "afterSha256": "df9be1a7ddd081af2329bf31c303770e70998df6cc4a1e66283605fdb207cdf2"
+    },
+    {
+      "name": "kube-state-metrics",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "a24bda58f8157af0661c47065ef35126820a6d2a63d32ea7d9b64bf354e0c75b",
+      "afterSha256": "a24bda58f8157af0661c47065ef35126820a6d2a63d32ea7d9b64bf354e0c75b"
+    },
+    {
+      "name": "otlp-collector",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "0dff13654d55fee295c70a4dd8e3c3b7b96cf8e859f1f7b695df2817cdaed7be",
+      "afterSha256": "0dff13654d55fee295c70a4dd8e3c3b7b96cf8e859f1f7b695df2817cdaed7be"
+    },
+    {
+      "name": "pharmago-api-gateway",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "16d049583c3bfa04b05d2c8bb048d3c663c019bf4889105951fe4dcc13ce1849",
+      "afterSha256": "16d049583c3bfa04b05d2c8bb048d3c663c019bf4889105951fe4dcc13ce1849"
+    },
+    {
+      "name": "pharmago-db",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "a5fd517e3479fd7add3dacec3982607b6f456da403582d5cbf939765a5607894",
+      "afterSha256": "a5fd517e3479fd7add3dacec3982607b6f456da403582d5cbf939765a5607894"
+    },
+    {
+      "name": "pharmago-pharmacy-service",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "653ed5da9f88715aebbe6ae0dcfa4385e9a933eaa395424d7856b63e7c9c4c6a",
+      "afterSha256": "653ed5da9f88715aebbe6ae0dcfa4385e9a933eaa395424d7856b63e7c9c4c6a"
+    },
+    {
+      "name": "pharmago-ui",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "5262656d3ce785a7ca157147d98779ac343f9587627c40e0443c637a4654bb01",
+      "afterSha256": "5262656d3ce785a7ca157147d98779ac343f9587627c40e0443c637a4654bb01"
+    },
+    {
+      "name": "pharmago-users-service",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "9ae344b14387500b7e5c8d4afb851b16c79242c2ef5067d514df86c8184d69f1",
+      "afterSha256": "9ae344b14387500b7e5c8d4afb851b16c79242c2ef5067d514df86c8184d69f1"
+    },
+    {
+      "name": "prometheus",
+      "uidPreserved": true,
+      "specOrDataPreserved": true,
+      "beforeSha256": "379b8323a9268f9be7a32110f0405b53a60e013006ba719c07a7d7b456436d96",
+      "afterSha256": "379b8323a9268f9be7a32110f0405b53a60e013006ba719c07a7d7b456436d96"
+    }
+  ],
+  "ts": "2026-11-13T02:15:47.365322+00:00",
+  "notReady": [],
+  "containerRestarts": [
+    {
+      "pod": "elasticsearch-6b9b9d4bd9-cwfw2",
+      "container": "elasticsearch",
+      "restarts": 0,
+      "lastReason": null
+    },
+    {
+      "pod": "fluent-bit-mlzz8",
+      "container": "fluent-bit",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "grafana-656d4b5b48-64lcf",
+      "container": "grafana",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "jaeger-565b478b65-vkwzg",
+      "container": "jaeger",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "kibana-68c64655b9-kp2b2",
+      "container": "kibana",
+      "restarts": 2,
+      "lastReason": "Error"
+    },
+    {
+      "pod": "kube-state-metrics-65669ffcdf-jpdlg",
+      "container": "kube-state-metrics",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "kubelet-storage-gnlgr",
+      "container": "collector",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "node-exporter-7jvmf",
+      "container": "node-exporter",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "otlp-collector-76876cdbff-gfqzr",
+      "container": "otlp-collector",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+      "container": "pharmago-api-gateway",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "pharmago-chaos-client",
+      "container": "client",
+      "restarts": 0,
+      "lastReason": null
+    },
+    {
+      "pod": "pharmago-db-749757cdd7-4w6w8",
+      "container": "pharmago-db",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh",
+      "container": "pharmago-pharmacy-service",
+      "restarts": 0,
+      "lastReason": null
+    },
+    {
+      "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql",
+      "container": "pharmago-pharmacy-service",
+      "restarts": 0,
+      "lastReason": null
+    },
+    {
+      "pod": "pharmago-ui-7cb8f6bb9c-9lxnc",
+      "container": "pharmago-ui",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "pharmago-users-service-cbfddcb-46c4t",
+      "container": "pharmago-users-service",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "pharmago-users-service-cbfddcb-7lbb6",
+      "container": "pharmago-users-service",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    },
+    {
+      "pod": "prometheus-78d9687dc8-f26bc",
+      "container": "prometheus",
+      "restarts": 1,
+      "lastReason": "Unknown"
+    }
+  ],
+  "pass": true
+}

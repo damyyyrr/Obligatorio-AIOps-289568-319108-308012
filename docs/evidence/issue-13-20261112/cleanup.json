@@ -1,0 +1,62 @@
+{
+  "ts": "2026-11-13T02:17:52.614609+00:00",
+  "finalRules": [
+    {
+      "name": "PharmaGo: tasa de errores HTTP 5xx",
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "name": "PharmaGo: latencia p95 HTTP alta",
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "name": "PharmaGo: CPU de Pod cerca del lÃ­mite",
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "name": "PharmaGo: memoria de Pod cerca del lÃ­mite",
+      "state": "inactive",
+      "health": "ok"
+    },
+    {
+      "name": "PharmaGo: Pod Running sin condiciÃ³n Ready",
+      "state": "inactive",
+      "health": "ok"
+    }
+  ],
+  "pausedTaskIds": [],
+  "watchdogPids": [],
+  "residualLoads": [
+    {
+      "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh",
+      "residualLoadPidFiles": []
+    },
+    {
+      "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql",
+      "residualLoadPidFiles": []
+    }
+  ],
+  "removedNodeFile": "/tmp/obs-evidence-watchdog.log",
+  "clientDeletedWithUidAndResourceVersion": {
+    "name": "pharmago-chaos-client",
+    "uid": "456d9eb3-5df2-46db-9c14-bee3022d3203"
+  },
+  "pass": true,
+  "environmentShutdown": {
+    "minikubeStopCommandCompletedBeforeDockerStop": true,
+    "profileHostStoppedValidatedBeforeDockerStop": true,
+    "dockerDesktopStopCliTimedOutSeconds": 180,
+    "finalObservation": {
+      "observedUtc": "2026-11-13T02:23:43.7448036Z",
+      "contextUnset": true,
+      "dockerLinuxPipeExists": false,
+      "wslMemoryProcesses": [],
+      "freeHostBytes": 11420459008,
+      "minikubeProfileConfigPreserved": true
+    },
+    "dockerDesktopStatusAfterTimeout": "API unavailable; Linux engine pipe absent and no vmmemWSL process"
+  }
+}

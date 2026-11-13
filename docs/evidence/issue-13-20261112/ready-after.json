@@ -1,0 +1,735 @@
+{
+  "ts": "2026-11-13T02:05:45.942798+00:00",
+  "queries": [
+    {
+      "name": "pharmago-http-5xx",
+      "query": "100 * sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", status_code=~\"5..\", endpoint!~\"/health.*\"}[1m])) / sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) and on (service_name) (sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) > 0.1)",
+      "httpStatus": 200,
+      "response": {
+        "status": "success",
+        "data": {
+          "resultType": "vector",
+          "result": [
+            {
+              "metric": {
+                "service_name": "PharmaGo.ApiGateway"
+              },
+              "value": [
+                1794535546.037,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "service_name": "PharmaGo.PharmacyService"
+              },
+              "value": [
+                1794535546.037,
+                "0"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "pharmago-http-p95",
+      "query": "histogram_quantile(0.95, sum by (service_name, le) (rate(pharmago_http_request_duration_milliseconds_bucket{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m]))) and on (service_name) (sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) > 0.1)",
+      "httpStatus": 200,
+      "response": {
+        "status": "success",
+        "data": {
+          "resultType": "vector",
+          "result": [
+            {
+              "metric": {
+                "service_name": "PharmaGo.UsersService"
+              },
+              "value": [
+                1794535546.038,
+                "4.75"
+              ]
+            },
+            {
+              "metric": {
+                "service_name": "PharmaGo.ApiGateway"
+              },
+              "value": [
+                1794535546.038,
+                "4.75"
+              ]
+            },
+            {
+              "metric": {
+                "service_name": "PharmaGo.PharmacyService"
+              },
+              "value": [
+                1794535546.038,
+                "4.75"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "pharmago-pod-cpu",
+      "query": "100 * sum by (pod) (rate(container_cpu_usage_seconds_total{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"}[1m])) / sum by (pod) ((container_spec_cpu_quota{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"} > 0) / container_spec_cpu_period{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"})",
+      "httpStatus": 200,
+      "response": {
+        "status": "success",
+        "data": {
+          "resultType": "vector",
+          "result": [
+            {
+              "metric": {
+                "pod": "pharmago-users-service-cbfddcb-7lbb6"
+              },
+              "value": [
+                1794535546.04,
+                "0.48083507663408004"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "otlp-collector-76876cdbff-gfqzr"
+              },
+              "value": [
+                1794535546.04,
+                "0.7989000000000024"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+              },
+              "value": [
+                1794535546.04,
+                "0.7621966903884072"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-users-service-cbfddcb-46c4t"
+              },
+              "value": [
+                1794535546.04,
+                "0.2975399884796305"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+              },
+              "value": [
+                1794535546.04,
+                "0.4095765618849487"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kibana-68c64655b9-kp2b2"
+              },
+              "value": [
+                1794535546.04,
+                "1.7082939208674395"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kubelet-storage-gnlgr"
+              },
+              "value": [
+                1794535546.04,
+                "0.3039231579800591"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "jaeger-565b478b65-vkwzg"
+              },
+              "value": [
+                1794535546.04,
+                "0.09337377860936316"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+              },
+              "value": [
+                1794535546.04,
+                "0.05049978732454278"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-chaos-client"
+              },
+              "value": [
+                1794535546.04,
+                "15.317175892109503"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+              },
+              "value": [
+                1794535546.04,
+                "0.5577485053707413"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+              },
+              "value": [
+                1794535546.04,
+                "0.5126691419141924"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "pharmago-pod-memory",
+      "query": "100 * max by (pod) (container_memory_working_set_bytes{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"}) / max by (pod) (container_spec_memory_limit_bytes{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"} > 0)",
+      "httpStatus": 200,
+      "response": {
+        "status": "success",
+        "data": {
+          "resultType": "vector",
+          "result": [
+            {
+              "metric": {
+                "pod": "pharmago-users-service-cbfddcb-7lbb6"
+              },
+              "value": [
+                1794535546.041,
+                "20.201619466145832"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "fluent-bit-mlzz8"
+              },
+              "value": [
+                1794535546.041,
+                "8.708984375"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "node-exporter-7jvmf"
+              },
+              "value": [
+                1794535546.041,
+                "5.46722412109375"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "otlp-collector-76876cdbff-gfqzr"
+              },
+              "value": [
+                1794535546.041,
+                "33.4808349609375"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+              },
+              "value": [
+                1794535546.041,
+                "18.389892578125"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-users-service-cbfddcb-46c4t"
+              },
+              "value": [
+                1794535546.041,
+                "19.9798583984375"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+              },
+              "value": [
+                1794535546.041,
+                "17.641194661458332"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kibana-68c64655b9-kp2b2"
+              },
+              "value": [
+                1794535546.041,
+                "38.331031799316406"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kubelet-storage-gnlgr"
+              },
+              "value": [
+                1794535546.041,
+                "56.2469482421875"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "jaeger-565b478b65-vkwzg"
+              },
+              "value": [
+                1794535546.041,
+                "5.02471923828125"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+              },
+              "value": [
+                1794535546.041,
+                "5.23681640625"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-chaos-client"
+              },
+              "value": [
+                1794535546.041,
+                "35.55908203125"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+              },
+              "value": [
+                1794535546.041,
+                "19.553629557291668"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+              },
+              "value": [
+                1794535546.041,
+                "15.996297200520834"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "pharmago-pod-not-ready",
+      "query": "max by (pod) (kube_pod_status_ready{job=\"kube-state-metrics\", namespace=\"pharmago\", condition=\"false\"}) * on (pod) max by (pod) (kube_pod_status_phase{job=\"kube-state-metrics\", namespace=\"pharmago\", phase=\"Running\"})",
+      "httpStatus": 200,
+      "response": {
+        "status": "success",
+        "data": {
+          "resultType": "vector",
+          "result": [
+            {
+              "metric": {
+                "pod": "otlp-collector-76876cdbff-gfqzr"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "prometheus-78d9687dc8-f26bc"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "grafana-656d4b5b48-64lcf"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kubelet-storage-gnlgr"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "node-exporter-7jvmf"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-db-749757cdd7-4w6w8"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-users-service-cbfddcb-46c4t"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-users-service-cbfddcb-7lbb6"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "fluent-bit-mlzz8"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "jaeger-565b478b65-vkwzg"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "kibana-68c64655b9-kp2b2"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-chaos-client"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "elasticsearch-6b9b9d4bd9-cwfw2"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            },
+            {
+              "metric": {
+                "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+              },
+              "value": [
+                1794535546.042,
+                "0"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "kube-state-metrics-scrape-up",
+      "query": "up{job=\"kube-state-metrics\"}",
+      "httpStatus": 200,
+      "response": {
+        "status": "success",
+        "data": {
+          "resultType": "vector",
+          "result": [
+            {
+              "metric": {
+                "__name__": "up",
+                "instance": "10.244.32.33:8080",
+                "job": "kube-state-metrics"
+              },
+              "value": [
+                1794535546.043,
+                "1"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "pods": [
+    {
+      "name": "elasticsearch-6b9b9d4bd9-cwfw2",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T02:01:30Z"
+        }
+      ]
+    },
+    {
+      "name": "fluent-bit-mlzz8",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:12Z"
+        }
+      ]
+    },
+    {
+      "name": "grafana-656d4b5b48-64lcf",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:53:23Z"
+        }
+      ]
+    },
+    {
+      "name": "jaeger-565b478b65-vkwzg",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:12Z"
+        }
+      ]
+    },
+    {
+      "name": "kibana-68c64655b9-kp2b2",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T02:01:56Z"
+        }
+      ]
+    },
+    {
+      "name": "kube-state-metrics-65669ffcdf-jpdlg",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:23Z"
+        }
+      ]
+    },
+    {
+      "name": "kubelet-storage-gnlgr",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:08Z"
+        }
+      ]
+    },
+    {
+      "name": "node-exporter-7jvmf",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:51:42Z"
+        }
+      ]
+    },
+    {
+      "name": "otlp-collector-76876cdbff-gfqzr",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:12Z"
+        }
+      ]
+    },
+    {
+      "name": "pharmago-api-gateway-7ffc688c6-2wj2w",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:48Z"
+        }
+      ]
+    },
+    {
+      "name": "pharmago-chaos-client",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:53:33Z"
+        }
+      ]
+    },
+    {
+      "name": "pharmago-db-749757cdd7-4w6w8",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:43Z"
+        }
+      ]
+    },
+    {
+      "name": "pharmago-pharmacy-service-d5f48968c-5zzkh",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T02:05:00Z"
+        }
+      ]
+    },
+    {
+      "name": "pharmago-pharmacy-service-d5f48968c-6d7ql",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T02:05:01Z"
+        }
+      ]
+    },
+    {
+      "name": "pharmago-ui-7cb8f6bb9c-9lxnc",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:19Z"
+        }
+      ]
+    },
+    {
+      "name": "pharmago-users-service-cbfddcb-46c4t",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T02:05:00Z"
+        }
+      ]
+    },
+    {
+      "name": "pharmago-users-service-cbfddcb-7lbb6",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T02:04:59Z"
+        }
+      ]
+    },
+    {
+      "name": "prometheus-78d9687dc8-f26bc",
+      "phase": "Running",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "True",
+          "lastTransitionTime": "2026-11-13T01:52:51Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{"ts": "2026-11-13T01:55:08.243218+00:00", "event": "inject", "scenario": "cpu", "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc", "holdSeconds": 135}
+{"ts": "2026-11-13T01:57:23.414504+00:00", "event": "restore", "scenario": "cpu", "detail": ""}
+{"ts": "2026-11-13T01:59:03.415324+00:00", "event": "end", "scenario": "cpu"}
+{"ts": "2026-11-13T01:59:09.809058+00:00", "event": "inject", "scenario": "errors", "replicasBefore": 2, "holdSeconds": 105}
+{"ts": "2026-11-13T02:00:55.006641+00:00", "event": "restore", "scenario": "errors", "replicas": 2}
+{"ts": "2026-11-13T02:03:10.624811+00:00", "event": "end", "scenario": "errors"}
+{"ts": "2026-11-13T02:03:38.257722+00:00", "event": "inject", "scenario": "ready", "tasks": ["c9a67fa572be81c8ef2dabec338ae52ee9693c0a50eca5fb5990f07697f1132b"], "holdSeconds": 80}
+{"ts": "2026-11-13T02:04:59.313633+00:00", "event": "restore", "scenario": "ready"}
+{"ts": "2026-11-13T02:06:39.314641+00:00", "event": "end", "scenario": "ready"}
+{"ts": "2026-11-13T02:07:31.655559+00:00", "event": "inject", "scenario": "latency", "tasks": ["aeaf7aaef3fa34662e0c3969a7b98ea685aacceed5020e06beeddd8d5d13c199", "e5ca153d42050c45e08e8fee89f228ee62c4ca0acd6e961f1efd84fa9b088d00"], "holdSeconds": 115}
+{"ts": "2026-11-13T02:09:28.737638+00:00", "event": "restore", "scenario": "latency"}
+{"ts": "2026-11-13T02:11:53.178942+00:00", "event": "end", "scenario": "latency"}
+{"ts": "2026-11-13T02:11:55.221176+00:00", "event": "inject", "scenario": "memory", "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh", "holdSeconds": 135}
+{"ts": "2026-11-13T02:14:10.395196+00:00", "event": "restore", "scenario": "memory", "detail": "limit=402653184 used=78589952 add=291850977\n"}
+{"ts": "2026-11-13T02:15:50.395946+00:00", "event": "end", "scenario": "memory"}

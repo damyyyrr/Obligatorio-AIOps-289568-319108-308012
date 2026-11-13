@@ -1,0 +1,253 @@
+{
+  "ts": "2026-11-13T01:59:48.880465+00:00",
+  "branch": "codex/evidence-issues-11-13",
+  "baseCommit": "1eaef3426ef8f208b260de5d8078d1b6ad558c83",
+  "imagesBuiltFrom": "28b3b8bb2f1795026977bb526372c1f9cc639b16",
+  "backendDiffSinceImageBuild": "",
+  "context": "pharmago-issue17-validation",
+  "nodes": [
+    {
+      "name": "pharmago-issue17-validation",
+      "kubelet": "v1.34.1",
+      "runtime": "containerd://2.3.4"
+    }
+  ],
+  "files": [
+    {
+      "path": "Implementacion K8S/Codigo/k8s/configmaps/otel-collector-config.yaml",
+      "gitBlob": "01418c98bbd2d0469fa8d4243502f6dfc113715d",
+      "sha256WorkingFile": "7af95b1284b686c0a225ace00ec591b924cf7c602434ab3817e90ad648e51eaf"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/k8s/configmaps/fluent-bit-config.yaml",
+      "gitBlob": "bae82ad969f5671e19e654a3250753f5716d5c2d",
+      "sha256WorkingFile": "7b3aa579025d8a3c0d7c9cbc6ced46fc0dd83f180e89c385b0c391835271af0d"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/k8s/configmaps/grafana-alerting.yaml",
+      "gitBlob": "96997b6a975db7417b7a31c5e366f94933cecff9",
+      "sha256WorkingFile": "19872d7d54ca737efb8d4557f34a0eb3b73ae422c5d4e5d828bc3b7aad4576e5"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/k8s/deployments/ops/jaeger-deployment.yaml",
+      "gitBlob": "3bb28ae8c8dc1a0393aa37d8932f4535e7c6f76c",
+      "sha256WorkingFile": "4f6c563275d2cdae55dce653915208c073f6f9ae91b812dfbc7cfcf81e13ff22"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/k8s/deployments/ops/elasticsearch-deployment.yaml",
+      "gitBlob": "cca4dad8c7ee0037953bc5558423e32ab14d8011",
+      "sha256WorkingFile": "ba5d0afc8dc163af7e1957f707f6a7d6ad7b19e07bcf3dd975bf8db0dde7d544"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/k8s/deployments/ops/grafana-deployment.yaml",
+      "gitBlob": "c8ed6da5449baa8650e13e5fc4d5375eb6e8a374",
+      "sha256WorkingFile": "0e517dd386191e8b0dc95f572f056eaea3e5068ab6aa8fe64d25b10339f1ccf6"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/scripts/probe-trace.py",
+      "gitBlob": "e6f681f4b90616dae8df30918729f56ad104daaf",
+      "sha256WorkingFile": "31015991358f9f8bcbe8272d3bec7901b6b68f0f6a283b4222c2cc087057ba59"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/scripts/probe-alerts.py",
+      "gitBlob": "fbeeba8a01c9227a83fe32424e75ac0fbb74f51b",
+      "sha256WorkingFile": "35bbd1a3e105f556d692833a9d3b4a1ad4d799d0bf72e3a8799d9ace07dff608"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/scripts/alert-scenarios.py",
+      "gitBlob": "29d46496ed7e06ba8ade8ca5df98836418433e70",
+      "sha256WorkingFile": "2e9a58f1847882b3a3328c38134c35b7a52a314ec7d26a03d0e3f81010ab8162"
+    },
+    {
+      "path": "Implementacion K8S/Codigo/scripts/kibana-data-view.py",
+      "gitBlob": "8c4b89a802ea2ec87d5c57345b7066260e6e4b47",
+      "sha256WorkingFile": "5b45accaa682372de7d042ef2f3517249b17d33d31a79e6e90ad7521114032e2"
+    }
+  ],
+  "liveConfigMapChecks": [
+    {
+      "name": "otel-collector-config",
+      "uid": "9a04f16e-950b-4409-b473-1627adae4b7f",
+      "dataMatchesRepository": true
+    },
+    {
+      "name": "fluent-bit-config",
+      "uid": "476db4c6-f1f5-468a-94dc-0e29435d2840",
+      "dataMatchesRepository": true
+    },
+    {
+      "name": "grafana-alerting",
+      "uid": "e8c4dd3f-81d4-4973-b16b-137e2ab6984f",
+      "dataMatchesRepository": true
+    }
+  ],
+  "images": [
+    {
+      "pod": "elasticsearch-6b9b9d4bd9-cwfw2",
+      "containers": [
+        {
+          "name": "elasticsearch",
+          "image": "docker.elastic.co/elasticsearch/elasticsearch:8.11.0",
+          "imageId": "docker.elastic.co/elasticsearch/elasticsearch@sha256:4cd9ce4ccb04618617114da1df8240473bbd004329c1bc0252cebeec089b629e"
+        }
+      ]
+    },
+    {
+      "pod": "fluent-bit-mlzz8",
+      "containers": [
+        {
+          "name": "fluent-bit",
+          "image": "docker.io/fluent/fluent-bit:2.2.2",
+          "imageId": "docker.io/fluent/fluent-bit@sha256:bc89a87cc9cd40c320644835b83170f49819dc3ea447e38c71dde27a181e7a9b"
+        }
+      ]
+    },
+    {
+      "pod": "grafana-656d4b5b48-64lcf",
+      "containers": [
+        {
+          "name": "grafana",
+          "image": "docker.io/grafana/grafana:10.4.2",
+          "imageId": "sha256:679e4be9f9184b60905bc3c9297d293d0070f1d1155017877cf0199b1f1b787c"
+        }
+      ]
+    },
+    {
+      "pod": "jaeger-565b478b65-vkwzg",
+      "containers": [
+        {
+          "name": "jaeger",
+          "image": "docker.io/jaegertracing/all-in-one:1.62.0",
+          "imageId": "docker.io/jaegertracing/all-in-one@sha256:836e9b69c88afbedf7683ea7162e179de63b1f981662e83f5ebb68badadc710f"
+        }
+      ]
+    },
+    {
+      "pod": "kibana-68c64655b9-kp2b2",
+      "containers": [
+        {
+          "name": "kibana",
+          "image": "docker.elastic.co/kibana/kibana:8.11.0",
+          "imageId": "docker.elastic.co/kibana/kibana@sha256:76773735fa086882909add84132a59d1765686d0fc170b35990acab814cf4a72"
+        }
+      ]
+    },
+    {
+      "pod": "kube-state-metrics-65669ffcdf-jpdlg",
+      "containers": [
+        {
+          "name": "kube-state-metrics",
+          "image": "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.13.0",
+          "imageId": "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:639a1e2da549210adddc0391ff91e270e83f7873014aec53258462812f741e6f"
+        }
+      ]
+    },
+    {
+      "pod": "kubelet-storage-gnlgr",
+      "containers": [
+        {
+          "name": "collector",
+          "image": "docker.io/otel/opentelemetry-collector-contrib:0.111.0",
+          "imageId": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+        }
+      ]
+    },
+    {
+      "pod": "node-exporter-7jvmf",
+      "containers": [
+        {
+          "name": "node-exporter",
+          "image": "docker.io/prom/node-exporter:v1.7.0",
+          "imageId": "docker.io/prom/node-exporter@sha256:4cb2b9019f1757be8482419002cb7afe028fdba35d47958829e4cfeaf6246d80"
+        }
+      ]
+    },
+    {
+      "pod": "otlp-collector-76876cdbff-gfqzr",
+      "containers": [
+        {
+          "name": "otlp-collector",
+          "image": "docker.io/otel/opentelemetry-collector-contrib:0.111.0",
+          "imageId": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+        }
+      ]
+    },
+    {
+      "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+      "containers": [
+        {
+          "name": "pharmago-api-gateway",
+          "image": "docker.io/library/pharmago-api-gateway:chaos-fix-20261112-01",
+          "imageId": "sha256:7c21519518fd8844a01154ec2454ee6ced1fd4c181672df4cc8e615e1a1031ed"
+        }
+      ]
+    },
+    {
+      "pod": "pharmago-chaos-client",
+      "containers": [
+        {
+          "name": "client",
+          "image": "docker.io/library/python:3.11.10-slim-bookworm",
+          "imageId": "docker.io/library/python@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e"
+        }
+      ]
+    },
+    {
+      "pod": "pharmago-db-749757cdd7-4w6w8",
+      "containers": [
+        {
+          "name": "pharmago-db",
+          "image": "sha256:d47c3524cdcabc59024d5cca4f9888e4eff01d7efc5ceedd0f4e383cc72a8366",
+          "imageId": "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+        }
+      ]
+    },
+    {
+      "pod": "pharmago-ui-7cb8f6bb9c-9lxnc",
+      "containers": [
+        {
+          "name": "pharmago-ui",
+          "image": "docker.io/library/pharmago-ui:chaos-fix-20261112-01",
+          "imageId": "sha256:350b719eb7f69ba3de0c7e8d9cab4e995bbc8f3c0b35c7c79d15172ec0e4e200"
+        }
+      ]
+    },
+    {
+      "pod": "pharmago-users-service-cbfddcb-46c4t",
+      "containers": [
+        {
+          "name": "pharmago-users-service",
+          "image": "docker.io/library/pharmago-users-service:chaos-fix-20261112-01",
+          "imageId": "sha256:a124ccb787497b6d273a24b6464c439639ee22d1408b712b232c40d0e5e2f115"
+        }
+      ]
+    },
+    {
+      "pod": "pharmago-users-service-cbfddcb-7lbb6",
+      "containers": [
+        {
+          "name": "pharmago-users-service",
+          "image": "docker.io/library/pharmago-users-service:chaos-fix-20261112-01",
+          "imageId": "sha256:a124ccb787497b6d273a24b6464c439639ee22d1408b712b232c40d0e5e2f115"
+        }
+      ]
+    },
+    {
+      "pod": "prometheus-78d9687dc8-f26bc",
+      "containers": [
+        {
+          "name": "prometheus",
+          "image": "docker.io/prom/prometheus:v2.54.1",
+          "imageId": "docker.io/prom/prometheus@sha256:f6639335d34a77d9d9db382b92eeb7fc00934be8eae81dbc03b31cfe90411a94"
+        }
+      ]
+    }
+  ],
+  "applicationConsoleWriteAudit": [
+    {
+      "path": "Implementacion K8S/Codigo/Backend/PharmaGo.UsersService/DatabaseMigration.cs",
+      "line": 51,
+      "text": "if (log is null) Console.Error.WriteLine(message);"
+    }
+  ]
+}

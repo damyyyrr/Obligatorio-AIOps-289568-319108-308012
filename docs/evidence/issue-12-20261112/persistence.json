@@ -1,0 +1,86 @@
+{
+  "startedUtc": "2026-11-13T01:58:21.847096+00:00",
+  "oldPod": {
+    "name": "elasticsearch-6b9b9d4bd9-pvpn9",
+    "uid": "30a2b432-06ea-40fa-a37c-d0eca53a78a7"
+  },
+  "originalDocuments": [
+    {
+      "_index": "pharmago-logs-2026.11.13",
+      "_id": "TKGe0qEByVanJvdeIQDE"
+    },
+    {
+      "_index": "pharmago-logs-2026.11.13",
+      "_id": "TaGe0qEByVanJvdeIQDE"
+    },
+    {
+      "_index": "pharmago-logs-2026.11.13",
+      "_id": "5KGe0qEByVanJvdeOgMX"
+    },
+    {
+      "_index": "pharmago-logs-2026.11.13",
+      "_id": "5aGe0qEByVanJvdeOgMX"
+    },
+    {
+      "_index": "pharmago-logs-2026.11.13",
+      "_id": "EqGf0qEByVanJvdemRuZ"
+    },
+    {
+      "_index": "pharmago-logs-2026.11.13",
+      "_id": "FKGf0qEByVanJvdemRuZ"
+    },
+    {
+      "_index": "pharmago-logs-2026.11.13",
+      "_id": "E6Gf0qEByVanJvdemRuZ"
+    }
+  ],
+  "endedUtc": "2026-11-13T02:01:32.200491+00:00",
+  "newPod": {
+    "name": "elasticsearch-6b9b9d4bd9-cwfw2",
+    "uid": "9abf84f8-a377-4440-be4b-90905c5c1281"
+  },
+  "afterRestart": {
+    "ts": "2026-11-13T02:01:32.184384+00:00",
+    "status": 200,
+    "documents": [
+      {
+        "index": "pharmago-logs-2026.11.13",
+        "id": "TKGe0qEByVanJvdeIQDE",
+        "found": true
+      },
+      {
+        "index": "pharmago-logs-2026.11.13",
+        "id": "TaGe0qEByVanJvdeIQDE",
+        "found": true
+      },
+      {
+        "index": "pharmago-logs-2026.11.13",
+        "id": "5KGe0qEByVanJvdeOgMX",
+        "found": true
+      },
+      {
+        "index": "pharmago-logs-2026.11.13",
+        "id": "5aGe0qEByVanJvdeOgMX",
+        "found": true
+      },
+      {
+        "index": "pharmago-logs-2026.11.13",
+        "id": "EqGf0qEByVanJvdemRuZ",
+        "found": true
+      },
+      {
+        "index": "pharmago-logs-2026.11.13",
+        "id": "FKGf0qEByVanJvdemRuZ",
+        "found": true
+      },
+      {
+        "index": "pharmago-logs-2026.11.13",
+        "id": "E6Gf0qEByVanJvdemRuZ",
+        "found": true
+      }
+    ]
+  },
+  "pvcUidsPreserved": true,
+  "pvUidsPreserved": true,
+  "pass": true
+}

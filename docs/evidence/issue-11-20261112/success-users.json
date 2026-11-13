@@ -1,0 +1,26 @@
+{
+  "startedUtc": "2026-11-13T01:53:57.347736+00:00",
+  "queriedUtc": "2026-11-13T01:54:47.377879+00:00",
+  "path": "/api/role",
+  "traceId": "c09e9e0f777d5b000bb00fa976b92702",
+  "correlationId": "evidence-success-users-95405b8c07c71a11",
+  "httpStatus": 404,
+  "elapsedSeconds": 0.005420637999975497,
+  "jaegerFound": true,
+  "spans": [
+    {
+      "spanId": "b1d3e252b636b0be",
+      "parentIds": [
+        "0123456789abcdef"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "/api/role",
+      "startTimeUs": 1794534837352621,
+      "durationUs": 297,
+      "tags": {
+        "http.status_code": 404,
+        "span.kind": "server"
+      }
+    }
+  ]
+}

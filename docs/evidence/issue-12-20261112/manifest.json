@@ -1,0 +1,61 @@
+{
+  "generatedUtc": "2026-11-13T02:24:07.718193+00:00",
+  "hashEncoding": "UTF-8 LF for text (normalize CRLF to LF before hashing); exact bytes for gzip",
+  "files": [
+    {
+      "name": "final-http.json",
+      "sha256": "98635dc8b68e7a97002d21727cbc6c826d65952df28573a4b5afc7445dd205c9",
+      "bytes": 128
+    },
+    {
+      "name": "kibana-view-create.json",
+      "sha256": "b1b650c9f5623f4346dab2533c946539744bdc59ec6cc95868b6e88f11929530",
+      "bytes": 102
+    },
+    {
+      "name": "logs-after-restart.json",
+      "sha256": "49c2fe618d9903af1af560ff4a1893f967d1939b7733b97f85579893193acdda",
+      "bytes": 50205
+    },
+    {
+      "name": "logs-before-restart.json",
+      "sha256": "ae5f65d9abb1eb71352e3d379b8e72a081fe1d229a745528caa91b59d57d5d13",
+      "bytes": 47728
+    },
+    {
+      "name": "logs-before.json",
+      "sha256": "0d1cae922d6355ee7c64728360bc52e34f976e9dacc633e1055434ebbcc93cb6",
+      "bytes": 34953
+    },
+    {
+      "name": "logs-final.json",
+      "sha256": "52b98455062f779e9b28a82bf76191b979d43cfc0216b96cb45613d6d03c4186",
+      "bytes": 55968
+    },
+    {
+      "name": "persistence.json",
+      "sha256": "f0ccfbf591b6f9b5660baf59290d00b1f2ba9d9497f2789237071b33590fc8e7",
+      "bytes": 2053
+    },
+    {
+      "name": "privacy-audit.json",
+      "sha256": "6e7ff9b2039f9173b88be7e20ff837d4f564aadb293befa6ea45b4910d5a6112",
+      "bytes": 2730
+    },
+    {
+      "name": "provenance.json",
+      "sha256": "27148a3fca412757bcdcd2ad88c7c05ea439d4a0594e486b0c1f05e04c27e5a3",
+      "bytes": 8950
+    },
+    {
+      "name": "README.md",
+      "sha256": "25f9eb816fe6bc3eb368f2f169cb64ef84ab4d3e6bbec374b8ffa7c266fde885",
+      "bytes": 5520
+    },
+    {
+      "name": "safety-check.json",
+      "sha256": "cfd5d3983c637ab5b0e40e050179b0ba0e88dbbe867aca915a1532fcd9a021c9",
+      "bytes": 14554
+    }
+  ]
+}
