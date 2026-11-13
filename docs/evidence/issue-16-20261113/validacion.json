@@ -1,0 +1,90 @@
+{
+  "checkedUtc": "2026-11-13T18:35:21.960132+00:00",
+  "result": "PASS",
+  "kind": "Offline packaging verification; no new faults or infrastructure commands",
+  "operatorTrials": [
+    {
+      "scenario": "cpu",
+      "runId": "cda2bb158a3c4a038860ea19039589a8",
+      "result": "PASS",
+      "originalBytesPreserved": true,
+      "stableWindowSeconds": 127.804018,
+      "validFunctionalSamplesInWindow": 37,
+      "samePodIdentities": true,
+      "podsFinallyReady": true,
+      "sameClaimsVolumesDeployments": true,
+      "fiveFinalRulesHealthyInactive": true
+    },
+    {
+      "scenario": "disconnect",
+      "runId": "213770c063314506a986c05861373319",
+      "result": "PASS",
+      "originalBytesPreserved": true,
+      "stableWindowSeconds": 122.434208,
+      "validFunctionalSamplesInWindow": 52,
+      "samePodIdentities": true,
+      "podsFinallyReady": true,
+      "sameClaimsVolumesDeployments": true,
+      "fiveFinalRulesHealthyInactive": true
+    },
+    {
+      "scenario": "network",
+      "runId": "04b212284ef74d4fa5e30dccd80e7c78",
+      "result": "PASS",
+      "originalBytesPreserved": true,
+      "stableWindowSeconds": 127.72835,
+      "validFunctionalSamplesInWindow": 55,
+      "samePodIdentities": true,
+      "podsFinallyReady": true,
+      "sameClaimsVolumesDeployments": true,
+      "fiveFinalRulesHealthyInactive": true
+    },
+    {
+      "scenario": "ram",
+      "runId": "975be87309ed41abae983497375b2a8f",
+      "result": "PASS",
+      "originalBytesPreserved": true,
+      "stableWindowSeconds": 122.360926,
+      "validFunctionalSamplesInWindow": 35,
+      "samePodIdentities": true,
+      "podsFinallyReady": true,
+      "sameClaimsVolumesDeployments": true,
+      "fiveFinalRulesHealthyInactive": true
+    },
+    {
+      "scenario": "requests",
+      "runId": "6a3b5bc65d4043c689ba37646f811628",
+      "result": "PASS",
+      "originalBytesPreserved": true,
+      "stableWindowSeconds": 127.083757,
+      "validFunctionalSamplesInWindow": 35,
+      "samePodIdentities": true,
+      "podsFinallyReady": true,
+      "sameClaimsVolumesDeployments": true,
+      "fiveFinalRulesHealthyInactive": true
+    },
+    {
+      "scenario": "storage",
+      "runId": "61159cbb42bc4491bcc92a93b9299b56",
+      "result": "PASS",
+      "originalBytesPreserved": true,
+      "stableWindowSeconds": 121.094352,
+      "validFunctionalSamplesInWindow": 35,
+      "samePodIdentities": true,
+      "podsFinallyReady": true,
+      "sameClaimsVolumesDeployments": true,
+      "fiveFinalRulesHealthyInactive": true
+    }
+  ],
+  "originalScreenshotsVerified": 37,
+  "manualConnectivityQueriesVerified": 7,
+  "mislabelPreservedAndExplained": true,
+  "markdownLocalTargetsVerified": 171,
+  "textPrivacyAudit": "PASS",
+  "additionalAssistedTrialExcludedFromManualCount": true,
+  "separateChecksCompleted": {
+    "powerShellBlocksParsedWithoutExecution": 14,
+    "gitDiffCheck": "PASS; CRLF originals preserved with scoped whitespace attribute"
+  },
+  "scope": "Documentary integrity and consistency with recorded observations; no independent peer test or new live validation."
+}

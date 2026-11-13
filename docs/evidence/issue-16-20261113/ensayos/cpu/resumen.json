@@ -1,0 +1,753 @@
+{
+  "runId": "cda2bb158a3c4a038860ea19039589a8",
+  "scenario": "cpu",
+  "operatorDeclared": "Joaquin Decia",
+  "sourceCommit": "90ae6745066a107d2bc8dc014ef2b5dda1064008",
+  "dirtyTree": false,
+  "sourceHashes": {
+    "chaos.py": "5411b9f552200336bebe066ad8ef565bd92cb8dca1ffc70d2ed5a4211a83ae28",
+    "fault.sh": "7dd9dc14d8d964979e7ec67455d99531d5f1babc90a9ab589ce761bcfb5a5810",
+    "probe.py": "226d442d30042d44bb445f8a11505501fb7cce6d316136fc4ee9221c80b07703"
+  },
+  "status": "PASS",
+  "cleanup": "verified",
+  "startedUtc": "2026-11-13T15:04:17.273064+00:00",
+  "faultRestoredUtc": "2026-11-13T15:06:37.147898+00:00",
+  "tRestore": "2026-11-13T15:06:39.651500+00:00",
+  "tVerified": "2026-11-13T15:08:47.455518+00:00",
+  "finishedUtc": "2026-11-13T15:08:49.745391+00:00",
+  "tAck": null,
+  "execution": "El operador invocó el controlador; inyección, muestreo y reversión automatizados. Guía y recopilación de evidencia asistidas por Codex.",
+  "mechanism": "Dos procesos de carga CPU, duración solicitada 130 s; retirada automática de procesos.",
+  "requestedDurationSeconds": 130,
+  "injectionRequestedUtc": "2026-11-13T15:04:23.179537+00:00",
+  "stableVerificationSeconds": 127.804018,
+  "requestToRestorationSeconds": 133.968361,
+  "humanNotes": [
+    {
+      "recordedUtc": "2026-11-13T15:09:22.4846718+00:00",
+      "operator": "Joaquin Decia",
+      "observation": "Reconozco ahora el incidente al observar en Grafana el aumento de CPU del pod Pharmacy terminado en 5zzkh, cercano a 0,5 cores. El ensayo tiene restauracion automatica."
+    },
+    {
+      "recordedUtc": "2026-11-13T15:13:23.8785846+00:00",
+      "operator": "Joaquin Decia",
+      "observation": "Cierro la revision del ensayo CPU: observe la subida y bajada del pod 5zzkh; la restauracion fue automatica. Confirme cinco alertas Normal, pods Ready, catalogo y roles HTTP 200. Reporte PASS y limpieza verified."
+    }
+  ],
+  "humanDetectionUtc": null,
+  "humanDetectionNote": "No se deriva del nombre del operador ni de las capturas; las notas conservan su hora real.",
+  "functionalSamplesByTarget": {
+    "pharmago-api-gateway/api/drug": {
+      "200": 37
+    },
+    "pharmago-api-gateway/api/roles": {
+      "200": 37
+    },
+    "pharmago-api-gateway/api/login": {
+      "200": 3
+    }
+  },
+  "alertStateCounts": {
+    "inactive": 166,
+    "pending": 8,
+    "firing": 6
+  },
+  "alertTransitions": [
+    {
+      "observedUtc": "2026-11-13T15:04:20.988705+00:00",
+      "rules": [
+        {
+          "name": "PharmaGo: tasa de errores HTTP 5xx",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: latencia p95 HTTP alta",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: CPU de Pod cerca del límite",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: memoria de Pod cerca del límite",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: Pod Running sin condición Ready",
+          "state": "inactive",
+          "health": "ok"
+        }
+      ]
+    },
+    {
+      "observedUtc": "2026-11-13T15:05:12.062575+00:00",
+      "rules": [
+        {
+          "name": "PharmaGo: tasa de errores HTTP 5xx",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: latencia p95 HTTP alta",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: CPU de Pod cerca del límite",
+          "state": "pending",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: memoria de Pod cerca del límite",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: Pod Running sin condición Ready",
+          "state": "inactive",
+          "health": "ok"
+        }
+      ]
+    },
+    {
+      "observedUtc": "2026-11-13T15:06:14.684173+00:00",
+      "rules": [
+        {
+          "name": "PharmaGo: tasa de errores HTTP 5xx",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: latencia p95 HTTP alta",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: CPU de Pod cerca del límite",
+          "state": "firing",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: memoria de Pod cerca del límite",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: Pod Running sin condición Ready",
+          "state": "inactive",
+          "health": "ok"
+        }
+      ]
+    },
+    {
+      "observedUtc": "2026-11-13T15:07:00.442466+00:00",
+      "rules": [
+        {
+          "name": "PharmaGo: tasa de errores HTTP 5xx",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: latencia p95 HTTP alta",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: CPU de Pod cerca del límite",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: memoria de Pod cerca del límite",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: Pod Running sin condición Ready",
+          "state": "inactive",
+          "health": "ok"
+        }
+      ]
+    }
+  ],
+  "targetPod": "pharmago-pharmacy-service-d5f48968c-5zzkh",
+  "targetPodUid": "d3199605-8a62-474c-a927-e271667085e5",
+  "metrics": {
+    "cpu": {
+      "unit": "cores",
+      "baselineMax": 0.0019689315109122753,
+      "duringMax": 0.500596214511041,
+      "afterLast": 0.005793737567802257,
+      "points": [
+        {
+          "observedUtc": "2026-11-13T15:04:20.988705+00:00",
+          "scrapeEpoch": 1794582262.245,
+          "value": 0.0019689315109122753
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:24.689947+00:00",
+          "scrapeEpoch": 1794582265.947,
+          "value": 0.0019689315109122753
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:32.397602+00:00",
+          "scrapeEpoch": 1794582274.041,
+          "value": 0.001603798631467791
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:40.398210+00:00",
+          "scrapeEpoch": 1794582281.719,
+          "value": 0.12691258144095136
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:48.689098+00:00",
+          "scrapeEpoch": 1794582290.047,
+          "value": 0.20554954800123743
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:56.593581+00:00",
+          "scrapeEpoch": 1794582297.946,
+          "value": 0.29517419725594424
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:04.388186+00:00",
+          "scrapeEpoch": 1794582305.695,
+          "value": 0.3258258882738364
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:12.062575+00:00",
+          "scrapeEpoch": 1794582313.553,
+          "value": 0.4358856734619952
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:20.094878+00:00",
+          "scrapeEpoch": 1794582321.435,
+          "value": 0.500596214511041
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:27.694939+00:00",
+          "scrapeEpoch": 1794582329.142,
+          "value": 0.500596214511041
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:35.697339+00:00",
+          "scrapeEpoch": 1794582337.156,
+          "value": 0.5003049212100783
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:43.497912+00:00",
+          "scrapeEpoch": 1794582344.748,
+          "value": 0.5003049212100784
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:51.095525+00:00",
+          "scrapeEpoch": 1794582352.348,
+          "value": 0.5004546576331168
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:58.795485+00:00",
+          "scrapeEpoch": 1794582360.345,
+          "value": 0.5004546576331168
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:06.782509+00:00",
+          "scrapeEpoch": 1794582368.204,
+          "value": 0.49978422635876335
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:14.684173+00:00",
+          "scrapeEpoch": 1794582376.143,
+          "value": 0.5001249999999999
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:22.492391+00:00",
+          "scrapeEpoch": 1794582383.857,
+          "value": 0.5001363454518177
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:30.187326+00:00",
+          "scrapeEpoch": 1794582391.641,
+          "value": 0.4137766912685513
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:38.161986+00:00",
+          "scrapeEpoch": 1794582399.545,
+          "value": 0.49945969333174844
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:45.662185+00:00",
+          "scrapeEpoch": 1794582406.898,
+          "value": 0.4214364513775882
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:52.958188+00:00",
+          "scrapeEpoch": 1794582414.291,
+          "value": 0.3996429700977572
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:00.442466+00:00",
+          "scrapeEpoch": 1794582421.735,
+          "value": 0.2752218021650518
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:07.899611+00:00",
+          "scrapeEpoch": 1794582429.344,
+          "value": 0.2106467936853566
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:15.567752+00:00",
+          "scrapeEpoch": 1794582436.937,
+          "value": 0.04501416847650203
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:23.094183+00:00",
+          "scrapeEpoch": 1794582444.503,
+          "value": 0.03314625504011755
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:30.613177+00:00",
+          "scrapeEpoch": 1794582451.893,
+          "value": 0.002816245889466792
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:37.955564+00:00",
+          "scrapeEpoch": 1794582459.493,
+          "value": 0.0028162458894667925
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:45.538318+00:00",
+          "scrapeEpoch": 1794582466.786,
+          "value": 0.0028336916002285237
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:52.896915+00:00",
+          "scrapeEpoch": 1794582474.137,
+          "value": 0.002833691600228524
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:00.157987+00:00",
+          "scrapeEpoch": 1794582481.439,
+          "value": 0.0027341978701473633
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:07.512621+00:00",
+          "scrapeEpoch": 1794582488.898,
+          "value": 0.0027341978701473633
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:15.154717+00:00",
+          "scrapeEpoch": 1794582496.529,
+          "value": 0.002630610197583467
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:22.549356+00:00",
+          "scrapeEpoch": 1794582503.801,
+          "value": 0.0063485346965632145
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:29.947842+00:00",
+          "scrapeEpoch": 1794582511.334,
+          "value": 0.005508059242012651
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:37.635387+00:00",
+          "scrapeEpoch": 1794582519.092,
+          "value": 0.00580427823499324
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:45.155496+00:00",
+          "scrapeEpoch": 1794582526.433,
+          "value": 0.005793737567802257
+        }
+      ]
+    },
+    "memory": {
+      "unit": "bytes",
+      "baselineMax": 74313728.0,
+      "duringMax": 85684224.0,
+      "afterLast": 88825856.0,
+      "points": [
+        {
+          "observedUtc": "2026-11-13T15:04:20.988705+00:00",
+          "scrapeEpoch": 1794582262.246,
+          "value": 74313728.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:24.689947+00:00",
+          "scrapeEpoch": 1794582265.948,
+          "value": 74313728.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:32.397602+00:00",
+          "scrapeEpoch": 1794582274.043,
+          "value": 74313728.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:40.398210+00:00",
+          "scrapeEpoch": 1794582281.72,
+          "value": 84426752.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:48.689098+00:00",
+          "scrapeEpoch": 1794582290.048,
+          "value": 84426752.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:56.593581+00:00",
+          "scrapeEpoch": 1794582297.947,
+          "value": 84119552.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:04.388186+00:00",
+          "scrapeEpoch": 1794582305.696,
+          "value": 84119552.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:12.062575+00:00",
+          "scrapeEpoch": 1794582313.555,
+          "value": 84160512.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:20.094878+00:00",
+          "scrapeEpoch": 1794582321.437,
+          "value": 84156416.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:27.694939+00:00",
+          "scrapeEpoch": 1794582329.143,
+          "value": 84156416.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:35.697339+00:00",
+          "scrapeEpoch": 1794582337.158,
+          "value": 84447232.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:43.497912+00:00",
+          "scrapeEpoch": 1794582344.749,
+          "value": 84447232.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:51.095525+00:00",
+          "scrapeEpoch": 1794582352.35,
+          "value": 85098496.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:58.795485+00:00",
+          "scrapeEpoch": 1794582360.346,
+          "value": 85098496.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:06.782509+00:00",
+          "scrapeEpoch": 1794582368.205,
+          "value": 85135360.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:14.684173+00:00",
+          "scrapeEpoch": 1794582376.145,
+          "value": 85684224.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:22.492391+00:00",
+          "scrapeEpoch": 1794582383.933,
+          "value": 85684224.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:30.187326+00:00",
+          "scrapeEpoch": 1794582391.643,
+          "value": 85684224.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:38.161986+00:00",
+          "scrapeEpoch": 1794582399.546,
+          "value": 85209088.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:45.662185+00:00",
+          "scrapeEpoch": 1794582406.899,
+          "value": 84635648.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:52.958188+00:00",
+          "scrapeEpoch": 1794582414.292,
+          "value": 84635648.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:00.442466+00:00",
+          "scrapeEpoch": 1794582421.736,
+          "value": 84635648.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:07.899611+00:00",
+          "scrapeEpoch": 1794582429.346,
+          "value": 84668416.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:15.567752+00:00",
+          "scrapeEpoch": 1794582436.939,
+          "value": 84668416.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:23.094183+00:00",
+          "scrapeEpoch": 1794582444.504,
+          "value": 84893696.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:30.613177+00:00",
+          "scrapeEpoch": 1794582451.894,
+          "value": 84893696.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:37.955564+00:00",
+          "scrapeEpoch": 1794582459.495,
+          "value": 84893696.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:45.538318+00:00",
+          "scrapeEpoch": 1794582466.787,
+          "value": 84664320.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:52.896915+00:00",
+          "scrapeEpoch": 1794582474.138,
+          "value": 84664320.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:00.157987+00:00",
+          "scrapeEpoch": 1794582481.44,
+          "value": 84647936.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:07.512621+00:00",
+          "scrapeEpoch": 1794582488.9,
+          "value": 84647936.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:15.154717+00:00",
+          "scrapeEpoch": 1794582496.531,
+          "value": 85192704.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:22.549356+00:00",
+          "scrapeEpoch": 1794582503.802,
+          "value": 88817664.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:29.947842+00:00",
+          "scrapeEpoch": 1794582511.335,
+          "value": 88817664.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:37.635387+00:00",
+          "scrapeEpoch": 1794582519.094,
+          "value": 88825856.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:45.155496+00:00",
+          "scrapeEpoch": 1794582526.435,
+          "value": 88825856.0
+        }
+      ]
+    },
+    "storage": {
+      "unit": "bytes",
+      "baselineMax": 102400.0,
+      "duringMax": 118784.0,
+      "afterLast": 110592.0,
+      "points": [
+        {
+          "observedUtc": "2026-11-13T15:04:20.988705+00:00",
+          "scrapeEpoch": 1794582262.247,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:24.689947+00:00",
+          "scrapeEpoch": 1794582265.949,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:32.397602+00:00",
+          "scrapeEpoch": 1794582274.044,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:40.398210+00:00",
+          "scrapeEpoch": 1794582281.795,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:48.689098+00:00",
+          "scrapeEpoch": 1794582290.05,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:04:56.593581+00:00",
+          "scrapeEpoch": 1794582297.948,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:04.388186+00:00",
+          "scrapeEpoch": 1794582305.697,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:12.062575+00:00",
+          "scrapeEpoch": 1794582313.556,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:20.094878+00:00",
+          "scrapeEpoch": 1794582321.438,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:27.694939+00:00",
+          "scrapeEpoch": 1794582329.144,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:35.697339+00:00",
+          "scrapeEpoch": 1794582337.236,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:43.497912+00:00",
+          "scrapeEpoch": 1794582344.75,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:51.095525+00:00",
+          "scrapeEpoch": 1794582352.351,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:05:58.795485+00:00",
+          "scrapeEpoch": 1794582360.347,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:06.782509+00:00",
+          "scrapeEpoch": 1794582368.206,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:14.684173+00:00",
+          "scrapeEpoch": 1794582376.147,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:22.492391+00:00",
+          "scrapeEpoch": 1794582383.935,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:30.187326+00:00",
+          "scrapeEpoch": 1794582391.645,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:38.161986+00:00",
+          "scrapeEpoch": 1794582399.547,
+          "value": 118784.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:45.662185+00:00",
+          "scrapeEpoch": 1794582406.9,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:06:52.958188+00:00",
+          "scrapeEpoch": 1794582414.293,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:00.442466+00:00",
+          "scrapeEpoch": 1794582421.738,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:07.899611+00:00",
+          "scrapeEpoch": 1794582429.347,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:15.567752+00:00",
+          "scrapeEpoch": 1794582436.94,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:23.094183+00:00",
+          "scrapeEpoch": 1794582444.505,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:30.613177+00:00",
+          "scrapeEpoch": 1794582451.895,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:37.955564+00:00",
+          "scrapeEpoch": 1794582459.496,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:45.538318+00:00",
+          "scrapeEpoch": 1794582466.788,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:07:52.896915+00:00",
+          "scrapeEpoch": 1794582474.139,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:00.157987+00:00",
+          "scrapeEpoch": 1794582481.441,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:07.512621+00:00",
+          "scrapeEpoch": 1794582488.901,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:15.154717+00:00",
+          "scrapeEpoch": 1794582496.532,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:22.549356+00:00",
+          "scrapeEpoch": 1794582503.803,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:29.947842+00:00",
+          "scrapeEpoch": 1794582511.337,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:37.635387+00:00",
+          "scrapeEpoch": 1794582519.095,
+          "value": 110592.0
+        },
+        {
+          "observedUtc": "2026-11-13T15:08:45.155496+00:00",
+          "scrapeEpoch": 1794582526.436,
+          "value": 110592.0
+        }
+      ]
+    }
+  },
+  "resourceComparison": {
+    "claimsIdentical": true,
+    "volumesIdentical": true,
+    "deploymentsIdentical": true
+  },
+  "originalReport": "report.json.gz",
+  "originalJournal": "journal.json"
+}

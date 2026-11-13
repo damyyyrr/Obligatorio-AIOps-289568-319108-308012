@@ -1,5 +1,7 @@
 # Issue #17: implementación y verificaciones sin clúster
 
+**Actualización 13/11/2026:** [repetición de los seis casos por Joaquin Decia](../issue-16-20261113/README.md), con 37 capturas aportadas por el operador, reportes completos, bitácora y cierre del laboratorio. Se distingue la ejecución humana del controlador automatizado y de una corrida adicional del agente. Los seis ensayos del operador dieron PASS y limpieza verified; esta actualización no reemplaza la evidencia histórica siguiente.
+
 **Revisión posterior: seis ensayos reales PASS**, con restauración y limpieza independiente; 45 tests del controlador, cinco del agente aislado y 26 de configuración Kubernetes aprobados, también en CI Linux. Ver [correcciones, resultados y fallos preservados](fix-after-review/README.md). El resto de este archivo conserva la inspección original, realizada con menos capacidad y sin clúster.
 
 Rama `feature/issue-17-ingenieria-caos`, desde `54d5a17c68cb7ede122b92862ad156163a0b09d9` de `obligatorio` (PR #36 integrado). Fecha de revisión: **12/11/2026**. Los checks se hicieron con el árbol modificado; los hashes en [offline-checks.json](offline-checks.json) identifican los archivos verificados. No se presentan como imágenes desplegadas.

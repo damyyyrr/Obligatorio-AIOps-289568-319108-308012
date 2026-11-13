@@ -2,6 +2,8 @@
 
 Revisión del 12/11/2026, issue #16 (OPS-01, R06). Aplica al laboratorio Kubernetes del equipo, namespace `pharmago`, y al baseline Compose `pharmago-baseline`. Identificar un único entorno por intervención; no mezclar comandos de ambos. No operar infraestructura externa ni recursos de otros proyectos.
 
+Actualización del 13/11/2026: [seis ensayos guiados ejecutados por el operador](evidence/issue-16-20261113/README.md), con reportes PASS, bitácora, capturas y parada conservando datos. La revisión se realizó en solitario y conserva las horas reales de anotación; no demuestra revisión independiente, comunicaciones a terceros ni reconocimiento humano durante cada falla.
+
 El plan prepara los seis incidentes de #17. La revisión y la reconstrucción de evidencia histórica están en [la evidencia de #16](evidence/issue-16-20261112/README.md). **La validación integral de R06 se completa con los ensayos de #17.** Los scripts heredados de caos no quedan habilitados ni validados por este documento.
 
 ## Servicios críticos y limitaciones

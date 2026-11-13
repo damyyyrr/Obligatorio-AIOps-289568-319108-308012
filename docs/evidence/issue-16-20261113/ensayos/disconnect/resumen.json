@@ -1,0 +1,510 @@
+{
+  "runId": "213770c063314506a986c05861373319",
+  "scenario": "disconnect",
+  "operatorDeclared": "Joaquin Decia",
+  "sourceCommit": "90ae6745066a107d2bc8dc014ef2b5dda1064008",
+  "dirtyTree": false,
+  "sourceHashes": {
+    "chaos.py": "5411b9f552200336bebe066ad8ef565bd92cb8dca1ffc70d2ed5a4211a83ae28",
+    "fault.sh": "7dd9dc14d8d964979e7ec67455d99531d5f1babc90a9ab589ce761bcfb5a5810",
+    "probe.py": "226d442d30042d44bb445f8a11505501fb7cce6d316136fc4ee9221c80b07703"
+  },
+  "status": "PASS",
+  "cleanup": "verified",
+  "startedUtc": "2026-11-13T18:11:35.660423+00:00",
+  "faultRestoredUtc": "2026-11-13T18:12:42.301865+00:00",
+  "tRestore": "2026-11-13T18:12:45.024118+00:00",
+  "tVerified": "2026-11-13T18:14:47.458326+00:00",
+  "finishedUtc": "2026-11-13T18:14:48.573215+00:00",
+  "tAck": null,
+  "execution": "El operador invocó el controlador; inyección, muestreo y reversión automatizados. Guía y recopilación de evidencia asistidas por Codex.",
+  "mechanism": "Selector temporal del Service durante 60 s; selector original restaurado, pods y SQL conservados.",
+  "requestedDurationSeconds": 60,
+  "injectionRequestedUtc": "2026-11-13T18:11:40.517043+00:00",
+  "stableVerificationSeconds": 122.434208,
+  "requestToRestorationSeconds": 61.784822,
+  "humanNotes": [
+    {
+      "recordedUtc": "2026-11-13T18:21:45.2980592+00:00",
+      "operator": "Joaquin Decia",
+      "observation": "Cierro la revision del ensayo de desconexion interna: Pharmacy respondio HTTP 200 antes, conexion rechazada durante y HTTP 200 despues. Roles por Gateway siguio en 200. Confirme pods Ready, catalogo y roles HTTP 200. Reporte PASS y limpieza verified."
+    }
+  ],
+  "humanDetectionUtc": null,
+  "humanDetectionNote": "No se deriva del nombre del operador ni de las capturas; las notas conservan su hora real.",
+  "functionalSamplesByTarget": {
+    "pharmago-pharmacy-service/api/drug": {
+      "200": 19,
+      "0": 8
+    },
+    "pharmago-api-gateway/api/drug": {
+      "200": 27
+    },
+    "pharmago-api-gateway/api/roles": {
+      "200": 27
+    },
+    "pharmago-api-gateway/api/login": {
+      "200": 3
+    }
+  },
+  "alertStateCounts": {
+    "inactive": 130
+  },
+  "alertTransitions": [
+    {
+      "observedUtc": "2026-11-13T18:11:38.143788+00:00",
+      "rules": [
+        {
+          "name": "PharmaGo: tasa de errores HTTP 5xx",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: latencia p95 HTTP alta",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: CPU de Pod cerca del límite",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: memoria de Pod cerca del límite",
+          "state": "inactive",
+          "health": "ok"
+        },
+        {
+          "name": "PharmaGo: Pod Running sin condición Ready",
+          "state": "inactive",
+          "health": "ok"
+        }
+      ]
+    }
+  ],
+  "targetPod": "pharmago-pharmacy-service-d5f48968c-5zzkh",
+  "targetPodUid": "d3199605-8a62-474c-a927-e271667085e5",
+  "metrics": {
+    "cpu": {
+      "unit": "cores",
+      "baselineMax": 0.002012952671208367,
+      "duringMax": 0.002383598878061394,
+      "afterLast": 0.0023347269732674663,
+      "points": [
+        {
+          "observedUtc": "2026-11-13T18:11:38.143788+00:00",
+          "scrapeEpoch": 1794593499.387,
+          "value": 0.002012952671208367
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:41.603530+00:00",
+          "scrapeEpoch": 1794593502.839,
+          "value": 0.0020129526712083672
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:49.938623+00:00",
+          "scrapeEpoch": 1794593511.285,
+          "value": 0.0016799599121702445
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:57.746928+00:00",
+          "scrapeEpoch": 1794593519.135,
+          "value": 0.0022714315833862065
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:05.345945+00:00",
+          "scrapeEpoch": 1794593527.226,
+          "value": 0.002282139725226715
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:13.335361+00:00",
+          "scrapeEpoch": 1794593534.626,
+          "value": 0.00226943894656059
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:20.748970+00:00",
+          "scrapeEpoch": 1794593542.025,
+          "value": 0.002383598878061394
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:28.133630+00:00",
+          "scrapeEpoch": 1794593549.38,
+          "value": 0.0022328345516024924
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:35.511632+00:00",
+          "scrapeEpoch": 1794593556.881,
+          "value": 0.0020638368539919708
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:43.497334+00:00",
+          "scrapeEpoch": 1794593564.981,
+          "value": 0.0020440078181254906
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:51.347394+00:00",
+          "scrapeEpoch": 1794593573.142,
+          "value": 0.0019534548512054996
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:59.249250+00:00",
+          "scrapeEpoch": 1794593580.823,
+          "value": 0.002150035893754329
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:06.986292+00:00",
+          "scrapeEpoch": 1794593588.281,
+          "value": 0.0022725290251243138
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:14.448267+00:00",
+          "scrapeEpoch": 1794593595.731,
+          "value": 0.0024006123073784537
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:21.948905+00:00",
+          "scrapeEpoch": 1794593604.141,
+          "value": 0.002636467965112732
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:30.546976+00:00",
+          "scrapeEpoch": 1794593611.926,
+          "value": 0.00268050007898356
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:38.091851+00:00",
+          "scrapeEpoch": 1794593619.438,
+          "value": 0.0026805000789835594
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:45.558280+00:00",
+          "scrapeEpoch": 1794593627.134,
+          "value": 0.0026651754075124874
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:53.249941+00:00",
+          "scrapeEpoch": 1794593634.583,
+          "value": 0.0026713912589236954
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:00.712098+00:00",
+          "scrapeEpoch": 1794593641.924,
+          "value": 0.002591874859889903
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:08.010579+00:00",
+          "scrapeEpoch": 1794593649.292,
+          "value": 0.0025637073021458493
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:15.499154+00:00",
+          "scrapeEpoch": 1794593656.735,
+          "value": 0.0024257639280821077
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:23.189003+00:00",
+          "scrapeEpoch": 1794593664.482,
+          "value": 0.002020543847148748
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:30.626797+00:00",
+          "scrapeEpoch": 1794593671.839,
+          "value": 0.0024090525427305307
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:37.942302+00:00",
+          "scrapeEpoch": 1794593679.219,
+          "value": 0.0024144279437119374
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:45.244899+00:00",
+          "scrapeEpoch": 1794593686.482,
+          "value": 0.0023347269732674663
+        }
+      ]
+    },
+    "memory": {
+      "unit": "bytes",
+      "baselineMax": 89145344.0,
+      "duringMax": 89149440.0,
+      "afterLast": 89034752.0,
+      "points": [
+        {
+          "observedUtc": "2026-11-13T18:11:38.143788+00:00",
+          "scrapeEpoch": 1794593499.388,
+          "value": 89145344.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:41.603530+00:00",
+          "scrapeEpoch": 1794593502.84,
+          "value": 89145344.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:49.938623+00:00",
+          "scrapeEpoch": 1794593511.286,
+          "value": 89145344.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:57.746928+00:00",
+          "scrapeEpoch": 1794593519.136,
+          "value": 89149440.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:05.345945+00:00",
+          "scrapeEpoch": 1794593527.229,
+          "value": 89149440.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:13.335361+00:00",
+          "scrapeEpoch": 1794593534.627,
+          "value": 89149440.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:20.748970+00:00",
+          "scrapeEpoch": 1794593542.027,
+          "value": 89149440.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:28.133630+00:00",
+          "scrapeEpoch": 1794593549.382,
+          "value": 89120768.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:35.511632+00:00",
+          "scrapeEpoch": 1794593556.882,
+          "value": 89120768.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:43.497334+00:00",
+          "scrapeEpoch": 1794593564.982,
+          "value": 89100288.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:51.347394+00:00",
+          "scrapeEpoch": 1794593573.144,
+          "value": 89100288.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:59.249250+00:00",
+          "scrapeEpoch": 1794593580.824,
+          "value": 89051136.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:06.986292+00:00",
+          "scrapeEpoch": 1794593588.282,
+          "value": 89051136.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:14.448267+00:00",
+          "scrapeEpoch": 1794593595.732,
+          "value": 89047040.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:21.948905+00:00",
+          "scrapeEpoch": 1794593604.142,
+          "value": 89047040.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:30.546976+00:00",
+          "scrapeEpoch": 1794593611.928,
+          "value": 89075712.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:38.091851+00:00",
+          "scrapeEpoch": 1794593619.44,
+          "value": 89075712.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:45.558280+00:00",
+          "scrapeEpoch": 1794593627.136,
+          "value": 89047040.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:53.249941+00:00",
+          "scrapeEpoch": 1794593634.585,
+          "value": 89047040.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:00.712098+00:00",
+          "scrapeEpoch": 1794593641.925,
+          "value": 89047040.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:08.010579+00:00",
+          "scrapeEpoch": 1794593649.293,
+          "value": 89047040.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:15.499154+00:00",
+          "scrapeEpoch": 1794593656.737,
+          "value": 89034752.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:23.189003+00:00",
+          "scrapeEpoch": 1794593664.483,
+          "value": 89034752.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:30.626797+00:00",
+          "scrapeEpoch": 1794593671.84,
+          "value": 89034752.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:37.942302+00:00",
+          "scrapeEpoch": 1794593679.22,
+          "value": 89034752.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:45.244899+00:00",
+          "scrapeEpoch": 1794593686.483,
+          "value": 89034752.0
+        }
+      ]
+    },
+    "storage": {
+      "unit": "bytes",
+      "baselineMax": 102400.0,
+      "duringMax": 102400.0,
+      "afterLast": 102400.0,
+      "points": [
+        {
+          "observedUtc": "2026-11-13T18:11:38.143788+00:00",
+          "scrapeEpoch": 1794593499.389,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:41.603530+00:00",
+          "scrapeEpoch": 1794593502.841,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:49.938623+00:00",
+          "scrapeEpoch": 1794593511.287,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:11:57.746928+00:00",
+          "scrapeEpoch": 1794593519.138,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:05.345945+00:00",
+          "scrapeEpoch": 1794593527.23,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:13.335361+00:00",
+          "scrapeEpoch": 1794593534.628,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:20.748970+00:00",
+          "scrapeEpoch": 1794593542.028,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:28.133630+00:00",
+          "scrapeEpoch": 1794593549.383,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:35.511632+00:00",
+          "scrapeEpoch": 1794593556.883,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:43.497334+00:00",
+          "scrapeEpoch": 1794593564.983,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:51.347394+00:00",
+          "scrapeEpoch": 1794593573.145,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:12:59.249250+00:00",
+          "scrapeEpoch": 1794593580.826,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:06.986292+00:00",
+          "scrapeEpoch": 1794593588.284,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:14.448267+00:00",
+          "scrapeEpoch": 1794593595.733,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:21.948905+00:00",
+          "scrapeEpoch": 1794593604.143,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:30.546976+00:00",
+          "scrapeEpoch": 1794593611.929,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:38.091851+00:00",
+          "scrapeEpoch": 1794593619.441,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:45.558280+00:00",
+          "scrapeEpoch": 1794593627.137,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:13:53.249941+00:00",
+          "scrapeEpoch": 1794593634.586,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:00.712098+00:00",
+          "scrapeEpoch": 1794593641.926,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:08.010579+00:00",
+          "scrapeEpoch": 1794593649.294,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:15.499154+00:00",
+          "scrapeEpoch": 1794593656.775,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:23.189003+00:00",
+          "scrapeEpoch": 1794593664.485,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:30.626797+00:00",
+          "scrapeEpoch": 1794593671.841,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:37.942302+00:00",
+          "scrapeEpoch": 1794593679.221,
+          "value": 102400.0
+        },
+        {
+          "observedUtc": "2026-11-13T18:14:45.244899+00:00",
+          "scrapeEpoch": 1794593686.484,
+          "value": 102400.0
+        }
+      ]
+    }
+  },
+  "resourceComparison": {
+    "claimsIdentical": true,
+    "volumesIdentical": true,
+    "deploymentsIdentical": true
+  },
+  "originalReport": "report.json.gz",
+  "originalJournal": "journal.json"
+}
