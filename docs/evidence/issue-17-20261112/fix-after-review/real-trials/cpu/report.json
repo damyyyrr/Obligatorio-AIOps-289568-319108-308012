@@ -1,0 +1,5039 @@
+{
+  "runId": "829dfa1adc1648b2aaa85992d1d8b9a1",
+  "scenario": "cpu",
+  "startedUtc": "2026-11-12T21:51:39.002157+00:00",
+  "operatorDeclared": "Codex-assisted automated lab validation; human ack not recorded",
+  "tAck": null,
+  "samples": [
+    {
+      "sentUtc": "2026-11-12T21:51:40.932910+00:00",
+      "receivedUtc": "2026-11-12T21:51:40.940221+00:00",
+      "http": 200,
+      "latencyMs": 7.329,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:51:40.940323+00:00",
+      "receivedUtc": "2026-11-12T21:51:40.979944+00:00",
+      "http": 200,
+      "latencyMs": 39.635,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:51:40.980023+00:00",
+      "receivedUtc": "2026-11-12T21:51:40.993354+00:00",
+      "http": 200,
+      "latencyMs": 13.344,
+      "retryAfter": null,
+      "path": "/api/login",
+      "valid": true
+    },
+    {
+      "sentUtc": "2026-11-12T21:51:46.375498+00:00",
+      "receivedUtc": "2026-11-12T21:51:46.383260+00:00",
+      "http": 200,
+      "latencyMs": 7.781,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:51:46.383379+00:00",
+      "receivedUtc": "2026-11-12T21:51:46.386109+00:00",
+      "http": 200,
+      "latencyMs": 2.737,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:51:54.168134+00:00",
+      "receivedUtc": "2026-11-12T21:51:54.176832+00:00",
+      "http": 200,
+      "latencyMs": 8.716,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:51:54.176966+00:00",
+      "receivedUtc": "2026-11-12T21:51:54.180326+00:00",
+      "http": 200,
+      "latencyMs": 3.368,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:01.629761+00:00",
+      "receivedUtc": "2026-11-12T21:52:01.665257+00:00",
+      "http": 200,
+      "latencyMs": 35.521,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:01.665374+00:00",
+      "receivedUtc": "2026-11-12T21:52:01.670851+00:00",
+      "http": 200,
+      "latencyMs": 5.489,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:09.275354+00:00",
+      "receivedUtc": "2026-11-12T21:52:09.282875+00:00",
+      "http": 200,
+      "latencyMs": 7.534,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:09.282996+00:00",
+      "receivedUtc": "2026-11-12T21:52:09.285605+00:00",
+      "http": 200,
+      "latencyMs": 2.616,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:16.725292+00:00",
+      "receivedUtc": "2026-11-12T21:52:16.769610+00:00",
+      "http": 200,
+      "latencyMs": 44.34,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:16.769753+00:00",
+      "receivedUtc": "2026-11-12T21:52:16.772979+00:00",
+      "http": 200,
+      "latencyMs": 3.235,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:24.382751+00:00",
+      "receivedUtc": "2026-11-12T21:52:24.469696+00:00",
+      "http": 200,
+      "latencyMs": 86.97,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:24.469814+00:00",
+      "receivedUtc": "2026-11-12T21:52:24.473031+00:00",
+      "http": 200,
+      "latencyMs": 3.227,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:31.926075+00:00",
+      "receivedUtc": "2026-11-12T21:52:32.674124+00:00",
+      "http": 200,
+      "latencyMs": 748.071,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:32.674272+00:00",
+      "receivedUtc": "2026-11-12T21:52:32.677511+00:00",
+      "http": 200,
+      "latencyMs": 3.25,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:41.188823+00:00",
+      "receivedUtc": "2026-11-12T21:52:41.269641+00:00",
+      "http": 200,
+      "latencyMs": 80.841,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:41.269757+00:00",
+      "receivedUtc": "2026-11-12T21:52:41.273176+00:00",
+      "http": 200,
+      "latencyMs": 3.428,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:48.822924+00:00",
+      "receivedUtc": "2026-11-12T21:52:48.868827+00:00",
+      "http": 200,
+      "latencyMs": 45.926,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:48.868944+00:00",
+      "receivedUtc": "2026-11-12T21:52:48.872055+00:00",
+      "http": 200,
+      "latencyMs": 3.119,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:56.438753+00:00",
+      "receivedUtc": "2026-11-12T21:52:56.520595+00:00",
+      "http": 200,
+      "latencyMs": 81.866,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:52:56.520760+00:00",
+      "receivedUtc": "2026-11-12T21:52:56.524928+00:00",
+      "http": 200,
+      "latencyMs": 4.183,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:04.187151+00:00",
+      "receivedUtc": "2026-11-12T21:53:04.274697+00:00",
+      "http": 200,
+      "latencyMs": 87.572,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:04.274853+00:00",
+      "receivedUtc": "2026-11-12T21:53:04.278150+00:00",
+      "http": 200,
+      "latencyMs": 3.309,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:11.922012+00:00",
+      "receivedUtc": "2026-11-12T21:53:11.966201+00:00",
+      "http": 200,
+      "latencyMs": 46.177,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:11.966318+00:00",
+      "receivedUtc": "2026-11-12T21:53:11.969436+00:00",
+      "http": 200,
+      "latencyMs": 3.127,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:19.580529+00:00",
+      "receivedUtc": "2026-11-12T21:53:19.588344+00:00",
+      "http": 200,
+      "latencyMs": 7.828,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:19.588447+00:00",
+      "receivedUtc": "2026-11-12T21:53:19.591014+00:00",
+      "http": 200,
+      "latencyMs": 2.573,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:27.128782+00:00",
+      "receivedUtc": "2026-11-12T21:53:27.174055+00:00",
+      "http": 200,
+      "latencyMs": 45.287,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:27.174160+00:00",
+      "receivedUtc": "2026-11-12T21:53:27.176743+00:00",
+      "http": 200,
+      "latencyMs": 2.59,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:34.641249+00:00",
+      "receivedUtc": "2026-11-12T21:53:34.765139+00:00",
+      "http": 200,
+      "latencyMs": 123.915,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:34.765268+00:00",
+      "receivedUtc": "2026-11-12T21:53:34.768482+00:00",
+      "http": 200,
+      "latencyMs": 3.222,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:42.218819+00:00",
+      "receivedUtc": "2026-11-12T21:53:42.226108+00:00",
+      "http": 200,
+      "latencyMs": 7.307,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:42.226221+00:00",
+      "receivedUtc": "2026-11-12T21:53:42.228815+00:00",
+      "http": 200,
+      "latencyMs": 2.6,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:49.774380+00:00",
+      "receivedUtc": "2026-11-12T21:53:49.782531+00:00",
+      "http": 200,
+      "latencyMs": 8.169,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:49.782646+00:00",
+      "receivedUtc": "2026-11-12T21:53:49.784848+00:00",
+      "http": 200,
+      "latencyMs": 2.209,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:58.630562+00:00",
+      "receivedUtc": "2026-11-12T21:53:58.638950+00:00",
+      "http": 200,
+      "latencyMs": 8.407,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:58.639102+00:00",
+      "receivedUtc": "2026-11-12T21:53:58.642582+00:00",
+      "http": 200,
+      "latencyMs": 3.493,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:53:58.642667+00:00",
+      "receivedUtc": "2026-11-12T21:53:58.648225+00:00",
+      "http": 200,
+      "latencyMs": 5.573,
+      "retryAfter": null,
+      "path": "/api/login",
+      "valid": true
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:06.222980+00:00",
+      "receivedUtc": "2026-11-12T21:54:06.231039+00:00",
+      "http": 200,
+      "latencyMs": 8.075,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:06.231150+00:00",
+      "receivedUtc": "2026-11-12T21:54:06.233967+00:00",
+      "http": 200,
+      "latencyMs": 2.825,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:13.635670+00:00",
+      "receivedUtc": "2026-11-12T21:54:13.718844+00:00",
+      "http": 200,
+      "latencyMs": 83.196,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:13.718962+00:00",
+      "receivedUtc": "2026-11-12T21:54:13.721666+00:00",
+      "http": 200,
+      "latencyMs": 2.711,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:20.979260+00:00",
+      "receivedUtc": "2026-11-12T21:54:21.021337+00:00",
+      "http": 200,
+      "latencyMs": 42.097,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:21.021456+00:00",
+      "receivedUtc": "2026-11-12T21:54:21.024076+00:00",
+      "http": 200,
+      "latencyMs": 2.626,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:28.515809+00:00",
+      "receivedUtc": "2026-11-12T21:54:28.523626+00:00",
+      "http": 200,
+      "latencyMs": 7.836,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:28.523726+00:00",
+      "receivedUtc": "2026-11-12T21:54:28.526353+00:00",
+      "http": 200,
+      "latencyMs": 2.634,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:35.736830+00:00",
+      "receivedUtc": "2026-11-12T21:54:35.818667+00:00",
+      "http": 200,
+      "latencyMs": 81.86,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:35.818776+00:00",
+      "receivedUtc": "2026-11-12T21:54:35.821344+00:00",
+      "http": 200,
+      "latencyMs": 2.575,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:43.271450+00:00",
+      "receivedUtc": "2026-11-12T21:54:43.278973+00:00",
+      "http": 200,
+      "latencyMs": 7.537,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:43.279088+00:00",
+      "receivedUtc": "2026-11-12T21:54:43.282128+00:00",
+      "http": 200,
+      "latencyMs": 3.052,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:50.668876+00:00",
+      "receivedUtc": "2026-11-12T21:54:50.676139+00:00",
+      "http": 200,
+      "latencyMs": 7.28,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:50.676248+00:00",
+      "receivedUtc": "2026-11-12T21:54:50.678723+00:00",
+      "http": 200,
+      "latencyMs": 2.482,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:58.090322+00:00",
+      "receivedUtc": "2026-11-12T21:54:58.171556+00:00",
+      "http": 200,
+      "latencyMs": 81.252,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:54:58.171660+00:00",
+      "receivedUtc": "2026-11-12T21:54:58.174235+00:00",
+      "http": 200,
+      "latencyMs": 2.583,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:05.386970+00:00",
+      "receivedUtc": "2026-11-12T21:55:05.467987+00:00",
+      "http": 200,
+      "latencyMs": 81.037,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:05.468099+00:00",
+      "receivedUtc": "2026-11-12T21:55:05.470777+00:00",
+      "http": 200,
+      "latencyMs": 2.686,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:12.823067+00:00",
+      "receivedUtc": "2026-11-12T21:55:12.830795+00:00",
+      "http": 200,
+      "latencyMs": 7.748,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:12.830901+00:00",
+      "receivedUtc": "2026-11-12T21:55:12.833726+00:00",
+      "http": 200,
+      "latencyMs": 2.833,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:20.217721+00:00",
+      "receivedUtc": "2026-11-12T21:55:20.225705+00:00",
+      "http": 200,
+      "latencyMs": 7.996,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:20.225810+00:00",
+      "receivedUtc": "2026-11-12T21:55:20.228560+00:00",
+      "http": 200,
+      "latencyMs": 2.76,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:27.520075+00:00",
+      "receivedUtc": "2026-11-12T21:55:27.568621+00:00",
+      "http": 200,
+      "latencyMs": 48.587,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:27.568849+00:00",
+      "receivedUtc": "2026-11-12T21:55:27.573990+00:00",
+      "http": 200,
+      "latencyMs": 5.164,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:34.963654+00:00",
+      "receivedUtc": "2026-11-12T21:55:34.971554+00:00",
+      "http": 200,
+      "latencyMs": 7.921,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:34.971667+00:00",
+      "receivedUtc": "2026-11-12T21:55:34.974254+00:00",
+      "http": 200,
+      "latencyMs": 2.594,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:42.267067+00:00",
+      "receivedUtc": "2026-11-12T21:55:42.274285+00:00",
+      "http": 200,
+      "latencyMs": 7.235,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:42.274454+00:00",
+      "receivedUtc": "2026-11-12T21:55:42.276999+00:00",
+      "http": 200,
+      "latencyMs": 2.552,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:49.664309+00:00",
+      "receivedUtc": "2026-11-12T21:55:49.714617+00:00",
+      "http": 200,
+      "latencyMs": 50.323,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:49.714737+00:00",
+      "receivedUtc": "2026-11-12T21:55:49.717330+00:00",
+      "http": 200,
+      "latencyMs": 2.599,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:57.065380+00:00",
+      "receivedUtc": "2026-11-12T21:55:57.073468+00:00",
+      "http": 200,
+      "latencyMs": 8.104,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:55:57.073622+00:00",
+      "receivedUtc": "2026-11-12T21:55:57.076626+00:00",
+      "http": 200,
+      "latencyMs": 3.013,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:56:04.582107+00:00",
+      "receivedUtc": "2026-11-12T21:56:04.663672+00:00",
+      "http": 200,
+      "latencyMs": 81.582,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:56:04.663790+00:00",
+      "receivedUtc": "2026-11-12T21:56:04.666536+00:00",
+      "http": 200,
+      "latencyMs": 2.753,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:56:06.931249+00:00",
+      "receivedUtc": "2026-11-12T21:56:07.013721+00:00",
+      "http": 200,
+      "latencyMs": 82.494,
+      "retryAfter": null,
+      "path": "/api/drug",
+      "valid": true,
+      "fingerprint": "218b2b77103d3b693669afb04f65343685537539d6f8f0fd208940cffe8d5ad9"
+    },
+    {
+      "sentUtc": "2026-11-12T21:56:07.013843+00:00",
+      "receivedUtc": "2026-11-12T21:56:07.016997+00:00",
+      "http": 200,
+      "latencyMs": 3.168,
+      "retryAfter": null,
+      "path": "/api/roles",
+      "valid": true,
+      "fingerprint": "86a5e347812bc9ee87dcca958ce5747153414aa849eb63fb7f19dbffffdf5250"
+    },
+    {
+      "sentUtc": "2026-11-12T21:56:07.017119+00:00",
+      "receivedUtc": "2026-11-12T21:56:07.021839+00:00",
+      "http": 200,
+      "latencyMs": 4.732,
+      "retryAfter": null,
+      "path": "/api/login",
+      "valid": true
+    }
+  ],
+  "observations": [
+    {
+      "timeUtc": "2026-11-12T21:51:41.010039+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:51:46.590967+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:51:54.389686+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:01.888426+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:09.489472+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:16.983010+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:24.681914+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:32.886009+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:41.482629+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:49.082276+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "pending",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:56.685447+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "pending",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:04.572985+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "pending",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:12.180472+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "pending",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:19.882347+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "pending",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:27.385072+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "pending",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:34.975834+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "pending",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:42.386891+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "pending",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:50.071780+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "firing",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:58.734383+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "firing",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:54:06.251581+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "firing",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:54:13.740167+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "firing",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:54:21.079903+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "firing",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:54:28.544201+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:54:35.837959+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:54:43.374398+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:54:50.724302+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:54:58.190876+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:55:05.487685+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:55:12.924254+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:55:20.246557+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:55:27.632422+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:55:34.990483+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:55:42.322583+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:55:49.734978+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:55:57.118091+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    },
+    {
+      "timeUtc": "2026-11-12T21:56:04.684145+00:00",
+      "telemetry": {
+        "alerts": {
+          "http": 200,
+          "rules": [
+            {
+              "name": "PharmaGo: tasa de errores HTTP 5xx",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: latencia p95 HTTP alta",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: CPU de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: memoria de Pod cerca del límite",
+              "state": "inactive",
+              "health": "ok"
+            },
+            {
+              "name": "PharmaGo: Pod Running sin condición Ready",
+              "state": "inactive",
+              "health": "ok"
+            }
+          ]
+        },
+        "jaeger": {
+          "http": 200
+        },
+        "elasticsearch": {
+          "http": 200
+        },
+        "targetsUp": 9,
+        "targetsTotal": 9,
+        "seriesCounts": {
+          "cpu": 19,
+          "memory": 19,
+          "storage": 19,
+          "diskFree": 1,
+          "nodeMemoryFree": 1
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "timeUtc": "2026-11-12T21:51:45.342010+00:00",
+      "event": "inject-requested",
+      "mechanism": "cpu"
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:57.553651+00:00",
+      "event": "fault-restored"
+    }
+  ],
+  "status": "PASS",
+  "liveValidation": true,
+  "sourceHashes": {
+    "chaos.py": "29d855ae2d9c2442abfcacfbf27ddd9fa4844f84000cde825555b0e78a4c27bd",
+    "fault.sh": "7dd9dc14d8d964979e7ec67455d99531d5f1babc90a9ab589ce761bcfb5a5810",
+    "probe.py": "04177176ec29343d71cdac86b0470b06693a810f97069634be4926d683c9d9d0"
+  },
+  "hostAvailableBytesBefore": 4158222336,
+  "sourceCommit": "a807b0498d5fcd06eee81e0eb2cf5794873028e1",
+  "dirtyTree": false,
+  "before": {
+    "timeUtc": "2026-11-12T21:51:39.867621+00:00",
+    "pods": [
+      {
+        "name": "elasticsearch-6b9b9d4bd9-pvpn9",
+        "uid": "30a2b432-06ea-40fa-a37c-d0eca53a78a7",
+        "app": "elasticsearch",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:46Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:46Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:11Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:11Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:45Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "elasticsearch",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.elastic.co/elasticsearch/elasticsearch@sha256:4cd9ce4ccb04618617114da1df8240473bbd004329c1bc0252cebeec089b629e"
+          }
+        ]
+      },
+      {
+        "name": "fluent-bit-mlzz8",
+        "uid": "46d97ef3-eddc-4245-bccd-a4783b351a39",
+        "app": null,
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:49Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:49Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:49Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "fluent-bit",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/fluent/fluent-bit@sha256:bc89a87cc9cd40c320644835b83170f49819dc3ea447e38c71dde27a181e7a9b"
+          }
+        ]
+      },
+      {
+        "name": "grafana-7fb965c4b9-zw7pq",
+        "uid": "46a7463c-fc00-4b39-914f-c7418b6a497f",
+        "app": "grafana",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:15Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:48Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:43:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:43:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "grafana",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:679e4be9f9184b60905bc3c9297d293d0070f1d1155017877cf0199b1f1b787c"
+          }
+        ]
+      },
+      {
+        "name": "jaeger-565b478b65-vkwzg",
+        "uid": "c5327a95-c9a9-4d61-a045-178c0bca8802",
+        "app": "jaeger",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "jaeger",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/jaegertracing/all-in-one@sha256:836e9b69c88afbedf7683ea7162e179de63b1f981662e83f5ebb68badadc710f"
+          }
+        ]
+      },
+      {
+        "name": "kibana-68c64655b9-kp2b2",
+        "uid": "badc2638-7451-49f7-96da-175b4374a781",
+        "app": "kibana",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:41:58Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:59Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:59Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "kibana",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.elastic.co/kibana/kibana@sha256:76773735fa086882909add84132a59d1765686d0fc170b35990acab814cf4a72"
+          }
+        ]
+      },
+      {
+        "name": "kube-state-metrics-65669ffcdf-jpdlg",
+        "uid": "57d20ae1-cdb9-47ef-9b1a-637b1e3f2ecc",
+        "app": "kube-state-metrics",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "kube-state-metrics",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:639a1e2da549210adddc0391ff91e270e83f7873014aec53258462812f741e6f"
+          }
+        ]
+      },
+      {
+        "name": "kubelet-storage-gnlgr",
+        "uid": "c400d423-a618-4b93-b760-664f2d8abc52",
+        "app": "kubelet-storage",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:03Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:03Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:03Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "collector",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+          }
+        ]
+      },
+      {
+        "name": "node-exporter-7jvmf",
+        "uid": "4b4fccc8-68ed-486f-a552-c8557a4a23a0",
+        "app": "node-exporter",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "node-exporter",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/prom/node-exporter@sha256:4cb2b9019f1757be8482419002cb7afe028fdba35d47958829e4cfeaf6246d80"
+          }
+        ]
+      },
+      {
+        "name": "otlp-collector-76876cdbff-gfqzr",
+        "uid": "50e4d0d2-4b89-4f18-8066-b369ec8b1c4c",
+        "app": "otlp-collector",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:05Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:05Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:05Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "otlp-collector",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-api-gateway-7ffc688c6-2wj2w",
+        "uid": "b878b9db-9503-4137-b5e4-620998367f99",
+        "app": "pharmago-api-gateway",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:24Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:24Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-api-gateway",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:7c21519518fd8844a01154ec2454ee6ced1fd4c181672df4cc8e615e1a1031ed"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-chaos-client",
+        "uid": "ec6b1c3c-5fc0-4fd9-b1a3-39e199a69fe2",
+        "app": "pharmago-chaos-client",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:06Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:27:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:06Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:06Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:27:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "client",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/library/python@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-chaos-load",
+        "uid": "31d41833-2b20-4129-83a2-581ae26b1633",
+        "app": "pharmago-chaos-load",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:27:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:27:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "client",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/library/python@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-db-749757cdd7-4w6w8",
+        "uid": "e8d37ee0-3d59-4783-9253-86ae6a9a7f4e",
+        "app": "pharmago-db",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:26:31Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:26:31Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:26:24Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-db",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-db-migrate-1bc9f449686b-ntbpz",
+        "uid": "01200f9e-5887-4dc6-b2f2-e5b1e71948b7",
+        "app": "pharmago-db-migrate",
+        "phase": "Succeeded",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:41Z",
+            "observedGeneration": 1,
+            "status": "False",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:32Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:39Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:39Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:32Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "migrate",
+            "ready": false,
+            "restartCount": 0,
+            "imageID": "sha256:a124ccb787497b6d273a24b6464c439639ee22d1408b712b232c40d0e5e2f115"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-pharmacy-service-d5f48968c-7jbsc",
+        "uid": "d587ba01-4b79-41dd-947a-955a07ed1b00",
+        "app": "pharmago-pharmacy-service",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:17Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-pharmacy-service",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:0d207464a029f6a03057313a83e8494840543ce9d249ac07d9cd3408e7228c79"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-pharmacy-service-d5f48968c-b5vkm",
+        "uid": "8014cbc7-065b-4b0e-842d-4b28664285b0",
+        "app": "pharmago-pharmacy-service",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-pharmacy-service",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:0d207464a029f6a03057313a83e8494840543ce9d249ac07d9cd3408e7228c79"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-ui-7cb8f6bb9c-9lxnc",
+        "uid": "d89bfb0f-fd6d-477f-9d8d-1863d5ba6b79",
+        "app": "pharmago-ui",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-ui",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:350b719eb7f69ba3de0c7e8d9cab4e995bbc8f3c0b35c7c79d15172ec0e4e200"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-users-service-cbfddcb-46c4t",
+        "uid": "aa09471f-393e-4ac8-89e4-1edb31f5dea6",
+        "app": "pharmago-users-service",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:15Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-users-service",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:a124ccb787497b6d273a24b6464c439639ee22d1408b712b232c40d0e5e2f115"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-users-service-cbfddcb-7lbb6",
+        "uid": "1a2bfd01-7dcf-4508-9e83-f022da1473c2",
+        "app": "pharmago-users-service",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-users-service",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:a124ccb787497b6d273a24b6464c439639ee22d1408b712b232c40d0e5e2f115"
+          }
+        ]
+      },
+      {
+        "name": "prometheus-78d9687dc8-f26bc",
+        "uid": "e4814a83-549c-4f6f-8bed-44b5ef62eeb1",
+        "app": "prometheus",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:17Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:17Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:45Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:45Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "prometheus",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/prom/prometheus@sha256:f6639335d34a77d9d9db382b92eeb7fc00934be8eae81dbc03b31cfe90411a94"
+          }
+        ]
+      }
+    ],
+    "claims": {
+      "elasticsearch-pvc": {
+        "uid": "e15ece64-8dd0-45be-8ad1-51e4a918b3ce",
+        "volume": "elasticsearch-pv",
+        "phase": "Bound"
+      },
+      "grafana-pvc": {
+        "uid": "d197211b-8d60-494b-ba2a-f9c9ed26882c",
+        "volume": "grafana-pv",
+        "phase": "Bound"
+      },
+      "prometheus-pvc": {
+        "uid": "7c3eb562-c6f9-495b-b957-29f29367e746",
+        "volume": "prometheus-pv",
+        "phase": "Bound"
+      },
+      "sql-pvc": {
+        "uid": "e191d2cb-20df-4838-9dac-94bfe6dcc3fe",
+        "volume": "sql-pv",
+        "phase": "Bound"
+      }
+    },
+    "volumes": {
+      "elasticsearch-pv": "951e1329-f85f-48d2-a660-4d15a5aee017",
+      "grafana-pv": "c02f28f6-8606-417e-93e3-365e956b0072",
+      "prometheus-pv": "b1f01549-f29b-4fe9-b5b6-6747e380f34a",
+      "sql-pv": "45696660-56ed-45a8-a1d8-fb189324d125"
+    },
+    "deployments": {
+      "elasticsearch": {
+        "uid": "66acabd4-1f8b-4fba-85c8-12f051c7406d",
+        "replicas": 1,
+        "images": [
+          "docker.elastic.co/elasticsearch/elasticsearch:8.11.0"
+        ]
+      },
+      "grafana": {
+        "uid": "21acbdea-2c24-48fc-b9b6-9a12fd6aea7c",
+        "replicas": 1,
+        "images": [
+          "grafana/grafana:10.4.2"
+        ]
+      },
+      "jaeger": {
+        "uid": "e59e1ce7-cee6-4b16-86f7-364f76961d68",
+        "replicas": 1,
+        "images": [
+          "jaegertracing/all-in-one:1.62.0"
+        ]
+      },
+      "kibana": {
+        "uid": "59cddd78-db62-4c1b-9d41-e0effe509720",
+        "replicas": 1,
+        "images": [
+          "docker.elastic.co/kibana/kibana:8.11.0"
+        ]
+      },
+      "kube-state-metrics": {
+        "uid": "6e6426e3-b5a8-4e7c-85a2-d3cbc9b6c301",
+        "replicas": 1,
+        "images": [
+          "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.13.0"
+        ]
+      },
+      "otlp-collector": {
+        "uid": "48dc794a-c4d1-44ed-a762-baf8df9f9702",
+        "replicas": 1,
+        "images": [
+          "otel/opentelemetry-collector-contrib:0.111.0"
+        ]
+      },
+      "pharmago-api-gateway": {
+        "uid": "1089325d-5643-4bff-bc85-b5bec32d52a0",
+        "replicas": 1,
+        "images": [
+          "pharmago-api-gateway:chaos-fix-20261112-01"
+        ]
+      },
+      "pharmago-db": {
+        "uid": "a4987ca5-6555-41d3-9aad-065484a8dab1",
+        "replicas": 1,
+        "images": [
+          "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+        ]
+      },
+      "pharmago-pharmacy-service": {
+        "uid": "801a64fe-9b5a-430f-8177-ec7d6bb6e181",
+        "replicas": 2,
+        "images": [
+          "pharmago-pharmacy-service:chaos-fix-20261112-01"
+        ]
+      },
+      "pharmago-ui": {
+        "uid": "f70a119a-eb34-4d64-83bf-3e92b45d5344",
+        "replicas": 1,
+        "images": [
+          "pharmago-ui:chaos-fix-20261112-01"
+        ]
+      },
+      "pharmago-users-service": {
+        "uid": "6ee185b0-7142-451e-97c0-65869eb8d80e",
+        "replicas": 2,
+        "images": [
+          "pharmago-users-service:chaos-fix-20261112-01"
+        ]
+      },
+      "prometheus": {
+        "uid": "b546cb29-5fbc-4c2d-9887-fbbd6b251b0b",
+        "replicas": 1,
+        "images": [
+          "prom/prometheus:v2.54.1"
+        ]
+      }
+    }
+  },
+  "injectionStates": [
+    {
+      "timeUtc": "2026-11-12T21:51:46.590953+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:51:54.389673+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:01.888412+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:09.489459+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:16.982996+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:24.681902+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:32.885898+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:41.482617+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:49.082261+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:52:56.685432+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:04.572971+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:12.180458+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:19.882333+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:27.385057+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:34.975820+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:42.386876+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    },
+    {
+      "timeUtc": "2026-11-12T21:53:50.071766+00:00",
+      "active": true,
+      "bytes": 0,
+      "cancelled": false
+    }
+  ],
+  "injectionResult": "{\"injected\":true,\"scenario\":\"cpu\",\"runId\":\"829dfa1adc1648b2aaa85992d1d8b9a1\",\"observedUtc\":\"2026-11-12T21:51:45Z\"}\n",
+  "faultRestoredUtc": "2026-11-12T21:53:57.553627+00:00",
+  "tRestore": "2026-11-12T21:54:00.262903+00:00",
+  "tVerified": "2026-11-12T21:56:07.040654+00:00",
+  "after": {
+    "timeUtc": "2026-11-12T21:56:07.236742+00:00",
+    "pods": [
+      {
+        "name": "elasticsearch-6b9b9d4bd9-pvpn9",
+        "uid": "30a2b432-06ea-40fa-a37c-d0eca53a78a7",
+        "app": "elasticsearch",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:46Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:46Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:11Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:11Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:45Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "elasticsearch",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.elastic.co/elasticsearch/elasticsearch@sha256:4cd9ce4ccb04618617114da1df8240473bbd004329c1bc0252cebeec089b629e"
+          }
+        ]
+      },
+      {
+        "name": "fluent-bit-mlzz8",
+        "uid": "46d97ef3-eddc-4245-bccd-a4783b351a39",
+        "app": null,
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:49Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:49Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:49Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "fluent-bit",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/fluent/fluent-bit@sha256:bc89a87cc9cd40c320644835b83170f49819dc3ea447e38c71dde27a181e7a9b"
+          }
+        ]
+      },
+      {
+        "name": "grafana-7fb965c4b9-zw7pq",
+        "uid": "46a7463c-fc00-4b39-914f-c7418b6a497f",
+        "app": "grafana",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:15Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:48Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:43:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:43:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "grafana",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:679e4be9f9184b60905bc3c9297d293d0070f1d1155017877cf0199b1f1b787c"
+          }
+        ]
+      },
+      {
+        "name": "jaeger-565b478b65-vkwzg",
+        "uid": "c5327a95-c9a9-4d61-a045-178c0bca8802",
+        "app": "jaeger",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "jaeger",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/jaegertracing/all-in-one@sha256:836e9b69c88afbedf7683ea7162e179de63b1f981662e83f5ebb68badadc710f"
+          }
+        ]
+      },
+      {
+        "name": "kibana-68c64655b9-kp2b2",
+        "uid": "badc2638-7451-49f7-96da-175b4374a781",
+        "app": "kibana",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:41:58Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:59Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:59Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "kibana",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.elastic.co/kibana/kibana@sha256:76773735fa086882909add84132a59d1765686d0fc170b35990acab814cf4a72"
+          }
+        ]
+      },
+      {
+        "name": "kube-state-metrics-65669ffcdf-jpdlg",
+        "uid": "57d20ae1-cdb9-47ef-9b1a-637b1e3f2ecc",
+        "app": "kube-state-metrics",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "kube-state-metrics",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:639a1e2da549210adddc0391ff91e270e83f7873014aec53258462812f741e6f"
+          }
+        ]
+      },
+      {
+        "name": "kubelet-storage-gnlgr",
+        "uid": "c400d423-a618-4b93-b760-664f2d8abc52",
+        "app": "kubelet-storage",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:03Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:03Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:03Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "collector",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+          }
+        ]
+      },
+      {
+        "name": "node-exporter-7jvmf",
+        "uid": "4b4fccc8-68ed-486f-a552-c8557a4a23a0",
+        "app": "node-exporter",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "node-exporter",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/prom/node-exporter@sha256:4cb2b9019f1757be8482419002cb7afe028fdba35d47958829e4cfeaf6246d80"
+          }
+        ]
+      },
+      {
+        "name": "otlp-collector-76876cdbff-gfqzr",
+        "uid": "50e4d0d2-4b89-4f18-8066-b369ec8b1c4c",
+        "app": "otlp-collector",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:05Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:05Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:05Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "otlp-collector",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/otel/opentelemetry-collector-contrib@sha256:a2a52e43c1a80aa94120ad78c2db68780eb90e6d11c8db5b3ce2f6a0cc6b5029"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-api-gateway-7ffc688c6-2wj2w",
+        "uid": "b878b9db-9503-4137-b5e4-620998367f99",
+        "app": "pharmago-api-gateway",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:24Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:24Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-api-gateway",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:7c21519518fd8844a01154ec2454ee6ced1fd4c181672df4cc8e615e1a1031ed"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-chaos-client",
+        "uid": "ec6b1c3c-5fc0-4fd9-b1a3-39e199a69fe2",
+        "app": "pharmago-chaos-client",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:06Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:27:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:06Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:06Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:27:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "client",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/library/python@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-chaos-load",
+        "uid": "31d41833-2b20-4129-83a2-581ae26b1633",
+        "app": "pharmago-chaos-load",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:27:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:07Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:27:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "client",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/library/python@sha256:840e180ebcc6e5c8efab209c43f5e40fd2af98cb49db5c7103c90539c56bb30e"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-db-749757cdd7-4w6w8",
+        "uid": "e8d37ee0-3d59-4783-9253-86ae6a9a7f4e",
+        "app": "pharmago-db",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:26:31Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:26:31Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:13Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:26:24Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-db",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-db-migrate-1bc9f449686b-ntbpz",
+        "uid": "01200f9e-5887-4dc6-b2f2-e5b1e71948b7",
+        "app": "pharmago-db-migrate",
+        "phase": "Succeeded",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:41Z",
+            "observedGeneration": 1,
+            "status": "False",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:32Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:39Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:39Z",
+            "observedGeneration": 1,
+            "reason": "PodCompleted",
+            "status": "False",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:32:32Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "migrate",
+            "ready": false,
+            "restartCount": 0,
+            "imageID": "sha256:a124ccb787497b6d273a24b6464c439639ee22d1408b712b232c40d0e5e2f115"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-pharmacy-service-d5f48968c-7jbsc",
+        "uid": "d587ba01-4b79-41dd-947a-955a07ed1b00",
+        "app": "pharmago-pharmacy-service",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:17Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-pharmacy-service",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:0d207464a029f6a03057313a83e8494840543ce9d249ac07d9cd3408e7228c79"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-pharmacy-service-d5f48968c-b5vkm",
+        "uid": "8014cbc7-065b-4b0e-842d-4b28664285b0",
+        "app": "pharmago-pharmacy-service",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-pharmacy-service",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:0d207464a029f6a03057313a83e8494840543ce9d249ac07d9cd3408e7228c79"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-ui-7cb8f6bb9c-9lxnc",
+        "uid": "d89bfb0f-fd6d-477f-9d8d-1863d5ba6b79",
+        "app": "pharmago-ui",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:27Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-ui",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:350b719eb7f69ba3de0c7e8d9cab4e995bbc8f3c0b35c7c79d15172ec0e4e200"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-users-service-cbfddcb-46c4t",
+        "uid": "aa09471f-393e-4ac8-89e4-1edb31f5dea6",
+        "app": "pharmago-users-service",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:15Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-users-service",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:a124ccb787497b6d273a24b6464c439639ee22d1408b712b232c40d0e5e2f115"
+          }
+        ]
+      },
+      {
+        "name": "pharmago-users-service-cbfddcb-7lbb6",
+        "uid": "1a2bfd01-7dcf-4508-9e83-f022da1473c2",
+        "app": "pharmago-users-service",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:16Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:21Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:12Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "pharmago-users-service",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "sha256:a124ccb787497b6d273a24b6464c439639ee22d1408b712b232c40d0e5e2f115"
+          }
+        ]
+      },
+      {
+        "name": "prometheus-78d9687dc8-f26bc",
+        "uid": "e4814a83-549c-4f6f-8bed-44b5ef62eeb1",
+        "app": "prometheus",
+        "phase": "Running",
+        "node": "pharmago-issue17-validation",
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:17Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:17Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:45Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:42:45Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-11-12T21:39:14Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containers": [
+          {
+            "name": "prometheus",
+            "ready": true,
+            "restartCount": 0,
+            "imageID": "docker.io/prom/prometheus@sha256:f6639335d34a77d9d9db382b92eeb7fc00934be8eae81dbc03b31cfe90411a94"
+          }
+        ]
+      }
+    ],
+    "claims": {
+      "elasticsearch-pvc": {
+        "uid": "e15ece64-8dd0-45be-8ad1-51e4a918b3ce",
+        "volume": "elasticsearch-pv",
+        "phase": "Bound"
+      },
+      "grafana-pvc": {
+        "uid": "d197211b-8d60-494b-ba2a-f9c9ed26882c",
+        "volume": "grafana-pv",
+        "phase": "Bound"
+      },
+      "prometheus-pvc": {
+        "uid": "7c3eb562-c6f9-495b-b957-29f29367e746",
+        "volume": "prometheus-pv",
+        "phase": "Bound"
+      },
+      "sql-pvc": {
+        "uid": "e191d2cb-20df-4838-9dac-94bfe6dcc3fe",
+        "volume": "sql-pv",
+        "phase": "Bound"
+      }
+    },
+    "volumes": {
+      "elasticsearch-pv": "951e1329-f85f-48d2-a660-4d15a5aee017",
+      "grafana-pv": "c02f28f6-8606-417e-93e3-365e956b0072",
+      "prometheus-pv": "b1f01549-f29b-4fe9-b5b6-6747e380f34a",
+      "sql-pv": "45696660-56ed-45a8-a1d8-fb189324d125"
+    },
+    "deployments": {
+      "elasticsearch": {
+        "uid": "66acabd4-1f8b-4fba-85c8-12f051c7406d",
+        "replicas": 1,
+        "images": [
+          "docker.elastic.co/elasticsearch/elasticsearch:8.11.0"
+        ]
+      },
+      "grafana": {
+        "uid": "21acbdea-2c24-48fc-b9b6-9a12fd6aea7c",
+        "replicas": 1,
+        "images": [
+          "grafana/grafana:10.4.2"
+        ]
+      },
+      "jaeger": {
+        "uid": "e59e1ce7-cee6-4b16-86f7-364f76961d68",
+        "replicas": 1,
+        "images": [
+          "jaegertracing/all-in-one:1.62.0"
+        ]
+      },
+      "kibana": {
+        "uid": "59cddd78-db62-4c1b-9d41-e0effe509720",
+        "replicas": 1,
+        "images": [
+          "docker.elastic.co/kibana/kibana:8.11.0"
+        ]
+      },
+      "kube-state-metrics": {
+        "uid": "6e6426e3-b5a8-4e7c-85a2-d3cbc9b6c301",
+        "replicas": 1,
+        "images": [
+          "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.13.0"
+        ]
+      },
+      "otlp-collector": {
+        "uid": "48dc794a-c4d1-44ed-a762-baf8df9f9702",
+        "replicas": 1,
+        "images": [
+          "otel/opentelemetry-collector-contrib:0.111.0"
+        ]
+      },
+      "pharmago-api-gateway": {
+        "uid": "1089325d-5643-4bff-bc85-b5bec32d52a0",
+        "replicas": 1,
+        "images": [
+          "pharmago-api-gateway:chaos-fix-20261112-01"
+        ]
+      },
+      "pharmago-db": {
+        "uid": "a4987ca5-6555-41d3-9aad-065484a8dab1",
+        "replicas": 1,
+        "images": [
+          "mcr.microsoft.com/mssql/server@sha256:07d7dedecdbfcf6776035dc5eefb5bfd9aa1804b2f6b99f7dedb397d8a599069"
+        ]
+      },
+      "pharmago-pharmacy-service": {
+        "uid": "801a64fe-9b5a-430f-8177-ec7d6bb6e181",
+        "replicas": 2,
+        "images": [
+          "pharmago-pharmacy-service:chaos-fix-20261112-01"
+        ]
+      },
+      "pharmago-ui": {
+        "uid": "f70a119a-eb34-4d64-83bf-3e92b45d5344",
+        "replicas": 1,
+        "images": [
+          "pharmago-ui:chaos-fix-20261112-01"
+        ]
+      },
+      "pharmago-users-service": {
+        "uid": "6ee185b0-7142-451e-97c0-65869eb8d80e",
+        "replicas": 2,
+        "images": [
+          "pharmago-users-service:chaos-fix-20261112-01"
+        ]
+      },
+      "prometheus": {
+        "uid": "b546cb29-5fbc-4c2d-9887-fbbd6b251b0b",
+        "replicas": 1,
+        "images": [
+          "prom/prometheus:v2.54.1"
+        ]
+      }
+    }
+  },
+  "cleanup": "verified",
+  "finishedUtc": "2026-11-12T21:56:09.772791+00:00",
+  "artifactView": {
+    "format": "compact; original JSON stored as report.json.gz",
+    "originalSha256": "f0b1199793553468e7c89fd55b5e416922d02b6e074dd6ed4f7c1037a5566675",
+    "observationCount": 36,
+    "omitted": "repeated cluster snapshots and per-series resource labels; full data preserved in gzip"
+  }
+}

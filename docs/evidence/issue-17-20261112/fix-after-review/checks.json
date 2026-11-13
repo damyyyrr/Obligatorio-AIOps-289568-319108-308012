@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "b808ed45bbe406a9257e2f28e57c10dd2fc54a04",
+  "controllerTests": 45,
+  "isolatedAgentTests": 5,
+  "ciRun": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/actions/runs/43319356240",
+  "sourceHashes": {
+    "chaos.py": "5411b9f552200336bebe066ad8ef565bd92cb8dca1ffc70d2ed5a4211a83ae28",
+    "fault.sh": "7dd9dc14d8d964979e7ec67455d99531d5f1babc90a9ab589ce761bcfb5a5810",
+    "probe.py": "226d442d30042d44bb445f8a11505501fb7cce6d316136fc4ee9221c80b07703",
+    "test_chaos.py": "e24e9b18ba255417aa6213448a077b3c6a603a5942033c925e9c55fd0e1a0258",
+    "test_fault_agent.py": "feb268185f301c2166f3180d17cfb54171a23ba9c1f0d7b182735a33dc7f4318"
+  },
+  "sixApplicationTrials": "6 PASS; see trial-summary.json",
+  "kubernetesConfigTests": 26,
+  "originalAbortFixSourceCommit": "b808ed45bbe406a9257e2f28e57c10dd2fc54a04"
+}

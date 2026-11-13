@@ -1,0 +1,9 @@
+{
+  "walConfirmed": true,
+  "requests": 60,
+  "statusCounts": {
+    "200": 60
+  },
+  "maxLatencyMs": 32.01920900028199,
+  "allSucceeded": true
+}

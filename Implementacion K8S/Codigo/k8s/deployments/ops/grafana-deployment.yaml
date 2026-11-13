@@ -55,6 +55,9 @@ spec:
               key: ADMIN_PASSWORD
         - name: GF_INSTALL_PLUGINS
           value: ""
+        # SQLite local: evitar bloqueo de lectores durante escrituras de alertas/auth.
+        - name: GF_DATABASE_WAL
+          value: "true"
         volumeMounts:
         - name: grafana-storage
           mountPath: /var/lib/grafana

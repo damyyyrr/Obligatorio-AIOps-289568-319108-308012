@@ -1,0 +1,36 @@
+{
+  "lockAbsent": true,
+  "temporaryNetworkPoliciesAbsent": true,
+  "scenarios": [
+    {
+      "scenario": "requests",
+      "runId": "f6830db128044859a2effc101ada4c28",
+      "cleanupIndependentlyVerified": true
+    },
+    {
+      "scenario": "cpu",
+      "runId": "829dfa1adc1648b2aaa85992d1d8b9a1",
+      "cleanupIndependentlyVerified": true
+    },
+    {
+      "scenario": "ram",
+      "runId": "6053f9c07c23412b8dbfa7153c49d2b1",
+      "cleanupIndependentlyVerified": true
+    },
+    {
+      "scenario": "storage",
+      "runId": "0fb25ceeec1a4227999ea7a5522cf021",
+      "cleanupIndependentlyVerified": true
+    },
+    {
+      "scenario": "network",
+      "runId": "aae7f96d23c44472b927f25ef97c0cb4",
+      "cleanupIndependentlyVerified": true
+    },
+    {
+      "scenario": "disconnect",
+      "runId": "856fd2e231484c108eef989dcc6a32a2",
+      "cleanupIndependentlyVerified": true
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+test_absolute_deadline_blocks_start_even_after_tombstone_was_removed (test_fault_agent.FaultAgentTests.test_absolute_deadline_blocks_start_even_after_tombstone_was_removed) ... ok
+test_absolute_deadline_truncates_a_running_agent (test_fault_agent.FaultAgentTests.test_absolute_deadline_truncates_a_running_agent) ... ok
+test_active_cpu_ram_and_storage_abort_without_remaining_processes (test_fault_agent.FaultAgentTests.test_active_cpu_ram_and_storage_abort_without_remaining_processes) ... ok
+test_cancel_before_start_blocks_all_three_resource_agents (test_fault_agent.FaultAgentTests.test_cancel_before_start_blocks_all_three_resource_agents) ... ok
+test_foreign_control_is_preserved (test_fault_agent.FaultAgentTests.test_foreign_control_is_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 12.822s
+
+OK

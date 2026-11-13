@@ -1,0 +1,15 @@
+{
+  "runId": "a399eff37516439eb259199a0e2e6a7c",
+  "policySelector": {"app": "pharmago-pharmacy-service"},
+  "cni": "Calico",
+  "kubeProxyClusterCIDR": "10.244.0.0/16",
+  "kubeProxyMasqueradeAll": false,
+  "duringPolicy": [
+    {"url": "http://pharmago-pharmacy-service/api/drug", "result": "URLError", "http": 0, "requestedTimeoutSeconds": 3},
+    {"url": "http://pharmago-api-gateway/api/drug", "http": 200},
+    {"url": "http://pharmago-api-gateway/api/roles", "http": 200}
+  ],
+  "afterPolicyRemoved": {"url": "http://pharmago-pharmacy-service/api/drug", "http": 200},
+  "interpretation": "New direct connections were blocked and restored. Gateway remained available; survival of existing connections is implementation-defined and TCP connection identities were not captured.",
+  "reference": "https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-s-impact-on-existing-connections"
+}

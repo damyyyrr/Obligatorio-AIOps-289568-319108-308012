@@ -25,6 +25,7 @@ Ver la [guía de arranque y diagnóstico](<Implementacion K8S/Codigo/BASELINE.md
 - [BDD Cypress + Cucumber: ejecución de #15](Implementacion%20K8S/Codigo/Frontend/e2e/README.md), cuatro escenarios aprobados en navegador contra el baseline real; [evidencia](docs/evidence/issue-15-20261112/live-after-fix/README.md).
 - [Plan maestro](docs/aiops-master-plan.md), [estado de implementación](docs/AIops-implementation-plan.md) y [matriz de requisitos](docs/aiops-requirements-matrix.md).
 - [Consultas académicas pendientes](docs/aiops-open-questions.md), [plan de incidentes](docs/baseline-incidents.md), [seis runbooks](docs/runbooks/incidentes.md) y [algoritmos ML con resultados reproducibles](ml/README.md).
+- [Seis escenarios de caos y recuperación](<Implementacion K8S/Codigo/chaos-engineering/README.md>): seis ensayos reales PASS locales, con [efectos, restauración y limpieza verificados](docs/evidence/issue-17-20261112/fix-after-review/README.md). Red/Service se evalúan sobre conexiones nuevas; la revisión humana de incidentes sigue en #16.
 
 Cada integrante toma una issue pendiente y se asigna como responsable. Crear una rama desde `obligatorio`, referenciar la issue en commits y abrir el PR contra `obligatorio`. Revisar dependencias antes de empezar; coordinar cambios compartidos en Compose/manifests y no cerrar una issue por tener archivos escritos sin probarlos. Las prioridades y los hitos permiten filtrar el trabajo sin asignar personas por suposición.
 

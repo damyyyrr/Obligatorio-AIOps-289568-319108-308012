@@ -1,6 +1,6 @@
 # Runbooks de incidentes de PharmaGo
 
-Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/incidente.md). Son procedimientos de respuesta; los mecanismos de inyección y sus ensayos pertenecen a #17. Requieren contexto/namespace, roles, inventario, límite temporal y reversión registrados antes de actuar. La revisión estática no acredita seis experimentos aprobados.
+Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/incidente.md). Los mecanismos de #17 están en [la guía](../../Implementacion%20K8S/Codigo/chaos-engineering/README.md) y cuentan con [seis ensayos técnicos locales aprobados](../evidence/issue-17-20261112/fix-after-review/README.md). Requieren contexto/namespace, roles, inventario, límite temporal y reversión registrados antes de actuar. La ejecución automatizada no acredita reconocimiento ni comunicaciones humanas: la revisión por compañero de #16 continúa pendiente.
 
 ## RB-01: exceso de solicitudes o solicitudes fallidas reiteradas
 
@@ -18,7 +18,7 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 **Detectar:** `pharmago-pod-cpu`, p95 elevado, throttling o probes lentos. CPU del nodo y CPU del contenedor son medidas distintas.
 
 1. **Diagnosticar:** [consultas](../aiops-k8s-metrics.md) y dashboard Infra por pod/nodo; comparar con límites, réplicas y eventos. `kubectl --context $ctx -n $ns top pod $pod --containers` requiere Metrics Server; su ausencia no significa CPU cero.
-2. **Contener:** detener el PID/generador de CPU registrado por #17 y comprobar que terminó. Cerrar `kubectl exec` no prueba que sus hijos terminen. El `cpu-spike.sh` heredado deja bucles sin limpieza garantizada y no se considera una herramienta aprobada.
+2. **Contener:** detener el PID/generador de CPU registrado por #17 y comprobar que terminó. Cerrar `kubectl exec` no prueba que sus hijos terminen. La versión heredada de `cpu-spike.sh` dejaba bucles sin limpieza garantizada; ahora el wrapper usa el controlador, agente con PID identificado, trap/timeout y recuperación por journal. Su validación real aún está pendiente.
 3. **Restaurar:** si la inyección persiste dentro de un pod stateless y se perdió el PID, coordinación puede recrear solo el servicio elegido con el procedimiento acotado al final. Detener antes cualquier proceso que pudiera reinyectar. No aumentar CPU/réplicas a ciegas ni operar sobre todo el nodo.
 4. **Validar:** consumo próximo al baseline, sin nuevos fallos de probes, alerta vuelve a OK con datos y ventana funcional completa. Distinguir retiro del estímulo de efecto de un reinicio.
 
@@ -28,7 +28,7 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 
 **Detectar:** `pharmago-pod-memory`, OOMKilled, reinicios o MemoryPressure. Exit 137 por sí solo no prueba OOM; contrastar motivo/eventos y consumo, porque también puede ser SIGKILL por otra causa.
 
-1. **Diagnosticar:** memoria frente al límite, memoria libre del nodo/host, `describe pod`, terminación anterior y logs previos. Distinguir heap, tmpfs (`/dev/shm`) y disco (`/tmp`). El fallback de `ram-spike.sh` puede llenar disco: aplicar RB-04 si corresponde.
+1. **Diagnosticar:** memoria frente al límite, memoria libre del nodo/host, `describe pod`, terminación anterior y logs previos. Distinguir heap, tmpfs (`/dev/shm`) y disco (`/tmp`). La versión heredada de `ram-spike.sh` tenía fallback a disco; el nuevo agente usa dd/FIFO sin ese fallback. Si el incidente proviene de scripts antiguos o de otro origen, comprobar también RB-04.
 2. **Contener:** detener el proceso retenedor identificado. Si creó un archivo, verificar pertenencia/ruta según RB-04 antes de retirarlo. No usar `pkill` general ni matar SQL/Elasticsearch para liberar RAM.
 3. **Restaurar:** permitir recuperación por kubelet; si se repite, detener inyección y diagnosticar, sin mantener un crash loop. Recrear un servicio stateless solo cuando sea necesario, mediante el procedimiento acotado. Conservar logs previos si la estabilidad del host lo permite.
 4. **Validar:** memoria recuperada, dotación esperada, sin nuevos OOM/reinicios/presión y ventana funcional. Running tras OOM no acredita Ready. Esperar OK real con métricas frescas.
@@ -50,6 +50,8 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 
 **Detectar:** timeouts, conexión rechazada, targets o rutas inaccesibles. Un port-forward roto no demuestra corte de red interno.
 
+**Observación de #17:** Calico bloqueó conexiones nuevas del cliente al Service Pharmacy, mientras el catálogo por Gateway siguió respondiendo. El comportamiento de conexiones establecidas no se deduce de la creación de una NetworkPolicy. Medir y registrar ambas rutas; no reiniciar el Gateway para forzar artificialmente el resultado.
+
 1. **Diagnosticar:** comparar camino externo y Service interno desde el cliente de pruebas identificado. Revisar `svc`, EndpointSlices, Ready, DNS, red de nodo y salto afectado (cliente→Gateway o Gateway→backend); contrastar logs/trazas y [timeouts](../aiops-interservice-resilience.md).
 2. **Contener:** detener la inyección registrada. #17 debe guardar regla/selección previa e inversa específica. No vaciar iptables, borrar todas las NetworkPolicies, reiniciar kube-proxy ni cambiar el contexto global.
 3. **Restaurar:** revertir exactamente objeto/regla/proceso temporal preservando configuración previa. Verificar identidad antes. Si solo perdió port-forward, reconectar con contexto explícito y verificar que el servicio era accesible internamente.
@@ -60,6 +62,8 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 ## RB-06: desconexión interna de SQL o un microservicio
 
 **Detectar:** Users/Pharmacy NotReady, 500/502/503/504, spans SQL lentos o sin endpoints. Gateway puede seguir Ready/Degraded con ambos backends caídos. Si cae Pharmacy, comprobar si roles/login siguen atendidos.
+
+**Observación de #17:** al agregar el selector temporal, el Service Pharmacy quedó sin endpoints y fallaron las conexiones nuevas, pero la ruta existente del Gateway siguió atendiendo. Validar conexiones nuevas y existentes por separado. Retirar únicamente la clave propia, comprobar selector/UID originales y verificar los 120 s estables; esto no equivale a detener SQL ni a eliminar pods.
 
 1. **Diagnosticar:** identificar dependencia y operación. Revisar SQL, Job de migración, endpoints, eventos, logs y trace ID. Distinguir pausa de contenedor, escala a cero, bloqueo de proceso, corte de red y SQL sin capacidad. Liveness sana/readiness fallida no justifica reiniciar todos los consumidores.
 2. **Contener:** detener carga/estímulo; evitar reintentos masivos y escrituras duplicadas de resultado incierto. Conservar rutas disponibles, sin retirar manualmente el único Gateway para ocultar errores. Comunicar alcance parcial o total.

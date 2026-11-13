@@ -1,0 +1,31 @@
+test_five_rules_with_explicit_states (test_manage.AlertingTests.test_five_rules_with_explicit_states) ... ok
+test_grafana_mounts_alert_provisioning (test_manage.AlertingTests.test_grafana_mounts_alert_provisioning) ... ok
+test_ready_rule_uses_kubernetes_state_not_scrape_up (test_manage.AlertingTests.test_ready_rule_uses_kubernetes_state_not_scrape_up) ... ok
+test_all_role_cannot_bypass_separated_topology (test_manage.WorkflowTests.test_all_role_cannot_bypass_separated_topology) ... ok
+test_build_checks_loaded_image_on_each_node (test_manage.WorkflowTests.test_build_checks_loaded_image_on_each_node) ... ok
+test_build_profile_mismatch_blocks_docker (test_manage.WorkflowTests.test_build_profile_mismatch_blocks_docker) ... ok
+test_changed_volume_identity_fails (test_manage.WorkflowTests.test_changed_volume_identity_fails) ... ok
+test_cli_missing_context_exits_before_commands (test_manage.WorkflowTests.test_cli_missing_context_exits_before_commands) ... ok
+test_context_mismatch_blocks_reads_and_writes (test_manage.WorkflowTests.test_context_mismatch_blocks_reads_and_writes) ... ok
+test_cri_digest_uses_config_instead_of_oci_index (test_manage.WorkflowTests.test_cri_digest_uses_config_instead_of_oci_index) ... ok
+test_different_sql_password_is_rejected_before_apply (test_manage.WorkflowTests.test_different_sql_password_is_rejected_before_apply) ... ok
+test_different_storage_node_blocks_before_mutation (test_manage.WorkflowTests.test_different_storage_node_blocks_before_mutation) ... ok
+test_elasticsearch_timeout_prevents_application_deployment (test_manage.WorkflowTests.test_elasticsearch_timeout_prevents_application_deployment) ... ok
+test_external_command_failure_propagates_without_stdin (test_manage.WorkflowTests.test_external_command_failure_propagates_without_stdin) ... ok
+test_invalid_tags (test_manage.WorkflowTests.test_invalid_tags) ... ok
+test_legacy_secret_keeps_password_and_removes_last_applied_data (test_manage.WorkflowTests.test_legacy_secret_keeps_password_and_removes_last_applied_data) ... ok
+test_manifest_inventory_and_references (test_manage.WorkflowTests.test_manifest_inventory_and_references) ... ok
+test_migration_failure_stops_before_consumers (test_manage.WorkflowTests.test_migration_failure_stops_before_consumers) ... ok
+test_missing_node_roles_blocks_apply (test_manage.WorkflowTests.test_missing_node_roles_blocks_apply) ... ok
+test_multiple_hostpath_nodes_block_deployment (test_manage.WorkflowTests.test_multiple_hostpath_nodes_block_deployment) ... ok
+test_released_volume_not_automatically_recreated (test_manage.WorkflowTests.test_released_volume_not_automatically_recreated) ... ok
+test_repeat_apply_preserves_pv_and_never_deletes (test_manage.WorkflowTests.test_repeat_apply_preserves_pv_and_never_deletes) ... ok
+test_sql_timeout_prevents_downstream_workloads (test_manage.WorkflowTests.test_sql_timeout_prevents_downstream_workloads) ... ok
+test_stops_on_early_apply_error (test_manage.WorkflowTests.test_stops_on_early_apply_error) ... ok
+test_successful_migration_is_required_before_users_and_pharmacy (test_manage.WorkflowTests.test_successful_migration_is_required_before_users_and_pharmacy) ... ok
+test_wrong_volume_owner_blocks_apply (test_manage.WorkflowTests.test_wrong_volume_owner_blocks_apply) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 1.406s
+
+OK
