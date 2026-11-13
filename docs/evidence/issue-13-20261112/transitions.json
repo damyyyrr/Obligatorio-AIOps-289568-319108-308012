@@ -1,0 +1,2881 @@
+[
+  {
+    "ts": "2026-11-13T01:53:48.600506+00:00",
+    "rule": "PharmaGo: tasa de errores HTTP 5xx",
+    "from": null,
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal (NoData)",
+        "labels": {},
+        "value": "",
+        "summary": "{{ $labels.service_name }} responde 5xx en {{ $values.A.Value | printf \"%.1f\" }}% de las solicitudes"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:53:48.600506+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": null,
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.ApiGateway en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.PharmacyService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:53:48.600506+00:00",
+    "rule": "PharmaGo: CPU de Pod cerca del límite",
+    "from": null,
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 32% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 2% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc usa 2% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 2% de su límite de CPU"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:53:48.600506+00:00",
+    "rule": "PharmaGo: memoria de Pod cerca del límite",
+    "from": null,
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 usa 9% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 3% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 27% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 17% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 67% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf usa 5% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 23% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 13% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc usa 25% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 0% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm usa 16% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 5% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 16% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 16% de su límite de memoria"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:53:48.600506+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": null,
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-pvpn9"
+        },
+        "value": "1e+00",
+        "summary": "elasticsearch-6b9b9d4bd9-pvpn9 está Running pero no Ready"
+      },
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "1e+00",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:53:54.447483+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-pvpn9"
+        },
+        "value": "1e+00",
+        "summary": "elasticsearch-6b9b9d4bd9-pvpn9 está Running pero no Ready"
+      },
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "1e+00",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:55:52.080474+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "1e+00",
+        "summary": "p95 de PharmaGo.ApiGateway en 1450 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.PharmacyService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:56:09.782492+00:00",
+    "rule": "PharmaGo: CPU de Pod cerca del límite",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc usa 94% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 22% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 18% de su límite de CPU"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:56:09.782492+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-pvpn9"
+        },
+        "value": "",
+        "summary": "elasticsearch-6b9b9d4bd9-pvpn9 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:56:27.368948+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "1e+00",
+        "summary": "p95 de PharmaGo.ApiGateway en 1450 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.PharmacyService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:56:44.865631+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.PharmacyService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.ApiGateway en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:57:08.469306+00:00",
+    "rule": "PharmaGo: CPU de Pod cerca del límite",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc usa 100% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 9% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 17% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 1% de su límite de CPU"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:57:50.019639+00:00",
+    "rule": "PharmaGo: CPU de Pod cerca del límite",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 2% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 18% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc usa 73% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 3% de su límite de CPU"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:58:42.948067+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-cwfw2"
+        },
+        "value": "1e+00",
+        "summary": "elasticsearch-6b9b9d4bd9-cwfw2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:59:30.241495+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-cwfw2"
+        },
+        "value": "1e+00",
+        "summary": "elasticsearch-6b9b9d4bd9-cwfw2 está Running pero no Ready"
+      },
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "1e+00",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-7jbsc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-b5vkm está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T01:59:53.532351+00:00",
+    "rule": "PharmaGo: tasa de errores HTTP 5xx",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "1e+00",
+        "summary": "PharmaGo.ApiGateway responde 5xx en 28.2% de las solicitudes"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:00:28.627456+00:00",
+    "rule": "PharmaGo: tasa de errores HTTP 5xx",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "1e+00",
+        "summary": "PharmaGo.ApiGateway responde 5xx en 69.0% de las solicitudes"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:01:57.097907+00:00",
+    "rule": "PharmaGo: CPU de Pod cerca del límite",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "1e+00",
+        "summary": "kibana-68c64655b9-kp2b2 usa 83% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 2% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 17% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh usa 2% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql usa 4% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 0% de su límite de CPU"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:02:08.904273+00:00",
+    "rule": "PharmaGo: tasa de errores HTTP 5xx",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "",
+        "summary": "PharmaGo.ApiGateway responde 5xx en 2.8% de las solicitudes"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:02:08.904273+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-cwfw2"
+        },
+        "value": "",
+        "summary": "elasticsearch-6b9b9d4bd9-cwfw2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:02:20.604005+00:00",
+    "rule": "PharmaGo: CPU de Pod cerca del límite",
+    "from": "pending",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 2% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 0% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 17% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh usa 1% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql usa 4% de su límite de CPU"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 44% de su límite de CPU"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:03:54.501867+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh está Running pero no Ready"
+      },
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql está Running pero no Ready"
+      },
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-cwfw2"
+        },
+        "value": "",
+        "summary": "elasticsearch-6b9b9d4bd9-cwfw2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:04:18.186530+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "1e+00",
+        "summary": "p95 de PharmaGo.ApiGateway en 6250 ms"
+      },
+      {
+        "state": "Pending",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "1e+00",
+        "summary": "p95 de PharmaGo.PharmacyService en 5125 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:04:41.578244+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "1e+00",
+        "summary": "p95 de PharmaGo.ApiGateway en 6250 ms"
+      },
+      {
+        "state": "Pending",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "1e+00",
+        "summary": "p95 de PharmaGo.PharmacyService en 5125 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:04:47.588411+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh está Running pero no Ready"
+      },
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql está Running pero no Ready"
+      },
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-cwfw2"
+        },
+        "value": "",
+        "summary": "elasticsearch-6b9b9d4bd9-cwfw2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:05:11.160828+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.PharmacyService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.ApiGateway en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:05:22.851821+00:00",
+    "rule": "PharmaGo: Pod Running sin condición Ready",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "elasticsearch-6b9b9d4bd9-cwfw2"
+        },
+        "value": "",
+        "summary": "elasticsearch-6b9b9d4bd9-cwfw2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "grafana-656d4b5b48-64lcf"
+        },
+        "value": "",
+        "summary": "grafana-656d4b5b48-64lcf está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-db-749757cdd7-4w6w8"
+        },
+        "value": "",
+        "summary": "pharmago-db-749757cdd7-4w6w8 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "prometheus-78d9687dc8-f26bc"
+        },
+        "value": "",
+        "summary": "prometheus-78d9687dc8-f26bc está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t está Running pero no Ready"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 está Running pero no Ready"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:07:56.587504+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "1e+00",
+        "summary": "p95 de PharmaGo.ApiGateway en 2000 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.PharmacyService en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:08:26.084130+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "1e+00",
+        "summary": "p95 de PharmaGo.ApiGateway en 2212 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.PharmacyService en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:10:36.182711+00:00",
+    "rule": "PharmaGo: latencia p95 HTTP alta",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.UsersService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.UsersService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.PharmacyService"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.PharmacyService en 5 ms"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "service_name": "PharmaGo.ApiGateway"
+        },
+        "value": "",
+        "summary": "p95 de PharmaGo.ApiGateway en 5 ms"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:12:21.358972+00:00",
+    "rule": "PharmaGo: memoria de Pod cerca del límite",
+    "from": "inactive",
+    "to": "pending",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Pending",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh usa 92% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 usa 8% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 5% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 37% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 18% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 54% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf usa 6% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 35% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 18% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 5% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 28% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql usa 19% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 20% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 21% de su límite de memoria"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:13:19.866442+00:00",
+    "rule": "PharmaGo: memoria de Pod cerca del límite",
+    "from": "pending",
+    "to": "firing",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Alerting",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "1e+00",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh usa 92% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 usa 8% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 5% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 37% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 18% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 54% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf usa 6% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 35% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 18% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 5% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 20% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 21% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 28% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql usa 19% de su límite de memoria"
+      }
+    ]
+  },
+  {
+    "ts": "2026-11-13T02:14:42.259577+00:00",
+    "rule": "PharmaGo: memoria de Pod cerca del límite",
+    "from": "firing",
+    "to": "inactive",
+    "health": "ok",
+    "alerts": [
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "fluent-bit-mlzz8"
+        },
+        "value": "",
+        "summary": "fluent-bit-mlzz8 usa 8% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "jaeger-565b478b65-vkwzg"
+        },
+        "value": "",
+        "summary": "jaeger-565b478b65-vkwzg usa 5% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kibana-68c64655b9-kp2b2"
+        },
+        "value": "",
+        "summary": "kibana-68c64655b9-kp2b2 usa 37% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kube-state-metrics-65669ffcdf-jpdlg"
+        },
+        "value": "",
+        "summary": "kube-state-metrics-65669ffcdf-jpdlg usa 17% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "kubelet-storage-gnlgr"
+        },
+        "value": "",
+        "summary": "kubelet-storage-gnlgr usa 54% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "node-exporter-7jvmf"
+        },
+        "value": "",
+        "summary": "node-exporter-7jvmf usa 6% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "otlp-collector-76876cdbff-gfqzr"
+        },
+        "value": "",
+        "summary": "otlp-collector-76876cdbff-gfqzr usa 35% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w"
+        },
+        "value": "",
+        "summary": "pharmago-api-gateway-7ffc688c6-2wj2w usa 18% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-ui-7cb8f6bb9c-9lxnc"
+        },
+        "value": "",
+        "summary": "pharmago-ui-7cb8f6bb9c-9lxnc usa 5% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-chaos-client"
+        },
+        "value": "",
+        "summary": "pharmago-chaos-client usa 29% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-6d7ql usa 20% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-pharmacy-service-d5f48968c-5zzkh"
+        },
+        "value": "",
+        "summary": "pharmago-pharmacy-service-d5f48968c-5zzkh usa 19% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-46c4t"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-46c4t usa 20% de su límite de memoria"
+      },
+      {
+        "state": "Normal",
+        "labels": {
+          "pod": "pharmago-users-service-cbfddcb-7lbb6"
+        },
+        "value": "",
+        "summary": "pharmago-users-service-cbfddcb-7lbb6 usa 21% de su límite de memoria"
+      }
+    ]
+  }
+]

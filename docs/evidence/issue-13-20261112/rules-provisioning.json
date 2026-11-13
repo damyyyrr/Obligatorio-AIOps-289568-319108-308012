@@ -1,0 +1,371 @@
+{
+  "ts": "2026-11-13T01:59:46.836912+00:00",
+  "status": 200,
+  "rules": [
+    {
+      "id": 1,
+      "uid": "pharmago-http-5xx",
+      "orgID": 1,
+      "folderUID": "eg4469xpoz85cb",
+      "ruleGroup": "pharmago-aiops",
+      "title": "PharmaGo: tasa de errores HTTP 5xx",
+      "condition": "C",
+      "data": [
+        {
+          "refId": "A",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 600,
+            "to": 0
+          },
+          "datasourceUid": "prometheus",
+          "model": {
+            "expr": "100 * sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", status_code=~\"5..\", endpoint!~\"/health.*\"}[1m])) / sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) and on (service_name) (sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) > 0.1)",
+            "instant": true,
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "range": false,
+            "refId": "A"
+          }
+        },
+        {
+          "refId": "C",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 0,
+            "to": 0
+          },
+          "datasourceUid": "__expr__",
+          "model": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    5
+                  ],
+                  "type": "gt"
+                }
+              }
+            ],
+            "datasource": {
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "A",
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "C",
+            "type": "threshold"
+          }
+        }
+      ],
+      "updated": "2026-11-13T01:52:56Z",
+      "noDataState": "OK",
+      "execErrState": "Error",
+      "for": "30s",
+      "annotations": {
+        "description": "Origen: pharmago_http_requests_total (OTLP). Ventana 1m, sin /health, con tráfico mínimo de 0,1 req/s. Sin tráfico = OK.",
+        "summary": "{{ $labels.service_name }} responde 5xx en {{ $values.A.Value | printf \"%.1f\" }}% de las solicitudes"
+      },
+      "labels": {
+        "severity": "critical",
+        "team": "pharmago"
+      },
+      "provenance": "file",
+      "isPaused": false,
+      "notification_settings": null
+    },
+    {
+      "id": 2,
+      "uid": "pharmago-http-p95",
+      "orgID": 1,
+      "folderUID": "eg4469xpoz85cb",
+      "ruleGroup": "pharmago-aiops",
+      "title": "PharmaGo: latencia p95 HTTP alta",
+      "condition": "C",
+      "data": [
+        {
+          "refId": "A",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 600,
+            "to": 0
+          },
+          "datasourceUid": "prometheus",
+          "model": {
+            "expr": "histogram_quantile(0.95, sum by (service_name, le) (rate(pharmago_http_request_duration_milliseconds_bucket{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m]))) and on (service_name) (sum by (service_name) (rate(pharmago_http_requests_total{job=\"otlp-collector\", endpoint!~\"/health.*\"}[1m])) > 0.1)",
+            "instant": true,
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "range": false,
+            "refId": "A"
+          }
+        },
+        {
+          "refId": "C",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 0,
+            "to": 0
+          },
+          "datasourceUid": "__expr__",
+          "model": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    1000
+                  ],
+                  "type": "gt"
+                }
+              }
+            ],
+            "datasource": {
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "A",
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "C",
+            "type": "threshold"
+          }
+        }
+      ],
+      "updated": "2026-11-13T01:52:56Z",
+      "noDataState": "OK",
+      "execErrState": "Error",
+      "for": "30s",
+      "annotations": {
+        "description": "Origen: histograma pharmago_http_request_duration_milliseconds (OTLP). Umbral 1000 ms en ventana 1m, sin /health.",
+        "summary": "p95 de {{ $labels.service_name }} en {{ $values.A.Value | printf \"%.0f\" }} ms"
+      },
+      "labels": {
+        "severity": "warning",
+        "team": "pharmago"
+      },
+      "provenance": "file",
+      "isPaused": false,
+      "notification_settings": null
+    },
+    {
+      "id": 3,
+      "uid": "pharmago-pod-cpu",
+      "orgID": 1,
+      "folderUID": "eg4469xpoz85cb",
+      "ruleGroup": "pharmago-aiops",
+      "title": "PharmaGo: CPU de Pod cerca del límite",
+      "condition": "C",
+      "data": [
+        {
+          "refId": "A",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 600,
+            "to": 0
+          },
+          "datasourceUid": "prometheus",
+          "model": {
+            "expr": "100 * sum by (pod) (rate(container_cpu_usage_seconds_total{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"}[1m])) / sum by (pod) ((container_spec_cpu_quota{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"} > 0) / container_spec_cpu_period{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"})",
+            "instant": true,
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "range": false,
+            "refId": "A"
+          }
+        },
+        {
+          "refId": "C",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 0,
+            "to": 0
+          },
+          "datasourceUid": "__expr__",
+          "model": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    80
+                  ],
+                  "type": "gt"
+                }
+              }
+            ],
+            "datasource": {
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "A",
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "C",
+            "type": "threshold"
+          }
+        }
+      ],
+      "updated": "2026-11-13T01:52:56Z",
+      "noDataState": "NoData",
+      "execErrState": "Error",
+      "for": "1m",
+      "annotations": {
+        "description": "Origen: cAdvisor (kubelet). cgroup del Pod (container vacío, válido en Docker y containerd): uso de CPU 1m frente a la suma de resources.limits.cpu. NoData indica que falló el scrape de cAdvisor.",
+        "summary": "{{ $labels.pod }} usa {{ $values.A.Value | printf \"%.0f\" }}% de su límite de CPU"
+      },
+      "labels": {
+        "severity": "warning",
+        "team": "pharmago"
+      },
+      "provenance": "file",
+      "isPaused": false,
+      "notification_settings": null
+    },
+    {
+      "id": 4,
+      "uid": "pharmago-pod-memory",
+      "orgID": 1,
+      "folderUID": "eg4469xpoz85cb",
+      "ruleGroup": "pharmago-aiops",
+      "title": "PharmaGo: memoria de Pod cerca del límite",
+      "condition": "C",
+      "data": [
+        {
+          "refId": "A",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 600,
+            "to": 0
+          },
+          "datasourceUid": "prometheus",
+          "model": {
+            "expr": "100 * max by (pod) (container_memory_working_set_bytes{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"}) / max by (pod) (container_spec_memory_limit_bytes{job=\"kubernetes-cadvisor\", namespace=\"pharmago\", pod!=\"\", container=\"\"} > 0)",
+            "instant": true,
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "range": false,
+            "refId": "A"
+          }
+        },
+        {
+          "refId": "C",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 0,
+            "to": 0
+          },
+          "datasourceUid": "__expr__",
+          "model": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    85
+                  ],
+                  "type": "gt"
+                }
+              }
+            ],
+            "datasource": {
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "A",
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "C",
+            "type": "threshold"
+          }
+        }
+      ],
+      "updated": "2026-11-13T01:52:56Z",
+      "noDataState": "NoData",
+      "execErrState": "Error",
+      "for": "1m",
+      "annotations": {
+        "description": "Origen: cAdvisor (kubelet). cgroup del Pod: working set frente a la suma de resources.limits.memory; al 100% el kernel mata el proceso (OOMKilled).",
+        "summary": "{{ $labels.pod }} usa {{ $values.A.Value | printf \"%.0f\" }}% de su límite de memoria"
+      },
+      "labels": {
+        "severity": "warning",
+        "team": "pharmago"
+      },
+      "provenance": "file",
+      "isPaused": false,
+      "notification_settings": null
+    },
+    {
+      "id": 5,
+      "uid": "pharmago-pod-not-ready",
+      "orgID": 1,
+      "folderUID": "eg4469xpoz85cb",
+      "ruleGroup": "pharmago-aiops",
+      "title": "PharmaGo: Pod Running sin condición Ready",
+      "condition": "C",
+      "data": [
+        {
+          "refId": "A",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 600,
+            "to": 0
+          },
+          "datasourceUid": "prometheus",
+          "model": {
+            "expr": "max by (pod) (kube_pod_status_ready{job=\"kube-state-metrics\", namespace=\"pharmago\", condition=\"false\"}) * on (pod) max by (pod) (kube_pod_status_phase{job=\"kube-state-metrics\", namespace=\"pharmago\", phase=\"Running\"})",
+            "instant": true,
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "range": false,
+            "refId": "A"
+          }
+        },
+        {
+          "refId": "C",
+          "queryType": "",
+          "relativeTimeRange": {
+            "from": 0,
+            "to": 0
+          },
+          "datasourceUid": "__expr__",
+          "model": {
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    0
+                  ],
+                  "type": "gt"
+                }
+              }
+            ],
+            "datasource": {
+              "type": "__expr__",
+              "uid": "__expr__"
+            },
+            "expression": "A",
+            "intervalMs": 1000,
+            "maxDataPoints": 43200,
+            "refId": "C",
+            "type": "threshold"
+          }
+        }
+      ],
+      "updated": "2026-11-13T01:52:56Z",
+      "noDataState": "Alerting",
+      "execErrState": "Error",
+      "for": "45s",
+      "annotations": {
+        "description": "Origen: kube-state-metrics (condición Ready del Pod, no up de scrape). 45s tolera arranques normales. Sin datos = Alerting: no se puede confirmar Ready.",
+        "summary": "{{ $labels.pod }} está Running pero no Ready"
+      },
+      "labels": {
+        "severity": "critical",
+        "team": "pharmago"
+      },
+      "provenance": "file",
+      "isPaused": false,
+      "notification_settings": null
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "startedUtc": "2026-11-13T02:03:39.680856+00:00",
+  "queriedUtc": "2026-11-13T02:04:34.978091+00:00",
+  "path": "/api/drug",
+  "traceId": "e32dc7e5c47fc351ed181c113efabdec",
+  "correlationId": "evidence-failure-sql-8b56e55fdf3ce429",
+  "httpStatus": 500,
+  "elapsedSeconds": 5.22380058300007,
+  "jaegerFound": true,
+  "spans": [
+    {
+      "spanId": "4bb4105657eff45c",
+      "parentIds": [
+        "f3772c8e76ebf7ee"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "HTTP GET",
+      "startTimeUs": 1794535419685870,
+      "durationUs": 5216466,
+      "tags": {
+        "error": true,
+        "http.status_code": 500,
+        "otel.status_code": "ERROR",
+        "span.kind": "client"
+      }
+    },
+    {
+      "spanId": "f3772c8e76ebf7ee",
+      "parentIds": [
+        "0123456789abcdef"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "/api/drug",
+      "startTimeUs": 1794535419685616,
+      "durationUs": 5216993,
+      "tags": {
+        "error": true,
+        "http.status_code": 500,
+        "otel.status_code": "ERROR",
+        "span.kind": "server"
+      }
+    },
+    {
+      "spanId": "9b290fc83f60b991",
+      "parentIds": [
+        "4bb4105657eff45c"
+      ],
+      "service": "PharmaGo.PharmacyService",
+      "operation": "api/Drug",
+      "startTimeUs": 1794535419686105,
+      "durationUs": 5219157,
+      "tags": {
+        "error": true,
+        "http.status_code": 500,
+        "otel.status_code": "ERROR",
+        "span.kind": "server"
+      }
+    }
+  ]
+}

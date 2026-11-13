@@ -1,0 +1,95 @@
+{
+  "ts": "2026-11-13T02:05:44.859202+00:00",
+  "scope": "Selected real request documents only; no claim about every historical log",
+  "checks": [
+    {
+      "traceId": "e32dc7e5c47fc351ed181c113efabdec",
+      "httpStatus": 200,
+      "sampledDocuments": 3,
+      "documents": [
+        {
+          "id": "6Ael0qEBRYn-reiteVs4",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        },
+        {
+          "id": "JAel0qEBRYn-reitjFy_",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        },
+        {
+          "id": "KAel0qEBRYn-reitjFy_",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        }
+      ]
+    },
+    {
+      "traceId": "96d05eb4640ff5ec6fe890e98732365d",
+      "httpStatus": 200,
+      "sampledDocuments": 3,
+      "documents": [
+        {
+          "id": "EqGf0qEByVanJvdemRuZ",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        },
+        {
+          "id": "E6Gf0qEByVanJvdemRuZ",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        },
+        {
+          "id": "FKGf0qEByVanJvdemRuZ",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        }
+      ]
+    },
+    {
+      "traceId": "b361ca929f605f5e1a62f6985ec02f33",
+      "httpStatus": 200,
+      "sampledDocuments": 2,
+      "documents": [
+        {
+          "id": "TKGe0qEByVanJvdeIQDE",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        },
+        {
+          "id": "TaGe0qEByVanJvdeIQDE",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        }
+      ]
+    },
+    {
+      "traceId": "c6549c93c02d96f178dff37108903be1",
+      "httpStatus": 200,
+      "sampledDocuments": 2,
+      "documents": [
+        {
+          "id": "5KGe0qEByVanJvdeOgMX",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        },
+        {
+          "id": "5aGe0qEByVanJvdeOgMX",
+          "index": "pharmago-logs-2026.11.13",
+          "knownSecretValuePresent": false,
+          "authorizationValuePresent": false
+        }
+      ]
+    }
+  ],
+  "pass": true
+}

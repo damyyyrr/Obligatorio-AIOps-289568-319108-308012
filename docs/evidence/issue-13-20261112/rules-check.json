@@ -1,0 +1,86 @@
+{
+  "ts": "2026-11-13T02:13:03.485105+00:00",
+  "rules": [
+    {
+      "uid": "pharmago-http-5xx",
+      "fields": {
+        "title": true,
+        "condition": true,
+        "for": true,
+        "noDataState": true,
+        "execErrState": true,
+        "isPaused": true,
+        "query": true,
+        "threshold": true,
+        "relativeTimeRange": true,
+        "fileProvenance": true
+      },
+      "pass": true
+    },
+    {
+      "uid": "pharmago-http-p95",
+      "fields": {
+        "title": true,
+        "condition": true,
+        "for": true,
+        "noDataState": true,
+        "execErrState": true,
+        "isPaused": true,
+        "query": true,
+        "threshold": true,
+        "relativeTimeRange": true,
+        "fileProvenance": true
+      },
+      "pass": true
+    },
+    {
+      "uid": "pharmago-pod-cpu",
+      "fields": {
+        "title": true,
+        "condition": true,
+        "for": true,
+        "noDataState": true,
+        "execErrState": true,
+        "isPaused": true,
+        "query": true,
+        "threshold": true,
+        "relativeTimeRange": true,
+        "fileProvenance": true
+      },
+      "pass": true
+    },
+    {
+      "uid": "pharmago-pod-memory",
+      "fields": {
+        "title": true,
+        "condition": true,
+        "for": true,
+        "noDataState": true,
+        "execErrState": true,
+        "isPaused": true,
+        "query": true,
+        "threshold": true,
+        "relativeTimeRange": true,
+        "fileProvenance": true
+      },
+      "pass": true
+    },
+    {
+      "uid": "pharmago-pod-not-ready",
+      "fields": {
+        "title": true,
+        "condition": true,
+        "for": true,
+        "noDataState": true,
+        "execErrState": true,
+        "isPaused": true,
+        "query": true,
+        "threshold": true,
+        "relativeTimeRange": true,
+        "fileProvenance": true
+      },
+      "pass": true
+    }
+  ],
+  "pass": true
+}

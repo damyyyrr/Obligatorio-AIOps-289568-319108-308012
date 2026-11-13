@@ -1,0 +1,2032 @@
+{
+  "ts": "2026-11-13T02:05:43.276252+00:00",
+  "queries": [
+    {
+      "label": "trace-b361ca929f605f5e1a62f6985ec02f33",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "\"b361ca929f605f5e1a62f6985ec02f33\""
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 2,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "TKGe0qEByVanJvdeIQDE",
+          "timestamp": "2026-11-13T01:53:50.390Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "b361ca929f605f5e1a62f6985ec02f33"
+          ],
+          "SpanId": [
+            "03811287fd7d0446"
+          ],
+          "correlation_id": [
+            "evidence-success-pharmacy-06c8789522961442"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "TaGe0qEByVanJvdeIQDE",
+          "timestamp": "2026-11-13T01:53:50.408Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "b361ca929f605f5e1a62f6985ec02f33"
+          ],
+          "SpanId": [
+            "03811287fd7d0446"
+          ],
+          "correlation_id": [
+            "evidence-success-pharmacy-06c8789522961442"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 2
+    },
+    {
+      "label": "correlation-evidence-success-pharmacy-06c8789522961442",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "\"evidence-success-pharmacy-06c8789522961442\""
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 2,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "TKGe0qEByVanJvdeIQDE",
+          "timestamp": "2026-11-13T01:53:50.390Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "b361ca929f605f5e1a62f6985ec02f33"
+          ],
+          "SpanId": [
+            "03811287fd7d0446"
+          ],
+          "correlation_id": [
+            "evidence-success-pharmacy-06c8789522961442"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "TaGe0qEByVanJvdeIQDE",
+          "timestamp": "2026-11-13T01:53:50.408Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "b361ca929f605f5e1a62f6985ec02f33"
+          ],
+          "SpanId": [
+            "03811287fd7d0446"
+          ],
+          "correlation_id": [
+            "evidence-success-pharmacy-06c8789522961442"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 2
+    },
+    {
+      "label": "trace-c6549c93c02d96f178dff37108903be1",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "\"c6549c93c02d96f178dff37108903be1\""
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 2,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "5KGe0qEByVanJvdeOgMX",
+          "timestamp": "2026-11-13T01:54:59.965Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "c6549c93c02d96f178dff37108903be1"
+          ],
+          "SpanId": [
+            "035c5241eb71c300"
+          ],
+          "correlation_id": [
+            "evidence-success-users-correct-5fd1b818b698acbe"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "5aGe0qEByVanJvdeOgMX",
+          "timestamp": "2026-11-13T01:55:00.380Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "c6549c93c02d96f178dff37108903be1"
+          ],
+          "SpanId": [
+            "035c5241eb71c300"
+          ],
+          "correlation_id": [
+            "evidence-success-users-correct-5fd1b818b698acbe"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 2
+    },
+    {
+      "label": "correlation-evidence-success-users-correct-5fd1b818b698acbe",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "\"evidence-success-users-correct-5fd1b818b698acbe\""
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 2,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "5KGe0qEByVanJvdeOgMX",
+          "timestamp": "2026-11-13T01:54:59.965Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "c6549c93c02d96f178dff37108903be1"
+          ],
+          "SpanId": [
+            "035c5241eb71c300"
+          ],
+          "correlation_id": [
+            "evidence-success-users-correct-5fd1b818b698acbe"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "5aGe0qEByVanJvdeOgMX",
+          "timestamp": "2026-11-13T01:55:00.380Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "c6549c93c02d96f178dff37108903be1"
+          ],
+          "SpanId": [
+            "035c5241eb71c300"
+          ],
+          "correlation_id": [
+            "evidence-success-users-correct-5fd1b818b698acbe"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 2
+    },
+    {
+      "label": "trace-96d05eb4640ff5ec6fe890e98732365d",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "\"96d05eb4640ff5ec6fe890e98732365d\""
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 3,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "EqGf0qEByVanJvdemRuZ",
+          "timestamp": "2026-11-13T01:57:14.146Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "96d05eb4640ff5ec6fe890e98732365d"
+          ],
+          "SpanId": [
+            "531a478e0f729306"
+          ],
+          "correlation_id": [
+            "evidence-login-failure-61ee5fadd3e81460"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "FKGf0qEByVanJvdemRuZ",
+          "timestamp": "2026-11-13T01:57:14.644Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Warning",
+          "category": "Instrumentation.StructuredLogger",
+          "TraceId": [
+            "96d05eb4640ff5ec6fe890e98732365d"
+          ],
+          "SpanId": [
+            "0404617be8570ff6"
+          ],
+          "correlation_id": [
+            "evidence-login-failure-61ee5fadd3e81460"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "E6Gf0qEByVanJvdemRuZ",
+          "timestamp": "2026-11-13T01:57:14.648Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "96d05eb4640ff5ec6fe890e98732365d"
+          ],
+          "SpanId": [
+            "531a478e0f729306"
+          ],
+          "correlation_id": [
+            "evidence-login-failure-61ee5fadd3e81460"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 3
+    },
+    {
+      "label": "correlation-evidence-login-failure-61ee5fadd3e81460",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "\"evidence-login-failure-61ee5fadd3e81460\""
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 3,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "EqGf0qEByVanJvdemRuZ",
+          "timestamp": "2026-11-13T01:57:14.146Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "96d05eb4640ff5ec6fe890e98732365d"
+          ],
+          "SpanId": [
+            "531a478e0f729306"
+          ],
+          "correlation_id": [
+            "evidence-login-failure-61ee5fadd3e81460"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "FKGf0qEByVanJvdemRuZ",
+          "timestamp": "2026-11-13T01:57:14.644Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Warning",
+          "category": "Instrumentation.StructuredLogger",
+          "TraceId": [
+            "96d05eb4640ff5ec6fe890e98732365d"
+          ],
+          "SpanId": [
+            "0404617be8570ff6"
+          ],
+          "correlation_id": [
+            "evidence-login-failure-61ee5fadd3e81460"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "E6Gf0qEByVanJvdemRuZ",
+          "timestamp": "2026-11-13T01:57:14.648Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "96d05eb4640ff5ec6fe890e98732365d"
+          ],
+          "SpanId": [
+            "531a478e0f729306"
+          ],
+          "correlation_id": [
+            "evidence-login-failure-61ee5fadd3e81460"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 3
+    },
+    {
+      "label": "trace-e32dc7e5c47fc351ed181c113efabdec",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "\"e32dc7e5c47fc351ed181c113efabdec\""
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 3,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "6Ael0qEBRYn-reiteVs4",
+          "timestamp": "2026-11-13T02:03:39.685Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "e32dc7e5c47fc351ed181c113efabdec"
+          ],
+          "SpanId": [
+            "f3772c8e76ebf7ee"
+          ],
+          "correlation_id": [
+            "evidence-failure-sql-8b56e55fdf3ce429"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "KAel0qEBRYn-reitjFy_",
+          "timestamp": "2026-11-13T02:03:44.901Z",
+          "service": "pharmago-pharmacy-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-pharmacy-service-d5f48968c-6d7ql",
+          "level": "Error",
+          "category": "Microsoft.AspNetCore.Server.Kestrel",
+          "TraceId": [
+            "e32dc7e5c47fc351ed181c113efabdec"
+          ],
+          "SpanId": [
+            "9b290fc83f60b991"
+          ],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "JAel0qEBRYn-reitjFy_",
+          "timestamp": "2026-11-13T02:03:44.902Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "e32dc7e5c47fc351ed181c113efabdec"
+          ],
+          "SpanId": [
+            "f3772c8e76ebf7ee"
+          ],
+          "correlation_id": [
+            "evidence-failure-sql-8b56e55fdf3ce429"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 3
+    },
+    {
+      "label": "correlation-evidence-failure-sql-8b56e55fdf3ce429",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "\"evidence-failure-sql-8b56e55fdf3ce429\""
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 2,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "6Ael0qEBRYn-reiteVs4",
+          "timestamp": "2026-11-13T02:03:39.685Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "e32dc7e5c47fc351ed181c113efabdec"
+          ],
+          "SpanId": [
+            "f3772c8e76ebf7ee"
+          ],
+          "correlation_id": [
+            "evidence-failure-sql-8b56e55fdf3ce429"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "JAel0qEBRYn-reitjFy_",
+          "timestamp": "2026-11-13T02:03:44.902Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "Yarp.ReverseProxy.Forwarder.HttpForwarder",
+          "TraceId": [
+            "e32dc7e5c47fc351ed181c113efabdec"
+          ],
+          "SpanId": [
+            "f3772c8e76ebf7ee"
+          ],
+          "correlation_id": [
+            "evidence-failure-sql-8b56e55fdf3ce429"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 2
+    },
+    {
+      "label": "service-pharmago-api-gateway",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "match_phrase": {
+                  "kubernetes.labels.app": "pharmago-api-gateway"
+                }
+              },
+              {
+                "range": {
+                  "@timestamp": {
+                    "gte": "2026-11-13T01:52:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 1725,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "yaCe0qEByVanJvdeIf7B",
+          "timestamp": "2026-11-13T01:52:13.987Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "System.Net.Http.HttpClient.readiness.LogicalHandler",
+          "TraceId": [
+            "6bd053225f004c2471997dc0134ea0be"
+          ],
+          "SpanId": [
+            "fa832675f27e1031"
+          ],
+          "correlation_id": [
+            "d31b8e83-1a44-4148-ae49-688fd4408305"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "yqCe0qEByVanJvdeIf7B",
+          "timestamp": "2026-11-13T01:52:13.988Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "System.Net.Http.HttpClient.readiness.ClientHandler",
+          "TraceId": [
+            "6bd053225f004c2471997dc0134ea0be"
+          ],
+          "SpanId": [
+            "fa832675f27e1031"
+          ],
+          "correlation_id": [
+            "d31b8e83-1a44-4148-ae49-688fd4408305"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "y6Ce0qEByVanJvdeIf7B",
+          "timestamp": "2026-11-13T01:52:14.026Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "System.Net.Http.HttpClient.readiness.LogicalHandler",
+          "TraceId": [
+            "6bd053225f004c2471997dc0134ea0be"
+          ],
+          "SpanId": [
+            "fa832675f27e1031"
+          ],
+          "correlation_id": [
+            "d31b8e83-1a44-4148-ae49-688fd4408305"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "zKCe0qEByVanJvdeIf7B",
+          "timestamp": "2026-11-13T01:52:14.026Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "System.Net.Http.HttpClient.readiness.ClientHandler",
+          "TraceId": [
+            "6bd053225f004c2471997dc0134ea0be"
+          ],
+          "SpanId": [
+            "fa832675f27e1031"
+          ],
+          "correlation_id": [
+            "d31b8e83-1a44-4148-ae49-688fd4408305"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "zaCe0qEByVanJvdeIf7B",
+          "timestamp": "2026-11-13T01:52:14.153Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "6bd053225f004c2471997dc0134ea0be"
+          ],
+          "SpanId": [
+            "fa832675f27e1031"
+          ],
+          "correlation_id": [
+            "d31b8e83-1a44-4148-ae49-688fd4408305"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 30
+    },
+    {
+      "label": "service-pharmago-users-service",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "match_phrase": {
+                  "kubernetes.labels.app": "pharmago-users-service"
+                }
+              },
+              {
+                "range": {
+                  "@timestamp": {
+                    "gte": "2026-11-13T01:52:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 50,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "PKGg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:13.353Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Information",
+          "category": "Microsoft.Hosting.Lifetime",
+          "TraceId": [],
+          "SpanId": [],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "PaGg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:13.372Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Information",
+          "category": "Microsoft.Hosting.Lifetime",
+          "TraceId": [],
+          "SpanId": [],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "PqGg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:13.372Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Information",
+          "category": "Microsoft.Hosting.Lifetime",
+          "TraceId": [],
+          "SpanId": [],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "P6Gg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:13.372Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Information",
+          "category": "Microsoft.Hosting.Lifetime",
+          "TraceId": [],
+          "SpanId": [],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "baGf0qEByVanJvde0Bs8",
+          "timestamp": "2026-11-13T01:52:17.066Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-46c4t",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "60b43d486be014cdc14adef9a9e1b9cd"
+          ],
+          "SpanId": [
+            "985e0ef9eb132c6e"
+          ],
+          "correlation_id": [
+            "0HNQ152UIJN0D:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 30
+    },
+    {
+      "label": "service-pharmago-pharmacy-service",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "match_phrase": {
+                  "kubernetes.labels.app": "pharmago-pharmacy-service"
+                }
+              },
+              {
+                "range": {
+                  "@timestamp": {
+                    "gte": "2026-11-13T01:52:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 58,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "FKGf0qEByVanJvde-xwu",
+          "timestamp": "2026-11-13T01:52:15.258Z",
+          "service": "pharmago-pharmacy-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "c9ca3831d4997d316d71eb9302160ed0"
+          ],
+          "SpanId": [
+            "77defde22d628e5a"
+          ],
+          "correlation_id": [
+            "0HNQ152TVEBPK:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "cKGe0qEByVanJvde-Rds",
+          "timestamp": "2026-11-13T01:52:17.102Z",
+          "service": "pharmago-pharmacy-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "4cec478e13ca62d4ec9a3725e96fa37b"
+          ],
+          "SpanId": [
+            "25b8265bf41312a6"
+          ],
+          "correlation_id": [
+            "0HNQ152UIHKG2:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "FaGf0qEByVanJvde-xwu",
+          "timestamp": "2026-11-13T01:52:17.269Z",
+          "service": "pharmago-pharmacy-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "c18c663f20eecf86c190e1733a05ae2e"
+          ],
+          "SpanId": [
+            "de5aa2f30d1fe06a"
+          ],
+          "correlation_id": [
+            "0HNQ152TVEBPM:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "caGe0qEByVanJvde-Rds",
+          "timestamp": "2026-11-13T01:52:19.112Z",
+          "service": "pharmago-pharmacy-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "4cae3ebc27cdbef275918eb97e2417ce"
+          ],
+          "SpanId": [
+            "138999eee9b54ae3"
+          ],
+          "correlation_id": [
+            "0HNQ152UIHKG3:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "FqGf0qEByVanJvde-xwu",
+          "timestamp": "2026-11-13T01:52:22.268Z",
+          "service": "pharmago-pharmacy-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "e1ffc838841bac2c860afe5d7cc8752c"
+          ],
+          "SpanId": [
+            "69a7b8cb1504aa40"
+          ],
+          "correlation_id": [
+            "0HNQ152TVEBPN:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 30
+    },
+    {
+      "label": "severity-Information",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "match_phrase": {
+                  "LogLevel": "Information"
+                }
+              },
+              {
+                "range": {
+                  "@timestamp": {
+                    "gte": "2026-11-13T01:52:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 1696,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "PKGg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:13.353Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Information",
+          "category": "Microsoft.Hosting.Lifetime",
+          "TraceId": [],
+          "SpanId": [],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "PaGg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:13.372Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Information",
+          "category": "Microsoft.Hosting.Lifetime",
+          "TraceId": [],
+          "SpanId": [],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "PqGg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:13.372Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Information",
+          "category": "Microsoft.Hosting.Lifetime",
+          "TraceId": [],
+          "SpanId": [],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "P6Gg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:13.372Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Information",
+          "category": "Microsoft.Hosting.Lifetime",
+          "TraceId": [],
+          "SpanId": [],
+          "correlation_id": [],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "yaCe0qEByVanJvdeIf7B",
+          "timestamp": "2026-11-13T01:52:13.987Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Information",
+          "category": "System.Net.Http.HttpClient.readiness.LogicalHandler",
+          "TraceId": [
+            "6bd053225f004c2471997dc0134ea0be"
+          ],
+          "SpanId": [
+            "fa832675f27e1031"
+          ],
+          "correlation_id": [
+            "d31b8e83-1a44-4148-ae49-688fd4408305"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 30
+    },
+    {
+      "label": "severity-Warning",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "match_phrase": {
+                  "LogLevel": "Warning"
+                }
+              },
+              {
+                "range": {
+                  "@timestamp": {
+                    "gte": "2026-11-13T01:52:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 37,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "FKGf0qEByVanJvdemRuZ",
+          "timestamp": "2026-11-13T01:57:14.644Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Warning",
+          "category": "Instrumentation.StructuredLogger",
+          "TraceId": [
+            "96d05eb4640ff5ec6fe890e98732365d"
+          ],
+          "SpanId": [
+            "0404617be8570ff6"
+          ],
+          "correlation_id": [
+            "evidence-login-failure-61ee5fadd3e81460"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "mwej0qEBRYn-reitgj42",
+          "timestamp": "2026-11-13T01:59:23.833Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Warning",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "96e3497bf290be413506c50e8c3836cc"
+          ],
+          "SpanId": [
+            "86b5f2c3fcf24770"
+          ],
+          "correlation_id": [
+            "3af48914-7253-45be-9db3-75dbca0f8708"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "1Qej0qEBRYn-reiteTyp",
+          "timestamp": "2026-11-13T01:59:28.832Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Warning",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "3056a2113fe57f498e5d177a4bccf1d9"
+          ],
+          "SpanId": [
+            "074a92385279fd1e"
+          ],
+          "correlation_id": [
+            "abf8f6a9-bae8-4e16-aee9-7807c83e84c3"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "qQek0qEBRYn-reitPFXk",
+          "timestamp": "2026-11-13T01:59:33.831Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Warning",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "f79b228acbf14d3b05e5850ff0b6a75e"
+          ],
+          "SpanId": [
+            "e21e797db0bb4611"
+          ],
+          "correlation_id": [
+            "082741a6-d3ee-4207-9602-cc21bd75f312"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "8gek0qEBRYn-reitIVR5",
+          "timestamp": "2026-11-13T01:59:38.832Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Warning",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "b578afffce7f000c85d84d3860787bd7"
+          ],
+          "SpanId": [
+            "2ea21fdab3d9bdd0"
+          ],
+          "correlation_id": [
+            "90db1fa0-82ee-4470-a53b-6b8f8e5c34fa"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 30
+    },
+    {
+      "label": "severity-Error",
+      "request": {
+        "size": 30,
+        "sort": [
+          {
+            "@timestamp": "asc"
+          }
+        ],
+        "query": {
+          "bool": {
+            "filter": [
+              {
+                "match_phrase": {
+                  "LogLevel": "Error"
+                }
+              },
+              {
+                "range": {
+                  "@timestamp": {
+                    "gte": "2026-11-13T01:52:00Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "httpStatus": 200,
+      "total": {
+        "value": 100,
+        "relation": "eq"
+      },
+      "hits": [
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "zaCe0qEByVanJvdeIf7B",
+          "timestamp": "2026-11-13T01:52:14.153Z",
+          "service": "pharmago-api-gateway",
+          "namespace": "pharmago",
+          "pod": "pharmago-api-gateway-7ffc688c6-2wj2w",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "6bd053225f004c2471997dc0134ea0be"
+          ],
+          "SpanId": [
+            "fa832675f27e1031"
+          ],
+          "correlation_id": [
+            "d31b8e83-1a44-4148-ae49-688fd4408305"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "FKGf0qEByVanJvde-xwu",
+          "timestamp": "2026-11-13T01:52:15.258Z",
+          "service": "pharmago-pharmacy-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-pharmacy-service-d5f48968c-7jbsc",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "c9ca3831d4997d316d71eb9302160ed0"
+          ],
+          "SpanId": [
+            "77defde22d628e5a"
+          ],
+          "correlation_id": [
+            "0HNQ152TVEBPK:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "baGf0qEByVanJvde0Bs8",
+          "timestamp": "2026-11-13T01:52:17.066Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-46c4t",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "60b43d486be014cdc14adef9a9e1b9cd"
+          ],
+          "SpanId": [
+            "985e0ef9eb132c6e"
+          ],
+          "correlation_id": [
+            "0HNQ152UIJN0D:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "QKGg0qEByVanJvdeAhz-",
+          "timestamp": "2026-11-13T01:52:17.100Z",
+          "service": "pharmago-users-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-users-service-cbfddcb-7lbb6",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "2473d8d05c7dcafe8c2063ce328140b7"
+          ],
+          "SpanId": [
+            "4458454bdb1725ca"
+          ],
+          "correlation_id": [
+            "0HNQ152UIHJBA:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        },
+        {
+          "index": "pharmago-logs-2026.11.13",
+          "id": "cKGe0qEByVanJvde-Rds",
+          "timestamp": "2026-11-13T01:52:17.102Z",
+          "service": "pharmago-pharmacy-service",
+          "namespace": "pharmago",
+          "pod": "pharmago-pharmacy-service-d5f48968c-b5vkm",
+          "level": "Error",
+          "category": "Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService",
+          "TraceId": [
+            "4cec478e13ca62d4ec9a3725e96fa37b"
+          ],
+          "SpanId": [
+            "25b8265bf41312a6"
+          ],
+          "correlation_id": [
+            "0HNQ152UIHKG2:00000002"
+          ],
+          "sourceFieldNames": [
+            "@timestamp",
+            "Category",
+            "EventId",
+            "Exception",
+            "LogLevel",
+            "Message",
+            "Scopes",
+            "State",
+            "Timestamp",
+            "_p",
+            "kubernetes",
+            "stream",
+            "time"
+          ]
+        }
+      ],
+      "returnedHitsBeforePublicProjection": 30
+    }
+  ],
+  "kibanaDataView": {
+    "httpStatus": 200,
+    "dataView": {
+      "id": "pharmago-logs",
+      "name": "PharmaGo logs",
+      "title": "pharmago-logs-*",
+      "timeFieldName": "@timestamp"
+    }
+  },
+  "esHealth": {
+    "status": 200,
+    "health": {
+      "cluster_name": "docker-cluster",
+      "status": "yellow",
+      "timed_out": false,
+      "number_of_nodes": 1,
+      "number_of_data_nodes": 1,
+      "active_primary_shards": 29,
+      "active_shards": 29,
+      "relocating_shards": 0,
+      "initializing_shards": 0,
+      "unassigned_shards": 2,
+      "delayed_unassigned_shards": 0,
+      "number_of_pending_tasks": 0,
+      "number_of_in_flight_fetch": 0,
+      "task_max_waiting_in_queue_millis": 0,
+      "active_shards_percent_as_number": 93.54838709677419
+    }
+  },
+  "publicProjection": {
+    "description": "Sanitized fields; at most five sample hits per query. Original totals and executed query bodies retained."
+  }
+}

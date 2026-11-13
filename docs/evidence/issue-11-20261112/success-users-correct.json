@@ -1,0 +1,68 @@
+{
+  "startedUtc": "2026-11-13T01:54:59.959614+00:00",
+  "queriedUtc": "2026-11-13T01:55:06.420671+00:00",
+  "path": "/api/roles",
+  "traceId": "c6549c93c02d96f178dff37108903be1",
+  "correlationId": "evidence-success-users-correct-5fd1b818b698acbe",
+  "httpStatus": 200,
+  "elapsedSeconds": 0.42132761300001675,
+  "jaegerFound": true,
+  "spans": [
+    {
+      "spanId": "532daf05f4daba83",
+      "parentIds": [
+        "abf5e86a9735c749"
+      ],
+      "service": "PharmaGo.UsersService",
+      "operation": "api/Roles",
+      "startTimeUs": 1794534899967394,
+      "durationUs": 413878,
+      "tags": {
+        "http.status_code": 200,
+        "span.kind": "server"
+      }
+    },
+    {
+      "spanId": "abf5e86a9735c749",
+      "parentIds": [
+        "035c5241eb71c300"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "HTTP GET",
+      "startTimeUs": 1794534899965248,
+      "durationUs": 414915,
+      "tags": {
+        "http.status_code": 200,
+        "span.kind": "client"
+      }
+    },
+    {
+      "spanId": "035c5241eb71c300",
+      "parentIds": [
+        "0123456789abcdef"
+      ],
+      "service": "PharmaGo.ApiGateway",
+      "operation": "/api/roles",
+      "startTimeUs": 1794534899964635,
+      "durationUs": 416139,
+      "tags": {
+        "http.status_code": 200,
+        "span.kind": "server"
+      }
+    },
+    {
+      "spanId": "b00a38e5ffa2ad01",
+      "parentIds": [
+        "532daf05f4daba83"
+      ],
+      "service": "PharmaGo.UsersService",
+      "operation": "PharmaDb",
+      "startTimeUs": 1794534900289166,
+      "durationUs": 6532,
+      "tags": {
+        "db.system": "mssql",
+        "span.kind": "client"
+      }
+    }
+  ]
+}
