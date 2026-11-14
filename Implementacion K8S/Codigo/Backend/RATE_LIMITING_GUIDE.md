@@ -2,15 +2,17 @@
 
 > **Actualización 11/11/2026 (issue #9):** el Gateway ya **no** usa `X-Forwarded-For`, `X-Real-IP` ni `X-User-Id` enviados por el cliente, y el modo `User` hashea el token completo. La política vigente y la evidencia están en [docs/aiops-rate-limiting.md](../../../docs/aiops-rate-limiting.md). Las secciones de abajo que hablan de esos headers describen el comportamiento anterior.
 
+**Alcance de esta referencia:** la configuración predeterminada actual es modo `IP`, con contadores locales por Gateway y una réplica por decisión de #9. Los ejemplos históricos de headers/modos siguientes no sustituyen la política vigente enlazada arriba.
+
 ## 🎯 Problema: ¿Por IP o por Usuario?
 
 ### ❌ Problema con Rate Limiting por IP
 
-Cuando tu frontend está desplegado (React, Angular, etc.), **todas las peticiones vienen desde el servidor del frontend**, no desde el navegador del usuario:
+En PharmaGo, Angular llama directamente desde el navegador a `environment.apiUrl`; el Nginx actual sirve archivos estáticos y no hace proxy de `/api`. Servir Angular desde Nginx no agrupa por sí solo las solicitudes en la IP del servidor frontend. El Gateway sí puede observar una IP compartida cuando hay NAT, port-forward o un proxy en el camino. El siguiente esquema ilustra ese caso:
 
 ```
 Usuario A (navegador) ──┐
-Usuario B (navegador) ──┼──> Frontend Server (1 IP) ──> API Gateway
+Usuario B (navegador) ──┼──> NAT / proxy / port-forward ──> API Gateway
 Usuario C (navegador) ──┘
 ```
 

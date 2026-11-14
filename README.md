@@ -2,7 +2,7 @@
 
 Fork de [jirabedra/AIOps](https://github.com/jirabedra/AIOps). La rama de integración del equipo es **`obligatorio`**, basada en `feature/k8s`. `main` conserva la referencia original mínima del curso.
 
-El baseline local de Compose fue verificado el 06/11/2026: ocho servicios activos y catorce comprobaciones funcionales/de telemetría aprobadas antes y después de una parada/reinicio. Kubernetes ya cuenta con validaciones locales de despliegue, datos, métricas, recuperación y [rollout/rollback de aplicación](docs/evidence/issue-8-20261111/README.md). La separación física, el alcance completo de disponibilidad, observabilidad, caos y ML conservan sus pendientes en la matriz.
+El baseline local de Compose fue verificado el 06/11/2026: ocho servicios activos y catorce comprobaciones funcionales/de telemetría aprobadas antes y después de una parada/reinicio. Después se registraron validaciones locales de Kubernetes/datos, recuperación, rollout/rollback, observabilidad, ML, BDD y seis escenarios de caos. Ver [estado contrastado al 14/11](docs/estado-actual.md), con enlaces a cada evidencia y sus límites. La separación física, el alcance de disponibilidad y la aceptación del dataset conservan consultas académicas abiertas; el cierre técnico de las issues no las resuelve.
 
 ## Empezar
 
@@ -25,7 +25,8 @@ Ver la [guía de arranque y diagnóstico](<Implementacion K8S/Codigo/BASELINE.md
 - [BDD Cypress + Cucumber: ejecución de #15](Implementacion%20K8S/Codigo/Frontend/e2e/README.md), cuatro escenarios aprobados en navegador contra el baseline real; [evidencia](docs/evidence/issue-15-20261112/live-after-fix/README.md).
 - [Plan maestro](docs/aiops-master-plan.md), [estado de implementación](docs/AIops-implementation-plan.md) y [matriz de requisitos](docs/aiops-requirements-matrix.md).
 - [Consultas académicas pendientes](docs/aiops-open-questions.md), [plan de incidentes](docs/baseline-incidents.md), [seis runbooks](docs/runbooks/incidentes.md) y [algoritmos ML con resultados reproducibles](ml/README.md).
-- [Seis escenarios de caos y recuperación](<Implementacion K8S/Codigo/chaos-engineering/README.md>): seis ensayos reales PASS locales, con [efectos, restauración y limpieza verificados](docs/evidence/issue-17-20261112/fix-after-review/README.md). Red/Service se evalúan sobre conexiones nuevas; la revisión humana de incidentes sigue en #16.
+- [Seis escenarios de caos y recuperación](<Implementacion K8S/Codigo/chaos-engineering/README.md>): seis ensayos reales PASS locales y [repetición guiada por el operador](docs/evidence/issue-16-20261113/README.md), con efectos, restauración y limpieza verificados. Red/Service se evalúan sobre conexiones nuevas. [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) está cerrada para plan y aplicación guiada local; la revisión independiente quedó como mejora opcional no realizada.
+- [Suite .NET, 14/11](docs/evidence/test-isolation-20261114/README.md): **319/319 pruebas aprobadas** después de corregir únicamente el aislamiento de una prueba en el PR #42.
 
 Cada integrante toma una issue pendiente y se asigna como responsable. Crear una rama desde `obligatorio`, referenciar la issue en commits y abrir el PR contra `obligatorio`. Revisar dependencias antes de empezar; coordinar cambios compartidos en Compose/manifests y no cerrar una issue por tener archivos escritos sin probarlos. Las prioridades y los hitos permiten filtrar el trabajo sin asignar personas por suposición.
 

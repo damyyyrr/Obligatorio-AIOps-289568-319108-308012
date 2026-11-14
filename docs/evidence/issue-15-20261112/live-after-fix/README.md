@@ -44,4 +44,4 @@ La captura se revisó: muestra medicamento, farmacia, precio, código, presentac
 
 ## Alcance
 
-Esta ejecución acredita los criterios funcionales de #15. El CI anterior ya había aprobado preparación/build Angular, pero omitido `live`; la ejecución descrita aquí es local. No se ejecutó el runner interactivo ni el job manual remoto. No acredita disponibilidad bajo fallas, recuperación ni los seis ensayos de caos. El PR queda listo para revisión e integración; no se cerró automáticamente la issue.
+Esta ejecución acredita los criterios funcionales de #15. El CI anterior ya había aprobado preparación/build Angular, pero omitido `live`; la ejecución descrita aquí es local. No se ejecutó el runner interactivo ni el job manual remoto. No acredita disponibilidad bajo fallas, recuperación ni los seis ensayos de caos. Al registrar este ensayo, el PR quedó listo para revisión e integración; la ejecución no cerró automáticamente la issue. Posteriormente los cambios se integraron y la [issue #15](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15) se cerró como completada.
