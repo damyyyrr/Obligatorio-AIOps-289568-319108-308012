@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1300" viewBox="0 0 2400 1300"><rect width="100%" height="100%" fill="white"/>
+<rect x="20" y="20" width="2360" height="1260" fill="#FFFFFF" stroke="#555555" stroke-width="5"/>
+<text x="60" y="55" font-family="Arial" font-size="52" font-weight="700" dominant-baseline="hanging" text-anchor="start">PC Windows   |   Docker Desktop y WSL</text>
+<rect x="60" y="150" width="2280" height="950" fill="#FFFFFF" stroke="#999999" stroke-width="4"/>
+<text x="100" y="180" font-family="Arial" font-size="46" font-weight="700" dominant-baseline="hanging" text-anchor="start">Minikube pharmago-issue17-validation   |   1 nodo Kubernetes   |   Calico</text>
+<rect x="130" y="350" width="360" height="160" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="310.0" y="403.0" font-family="Arial" font-size="50" font-weight="700" dominant-baseline="central" text-anchor="middle">Angular</text>
+<text x="310.0" y="464.0" font-family="Arial" font-size="42" font-weight="400" dominant-baseline="central" text-anchor="middle">1 pod UI</text>
+<rect x="650" y="350" width="450" height="160" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="875.0" y="403.0" font-family="Arial" font-size="50" font-weight="700" dominant-baseline="central" text-anchor="middle">Gateway</text>
+<text x="875.0" y="464.0" font-family="Arial" font-size="42" font-weight="400" dominant-baseline="central" text-anchor="middle">1 réplica</text>
+<rect x="1270" y="270" width="420" height="150" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="1480.0" y="318.0" font-family="Arial" font-size="50" font-weight="700" dominant-baseline="central" text-anchor="middle">Users</text>
+<text x="1480.0" y="379.0" font-family="Arial" font-size="42" font-weight="400" dominant-baseline="central" text-anchor="middle">2 réplicas</text>
+<rect x="1270" y="560" width="420" height="150" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="1480.0" y="608.0" font-family="Arial" font-size="50" font-weight="700" dominant-baseline="central" text-anchor="middle">Pharmacy</text>
+<text x="1480.0" y="669.0" font-family="Arial" font-size="42" font-weight="400" dominant-baseline="central" text-anchor="middle">2 réplicas</text>
+<rect x="1870" y="415" width="360" height="160" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="2050.0" y="468.0" font-family="Arial" font-size="50" font-weight="700" dominant-baseline="central" text-anchor="middle">SQL Server</text>
+<text x="2050.0" y="529.0" font-family="Arial" font-size="42" font-weight="400" dominant-baseline="central" text-anchor="middle">1 réplica y PVC</text>
+<path d="M490,430 L650,430" stroke="#222" stroke-width="6"/><polygon points="650,430 625.0,418.0 625.0,442.0" fill="#222"/>
+<path d="M1100,410 L1270,345" stroke="#222" stroke-width="6"/><polygon points="1270,345 1242.3630545335236,342.7198146384518 1250.934353723922,365.13705867487784" fill="#222"/>
+<path d="M1100,470 L1270,635" stroke="#222" stroke-width="6"/><polygon points="1270,635 1260.418187235316,608.9771472712438 1243.702778183268,626.1990838703233" fill="#222"/>
+<path d="M1690,345 L1870,455" stroke="#222" stroke-width="6"/><polygon points="1870,455 1854.9253542721485,431.72436775982715 1842.4105540452533,452.20313176747413" fill="#222"/>
+<path d="M1690,635 L1870,535" stroke="#222" stroke-width="6"/><polygon points="1870,535 1842.318352922818,536.6511859660073 1853.973783271105,557.6309605929242" fill="#222"/>
+<text x="210" y="555" font-family="Arial" font-size="42" font-weight="400" dominant-baseline="hanging" text-anchor="start">HTTP</text>
+<text x="1030" y="295" font-family="Arial" font-size="42" font-weight="400" dominant-baseline="hanging" text-anchor="start">HTTP</text>
+<text x="1730" y="355" font-family="Arial" font-size="42" font-weight="400" dominant-baseline="hanging" text-anchor="start">SQL</text>
+<rect x="130" y="790" width="2130" height="240" fill="#FAFAFA" stroke="#B5B5B5" stroke-width="4"/>
+<text x="170" y="820" font-family="Arial" font-size="44" font-weight="400" dominant-baseline="hanging" text-anchor="start">Métricas OTLP → Collector; Prometheus y Grafana</text>
+<text x="170" y="890" font-family="Arial" font-size="44" font-weight="400" dominant-baseline="hanging" text-anchor="start">Trazas OTLP → Collector → Jaeger</text>
+<text x="170" y="960" font-family="Arial" font-size="44" font-weight="400" dominant-baseline="hanging" text-anchor="start">Logs JSON → Fluent Bit → Elasticsearch y Kibana</text>
+<text x="65" y="1145" font-family="Arial" font-size="43" font-weight="400" dominant-baseline="hanging" text-anchor="start">Perfil observado: 17 pods base en pharmago; clientes de prueba efímeros aparte.</text>
+<text x="65" y="1195" font-family="Arial" font-size="43" font-weight="400" dominant-baseline="hanging" text-anchor="start">Las réplicas comparten nodo y host físico. No representa hosts independientes.</text>
+</svg>
