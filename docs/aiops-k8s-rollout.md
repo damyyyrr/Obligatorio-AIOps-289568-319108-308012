@@ -53,4 +53,4 @@ Ante un fallo del candidato el generador intenta restaurar las revisiones guarda
 
 ## Alcance
 
-Se reemplazan los tres procesos de aplicación, con el frontend, SQL y observabilidad estables. SQL Express conserva una réplica y `Recreate`. El frontend no forma parte del tráfico medido. Q01 sigue pendiente para separación física y Q02 para disponibilidad durante reemplazo de SQL y observabilidad. Un éxito local debe informarse como “100% observado en N solicitudes durante T y bajo estas condiciones”, conservando abierto R03 completo. [Evidencia de #8](evidence/issue-8-20261111/README.md).
+Se reemplazan los tres procesos de aplicación, con el frontend, SQL y observabilidad estables. SQL Express conserva una réplica y `Recreate`. El frontend no forma parte del tráfico medido. El equipo adopta el laboratorio local en D01 y limita el recambio a Gateway, Users y Pharmacy en D02. Un éxito local debe informarse como “100% observado en N solicitudes durante T y bajo estas condiciones”, distinguiendo el alcance decidido de R03 literal. [Evidencia de #8](evidence/issue-8-20261111/README.md).

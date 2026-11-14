@@ -6,7 +6,7 @@
 **Docente:** Juan Irabedra
 **Corte:** 14 de noviembre de 2026 · `a1b2d56e20afec0797ceafd6f0a10b795fa72121`
 
-Extendimos PharmaGo, una aplicación .NET y Angular, con mecanismos de recuperación, despliegues seguros, telemetría, detección de anomalías y experimentos de caos. Las evidencias registran recuperación de procesos, 226 solicitudes válidas durante rollout y rollback, cinco alertas verificadas y seis categorías de caos aprobadas. El refuerzo de almacenamiento agregó escritura sostenida con recuperación y limpieza verificadas. El alcance probado es un laboratorio local; la separación en hosts físicos y la aceptación del dataset mantienen aclaraciones académicas pendientes.
+Extendimos PharmaGo, una aplicación .NET y Angular, con mecanismos de recuperación, despliegues seguros, telemetría, detección de anomalías y experimentos de caos. Las evidencias registran recuperación de procesos, 226 solicitudes válidas durante rollout y rollback, cinco alertas verificadas y seis categorías de caos aprobadas. El refuerzo de almacenamiento agregó escritura sostenida con recuperación y limpieza verificadas. El equipo decidió mantener el laboratorio local, el recambio de tres servicios y el dataset docente adjunto como alcance de la entrega.
 
 El informe sigue los ocho elementos de la rúbrica y presenta desafíos, decisiones y resultados medidos. El corte de código es el merge del PR 44 en obligatorio. Las pruebas conservan sus propios commits, imágenes, entornos y fechas; reunirlas aquí no constituye una nueva ejecución integral sobre ese corte.
 
@@ -16,7 +16,7 @@ Desplegamos la interfaz Angular, API Gateway, Users y Pharmacy en pods independi
 
 ![Figura 1. Componentes del perfil de caos pharmago-issue17-validation. Un nodo Kubernetes local sobre una única PC; las cajas representan componentes lógicos.](figuras/despliegue-laboratorio.png)
 
-Se probaron dos topologías: pharmago-issue3 distribuyó Gateway, Users y Pharmacy en tres nodos Kubernetes virtuales mediante etiquetas obligatorias; el perfil de caos usó un solo nodo con Calico. Ambos dependen de una misma PC y ninguno acredita separación en nodos físicos distintos. Este es el límite pendiente de R01. [E2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/aiops-k8s-topology.md)
+Se probaron dos topologías: pharmago-issue3 distribuyó Gateway, Users y Pharmacy en tres nodos Kubernetes virtuales mediante etiquetas obligatorias; el perfil de caos usó un solo nodo con Calico. Ambos dependen de una misma PC y ninguno acredita separación en nodos físicos distintos. El equipo adopta este laboratorio local; la separación física es un límite de R01. [E2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/aiops-k8s-topology.md)
 
 El desafío de reproducibilidad se abordó con aplicación idempotente de manifiestos, migraciones mediante Job y verificación de arranque, segundo apply y parada/reanudación. SQL, Elasticsearch, Prometheus y Grafana usan PV/PVC; se probó reemplazo del pod SQL y restauración en otro volumen conservando registros. hostPath mantiene dependencia del host y sus cuotas declaradas no reservan espacio físico. [E2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/aiops-k8s-topology.md)
 
@@ -65,7 +65,7 @@ El ensayo usó una versión A ya preparada con la política de drenaje y una B c
 
 ### Alcance de la disponibilidad
 
-El 100 % corresponde a las 226 solicitudes muestreadas durante ese recambio planificado local. No es un SLA continuo ni evidencia de reemplazo sin interrupción de todos los componentes. El equipo mantiene como supuesto que R03 excluye el reemplazo de SQL Server; SQL conserva una réplica y estrategia Recreate. No existe confirmación docente registrada de ese alcance. [E5](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-8-20261111/README.md)
+El 100 % corresponde a las 226 solicitudes muestreadas durante ese recambio planificado local. No es un SLA continuo ni evidencia de reemplazo sin interrupción de todos los componentes. El equipo decidió limitar el recambio a Gateway, Users y Pharmacy, manteniendo SQL, frontend y observabilidad estables. SQL conserva una réplica y estrategia Recreate. [E5](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-8-20261111/README.md)
 
 Frontend y stack de observabilidad tampoco forman parte de las 226 solicitudes de reemplazo. El desafío principal fue coordinar readiness, retiro de endpoints y solicitudes activas: tener dos pods declarados no basta si se termina el anterior antes de drenar su tráfico. La evidencia vincula la técnica con el comportamiento observado sin extender el resultado a la pérdida de un nodo físico.
 
@@ -93,7 +93,7 @@ El desafío operativo fue correlacionar impacto y recursos: un pod Running puede
 
 ## 5 Técnicas de detección de anomalías
 
-Implementamos Isolation Forest y One-Class SVM con núcleo RBF a partir del notebook docente disponible. Reproducimos exactamente su generación sintética de 300 ventanas de un minuto, con semilla 42 y 53 ventanas etiquetadas anómalas. Las variables son solicitudes/minuto, fracción de errores, latencia media en ms y CPU %. El insumo es checkout sintético, no telemetría recolectada de PharmaGo. La aceptación de este dataset/protocolo para el obligatorio continúa pendiente. [E8](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-14-20261112/README.md)
+Implementamos Isolation Forest y One-Class SVM con núcleo RBF a partir del notebook docente disponible. Reproducimos exactamente su generación sintética de 300 ventanas de un minuto, con semilla 42 y 53 ventanas etiquetadas anómalas. Las variables son solicitudes/minuto, fracción de errores, latencia media en ms y CPU %. El insumo es checkout sintético, no telemetría recolectada de PharmaGo. El equipo adopta este dataset y protocolo para la entrega de ambos algoritmos. [E8](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-14-20261112/README.md)
 
 ### Protocolo reproducible
 
@@ -177,16 +177,16 @@ La defensa está prevista para el 23/11/2026. El enunciado la define como un war
 
 Los ensayos realizados preparan al equipo para observar efectos y comprobar recuperación, pero no prueban la respuesta a un script docente desconocido. Cada integrante debe poder relacionar probes, réplicas, timeouts, drenaje y señales con el comportamiento que observe. La repetición guiada no se presenta como una defensa ya aprobada. [E9](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/baseline-incidents.md)
 
-### Validación complementaria y alcances abiertos
+### Validación complementaria y decisiones de alcance
 
 BDD con Cypress y Cucumber aprobó cuatro escenarios reales en Electron headless: login válido, contraseña incorrecta y reintento, catálogo/detalle y 404 con regreso. browserExecuted=true y cero omisiones. La suite .NET del 14/11 aprobó 319/319 pruebas tras corregir solo el aislamiento de PurchasesDetailRepositoryTest. Estas validaciones complementan los ensayos, sin reemplazar disponibilidad ni defensa. [E12](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-15-20261112/live-after-fix/README.md)
 
 | Punto | Estado al corte del informe |
 | --- | --- |
-| Separación física | Probada colocación local en nodos Kubernetes; falta acreditar hosts físicos diferentes. |
-| Alcance de R03 | SQL se excluye por supuesto del equipo; la evidencia de rollout cubre tres servicios de aplicación. |
-| Dataset y storage | Falta confirmación académica del dataset/protocolo y justificar el alcance de sobrecarga con I/O sostenida. |
-| Equipo y entrega | Confirmar inscripción y condición efectiva ante la discrepancia entre hasta tres integrantes y el recordatorio de dos en la letra. |
+| Separación física | Probada colocación local en nodos Kubernetes; el equipo mantiene el laboratorio sobre una PC. |
+| Alcance de R03 | El equipo limita el recambio a Gateway, Users y Pharmacy; SQL, frontend y observabilidad permanecen estables. |
+| Dataset y storage | El equipo adopta el dataset docente y los estímulos acotados actuales, con I/O sostenida observada sin afirmar saturación. |
+| Equipo y entrega | El equipo mantiene tres integrantes según la sección principal de la letra; inscripción y entrega se verifican en Gestión. |
 
 El PR 44 se integró en obligatorio y sus checks aprobaron. El código candidato de este informe se identifica por a1b2d56; la defensa y cualquier cambio posterior deberán conservar su propia versión y evidencia. [E13](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/pull/44)
 
@@ -214,7 +214,7 @@ E3 · [Recuperación de procesos](https://github.com/damyyyrr/Obligatorio-AIOps-
 
 E4 · [Rate limiting y timeouts](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-9-20261111/README.md) · [Timeouts](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-10-20261111/README.md)
 
-E5 · [Rollout y rollback](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-8-20261111/README.md) · [Supuesto SQL](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/supuesto-sql.md)
+E5 · [Rollout y rollback](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-8-20261111/README.md) · [Decisión sobre SQL](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/supuesto-sql.md)
 
 E6 · [Métricas trazas y logs](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-6-20261110/README.md) · [Trazas](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-11-20261112/README.md) · [Logs](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/evidence/issue-12-20261112/README.md)
 

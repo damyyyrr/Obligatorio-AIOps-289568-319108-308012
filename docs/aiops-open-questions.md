@@ -1,14 +1,14 @@
-# Consultas académicas pendientes
+# Decisiones de alcance del equipo
 
-Preparadas el 06/11/2026. No enviadas a terceros y sin respuestas registradas. La implementación local puede continuar sin presentar estos puntos como resueltos.
+El 14/11/2026 el equipo decidió mantener el alcance de la implementación actual. Los puntos antes identificados como Q01–Q04 se registran desde esta revisión como decisiones D01–D04, sin consultas pendientes de envío o respuesta.
 
-| ID | Consulta para el docente | Criterio afectado |
+| ID | Decisión del equipo | Alcance y límites |
 |---|---|---|
-| Q01 | La letra exige nodos físicos diferentes: ¿se admite Minikube multinodo en un host para la evaluación? ¿Qué separación se exige para gateway y réplicas del mismo servicio? | R01 y diseño de infraestructura; sin aclaración se mantiene la exigencia literal |
-| Q02 | ¿El reemplazo sin interrupción se evalúa en frontend/gateway/microservicios o incluye DB y componentes de observabilidad? | R03; la DB de SQL Express actual usa una réplica y Recreate |
-| Q03 | ¿El dataset sintético del práctico adjunto es válido para el obligatorio o se proporcionará otro dataset/protocolo? ¿Se exige también entregar k-sigma/MAD y las respuestas del práctico? | R05 y alcance de E05 |
-| Q04 | La letra menciona hasta tres integrantes y el recordatorio hasta dos: ¿cuál es el límite vigente? | Integración del equipo y entrega |
+| D01 — Plataforma | Usar Minikube en una única PC, con el perfil multinodo para colocación y el perfil de un nodo con Calico para caos. | Los servicios corren en pods independientes. Los nodos virtuales comparten host; no se acredita la separación en máquinas físicas distintas indicada en la letra. |
+| D02 — Reemplazo | Evaluar el recambio sin interrupciones de Gateway, Users y Pharmacy mediante RollingUpdate y rollback compatibles. Mantener frontend, SQL y observabilidad estables durante ese ensayo. | SQL Express conserva una réplica y Recreate. El 100 % observado corresponde a 226 solicitudes del ensayo; no demuestra recambio sin interrupciones de SQL, frontend u observabilidad ni disponibilidad global. |
+| D03 — Dataset | Adoptar el dataset sintético del notebook docente adjunto: 300 ventanas, semilla 42 y su protocolo de ajuste/evaluación. Entregar Isolation Forest y One-Class SVM RBF; mantener k-sigma/MAD y el resto del práctico como ampliación opcional. | Las métricas son descriptivas sobre entrenamiento. Los datos no provienen de PharmaGo y no acreditan generalización ni detección operativa. |
+| D04 — Integrantes | Mantener el equipo de tres integrantes: Joaquín Decia, Vicente Lavega y Damián Rodríguez, siguiendo la condición de hasta tres de la sección principal de la letra. | Se conserva identificada la discrepancia con el recordatorio de hasta dos. La decisión no acredita por sí sola la inscripción o la entrega en Gestión. |
 
-Al recibir una respuesta, registrar fecha, origen, contenido y evidencia; ajustar matriz/plan y conservar la distinción entre interpretación y requisito confirmado.
+Para caos, el equipo adopta los seis escenarios actuales y sus estímulos acotados, incluido el refuerzo de escritura sostenida de storage. Se documentan los efectos medidos y la limpieza; no se afirma saturación del dispositivo, disco lleno u OOM cuando no se observaron.
 
-Seguimiento del 09/11/2026. El equipo indicó que Q02 sigue sin confirmación del docente. La prueba de la #5 cubre las migraciones y el rollback funcional de Users. La aceptación de disponibilidad durante el reemplazo de SQL y observabilidad sigue pendiente.
+Estas son decisiones del equipo sobre su entrega, sin atribuir aprobación al docente ni cambiar los requisitos literales o las mediciones. Las evidencias originales conservan fechas, commits, hashes y estados de sus capturas; las referencias históricas a Q01–Q04 se interpretan con esta actualización de alcance.

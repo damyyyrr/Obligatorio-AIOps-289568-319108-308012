@@ -54,4 +54,4 @@ kubectl --context pharmago-issue3 -n pharmago get pods -o wide
 
 Para la comprobación funcional se usó `Backend/seed-data.sql` y port-forward a UI y Gateway como en la guía; solo se guardaron estados HTTP y conteos. El apply repetido no volvió a cargar el seed.
 
-Ver [diagrama, presupuesto y mapa de hosts](../../aiops-k8s-topology.md). El ensayo local sirve para verificar colocación y surge. La prueba en máquinas físicas diferentes (Q01) y el rollout/rollback con tráfico y dos versiones (#8) son verificaciones separadas.
+Ver [diagrama, presupuesto y mapa de hosts](../../aiops-k8s-topology.md). El ensayo local sirve para verificar colocación y surge. El equipo adoptó este laboratorio local en D01; la separación física no está acreditada. El rollout/rollback con tráfico y dos versiones (#8) es una verificación separada.

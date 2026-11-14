@@ -2,7 +2,7 @@
 
 Implementación en `feature/issue-14-algoritmos`, creada desde `54d5a17c68cb7ede122b92862ad156163a0b09d9` de `obligatorio`. Ejecución del **12/11/2026**, Python 3.11.0 en Windows. Los resultados se capturaron con el árbol modificado durante el incremento; `results/run.json` conserva ese estado, hashes de fuentes/artefactos y versiones exactas. Las fuentes y salidas de texto nuevas usan LF explícito para conservar sus hashes al versionarlas y clonarlas en Windows.
 
-**Resultado técnico reproducido; aceptación académica pendiente de Q03.** El criterio de cierre de #14 admite identificar explícitamente esa aceptación pendiente. No se declara R05 aceptado por el docente ni se cierra la consulta #1.
+**Resultado técnico reproducido; dataset y protocolo adoptados por el equipo en D03 (14/11/2026).** Los metadatos originales de la ejecución del 12/11 conservan el estado de esa fecha y no representan consultas pendientes actuales. Ver [decisiones del equipo](../../aiops-open-questions.md).
 
 ## Procedencia y protocolo
 
@@ -47,6 +47,6 @@ Dependencias directas y restricciones transitivas están en [requirements](../..
 
 ## Alcance y pendientes
 
-Q03 sigue sin respuesta docente registrada sobre dataset/protocolo aceptado. Si se proporciona otro insumo, identificarlo y acordar su protocolo antes de adaptar la carga/evaluación; no imponerle automáticamente este diseño. La ampliación k-sigma/MAD y el cierre completo del práctico siguen en #20. Los modelos no se integran al monitoreo de producción ni sustituyen los umbrales de Grafana en esta issue.
+El equipo decidió conservar el dataset/protocolo adjunto (D03). Si se trabaja con otro insumo en una ampliación futura, identificarlo y definir su protocolo antes de adaptar la carga/evaluación. La ampliación k-sigma/MAD y el cierre completo del práctico siguen en #20. Los modelos no se integran al monitoreo de producción ni sustituyen los umbrales de Grafana en esta issue.
 
 Implementación asistida por Codex usando la issue #14, el notebook adjunto y el plan del repositorio como contexto. El código, las decisiones de protocolo, los datos sintéticos exportados y los resultados quedan disponibles para revisión del equipo; no se atribuye aprobación académica ni conclusiones a un docente sin evidencia.

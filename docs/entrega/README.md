@@ -7,7 +7,7 @@ Informe con corte de código en `a1b2d56e20afec0797ceafd6f0a10b795fa72121`, merg
 - [Contenido en Markdown](informe-final.md).
 - [Verificación documental](validacion-informe.json).
 
-Incluye los nombres/legajos y docente confirmados por el usuario, las ocho secciones de la rúbrica, diagrama del laboratorio local, resultados reales, reflexión sobre prácticas comprobables y declaración de IA. Conserva explícitos los supuestos sobre SQL, los límites de separación física, la aceptación del dataset y el alcance de la carga de almacenamiento. No declara realizada la defensa ni presentada la entrega en Gestión.
+Incluye los nombres/legajos y docente confirmados por el usuario, las ocho secciones de la rúbrica, diagrama del laboratorio local, resultados reales, reflexión sobre prácticas comprobables y declaración de IA. Registra las decisiones del equipo sobre laboratorio local, recambio de tres servicios, dataset docente, tres integrantes y carga acotada de almacenamiento, conservando los límites de las mediciones. No declara realizada la defensa ni presentada la entrega en Gestión.
 
 ## Fuentes y reproducción
 

@@ -2,7 +2,7 @@
 
 La implementación de #14 está ejecutada y verificada sobre el material docente disponible. Ver [resultados completos](../docs/evidence/issue-14-20261112/results/RESULTS.md), [evidencia y reproducción](../docs/evidence/issue-14-20261112/README.md) y [notebook ejecutado](algoritmos.ipynb). No requiere Docker ni Kubernetes.
 
-**Q03 sigue pendiente:** falta confirmación docente de que este dataset/protocolo sea admitido para el obligatorio. El resultado técnico no equivale a aceptación académica ni a validación en producción. El notebook original `practico_detectores_aiops.ipynb` se conserva sin modificar, incluidos sus TODO de la ampliación #20.
+**Decisión D03 del equipo:** adoptar este dataset docente y su protocolo para la entrega de IF y SVM RBF. La evaluación es descriptiva sobre entrenamiento y no acredita validación en producción. El notebook original `practico_detectores_aiops.ipynb` se conserva sin modificar, incluidos sus TODO de la ampliación #20.
 
 ## Material y protocolo
 
@@ -64,4 +64,4 @@ Son métricas **por ventana sobre la muestra de entrenamiento**, no por incident
 
 El conteo por `kind` muestra los compromisos operativos: IF/OCSVM alertan 4/5 minutos batch legítimos de un total de 20; detectan 8/4 de los ocho minutos `incidente_5xx`; en `degradacion` detectan 0/1 de 18. Los dos modelos no incorporan una secuencia temporal como feature. La alerta estadística debe interpretarse con contexto, logs/trazas y política de incidentes; estos resultados no miden MTTD ni automatizan mitigación.
 
-K-sigma/MAD, comparación de seis flags, siete preguntas y exit ticket del cuaderno completo quedan en #20 salvo confirmación docente. #14 no rellena esas secciones para simular que el práctico completo ya está terminado. Ver [consultas académicas](../docs/aiops-open-questions.md).
+K-sigma/MAD, comparación de seis flags, siete preguntas y exit ticket del cuaderno completo quedan como ampliación opcional en #20 por decisión del equipo. #14 no rellena esas secciones para simular que el práctico completo ya está terminado. Ver [decisiones del equipo](../docs/aiops-open-questions.md).

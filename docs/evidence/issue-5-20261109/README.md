@@ -13,7 +13,7 @@ El Job de despliegue terminó con cero migraciones pendientes sobre `PharmaDb`. 
 | Rollback a la imagen anterior | Una réplica Ready. Tras estabilizar sus endpoints, el catálogo devolvió los cuatro medicamentos y el login dio HTTP 200. |
 | Regreso a la imagen nueva | Una réplica Ready. Catálogo y login HTTP 200. El UID del pod SQL, los cuatro pares PV/PVC y el hash de la consulta de historial y registros fueron iguales en todas las etapas comparadas. |
 
-En el primer intento, el login dio HTTP 502 durante el recambio. El gateway registró `Connection refused` hacia Users y el login dio 200 al quedar estable el endpoint. Se conserva esa observación en [proof.json](proof.json). El ensayo mide compatibilidad de esquema y recuperación funcional tras el rollback. La continuidad durante el cambio con tráfico se evalúa en #8 y el alcance de SQL queda en Q02.
+En el primer intento, el login dio HTTP 502 durante el recambio. El gateway registró `Connection refused` hacia Users y el login dio 200 al quedar estable el endpoint. Se conserva esa observación en [proof.json](proof.json). El ensayo mide compatibilidad de esquema y recuperación funcional tras el rollback. La continuidad durante el cambio con tráfico se evalúa en #8 y el reemplazo de SQL queda fuera del ensayo por decisión D02 del equipo.
 
 Pasaron 23 pruebas de regresión, la construcción de la imagen de Users y `docker compose config --quiet` para los dos archivos Compose. En un proyecto Compose aislado se levantaron SQL y el servicio de migración del baseline con un volumen vacío. `docker compose wait pharmago-db-migrate` devolvió 0 después de aplicar las diez migraciones. Se retiraron los recursos del proyecto de ensayo. Ver [resultado Compose](compose-proof.json).
 

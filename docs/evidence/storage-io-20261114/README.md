@@ -18,7 +18,7 @@ El [probe](../../../Implementacion%20K8S/Codigo/chaos-engineering/probe.py) cons
 
 El reporte agrega `storageWorkload` y, solo si se acredita el efecto, `storageEvidence.classification=sustained_io_observed`, con el progreso, delta de contador y tasas observadas. `deviceSaturation` queda null. El contador del pod también puede incluir escrituras de la aplicación: no se presenta como medición exclusiva del generador. Las sondas conservan códigos, validación de contenido y latencias antes/durante/después. La recuperación sigue exigiendo 120 s estables, alertas sanas y comparación de recursos/datos.
 
-Referencias técnicas: [GNU dd: notrunc/fdatasync](https://github.com/coreutils/coreutils/blob/master/src/dd.c) y [métricas cAdvisor](https://github.com/google/cadvisor/blob/master/docs/storage/prometheus.md). I/O sostenida observada no equivale por sí sola a dispositivo saturado, disco lleno, fallo de aplicación o aceptación académica del requisito de sobrecarga. El ensayo real deberá conservar esa distinción y documentar el efecto encontrado.
+Referencias técnicas: [GNU dd: notrunc/fdatasync](https://github.com/coreutils/coreutils/blob/master/src/dd.c) y [métricas cAdvisor](https://github.com/google/cadvisor/blob/master/docs/storage/prometheus.md). I/O sostenida observada no equivale por sí sola a dispositivo saturado, disco lleno, fallo de aplicación ni presión suficiente para saturar el dispositivo. El equipo adopta este escenario acotado de storage y conserva esa distinción al documentar el efecto encontrado.
 
 ## Pruebas realizadas
 

@@ -2,7 +2,7 @@
 
 ## Estado al 14 de noviembre de 2026
 
-Ver [estado contrastado](estado-actual.md) y [matriz](aiops-requirements-matrix.md). Las issues #2–#17 están cerradas; las evidencias de BDD, observabilidad, ML y seis escenarios de caos están integradas. #16 se cerró para plan y aplicación guiada local, con revisión independiente opcional no realizada. Siguen abiertas las consultas académicas #1, entrega #18, defensa #19 y ampliación opcional #20, según la [consulta de GitHub](evidence/docs-review-20261114/issues.json).
+Ver [estado contrastado](estado-actual.md) y [matriz](aiops-requirements-matrix.md). Las issues #2–#17 están cerradas; las evidencias de BDD, observabilidad, ML y seis escenarios de caos están integradas. #16 se cerró para plan y aplicación guiada local, con revisión independiente opcional no realizada. El equipo adoptó las [decisiones D01–D04](aiops-open-questions.md); entrega #18, defensa #19 y ampliación opcional #20 conservan el estado de la [captura de GitHub](evidence/docs-review-20261114/issues.json). Esa captura histórica no registra esta decisión posterior.
 
 La corrección de aislamiento de `PurchasesDetailRepositoryTest` se integró mediante el PR #42. La [ejecución .NET del 14/11](evidence/test-isolation-20261114/README.md) aprobó 319/319 pruebas. Los apartados siguientes conservan los resultados de sus incrementos originales; sus conteos y equipos no describen automáticamente la candidata actual.
 
@@ -16,7 +16,7 @@ La preparación inicial se conserva como registro histórico. En la validación 
 
 Se implementan y ejecutan Isolation Forest y One-Class SVM RBF sobre las 300 ventanas sintéticas del notebook docente, preservando el original y su protocolo: StandardScaler y ambos modelos se ajustan sobre toda la muestra, sin etiquetas ni selección de parámetros con ellas. La [guía ML](../ml/README.md) enlaza CLI, notebook ejecutado y dependencias fijadas. Los [resultados](evidence/issue-14-20261112/results/RESULTS.md) incluyen scores/flags por ventana, métricas, todos los FP/FN, tablas por tipo, gráficos y parámetros/versiones/hashes.
 
-Pasaron 20 pruebas y dos ejecuciones CLI produjeron salidas numéricas idénticas; el notebook terminó sus siete celdas de código. F1 observado: IF 0,578313 y OCSVM 0,439024, evaluados sobre la misma muestra de entrenamiento, sin afirmar generalización. La [evidencia](evidence/issue-14-20261112/README.md) conserva alcance y procedencia. R05 tiene validación técnica del material disponible; Q03 y la aceptación académica permanecen pendientes. La ampliación del práctico sigue en #20. No se inició infraestructura.
+Pasaron 20 pruebas y dos ejecuciones CLI produjeron salidas numéricas idénticas; el notebook terminó sus siete celdas de código. F1 observado: IF 0,578313 y OCSVM 0,439024, evaluados sobre la misma muestra de entrenamiento, sin afirmar generalización. La [evidencia](evidence/issue-14-20261112/README.md) conserva alcance y procedencia. R05 tiene validación técnica del material adoptado por el equipo en D03. La ampliación del práctico sigue en #20. No se inició infraestructura.
 
 ## Incremento del 12 de noviembre de 2026 — issue #17
 
@@ -34,7 +34,7 @@ La [evidencia inicial de #16](evidence/issue-16-20261112/README.md) distingue re
 
 Gateway, Users y Pharmacy incorporan drenaje antes de SIGTERM, timeout de apagado y permanencia mínima en Ready. El ensayo local de actualización y rollback registró 226/226 respuestas funcionalmente válidas en 282,139 s. Se observaron versiones coexistentes, se restauraron las tres plantillas y se conservaron el esquema, los registros comprobados y los volúmenes. La [guía](aiops-k8s-rollout.md) incluye el generador reproducible y la [evidencia](evidence/issue-8-20261111/README.md) registra todas las muestras, revisiones y validaciones.
 
-El resultado cubre los tres procesos de aplicación en Minikube, con SQL y observabilidad estables. La primera instalación de la política de drenaje quedó fuera de la ventana medida. R03 completo sigue condicionado por Q02 y los componentes pendientes. Las 26 pruebas Python, los tres builds y el dry-run del API server pasaron. En aquel ensayo .NET registró una falla preexistente, reproducida también en la base limpia (290/291). El resultado histórico se conserva; su corrección y las 319/319 actuales están en la actualización del 14/11.
+El resultado cubre los tres procesos de aplicación en Minikube, con SQL y observabilidad estables. La primera instalación de la política de drenaje quedó fuera de la ventana medida. El equipo adoptó este alcance de recambio en D02; los demás componentes quedan fuera del ensayo. Las 26 pruebas Python, los tres builds y el dry-run del API server pasaron. En aquel ensayo .NET registró una falla preexistente, reproducida también en la base limpia (290/291). El resultado histórico se conserva; su corrección y las 319/319 actuales están en la actualización del 14/11.
 
 ## Incremento inicial del 6 de noviembre de 2026
 
@@ -54,12 +54,12 @@ En el baseline del 06/11, la suma de límites de los ocho servicios era 3,25 GiB
 
 ## Secuencia del incremento inicial, 06/11/2026
 
-1. A01/A04: inspección de fork, herramientas y capacidad completada; consultas académicas documentadas en `aiops-open-questions.md`.
+1. A01/A04: inspección de fork, herramientas y capacidad completada; decisiones de alcance del equipo documentadas en `aiops-open-questions.md`.
 2. A02/A03: configuración y scripts ejecutados; cuatro imágenes construidas y ocho contenedores activos. La parada y el reinicio sin seed conservaron los datos de demostración. Resultado en `BASELINE_RESULT.md` y `evidence/baseline-20261106/`.
 3. A05: PASS parcial de baseline: catorce comprobaciones funcionales/telemetría aprobadas y repetidas tras parada/reinicio. Se verificaron Users y Pharmacy contra SQL, cuatro targets de Prometheus, métrica funcional y log JSON de negocio con correlation ID. Esto no cierra R04 completo.
 4. A06: procedimiento mínimo en `baseline-incidents.md`; no se ejecutan ensayos de caos en este incremento.
 
-La recomendación de aquel incremento era comprobar topología, PVs, métricas y probes/migraciones antes de avanzar a Kubernetes. Los incrementos posteriores documentan esas verificaciones; no corresponde reiniciarlas por leer este antecedente. Q01/Q02/Q03 siguen abiertos; no se declara cumplimiento académico por pruebas locales.
+La recomendación de aquel incremento era comprobar topología, PVs, métricas y probes/migraciones antes de avanzar a Kubernetes. Los incrementos posteriores documentan esas verificaciones; no corresponde reiniciarlas por leer este antecedente. D01–D03 registran las decisiones actuales del equipo; las pruebas locales conservan sus límites.
 
 ## Evidencia requerida
 

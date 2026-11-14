@@ -112,7 +112,9 @@ def verify():
         'operatorChaosPassed':6,'operatorScreenshots':37,'storageAgentPasses':29,'storageLogicalMiB':928,'storageValidHttp':61,'storageStableSeconds':125.329704,
         'mlConfusionAndF1':'Match original metrics.csv'},
       'sourceEvidenceFiles':sources,'artifacts':artifacts,
-      'teamReview':'Content requires review by the three students before submission; no academic approvals or completed defense inferred.'}
+      'teamReview':'Content requires review by the three students before submission; no academic approvals or completed defense inferred.',
+      'teamDecisions':{'date':'2026-11-14','source':'docs/aiops-open-questions.md',
+        'decisions':['D01','D02','D03','D04'],'authority':'Team decision; no teacher approval inferred.'}}
     if prior_visual:result['visualQa']=prior_visual
     (OUT/'validacion-informe.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:result[k] for k in ('result','pdfPages','externalPdfLinks','internalContentsLinks','sourceParagraphsVerifiedInDocxAndPdf','referencedRepositoryFilesVerifiedAtCut')}))

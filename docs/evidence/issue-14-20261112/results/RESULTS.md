@@ -33,7 +33,7 @@ El scaler y los dos modelos se ajustaron sobre las mismas 300 ventanas, incluida
 - IF fija contamination=0.10; OCSVM usa kernel RBF, nu=0.10 y gamma=scale. Nu no fuerza exactamente el mismo número de alertas que el cuantil de IF. Ninguno de esos parámetros equivale a la tasa verdadera de incidentes.
 - Las filas batch y pico_carga son legítimas: sus alertas son falsos positivos. Las filas de degradación ilustran que un detector por ventana puede omitir una tendencia temporal. Una anomalía estadística no implica por sí sola un incidente operativo.
 - Precision/recall/F1 y TP/FP/FN/TN son por minuto, no por incidente, y usan etiquetas sintéticas conocidas. Entrenar y evaluar sobre la misma muestra no mide generalización ni rendimiento futuro. En datos operativos se necesita un protocolo temporal acordado, calibración y validación fuera de muestra; eso no se simuló aquí.
-- Q03 sigue pendiente: no se presume aceptación docente del dataset para el obligatorio. No se cambió el protocolo adjunto ni se inventó un dataset alternativo. K-sigma/MAD y el cierre completo del práctico siguen en #20.
+- El equipo adopta el dataset y protocolo docentes para el obligatorio (D03). No se cambió el protocolo adjunto ni se inventó un dataset alternativo. K-sigma/MAD y el cierre completo del práctico siguen en #20.
 
 ## Artefactos
 

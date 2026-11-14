@@ -26,7 +26,7 @@ Las rutas de evidencia de la tabla parten de `evidence/baseline-20261106/` cuand
 - `scripts/start-baseline.ps1`, `stop-baseline.ps1` y `smoke-baseline.ps1`: construcción secuencial, arranque validado, seed opt-in, parada sin borrado y evidencia funcional sanitizada. El arranque exige capacidad mínima del motor y evita compilar con el baseline activo.
 - `Frontend/Dockerfile`: `npm ci` desde el lockfile, configuración production explícita y límites de workers/heap para la compilación.
 - `.dockerignore` de Backend/Frontend: exclusión de compilados, cachés y archivos locales de los contextos de build.
-- Guía `Implementacion K8S/Codigo/BASELINE.md`; plan de implementación, matriz, consultas docentes, borradores de issues y procedimiento inicial de incidentes en `docs/`.
+- Guía `Implementacion K8S/Codigo/BASELINE.md`; plan de implementación, matriz, decisiones del equipo, borradores de issues y procedimiento inicial de incidentes en `docs/`.
 
 El Compose original y los manifiestos de Kubernetes del curso no se modificaron durante el baseline. No se ejecutó caos. Las capturas se obtuvieron antes del primer commit del baseline; por eso identifican el commit del curso como fuente y un árbol de trabajo todavía modificado. La publicación posterior y el trabajo pendiente se siguen desde el README y el mapa de issues.
 
@@ -50,7 +50,7 @@ También pasaron `docker compose config --quiet`, análisis sintáctico PowerShe
 
 La comprobación de Angular fue HTTP. El intento de abrir un navegador automatizado agotó el tiempo de espera de la herramienta; no se verificó interacción real ni se ejecutaron Cypress/Cucumber. No se demuestra todavía K8s, separación física, despliegue sin interrupción, trazas completas, ELK, cinco alertas, recuperación bajo caos ni detectores ML. La salida directa `Console.WriteLine` existente tampoco queda convertida en JSON por configurar el logger; solo se verificó el evento de negocio indicado.
 
-Q01–Q04 siguen abiertas en `aiops-open-questions.md`. El siguiente incremento es auditar/corregir scripts de K8s y PVs sin borrar datos, definir la topología local/física y el alcance de DB/migraciones, y habilitar las métricas de infraestructura antes de pruebas de recuperación/rollout.
+Las decisiones actuales D01–D04 están en [alcance del equipo](aiops-open-questions.md): laboratorio Minikube local, recambio de tres servicios, dataset sintético docente y tres integrantes. El siguiente incremento descrito en este reporte es histórico; las verificaciones posteriores se resumen en [estado actual](estado-actual.md).
 
 ## Acceso y operación
 

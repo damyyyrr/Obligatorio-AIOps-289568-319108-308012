@@ -69,7 +69,7 @@ def export(output):
                "fit": "StandardScaler and both models fitted on all 300 windows, including contaminated windows",
                "evaluation": "same 300 windows; descriptive in-sample comparison, no held-out test",
                "training_labels": False, "features_only": list(FEATURES), "tuning_with_labels": False,
-               "academic_acceptance": "pending Q03; no teacher confirmation recorded"},
+               "dataset_decision": "D03: team adopts the supplied teaching dataset and protocol"},
            "models": models.metadata(), "metrics": metrics.to_dict(orient="records"),
            "environment": {"python": platform.python_version(), "system": platform.system(),
                            "packages": {d.metadata["Name"]: d.version for d in importlib.metadata.distributions()}},
@@ -96,7 +96,7 @@ El scaler y los dos modelos se ajustaron sobre las mismas 300 ventanas, incluida
 - IF fija contamination=0.10; OCSVM usa kernel RBF, nu=0.10 y gamma=scale. Nu no fuerza exactamente el mismo número de alertas que el cuantil de IF. Ninguno de esos parámetros equivale a la tasa verdadera de incidentes.
 - Las filas batch y pico_carga son legítimas: sus alertas son falsos positivos. Las filas de degradación ilustran que un detector por ventana puede omitir una tendencia temporal. Una anomalía estadística no implica por sí sola un incidente operativo.
 - Precision/recall/F1 y TP/FP/FN/TN son por minuto, no por incidente, y usan etiquetas sintéticas conocidas. Entrenar y evaluar sobre la misma muestra no mide generalización ni rendimiento futuro. En datos operativos se necesita un protocolo temporal acordado, calibración y validación fuera de muestra; eso no se simuló aquí.
-- Q03 sigue pendiente: no se presume aceptación docente del dataset para el obligatorio. No se cambió el protocolo adjunto ni se inventó un dataset alternativo. K-sigma/MAD y el cierre completo del práctico siguen en #20.
+- El equipo adopta el dataset y protocolo docentes para el obligatorio (D03). No se cambió el protocolo adjunto ni se inventó un dataset alternativo. K-sigma/MAD y el cierre completo del práctico siguen en #20.
 
 ## Artefactos
 
@@ -119,7 +119,7 @@ def main():
     run = export(args.output)
     for row in run["metrics"]:
         print(f"{row['model']}: alertas={row['alerts']}, TP={row['tp']}, FP={row['fp']}, FN={row['fn']}, F1={row['f1']:.6f}")
-    print(f"Artefactos en {args.output}; aceptación académica pendiente de Q03")
+    print(f"Artefactos en {args.output}; dataset y protocolo adoptados por el equipo (D03)")
 
 
 if __name__ == "__main__":

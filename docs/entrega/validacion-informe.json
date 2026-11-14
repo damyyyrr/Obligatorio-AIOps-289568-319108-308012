@@ -1,5 +1,5 @@
 {
-  "checkedUtc": "2026-11-14T23:18:40.789202+00:00",
+  "checkedUtc": "2026-11-14T23:43:57.934574+00:00",
   "result": "PASS",
   "scope": "Document verification only; no new application or infrastructure trials",
   "codeCut": "a1b2d56e20afec0797ceafd6f0a10b795fa72121",
@@ -44,10 +44,10 @@
   },
   "sourceEvidenceFiles": {
     "docs/aiops-requirements-matrix.md": {
-      "sha256": "a3e3cebb768ad4f38385f925f9ad2519cc3432b91ec70c950db5ec17a49650f4"
+      "sha256": "d1ea3f41c59cab3d2f6465536fe2e4870447c17f9ac8ada758b4b01ec879fcb0"
     },
     "docs/aiops-k8s-topology.md": {
-      "sha256": "6ff80e230d3b240eeb37e5d0b3c7f02f74c1d7ce62565462de6514d650d9de61"
+      "sha256": "860230148abbad59c98020781d095a885a7444d6bdf729c2963e76e4b7aeda8a"
     },
     "docs/evidence/issue-4-20261109/README.md": {
       "sha256": "ddcd4afc27e2e3f3b4c83b95fa9c1b17a212b90d29a45eca01d66d1f3604cc0b"
@@ -65,10 +65,10 @@
       "sha256": "e237c35c0a8ac84a95a8ef9fab22cf743673350d83bae52970d49a171c584800"
     },
     "docs/evidence/issue-8-20261111/README.md": {
-      "sha256": "c2b156883ee5ace5b7ea1e6d18499a5e1badfa26bef1bf93c153df0d93bda81c"
+      "sha256": "c39e33aa5493d881f30a3d5c27ca50015ab1d567726aa717377f96656497df6e"
     },
     "docs/supuesto-sql.md": {
-      "sha256": "090af4802685b37372417a423c27de48f27fd5c9dedda6affaa1bbbc63fddac1"
+      "sha256": "dd29313f2d65135b1c18826220986a39a9a933f3597d3432061b6118fe6a4251"
     },
     "docs/evidence/issue-6-20261110/README.md": {
       "sha256": "00c629f083f6bea707f124286fed340dc9455b1913fb8607130a96c2f928fc06"
@@ -83,7 +83,7 @@
       "sha256": "9b540549e987801201c9bd488566959878e74cfb579d6c087e6a24396fdef149"
     },
     "docs/evidence/issue-14-20261112/README.md": {
-      "sha256": "814d9aa72cee55ceaa9117d738d89adcd6388bfcc23d1d8230b20d14c93ff091"
+      "sha256": "37bca16424b17041e64918517ebf272e5392d7de051ac548da3a0cb7fe8130d6"
     },
     "docs/baseline-incidents.md": {
       "sha256": "b832de477893c7c77b441fe065e6701eedd981597e2ff67887bc9e088e0678b5"
@@ -95,13 +95,13 @@
       "sha256": "eed7f8e16a3a9dd1ba82318ba93438d75270ba30ad23efac79f22919de38a8e6"
     },
     "docs/evidence/storage-io-20261114/README.md": {
-      "sha256": "f9644c5bd35aa134461d68e5dd312a29e900af8395c21835524c11701566cc60"
+      "sha256": "2d71b924c24e4b1477b070ef82560985f86691ebbe86e80004865d4c0b9b1056"
     },
     "docs/evidence/issue-15-20261112/live-after-fix/README.md": {
       "sha256": "e91f273ee40b2a6c78ea625b4aa18a35738f32837833efe9c3be85cd467583d9"
     },
     "docs/evidence/test-isolation-20261114/README.md": {
-      "sha256": "c6548968a3ff249fac3199e64a5ef9a1c7a4b6aed4552a16cd4502303c7fc0e8"
+      "sha256": "d226827f4fda75e1afffbd536f052aaf52175c7c4035a059fdc9cfa8ec027da2"
     }
   },
   "artifacts": {
@@ -122,37 +122,49 @@
       "sha256": "d768c9eaec85bcf9e703504f609100d559f058d5c407beaff15aac7519762132"
     },
     "fuentes/informe.json": {
-      "bytes": 27815,
-      "sha256": "8ece3cfd427937c0d242b7579261966c26a097bcff160a9c2374afe24a324576"
+      "bytes": 27864,
+      "sha256": "d81a456520fac993ddd34df35668d6e8c16f39486f379901da273da33af62d2b"
     },
     "fuentes/link_pdf.py": {
       "bytes": 3343,
       "sha256": "259618c7076c8ae5b679a0d3abf137fbdbd53c45c8af7c2f6df376bceee7ca69"
     },
     "fuentes/verify_report.py": {
-      "bytes": 7419,
-      "sha256": "aa142472037709b3cbd3d918a13512b7c1d16115aa6f2d0ebd007694e75ba8db"
+      "bytes": 7610,
+      "sha256": "e954690bc426393d920427b9d3e394b3db06f435df6eea5289d28a02179a0223"
     },
     "informe-final.md": {
-      "bytes": 32141,
-      "sha256": "bb10626009fc592def99ea6abe068e03bb074cff793008dfa93b9ed67a968faf"
+      "bytes": 32190,
+      "sha256": "ddc1fca600fcaa317efb237c02e2306b8285dfdd2f7a0688d919f6b852cae119"
     },
     "Informe_Final_AIOps.docx": {
-      "bytes": 174233,
-      "sha256": "28d45086149c05359dd31d8ea5d104ccd7017732dfbec347e7cb1e92595a41b3"
+      "bytes": 174223,
+      "sha256": "e72ade25222c6822530015ecdf60338f6872c9ff6903eb604a595206cbecf970"
     },
     "Informe_Final_AIOps.pdf": {
-      "bytes": 309857,
-      "sha256": "23cf388f6b1b7bc37f8a8edf93b129b8d34338a5c9c97644ae123cee05ee0c18"
+      "bytes": 309944,
+      "sha256": "826ec659963b3c11352862df495bb9fa2386bc0522a7d20403359366c1b26c0f"
     },
     "README.md": {
-      "bytes": 2006,
-      "sha256": "5f63da26898ec80619c3826563ca81f559ef81372d01fc21ec492e601fac4f87"
+      "bytes": 2053,
+      "sha256": "72c3457022e761dcf297571dba080e9a9a3b9425242a966ad3afc6ed9bf47145"
     }
   },
   "teamReview": "Content requires review by the three students before submission; no academic approvals or completed defense inferred.",
+  "teamDecisions": {
+    "date": "2026-11-14",
+    "source": "docs/aiops-open-questions.md",
+    "decisions": [
+      "D01",
+      "D02",
+      "D03",
+      "D04"
+    ],
+    "authority": "Team decision; no teacher approval inferred."
+  },
   "visualQa": {
-    "pagesReviewed": [
+    "method": "render_docx.py and visual inspection of every page at full resolution",
+    "pagesInspected": [
       1,
       2,
       3,
@@ -164,23 +176,8 @@
       9,
       10
     ],
-    "method": "All ten first-render pages inspected; final-render changed pages 1, 2, 8 and 10 inspected again. Pages 3, 4, 5, 6, 7 and 9 were pixel-identical to reviewed pages. Final PDF raster after link annotation repair was pixel-identical on all ten pages.",
-    "orphanHeadingsObserved": false,
-    "clippedTextOrTablesObserved": false,
-    "unintendedBlankPages": false,
-    "titleBordersRemoved": true,
-    "qualitySelfAssessment": {
-      "cover": 9,
-      "contents": 9,
-      "headings": 9,
-      "typography": 9,
-      "lists": 9,
-      "tables": 9,
-      "diagrams": 9,
-      "pagination": 9,
-      "headersFooters": 9,
-      "globalConsistency": 9,
-      "contentIntegrity": 10
-    }
+    "result": "PASS",
+    "linkedPdfContentStreamsUnchanged": true,
+    "scope": "Updated team decisions; no new infrastructure trials"
   }
 }
