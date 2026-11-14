@@ -23,13 +23,15 @@ namespace PharmaGo.Test.DataAccess.Test
         private Presentation presentation1;
         private Presentation presentation2;
         private PharmacyRepository pharmacyRepository;
-        DbContextOptions<PharmacyGoDbContext> options = new DbContextOptionsBuilder<PharmacyGoDbContext>()
-            .UseInMemoryDatabase(databaseName: "PharmaGoDb")
-            .Options;
+        private DbContextOptions<PharmacyGoDbContext> options = null!;
 
         [TestInitialize]
         public void InitializeTest()
         {
+            options = new DbContextOptionsBuilder<PharmacyGoDbContext>()
+                .UseInMemoryDatabase(databaseName: $"{nameof(PurchasesDetailRepositoryTest)}-{Guid.NewGuid()}")
+                .Options;
+
             unitMeasure1 = new UnitMeasure { Deleted = false, Name = "ml" };
             unitMeasure2 = new UnitMeasure { Deleted = false, Name = "mg" };
             presentation1 = new Presentation { Deleted = false, Name = "liquid" };
@@ -49,12 +51,7 @@ namespace PharmaGo.Test.DataAccess.Test
         {
             using (var context = new PharmacyGoDbContext(options))
             {
-                _purchasesDetailRepository = new PurchasesDetailRepository(context);
-                if (_purchasesDetailRepository.Exists(purchaseDetail))
-                {
-                    _purchasesDetailRepository.DeleteOne(purchaseDetail);
-                    _purchasesDetailRepository.Save();
-                }
+                context.Database.EnsureDeleted();
             }
         }
 
@@ -79,17 +76,23 @@ namespace PharmaGo.Test.DataAccess.Test
             using (var context = new PharmacyGoDbContext(options))
             {
                 _purchasesDetailRepository = new PurchasesDetailRepository(context);
-                if (!_purchasesDetailRepository.Exists(purchaseDetail))
-                {
-                    _purchasesDetailRepository.InsertOne(purchaseDetail);
-                    _purchasesDetailRepository.Save();
-                }
+                // Insert another detail first so the expected record need not have Id == 1.
+                _purchasesDetailRepository.InsertOne(purchaseDetail_2);
+                _purchasesDetailRepository.InsertOne(purchaseDetail);
+                _purchasesDetailRepository.Save();
+            }
+
+            using (var context = new PharmacyGoDbContext(options))
+            {
+                _purchasesDetailRepository = new PurchasesDetailRepository(context);
 
                 //Act
-                var p_ = _purchasesDetailRepository.GetOneByExpression(p => p.Id == 1);
+                var p_ = _purchasesDetailRepository.GetOneByExpression(p => p.Id == purchaseDetail.Id);
 
                 // Assert
                 Assert.IsNotNull(p_);
+                Assert.AreEqual(purchaseDetail.Id, p_.Id);
+                Assert.AreEqual(purchaseDetail.Quantity, p_.Quantity);
             }
         }
     }
