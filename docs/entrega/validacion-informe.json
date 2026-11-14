@@ -1,0 +1,186 @@
+{
+  "checkedUtc": "2026-11-14T23:18:40.789202+00:00",
+  "result": "PASS",
+  "scope": "Document verification only; no new application or infrastructure trials",
+  "codeCut": "a1b2d56e20afec0797ceafd6f0a10b795fa72121",
+  "reportDate": "14 de noviembre de 2026",
+  "pdfPages": 10,
+  "pageLimitIncludesCoverAndContents": true,
+  "rubricSections": 8,
+  "additionalSection": "Agile reflection and AI use",
+  "sectionPages": {
+    "1 Implementación de plataforma": 2,
+    "2 Alta disponibilidad": 3,
+    "3 Despliegues seguros": 4,
+    "4 Telemetría": 5,
+    "5 Técnicas de detección de anomalías": 6,
+    "6 Plan de contención de incidentes operacionales": 7,
+    "7 Scripts de caos": 8,
+    "8 Defensa": 9,
+    "9 Reflexión ágil y uso de inteligencia artificial": 10
+  },
+  "sourceParagraphsVerifiedInDocxAndPdf": 44,
+  "externalPdfLinks": 54,
+  "uniqueExternalUrls": 21,
+  "internalContentsLinks": 9,
+  "pdfAndDocxLinkParity": true,
+  "referencedRepositoryFilesVerifiedAtCut": 20,
+  "numericChecks": {
+    "processRecoverySeconds": [
+      40.57,
+      37.77,
+      34.95
+    ],
+    "rolloutValid": 226,
+    "bddPassed": 4,
+    "dotnetPassed": 319,
+    "operatorChaosPassed": 6,
+    "operatorScreenshots": 37,
+    "storageAgentPasses": 29,
+    "storageLogicalMiB": 928,
+    "storageValidHttp": 61,
+    "storageStableSeconds": 125.329704,
+    "mlConfusionAndF1": "Match original metrics.csv"
+  },
+  "sourceEvidenceFiles": {
+    "docs/aiops-requirements-matrix.md": {
+      "sha256": "a3e3cebb768ad4f38385f925f9ad2519cc3432b91ec70c950db5ec17a49650f4"
+    },
+    "docs/aiops-k8s-topology.md": {
+      "sha256": "6ff80e230d3b240eeb37e5d0b3c7f02f74c1d7ce62565462de6514d650d9de61"
+    },
+    "docs/evidence/issue-4-20261109/README.md": {
+      "sha256": "ddcd4afc27e2e3f3b4c83b95fa9c1b17a212b90d29a45eca01d66d1f3604cc0b"
+    },
+    "docs/evidence/issue-2-20261108/live/README.md": {
+      "sha256": "3174fda3c9526aa5fde83da85553e4f90841d7ba9dd52124c37ec8a6388d7d1b"
+    },
+    "docs/evidence/issue-7-20261110/README.md": {
+      "sha256": "60edf6cb46f1381b8a787fb2ee75438bde0ae449e30b32a5c7d46a29af803cc2"
+    },
+    "docs/evidence/issue-9-20261111/README.md": {
+      "sha256": "4b9bf03369466f70e85912f7418e130c03f6bee7fec4076f7b991f849757ccfe"
+    },
+    "docs/evidence/issue-10-20261111/README.md": {
+      "sha256": "e237c35c0a8ac84a95a8ef9fab22cf743673350d83bae52970d49a171c584800"
+    },
+    "docs/evidence/issue-8-20261111/README.md": {
+      "sha256": "c2b156883ee5ace5b7ea1e6d18499a5e1badfa26bef1bf93c153df0d93bda81c"
+    },
+    "docs/supuesto-sql.md": {
+      "sha256": "090af4802685b37372417a423c27de48f27fd5c9dedda6affaa1bbbc63fddac1"
+    },
+    "docs/evidence/issue-6-20261110/README.md": {
+      "sha256": "00c629f083f6bea707f124286fed340dc9455b1913fb8607130a96c2f928fc06"
+    },
+    "docs/evidence/issue-11-20261112/README.md": {
+      "sha256": "373528c8e89288af8ea6d38977fb5d7434d9dd73eb044b9031783ec7904f2a94"
+    },
+    "docs/evidence/issue-12-20261112/README.md": {
+      "sha256": "9045a022f4e28a2c75f3541a25acb08fdd1792a97bdc3684469ba76b7b4d51c7"
+    },
+    "docs/evidence/issue-13-20261112/README.md": {
+      "sha256": "9b540549e987801201c9bd488566959878e74cfb579d6c087e6a24396fdef149"
+    },
+    "docs/evidence/issue-14-20261112/README.md": {
+      "sha256": "814d9aa72cee55ceaa9117d738d89adcd6388bfcc23d1d8230b20d14c93ff091"
+    },
+    "docs/baseline-incidents.md": {
+      "sha256": "b832de477893c7c77b441fe065e6701eedd981597e2ff67887bc9e088e0678b5"
+    },
+    "docs/evidence/issue-16-20261113/README.md": {
+      "sha256": "eb0453b42b192e63cfea44eebf2698a1f8fe51d2f934bafad72ff4a683d0b65c"
+    },
+    "docs/evidence/issue-17-20261112/fix-after-review/README.md": {
+      "sha256": "eed7f8e16a3a9dd1ba82318ba93438d75270ba30ad23efac79f22919de38a8e6"
+    },
+    "docs/evidence/storage-io-20261114/README.md": {
+      "sha256": "f9644c5bd35aa134461d68e5dd312a29e900af8395c21835524c11701566cc60"
+    },
+    "docs/evidence/issue-15-20261112/live-after-fix/README.md": {
+      "sha256": "e91f273ee40b2a6c78ea625b4aa18a35738f32837833efe9c3be85cd467583d9"
+    },
+    "docs/evidence/test-isolation-20261114/README.md": {
+      "sha256": "c6548968a3ff249fac3199e64a5ef9a1c7a4b6aed4552a16cd4502303c7fc0e8"
+    }
+  },
+  "artifacts": {
+    ".gitattributes": {
+      "bytes": 29,
+      "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d"
+    },
+    "figuras/despliegue-laboratorio.png": {
+      "bytes": 143890,
+      "sha256": "2047f8ca45e6f4af32342c9be53a8434f269883f831b9752d504deb3e34fe67f"
+    },
+    "figuras/despliegue-laboratorio.svg": {
+      "bytes": 4984,
+      "sha256": "a16c16e64400e62788c3136b7cb3af1e5df4c14fcd36e10671ae5188ebe69526"
+    },
+    "fuentes/build_report.py": {
+      "bytes": 14855,
+      "sha256": "d768c9eaec85bcf9e703504f609100d559f058d5c407beaff15aac7519762132"
+    },
+    "fuentes/informe.json": {
+      "bytes": 27815,
+      "sha256": "8ece3cfd427937c0d242b7579261966c26a097bcff160a9c2374afe24a324576"
+    },
+    "fuentes/link_pdf.py": {
+      "bytes": 3343,
+      "sha256": "259618c7076c8ae5b679a0d3abf137fbdbd53c45c8af7c2f6df376bceee7ca69"
+    },
+    "fuentes/verify_report.py": {
+      "bytes": 7419,
+      "sha256": "aa142472037709b3cbd3d918a13512b7c1d16115aa6f2d0ebd007694e75ba8db"
+    },
+    "informe-final.md": {
+      "bytes": 32141,
+      "sha256": "bb10626009fc592def99ea6abe068e03bb074cff793008dfa93b9ed67a968faf"
+    },
+    "Informe_Final_AIOps.docx": {
+      "bytes": 174233,
+      "sha256": "28d45086149c05359dd31d8ea5d104ccd7017732dfbec347e7cb1e92595a41b3"
+    },
+    "Informe_Final_AIOps.pdf": {
+      "bytes": 309857,
+      "sha256": "23cf388f6b1b7bc37f8a8edf93b129b8d34338a5c9c97644ae123cee05ee0c18"
+    },
+    "README.md": {
+      "bytes": 2006,
+      "sha256": "5f63da26898ec80619c3826563ca81f559ef81372d01fc21ec492e601fac4f87"
+    }
+  },
+  "teamReview": "Content requires review by the three students before submission; no academic approvals or completed defense inferred.",
+  "visualQa": {
+    "pagesReviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "method": "All ten first-render pages inspected; final-render changed pages 1, 2, 8 and 10 inspected again. Pages 3, 4, 5, 6, 7 and 9 were pixel-identical to reviewed pages. Final PDF raster after link annotation repair was pixel-identical on all ten pages.",
+    "orphanHeadingsObserved": false,
+    "clippedTextOrTablesObserved": false,
+    "unintendedBlankPages": false,
+    "titleBordersRemoved": true,
+    "qualitySelfAssessment": {
+      "cover": 9,
+      "contents": 9,
+      "headings": 9,
+      "typography": 9,
+      "lists": 9,
+      "tables": 9,
+      "diagrams": 9,
+      "pagination": 9,
+      "headersFooters": 9,
+      "globalConsistency": 9,
+      "contentIntegrity": 10
+    }
+  }
+}
