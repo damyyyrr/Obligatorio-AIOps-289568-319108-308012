@@ -108,6 +108,46 @@ class FaultAgentTests(unittest.TestCase):
                                text=True, capture_output=True, check=True, timeout=10).stdout
         self.assertEqual(value, "foreign")
 
+    def test_storage_rewrites_fixed_file_and_reports_synchronized_progress(self):
+        run_id = uuid.uuid4().hex
+        process = subprocess.Popen(self.command("run", "storage", run_id, seconds=5),
+                                   stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process.stdin.write(SOURCE.encode("utf-8"))
+        process.stdin.close()
+        process.stdin = None
+        states = []
+        try:
+            while process.poll() is None:
+                status = self.agent("status", "storage", run_id)
+                if status["completedPasses"]:
+                    states.append(status)
+                time.sleep(0.15)
+            output, error = process.communicate(timeout=15)
+            self.assertEqual(process.returncode, 0, error)
+            result = json.loads(output)
+            self.assertGreaterEqual(result["completedPasses"], 3)
+            self.assertEqual(result["bytesWritten"], result["completedPasses"] * 4 * 1048576)
+            self.assertLessEqual(result["bytesWritten"], 1024 * 1048576)
+            self.assertGreaterEqual(result["lastWriteEpoch"] - result["firstWriteEpoch"], 2)
+            self.assertTrue(states)
+            self.assertTrue(all(s["bytes"] == 4 * 1048576 for s in states))
+            self.assertEqual([s["completedPasses"] for s in states], sorted(s["completedPasses"] for s in states))
+            self.assert_no_processes_or_payload(run_id)
+            self.agent("clear", "storage", run_id)
+        finally:
+            if process.poll() is None:
+                self.agent("cleanup", "storage", run_id)
+                process.communicate(timeout=15)
+
+    def test_storage_deadline_truncates_rewrites_and_cleans_progress(self):
+        run_id = uuid.uuid4().hex
+        started = time.monotonic()
+        result = self.agent("run", "storage", run_id, seconds=8, until=int(time.time()) + 3)
+        self.assertTrue(result["injected"])
+        self.assertLess(time.monotonic() - started, 7)
+        self.assert_no_processes_or_payload(run_id)
+        self.agent("clear", "storage", run_id)
+
     def test_absolute_deadline_truncates_a_running_agent(self):
         run_id = uuid.uuid4().hex
         started = time.monotonic()

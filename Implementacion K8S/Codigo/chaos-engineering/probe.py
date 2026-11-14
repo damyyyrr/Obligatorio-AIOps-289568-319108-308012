@@ -148,6 +148,8 @@ def observe(data):
         "cpu": 'sum by(pod)(rate(container_cpu_usage_seconds_total{job="kubernetes-cadvisor",namespace="pharmago",container=""}[1m]))',
         "memory": 'max by(pod)(container_memory_working_set_bytes{job="kubernetes-cadvisor",namespace="pharmago",container=""})',
         "storage": 'k8s_pod_filesystem_usage_bytes{namespace="pharmago"}',
+        "storageWrites": 'sum by(pod)(container_fs_writes_bytes_total{job="kubernetes-cadvisor",namespace="pharmago",container!="",container!="POD",image!=""})',
+        "storageWriteRate": 'sum by(pod)(rate(container_fs_writes_bytes_total{job="kubernetes-cadvisor",namespace="pharmago",container!="",container!="POD",image!=""}[1m]))',
         "diskFree": 'node_filesystem_avail_bytes{job="node-exporter",mountpoint=~"/|/var|/mnt/data",fstype!~"tmpfs|devtmpfs|squashfs"}',
         "nodeMemoryFree": 'node_memory_MemAvailable_bytes{job="node-exporter"}',
     }

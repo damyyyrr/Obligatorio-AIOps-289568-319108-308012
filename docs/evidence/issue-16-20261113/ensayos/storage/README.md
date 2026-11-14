@@ -2,6 +2,8 @@
 
 13/11/2026. Run ID `61159cbb42bc4491bcc92a93b9299b56`. **PASS / limpieza verified**. Archivo temporal propio de 32 MiB durante 60 s, fuera de los PVC de datos; retirada automática.
 
+**Complemento del 14/11/2026:** el [mismo caso se reforzó con I/O sostenida](../../../storage-io-20261114/README.md), en el run `c70c8cae26144765974aa922c828bc86`: 29 pasadas/928 MiB lógicos sobre un archivo de 32 MiB, aumento I/O del pod observado, 61/61 sondas HTTP 200 válidas, 125,33 s de recuperación estable y limpieza verificada. La ejecución posterior fue asistida por Codex, sobre árbol modificado con hashes registrados; no incorpora una nueva revisión manual del operador ni capturas nuevas de Grafana. Las imágenes, horas y archivos de esta ficha siguen siendo los originales del 13/11. El refuerzo acredita I/O sostenida; no demuestra saturación del dispositivo ni resuelve la interpretación académica de “sobrecarga”. Ver [resumen nuevo](../../../storage-io-20261114/summary.json) y [trazabilidad de la actualización documental](../../../storage-io-20261114/operator-doc-update.json).
+
 ## Ejecución y alcance
 
 Joaquin Decia ejecutó el helper local `probar.ps1 -Escenario storage -Operador $yo`, después de revisar el plan con `-SoloPlan`. El helper invocó el controlador versionado, cargó credenciales solo en memoria y conservó el reporte. Comando equivalente, con variables y credenciales preparadas según la [guía principal](../../README.md#reproducir):

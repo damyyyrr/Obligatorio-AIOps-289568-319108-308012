@@ -1,0 +1,102 @@
+{
+  "runId": "c70c8cae26144765974aa922c828bc86",
+  "scenario": "storage",
+  "status": "PASS",
+  "cleanup": "verified",
+  "sourceCommit": "baec66bb304fa5d923fb3e604e49a7d5fcacc6bc",
+  "dirtyTree": true,
+  "sourceHashes": {
+    "chaos.py": "b1e8a3f4e2b7d8ad492df2636c8eb950f029701a1a846fd09a5eb34602368e51",
+    "fault.sh": "aaf056d792934a8e86ef66a29140f531cb98f332745d7c05d00e07673acd807d",
+    "probe.py": "7217f0629786bcd10997bfa8ee721527c7e5f95845a3ed963ec7e206aa178534"
+  },
+  "operatorDeclared": "Codex-assisted storage validation",
+  "requestedDurationSeconds": 60,
+  "injectedUtc": "2026-11-14T17:40:35.340203+00:00",
+  "faultRestoredUtc": "2026-11-14T17:41:42.549280+00:00",
+  "tRestore": "2026-11-14T17:41:45.070192+00:00",
+  "tVerified": "2026-11-14T17:43:50.399896+00:00",
+  "finishedUtc": "2026-11-14T17:43:53.674943+00:00",
+  "verifiedStableSeconds": 125.329704,
+  "hostAvailableBytesBefore": 3707965440,
+  "workload": {
+    "mode": "repeated_fdatasync",
+    "fileMiB": 32,
+    "durationSeconds": 60,
+    "maxWrittenMiB": 1024,
+    "writers": 1,
+    "target": "exclusive /tmp directory outside PVCs",
+    "deviceSaturationRequired": false
+  },
+  "agentFinalResult": {
+    "injected": true,
+    "scenario": "storage",
+    "runId": "c70c8cae26144765974aa922c828bc86",
+    "completedPasses": 29,
+    "bytesWritten": 973078528,
+    "firstWriteEpoch": 1794678035,
+    "lastWriteEpoch": 1794678093
+  },
+  "storageEvidence": {
+    "classification": "sustained_io_observed",
+    "fileMiB": 32,
+    "maxWrittenMiB": 1024,
+    "completedPasses": 26,
+    "bytesWrittenByAgent": 872415232,
+    "observedWriteSpanSeconds": 52,
+    "podWrittenBytesDelta": 838971392.0,
+    "baselineWriteBytesPerSecond": 0.0,
+    "peakWriteBytesPerSecond": 16295273.59050445,
+    "deviceSaturation": null,
+    "interpretation": "Repeated synchronized writes and pod I/O observed; not proof of device saturation, disk full or application failure."
+  },
+  "httpPhases": {
+    "before": {
+      "samples": 3,
+      "httpCounts": {
+        "200": 3
+      },
+      "validSamples": 3,
+      "latencyMs": {
+        "min": 237.752,
+        "median": 405.732,
+        "max": 680.882
+      }
+    },
+    "during": {
+      "samples": 18,
+      "httpCounts": {
+        "200": 18
+      },
+      "validSamples": 18,
+      "latencyMs": {
+        "min": 3.029,
+        "median": 6.2955,
+        "max": 85.382
+      }
+    },
+    "recovery": {
+      "samples": 40,
+      "httpCounts": {
+        "200": 40
+      },
+      "validSamples": 40,
+      "latencyMs": {
+        "min": 2.619,
+        "median": 7.4885,
+        "max": 85.245
+      }
+    }
+  },
+  "independentAgentCleanup": true,
+  "ownFixturesRemoved": true,
+  "profileStopped": true,
+  "deviceSaturationDemonstrated": false,
+  "limitations": [
+    "Pod I/O includes application writes; agent counters are logical bytes.",
+    "26 passes were corroborated by the last active progress sample; the final agent result records 29 passes.",
+    "No device saturation, disk-full condition, application failure, or academic acceptance is established.",
+    "Windows WSL cache was dropped twice during preparation, before functional baseline/injection; not during the trial.",
+    "Codex-assisted local execution; not independent human peer validation."
+  ]
+}

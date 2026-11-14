@@ -334,8 +334,8 @@
     },
     {
       "file": "ensayos/storage/README.md",
-      "bytes": 2964,
-      "sha256": "bab34df664c8d1bd4673adb9adef2323abb82bcf278b9d2c1d0d447da4a8a173"
+      "bytes": 3882,
+      "sha256": "f9d9ef02a57ecc0a1a82633354c29039b304d691efc17813570270cd260fbb78"
     },
     {
       "file": "ensayos/storage/report.json.gz",
@@ -354,8 +354,8 @@
     },
     {
       "file": "README.md",
-      "bytes": 10753,
-      "sha256": "c0261d5dab4f3b80987947182676dd84a73a052d7b9a85874995f98fc77ec3ee"
+      "bytes": 13830,
+      "sha256": "eb0453b42b192e63cfea44eebf2698a1f8fe51d2f934bafad72ff4a683d0b65c"
     },
     {
       "file": "resumen.json",
@@ -372,5 +372,8 @@
       "bytes": 3178,
       "sha256": "63ef32a37c965c1f27e1f77f98a7773b7c3cc7dee34b615eb3fc6f04dc9f8e98"
     }
-  ]
+  ],
+  "documentationUpdatedUtc": "2026-11-14T20:42:47.955214+00:00",
+  "documentationUpdate": "Only README.md and ensayos/storage/README.md complemented with the separately recorded 14 November sustained-I/O trial. All other original files unchanged.",
+  "originalManifest": "../storage-io-20261114/operator-package-original-manifest.json"
 }

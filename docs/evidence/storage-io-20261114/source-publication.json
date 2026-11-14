@@ -1,0 +1,37 @@
+{
+  "scope": "Original live-run/sourceHashes record measured Windows working-tree bytes. Git core.autocrlf=true normalizes Python CRLF to LF when staging. Full contents compared; no semantic source change.",
+  "files": {
+    "chaos.py": {
+      "measuredWorkingTreeSha256": "b1e8a3f4e2b7d8ad492df2636c8eb950f029701a1a846fd09a5eb34602368e51",
+      "publishedGitBlobSha256": "14fc3968c6f8514b5524a1e92b31198f7bda177c71a60df86b8ddffb8f42d4d8",
+      "byteIdentical": false,
+      "equivalentAfterCrlfToLf": true
+    },
+    "fault.sh": {
+      "measuredWorkingTreeSha256": "aaf056d792934a8e86ef66a29140f531cb98f332745d7c05d00e07673acd807d",
+      "publishedGitBlobSha256": "aaf056d792934a8e86ef66a29140f531cb98f332745d7c05d00e07673acd807d",
+      "byteIdentical": true,
+      "equivalentAfterCrlfToLf": true
+    },
+    "probe.py": {
+      "measuredWorkingTreeSha256": "7217f0629786bcd10997bfa8ee721527c7e5f95845a3ed963ec7e206aa178534",
+      "publishedGitBlobSha256": "6139043782887510d35c7e2ab89b07b399890c14d4d8549e5e7ec57c7dc78439",
+      "byteIdentical": false,
+      "equivalentAfterCrlfToLf": true
+    },
+    "test_chaos.py": {
+      "measuredWorkingTreeSha256": "9e227fe88ac352bd18135c5bda91ffb9c63120a1246a0ffb3bc46464510a54f2",
+      "publishedGitBlobSha256": "e37ef193157641d16553ca8c7056f5bcac56a9d8adc20c915b6b37191ffccf7c",
+      "byteIdentical": false,
+      "equivalentAfterCrlfToLf": true
+    },
+    "test_fault_agent.py": {
+      "measuredWorkingTreeSha256": "1aab690257788e2c8f4088e1c0cd086217964be1aea45c50a19ee535cebf33c2",
+      "publishedGitBlobSha256": "667615f9585a63ab3b60269e3ef1c0e6140ac977264fd7abc05875a90cb1eae8",
+      "byteIdentical": false,
+      "equivalentAfterCrlfToLf": true
+    }
+  },
+  "equivalence": "PASS",
+  "originalReportsModified": false
+}
