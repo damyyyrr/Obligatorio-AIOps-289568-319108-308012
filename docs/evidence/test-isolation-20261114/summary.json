@@ -1,0 +1,78 @@
+{
+  "sourceCommit": "2f125b89bf5c8c34a8748367b068bbdb8cd17975",
+  "workingTreeDirty": true,
+  "workingTreeScope": "Documentation edits only; Backend matches the source commit.",
+  "command": "dotnet test \"Implementacion K8S/Codigo/Backend/PharmaGo.sln\" --no-restore --nologo --verbosity quiet --results-directory \".runtime/docs-status-20261114/dotnet\" --logger \"trx;LogFilePrefix=status\"",
+  "dotnetSdk": "10.0.203",
+  "testSource": "Implementacion K8S/Codigo/Backend/PharnaGo.Test/DataAccess.Test/PurchasesDetailRepositoryTest.cs",
+  "testSourceSha256Utf8Lf": "6daaac7a5d56af0fe9f9d91856d42e5c9f068edde77a6033e6ba53ecd080a6e1",
+  "runs": [
+    {
+      "assemblies": [
+        "PharmaGo.ApiGateway.Test.dll"
+      ],
+      "counters": {
+        "total": 21,
+        "executed": 21,
+        "passed": 21,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      },
+      "times": {
+        "creation": "2026-11-14T12:58:59.4625091-03:00",
+        "queuing": "2026-11-14T12:58:59.4625092-03:00",
+        "start": "2026-11-14T12:58:58.8475315-03:00",
+        "finish": "2026-11-14T12:58:59.5054206-03:00"
+      },
+      "originalTrxSha256": "98af98a49dfc1dbd3a1dcd070617322d8e0fa7cde6af39860663445452b42ff9"
+    },
+    {
+      "assemblies": [
+        "PharmaGo.Test.dll"
+      ],
+      "counters": {
+        "total": 298,
+        "executed": 298,
+        "passed": 298,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      },
+      "times": {
+        "creation": "2026-11-14T12:59:03.0755217-03:00",
+        "queuing": "2026-11-14T12:59:03.0755219-03:00",
+        "start": "2026-11-14T12:59:02.0759363-03:00",
+        "finish": "2026-11-14T12:59:04.7343138-03:00"
+      },
+      "originalTrxSha256": "1024fa6bf9b1863399e2eac72876af56c3ed636106201929c20e0e3996f48203"
+    }
+  ],
+  "totals": {
+    "total": 319,
+    "passed": 319,
+    "failed": 0,
+    "skipped": 0
+  },
+  "scope": "Local .NET test suite. No Docker, Kubernetes, browser or chaos execution in this verification."
+}

@@ -1,0 +1,168 @@
+{
+  "checkedUtc": "2026-11-14 15:59:53 UTC",
+  "repository": "damyyyrr/Obligatorio-AIOps-289568-319108-308012",
+  "scope": "Read-only snapshot of issues 1 through 20; closure is not academic approval.",
+  "issues": [
+    {
+      "number": 1,
+      "title": "[ACAD-01] Confirmar criterios docentes y registrar decisiones Q01–Q04",
+      "state": "open",
+      "state_reason": null,
+      "closed_at": null,
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/1"
+    },
+    {
+      "number": 2,
+      "title": "[K8S-01] Hacer reproducible y no destructivo el despliegue Kubernetes",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-08T16:57:48Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2"
+    },
+    {
+      "number": 3,
+      "title": "[K8S-02] Definir topología y separar servicios sin bloquear réplicas ni rollout",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-09T15:04:01Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/3"
+    },
+    {
+      "number": 4,
+      "title": "[DATA-01] Externalizar secretos y verificar persistencia y restauración de datos",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-09T19:34:46Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/4"
+    },
+    {
+      "number": 5,
+      "title": "[DB-01] Controlar migraciones y resolver el alcance de disponibilidad de SQL Server",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-09T20:25:38Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/5"
+    },
+    {
+      "number": 6,
+      "title": "[OBS-01] Verificar métricas OTLP y cobertura individual de pods y nodos",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-10T14:42:23Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/6"
+    },
+    {
+      "number": 7,
+      "title": "[RES-01] Ajustar probes y demostrar recuperación automática de microservicios",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-10T15:04:53Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/7"
+    },
+    {
+      "number": 8,
+      "title": "[DEPLOY-01] Demostrar rollout y rollback sin fallos funcionales durante la actualización",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-11T16:37:33Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/8"
+    },
+    {
+      "number": 9,
+      "title": "[RES-02] Auditar y probar rate limiting por IP/usuario en varias réplicas",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-11T19:05:50Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/9"
+    },
+    {
+      "number": 10,
+      "title": "[RES-03] Definir timeouts y resiliencia segura en llamadas interservicio",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-11T20:18:59Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/10"
+    },
+    {
+      "number": 11,
+      "title": "[OBS-02] Implementar trazas OTLP consultables y propagación de contexto",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-11T20:51:39Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/11"
+    },
+    {
+      "number": 12,
+      "title": "[OBS-03] Centralizar logs JSON y comprobar búsquedas en Kibana o equivalente",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-11T21:31:10Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/12"
+    },
+    {
+      "number": 13,
+      "title": "[OBS-04] Provisionar y probar al menos cinco alertas Grafana",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-11T22:42:05Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/13"
+    },
+    {
+      "number": 14,
+      "title": "[ML-01] Implementar y comparar Isolation Forest y One-Class SVM RBF",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-12T21:08:23Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/14"
+    },
+    {
+      "number": 15,
+      "title": "[QA-01] Automatizar escenarios BDD con Cypress y Cucumber",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-13T01:44:06Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15"
+    },
+    {
+      "number": 16,
+      "title": "[OPS-01] Completar el plan de incidentes, runbooks y registro de tiempos",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-13T18:44:43Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16",
+      "closingNotes": " — 13/11/2026\r\n\r\nSe cierra como completada para el alcance de **plan y aplicación guiada en laboratorio local**, por indicación del responsable en esta sesión. La revisión independiente se conserva como mejora opcional; no se atribuye al enunciado docente ni se afirma que se haya realizado.\r\n\r\nEl [PR #41](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/pull/41) quedó integrado en `obligatorio`, commit `a04e3052449f8d8a86bbeed3f886fd5b500bfb59`. Incluye [el informe y las fichas de los seis ensayos](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a04e3052449f8d8a86bbeed3f886fd5b500bfb59/docs/evidence/issue-16-20261113/README.md), 37 capturas originales, reportes completos, journals, bitácora, conectividad, hashes y aclaraciones de los runbooks.\r\n\r\nJoaquin Decia ejecutó CPU, solicitudes, RAM, almacenamiento, red y desconexión interna: **6/6 PASS y limpieza verified**, con ventanas estables registradas de al menos 120 s por caso. Codex guió y recopiló evidencia; el controlador automatizó inyección, sondas y reversión. La corrida adicional ejecutada por el agente se conserva separada y no se cuenta entre los seis ensayos del operador.\r\n\r\nLas horas de anotación se conservan: tAck del controlador es null, la nota explícita de CPU fue posterior al fin técnico y la revisión RAM se registró retrospectivamente. No se inventan TTA, promedios, comunicaciones externas o revisión de un compañero. Los documentos integrados reflejan el estado anterior a esta decisión de cierre; esta sección registra el ajuste del criterio interno.\r\n\r\nSe verificaron integridad de originales y capturas, consistencia de los resultados y recursos, enlaces, sintaxis documental y ausencia de credenciales privadas en el texto publicado. El operador retiró los clientes de prueba y detuvo Minikube conservando los datos. El cierre de OPS-01 no acredita nodos físicos distintos ni resuelve los otros pendientes académicos.\r\n"
+    },
+    {
+      "number": 17,
+      "title": "[CHAOS-01] Hacer seguros y verificar los seis escenarios de ingeniería del caos",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-11-13T01:44:20Z",
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/17"
+    },
+    {
+      "number": 18,
+      "title": "[DOCS-01] Consolidar informe, diagrama real y paquete de entrega",
+      "state": "open",
+      "state_reason": null,
+      "closed_at": null,
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/18"
+    },
+    {
+      "number": 19,
+      "title": "[DEF-01] Ensayar la defensa war-room del 23 de noviembre",
+      "state": "open",
+      "state_reason": null,
+      "closed_at": null,
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/19"
+    },
+    {
+      "number": 20,
+      "title": "[ML-02] Ampliación opcional del práctico: k-sigma, MAD y análisis de FP/FN",
+      "state": "open",
+      "state_reason": null,
+      "closed_at": null,
+      "url": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/20"
+    }
+  ]
+}

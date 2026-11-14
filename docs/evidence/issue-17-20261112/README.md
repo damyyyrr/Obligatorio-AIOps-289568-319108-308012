@@ -1,4 +1,6 @@
-# Issue #17: implementación y verificaciones sin clúster
+# Issue #17 — validación local y antecedentes sin clúster
+
+**Estado al 14/11/2026: #17 integrada y cerrada**, con [seis ensayos técnicos PASS](fix-after-review/README.md) y [repetición de seis casos por el operador](../issue-16-20261113/README.md), ambos con limpieza verificada. [#16 se cerró para plan y aplicación guiada local](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16); revisión independiente opcional no realizada y tAck null se mantienen explícitos. Ver [alcance y pendientes reales](../../estado-actual.md). No se ejecutaron nuevas fallas para esta actualización documental.
 
 **Actualización 13/11/2026:** [repetición de los seis casos por Joaquin Decia](../issue-16-20261113/README.md), con 37 capturas aportadas por el operador, reportes completos, bitácora y cierre del laboratorio. Se distingue la ejecución humana del controlador automatizado y de una corrida adicional del agente. Los seis ensayos del operador dieron PASS y limpieza verified; esta actualización no reemplaza la evidencia histórica siguiente.
 
@@ -6,9 +8,9 @@
 
 Rama `feature/issue-17-ingenieria-caos`, desde `54d5a17c68cb7ede122b92862ad156163a0b09d9` de `obligatorio` (PR #36 integrado). Fecha de revisión: **12/11/2026**. Los checks se hicieron con el árbol modificado; los hashes en [offline-checks.json](offline-checks.json) identifican los archivos verificados. No se presentan como imágenes desplegadas.
 
-## Estado real
+## Estado de la inspección inicial del 12/11/2026
 
-**Implementación preparada; seis ensayos sobre PharmaGo NO ejecutados.** #17/R07 y la validación integral de #16/R06 siguen pendientes. No hay resultados de impacto, Firing/OK, recuperación o limpieza de fallas reales en este incremento.
+En aquella inspección la implementación estaba preparada y los seis ensayos sobre PharmaGo todavía no se habían ejecutado. No había resultados de impacto, Firing/OK, recuperación o limpieza de fallas reales en ese incremento. Es un antecedente superado por las ejecuciones enlazadas arriba, no el estado actual de #17/R07 ni del cierre de #16.
 
 Se inició Docker Desktop para inspeccionar capacidad. El motor tiene 4.026.466.304 bytes (aprox. 3,75 GiB) y esta PC, 8.286.953.472 bytes físicos (aprox. 7,72 GiB). En la captura final había 1.528.782.848 bytes libres (aprox. 1,42 GiB), cero contenedores activos y cero contextos Kubernetes configurados. Al inicio se habían observado solo unos 300 MiB libres, y luego alrededor de 1,2 GiB. Los valores cambian con el uso del equipo. [Captura sanitizada](environment.json).
 
@@ -50,7 +52,9 @@ git diff --check
 
 En Bash: `for f in 'Implementacion K8S/Codigo/chaos-engineering/'*.sh; do bash -n "$f" || exit 1; done`. Las pruebas YAML requieren el venv del flujo Kubernetes; el controlador y sus unit tests solo usan biblioteca estándar.
 
-## Ensayos que faltan antes de aceptar #17
+## Checklist histórico previo a los ensayos
+
+La tabla siguiente conserva el `NOT RUN` de la inspección inicial. Los seis casos se ejecutaron después: consultar sus fichas enlazadas arriba para PASS, estímulo, efecto y límites reales. En particular, red/desconexión terminaron midiendo conexiones nuevas a Pharmacy y registrando aparte la ruta existente del Gateway, que siguió atendiendo.
 
 | Caso | Estado | Evidencia real requerida |
 |---|---|---|
@@ -63,4 +67,4 @@ En Bash: `for f in 'Implementacion K8S/Codigo/chaos-engineering/'*.sh; do bash -
 
 En todos: baseline sano y versión identificada, presupuesto y roles/canal, ficha con señal inicial y tiempos registrados, decisiones/comunicaciones reales, 120 s de estabilidad, datos/UIDs/configuración comparados, alertas evaluándose y limpieza verificada; luego postmortem y revisión de los runbooks con un compañero cuando esté disponible.
 
-No rebajar el precheck ni retirar observabilidad para ejecutar en este equipo. Si no puede asegurarse reversión/identidad o el watchdog falla, no iniciar. Un cierre de terminal o un apagado del host no garantizan que una regla quede reparada: conservar journal y seguir la recuperación documentada. Este PR debe permanecer como implementación pendiente de validación integral, sin cerrar #16/#17 por los checks sin clúster.
+No rebajar el precheck ni retirar observabilidad para ejecutar en un equipo sin margen suficiente. Si no puede asegurarse reversión/identidad o el watchdog falla, no iniciar. Un cierre de terminal o un apagado del host no garantizan que una regla quede reparada: conservar journal y seguir la recuperación documentada. En la etapa inicial se mantuvo el PR pendiente porque los checks sin clúster no acreditaban los seis ensayos; el cierre posterior se sustenta en la evidencia real enlazada al comienzo.

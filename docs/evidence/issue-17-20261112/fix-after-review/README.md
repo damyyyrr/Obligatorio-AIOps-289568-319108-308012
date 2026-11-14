@@ -2,6 +2,8 @@
 
 **Estado final: seis ensayos reales PASS en Kubernetes local con Calico**, con 120 s estables por escenario y limpieza independiente. [Resumen verificable](trial-summary.json) · [Limpieza independiente](cleanup-verification.json).
 
+**Actualización de seguimiento al 14/11/2026:** #17 se integró y está cerrada. La [repetición por el operador del 13/11](../../issue-16-20261113/README.md) sustenta el [cierre acordado de #16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) para plan y aplicación guiada; revisión independiente opcional no realizada. Las fichas, reportes, fuentes y fallos siguientes conservan sus commits y resultados originales. Ver [estado contrastado](../../../estado-actual.md).
+
 | Ensayo | Efecto observado | Resultado y ficha |
 |---|---|---|
 | Requests | Generador: 100 HTTP 200 y 140 HTTP 429; cliente normal conservó catálogo/roles | [PASS](real-trials/requests/README.md) |
@@ -61,7 +63,7 @@ Los ensayos se ejecutaron desde commits limpios distintos, identificados en cada
 
 Cada `report.json` es una vista compacta con estados, muestras y comprobaciones de telemetría; `artifactView` indica los snapshots repetidos/etiquetas omitidos y el SHA-256 del original. El archivo `report.json.gz` conserva el JSON original íntegro, sin modificaciones, con hash verificado. El mismo formato se aplica a los intentos fallidos. Se conservaron 16 vistas/originales (incluidas referencias duplicadas a fallos) en aproximadamente 2,8 MB. Para inspeccionar el detalle: `python -c "import gzip; print(gzip.open('report.json.gz','rt',encoding='utf-8').read())"`.
 
-Las fichas aportan hipótesis, comando, efecto, alertas, tiempos observados, restauración y conclusión. `tAck` permanece null: no se inventaron reconocimiento humano, TTA, comunicaciones ni promedios. La evidencia técnica local de #17 queda lista para revisión e integración. La validación por compañero de roles y comunicaciones del proceso #16 permanece pendiente. El laboratorio es de un nodo en una PC; no demuestra separación física, caída de nodo ni disponibilidad en producción.
+Las fichas aportan hipótesis, comando, efecto, alertas, tiempos observados, restauración y conclusión. `tAck` permanece null: no se inventaron reconocimiento humano, TTA, comunicaciones ni promedios. Al registrar estos ensayos la evidencia de #17 se preparó para revisión/integración y faltaba la aplicación humana posterior de #16. Las actualizaciones de seguimiento enlazan esa aplicación guiada y el cierre acordado; la revisión independiente sigue sin realizarse y quedó como mejora opcional. El laboratorio es de un nodo en una PC; no demuestra separación física, caída de nodo ni disponibilidad en producción.
 
 ## Cierre del laboratorio y compatibilidad
 

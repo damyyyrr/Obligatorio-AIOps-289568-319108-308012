@@ -1,6 +1,6 @@
 # Runbooks de incidentes de PharmaGo
 
-Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/incidente.md). Los mecanismos de #17 están en [la guía](../../Implementacion%20K8S/Codigo/chaos-engineering/README.md) y cuentan con [seis ensayos técnicos locales aprobados](../evidence/issue-17-20261112/fix-after-review/README.md). Requieren contexto/namespace, roles, inventario, límite temporal y reversión registrados antes de actuar. La ejecución automatizada no acredita reconocimiento ni comunicaciones humanas: la revisión por compañero de #16 continúa pendiente.
+Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/incidente.md). Los mecanismos de #17 están en [la guía](../../Implementacion%20K8S/Codigo/chaos-engineering/README.md) y cuentan con [seis ensayos técnicos locales aprobados](../evidence/issue-17-20261112/fix-after-review/README.md) y [repetición guiada por el operador](../evidence/issue-16-20261113/README.md). Requieren contexto/namespace, roles, inventario, límite temporal y reversión registrados antes de actuar. [#16 está cerrada para plan y aplicación guiada local](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16); la revisión independiente por compañero quedó como mejora opcional no realizada. La ejecución automatizada no acredita reconocimiento ni comunicaciones humanas.
 
 ## RB-01: exceso de solicitudes o solicitudes fallidas reiteradas
 
@@ -18,7 +18,7 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 **Detectar:** `pharmago-pod-cpu`, p95 elevado, throttling o probes lentos. CPU del nodo y CPU del contenedor son medidas distintas.
 
 1. **Diagnosticar:** [consultas](../aiops-k8s-metrics.md) y dashboard Infra por pod/nodo; comparar con límites, réplicas y eventos. `kubectl --context $ctx -n $ns top pod $pod --containers` requiere Metrics Server; su ausencia no significa CPU cero.
-2. **Contener:** detener el PID/generador de CPU registrado por #17 y comprobar que terminó. Cerrar `kubectl exec` no prueba que sus hijos terminen. La versión heredada de `cpu-spike.sh` dejaba bucles sin limpieza garantizada; ahora el wrapper usa el controlador, agente con PID identificado, trap/timeout y recuperación por journal. Su validación real aún está pendiente.
+2. **Contener:** detener el PID/generador de CPU registrado por #17 y comprobar que terminó. Cerrar `kubectl exec` no prueba que sus hijos terminen. La versión heredada de `cpu-spike.sh` dejaba bucles sin limpieza garantizada; ahora el wrapper usa el controlador, agente con PID identificado, trap/timeout y recuperación por journal. El [ensayo CPU](../evidence/issue-17-20261112/fix-after-review/real-trials/cpu/README.md) y las [pruebas del agente](../evidence/issue-17-20261112/fix-after-review/README.md) acreditan el efecto y la limpieza en sus entornos documentados.
 3. **Restaurar:** si la inyección persiste dentro de un pod stateless y se perdió el PID, coordinación puede recrear solo el servicio elegido con el procedimiento acotado al final. Detener antes cualquier proceso que pudiera reinyectar. No aumentar CPU/réplicas a ciegas ni operar sobre todo el nodo.
 4. **Validar:** consumo próximo al baseline, sin nuevos fallos de probes, alerta vuelve a OK con datos y ventana funcional completa. Distinguir retiro del estímulo de efecto de un reinicio.
 
@@ -57,7 +57,7 @@ Aplicar junto con [el plan](../baseline-incidents.md) y [la ficha](../templates/
 3. **Restaurar:** revertir exactamente objeto/regla/proceso temporal preservando configuración previa. Verificar identidad antes. Si solo perdió port-forward, reconectar con contexto explícito y verificar que el servicio era accesible internamente.
 4. **Validar:** DNS, endpoints y tráfico por Service; targets/trazas; ventana funcional por el camino original y ausencia de regla temporal. Dependencia todavía desconectada → RB-06.
 
-**Abortar/escalar:** pérdida de control del clúster, alcance en otros namespaces o inversa desconocida → parar y escalar al dueño de red; S1 si afecta host/otros proyectos. **Guardar:** origen/destino/puerto, regla/diff sanitizado, accesos internos/externos y reversión. La implementación de los mecanismos de red sigue en #17.
+**Abortar/escalar:** pérdida de control del clúster, alcance en otros namespaces o inversa desconocida → parar y escalar al dueño de red; S1 si afecta host/otros proyectos. **Guardar:** origen/destino/puerto, regla/diff sanitizado, accesos internos/externos y reversión. El [ensayo de red de #17](../evidence/issue-17-20261112/fix-after-review/real-trials/network/README.md) documenta el mecanismo implementado y su efecto sobre conexiones nuevas.
 
 ## RB-06: desconexión interna de SQL o un microservicio
 
@@ -87,7 +87,7 @@ kubectl --context $ctx -n $ns rollout status "deployment/$app" --timeout=240s
 if ($LASTEXITCODE -ne 0) { throw 'Recambio incompleto: conservar evidencia y escalar' }
 ```
 
-Volver al plan para validar funcionalidad, estabilidad y limpieza. Si falla, no repetir en bucle. #17 debe verificar cada runbook con el mecanismo efectivamente usado y corregirlo con sus resultados.
+Volver al plan para validar funcionalidad, estabilidad y limpieza. Si falla, no repetir en bucle. Las fichas de #17 y los aprendizajes siguientes registran los mecanismos ensayados y las correcciones; para otra ejecución contrastar el runbook con el mecanismo y el entorno reales, sin dar por probado todo incidente posible por esos ensayos.
 
 ## Aprendizajes de la ejecución guiada del 13/11/2026
 

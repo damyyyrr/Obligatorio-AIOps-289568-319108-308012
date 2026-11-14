@@ -1,8 +1,8 @@
 # Mapa de trabajo en GitHub
 
-Publicado el 06/11/2026 en [las issues del fork](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues). Hay **20 issues abiertas: 5 P0, 14 P1 y 1 P2 opcional**. Cada una contiene tareas, dependencias, criterios de cierre y evidencia esperada. Quedaron sin asignar para que el equipo acuerde responsables.
+Mapa publicado el 06/11/2026 en [las issues del fork](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues). Se crearon **20 issues del plan: 5 P0, 14 P1 y 1 P2 opcional**; esos conteos describen el inventario inicial, no veinte tareas todavía abiertas. Según la [consulta del 14/11](evidence/docs-review-20261114/issues.json), **#2–#17 están cerradas** y siguen abiertas **#1, #18, #19 y #20**. La asignación vigente se consulta en GitHub.
 
-El baseline ya está implementado y verificado: no se creó otra issue pendiente para rehacerlo. Consultar [el reporte](BASELINE_RESULT.md), [el plan maestro](aiops-master-plan.md) y [la matriz](aiops-requirements-matrix.md). La rama de integración y destino de los PR es **`obligatorio`**.
+El baseline está implementado y verificado, y tiene incrementos posteriores de Kubernetes, observabilidad, ML, BDD e incidentes/caos. Consultar [estado actual y límites](estado-actual.md), [el plan maestro](aiops-master-plan.md) y [la matriz](aiops-requirements-matrix.md). La rama de integración y destino de los PR es **`obligatorio`**.
 
 ## Cómo dividir el trabajo
 
@@ -16,7 +16,7 @@ Tomar una issue y asignarse como responsable antes de editar archivos compartido
 | Pruebas, incidentes y caos | [#15](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15), [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16), [#17](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/17) | BDD puede empezar en Compose; preparar runbooks antes de inyectar fallas y validar después con evidencia |
 | Decisiones, entrega y defensa | [#1](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/1), [#18](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/18), [#19](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/19) | Consultas docentes al principio; informe en continuo; conservar identificada la versión entregada |
 
-Para empezar en paralelo sin esperar a que termine Kubernetes: [#1](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/1), [#2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/2), [#9](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/9), [#10](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/10), [#14](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/14), [#15](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15), [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16). Algunas validaciones finales requieren las dependencias indicadas en cada issue.
+El orden y las dependencias de la tabla siguiente conservan la planificación inicial. Para continuar al 14/11, atender [consultas #1](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/1), [entrega #18](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/18) y [defensa #19](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/19). [#20](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/20) mantiene su carácter opcional salvo confirmación docente. Una issue técnica cerrada conserva el alcance de su evidencia, no una garantía de aprobación académica integral.
 
 ## Issues y dependencias
 
@@ -56,6 +56,6 @@ P0 corresponde a decisiones y base que condicionan la rúbrica; P1 al trabajo re
 
 ## Completado y seguimiento
 
-El baseline publicado construye cuatro imágenes y levanta ocho servicios con credenciales locales fuera de Git, arranque/parada, seed opt-in, métricas y log JSON correlacionado. Pasó catorce comprobaciones y una repetición tras parada/reinicio. Las consultas Q01–Q04, las pruebas en navegador y los criterios de Kubernetes/HA/caos/ML siguen abiertos.
+El baseline publicado construye cuatro imágenes y levanta ocho servicios con credenciales locales fuera de Git, arranque/parada, seed opt-in, métricas y log JSON correlacionado. Pasó catorce comprobaciones y una repetición tras parada/reinicio. Las evidencias posteriores acreditan pruebas locales de Kubernetes, recuperación, observabilidad, ML, BDD 4/4 y seis escenarios de caos. Q01–Q04 y los límites de cada requisito siguen registrados en la matriz. El [PR #42](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/pull/42) corrigió solo el aislamiento de una prueba; la [suite .NET del 14/11](evidence/test-isolation-20261114/README.md) pasó 319/319.
 
-Las issues reemplazan los seis borradores iniciales agrupados. No se publicaron credenciales generadas ni inventarios de otros proyectos. El notebook en `ml/` es material de entrada con TODO, no una implementación terminada.
+Las issues reemplazan los seis borradores iniciales agrupados. El notebook docente original en `ml/practico_detectores_aiops.ipynb` se conserva con TODO; la [implementación IF/OCSVM y el notebook ejecutado](../ml/README.md) están en archivos separados. La [issue #16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) se cerró para plan y aplicación guiada local; revisión independiente opcional no realizada y tiempos/comunicaciones ausentes se mantienen explícitos.

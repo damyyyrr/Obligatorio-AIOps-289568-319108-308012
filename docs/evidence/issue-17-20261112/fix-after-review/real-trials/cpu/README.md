@@ -33,6 +33,6 @@ El campo operatorDeclared del reporte conserva el texto exacto usado por el help
 | Fin de verificación (`tVerified`) | 2026-11-12T21:56:07.040654+00:00 |
 | Reconocimiento humano (`tAck`) | null / no registrado |
 
-La resolución de las muestras y la cadencia de consultas limitan los tiempos observables. No se inventan detección humana, TTA, comunicaciones ni promedios. El comienzo de la ventana estable no equivale a reparación causal. La validación humana de roles, comunicaciones y aplicación de runbooks de #16 permanece pendiente.
+La resolución de las muestras y la cadencia de consultas limitan los tiempos observables. No se inventan detección humana, TTA, comunicaciones ni promedios. El comienzo de la ventana estable no equivale a reparación causal. Al registrar este ensayo técnico faltaba la aplicación humana posterior de #16; la [actualización de seguimiento](../../README.md) enlaza la ejecución guiada del 13/11 y el cierre acordado. La revisión independiente no se realizó y quedó como mejora opcional.
 
 [Vista resumida del reporte](report.json) · [JSON original íntegro comprimido](report.json.gz) · [Journal original](journal.json) · [Limpieza independiente](../../cleanup-verification.json).

@@ -1,5 +1,7 @@
 # Plan maestro de implementación — AIOps / PharmaGo (ORT 2026)
 
+**Lectura actualizada al 14/11/2026:** este archivo conserva la planificación e inspección iniciales del 06/11. Para retomar, consultar primero [estado contrastado](estado-actual.md), [matriz](aiops-requirements-matrix.md) y [mapa de issues actualizado](GITHUB_ISSUES.md). #2–#17 están cerradas con evidencia local y #16 se cerró para aplicación guiada; las consultas académicas, entrega y defensa conservan sus pendientes. Las listas de tareas y observaciones iniciales siguientes no deben interpretarse como un inventario de funciones todavía ausentes.
+
 Revisión del 06/11/2026. El baseline A01–A06 ya se ejecutó con las limitaciones descritas en [el reporte](BASELINE_RESULT.md). Este documento conserva el plan completo ajustado; el estado y los responsables se siguen en [las issues](GITHUB_ISSUES.md) y la [matriz](aiops-requirements-matrix.md). Reemplaza al antiguo plan de acción. La publicación del baseline y la creación de issues, etiquetas e hitos fueron autorizadas por el usuario el 06/11/2026; otras acciones conservan sus permisos específicos.
 
 ## 0. Misión y reglas de trabajo
@@ -88,7 +90,7 @@ Las imágenes proporcionadas por el alumno explican esta evolución:
 5. **Anomalías ML:** implementar Isolation Forest y Support Vector Machine con kernel RBF sobre **datasets proporcionados por docentes**. El notebook adjunto genera un dataset sintético; la letra no permite concluir por sí sola si ese material satisface la entrega o si habrá otro dataset (Q03). No inventar una exigencia de datos adicionales ni declarar el adjunto aceptado sin confirmación. Implementar IF y One-Class SVM RBF como variante no supervisada consistente con el práctico; registrar el origen y protocolo de cada dataset. Si el docente exige otro insumo, adaptar la carga y dejar pendiente solo su evaluación mientras falte.
 6. **Contención de incidentes:** plan operativo de mitigación, roles, severidad, detección, respuesta, restauración, comunicación y postmortem.
 7. **Caos:** scripts que prueben los SEIS eventos: solicitudes masivas, CPU, memoria, almacenamiento, interrupción de tráfico de red y desconexión de componentes internos. Cuatro tipos tienen scripts preliminares; revisar y completar.
-8. **Defensa:** war-room con script docente aún desconocido; demostrar el incidente, sus efectos en telemetría, la respuesta del sistema y explicar por qué funcionaron los mecanismos. La defensa es eliminatoria.
+8. **Defensa:** la introducción de la letra describe un war-room con script provisto por los docentes; la fila de la rúbrica pide ejecutar el script implementado, mostrar sus efectos mediante telemetría y explicar la respuesta del sistema. El docente define y comunica la mecánica final. No se dispone del guion concreto. La defensa es obligatoria y eliminatoria.
 
 Herramientas mencionadas por el enunciado: GitHub para repos/tablero/CI, .NET+Angular, Prometheus/Grafana/OTLP y BDD Cypress+Cucumber. No sustituir el cumplimiento de la rúbrica por una herramienta decorativa. Debe existir informe de máximo 10 páginas y reflexión sobre ingeniería ágil.
 
@@ -226,8 +228,8 @@ Para alertas, guardar regla, consulta, umbral, ventana y transición Firing → 
 
 Verificar que rollback/cleanup es seguro: **NUNCA ejecutar `docker compose down -v`, `kubectl delete namespace`, scripts de `cleanup` u operaciones destructivas sin autorización**. No saturar recursos de la máquina anfitriona. No lanzar carga a URL pública/external.
 
-## 7. Inicio de implementación y reporte
-**Estado: baseline implementado y verificado; trabajo restante abierto en GitHub.** Para retomar el trabajo: A) verificar estado local y reutilizar `obligatorio` basada en `feature/k8s`; B) preparar matriz e issues en Markdown; C) trabajar primero A01/A04, consultas y baseline instrumentado A02/A05/A06; D) seguir dependencias y prioridades, produciendo incrementos pequeños con código y pruebas reales. Ninguna instrucción de este archivo autoriza por sí sola escrituras remotas o la presentación de la entrega.
+## 7. Inicio de implementación histórico y seguimiento
+**Estado al 06/11: baseline implementado y verificado.** La secuencia inicial fue preparar matriz/issues y resolver A01/A04/A02/A05/A06 antes de los incrementos siguientes. Las verificaciones posteriores de Kubernetes, observabilidad, ML, BDD e incidentes/caos están enlazadas en el estado actual; no corresponde rehacer la secuencia inicial por leer este plan. Para retomar, verificar la rama `obligatorio`, la matriz y las issues todavía abiertas. Ninguna instrucción de este archivo autoriza por sí sola escrituras remotas o la presentación de la entrega.
 
 Al cerrar cada incremento, informar archivos cambiados, pruebas/comandos ejecutados, resultados y evidencias, decisiones pendientes, bloqueos y siguiente incremento concreto. Distinguir DONE verificado, FAIL con logs, BLOCKED con causa y EXISTING UNVERIFIED; no cerrar el requisito completo por completar una subtarea. Preferir el mínimo cambio reproducible que cumpla la letra. No prometer continuar en segundo plano ni en otra sesión; dejar un estado reanudable.
 

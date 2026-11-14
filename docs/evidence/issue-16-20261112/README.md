@@ -1,5 +1,7 @@
 # OPS-01: preparación del proceso de incidentes
 
+**Estado al 14/11/2026:** [#16 está cerrada como completada para plan y aplicación guiada local](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16). El cierre acordado del 13/11 dejó la ejecución independiente por compañero como mejora opcional no realizada. La preparación y reconstrucción del 12/11 siguientes son antecedentes; el estado y las limitaciones vigentes están en [el resumen contrastado](../../estado-actual.md).
+
 **Actualización 13/11/2026:** se incorporaron [seis ensayos ejecutados por el operador, capturas, bitácora y cierre del laboratorio](../issue-16-20261113/README.md). Los seis dieron PASS y limpieza verified. Este documento conserva la revisión histórica del 12/11; sus pendientes de ejecución se evalúan con la nueva evidencia. La revisión independiente por un compañero sigue sin demostrarse; los reconocimientos ausentes y las notas retrospectivas se identifican explícitamente.
 
 Revisión documental del **12/11/2026**, rama `feature/issue-16-incidentes-runbooks`, desde `9164d8d5ee2395d86bcf9997f471da390c57e637` de `obligatorio`. Relacionada con #16; su validación integral se completa con #17. No se inyectaron fallas ni se iniciaron/detuvieron servicios para este cambio. No se enviaron comunicaciones a terceros.
@@ -56,4 +58,4 @@ Comprobaciones realizadas en este incremento:
 
 Por cada RB-01 a RB-06: ficha con contexto/objetivo, roles reales y canal, baseline, presupuesto, mecanismo revisado e inversa; timestamps observables con fuente; acciones y comunicaciones efectivamente realizadas; resultados funcionales completos, alertas y estabilidad; limpieza y comparación de datos/recursos; postmortem y actualización del runbook. Mantener desconocidos cuando falten datos, con su motivo.
 
-La revisión por otro integrante debe registrar quién leyó el procedimiento, qué pudo ejecutar y las correcciones necesarias. Si se trabaja en solitario, explicitarlo; este cambio no finge esa revisión. No esperar cierre de #16 para preparar #17: los documentos habilitan sus ensayos y el cierre integral se evalúa al aplicar el proceso. **Estado R06: preparación terminada; validación integral pendiente.**
+Al preparar este incremento se proponía registrar quién revisara el procedimiento, qué pudiera ejecutar y las correcciones necesarias; si se trabajaba en solitario, explicitarlo. **Estado de aquella preparación del 12/11: validación integral pendiente.** Posteriormente se ejecutaron los seis casos guiados y #16 se cerró con ese alcance. La revisión independiente no se realizó y quedó como mejora opcional; no se atribuye al enunciado ni se presenta como trabajo probado.

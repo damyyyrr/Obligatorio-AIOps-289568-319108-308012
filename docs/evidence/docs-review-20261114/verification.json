@@ -1,0 +1,99 @@
+{
+  "checkedUtc": "2026-11-14T16:15:58.464816+00:00",
+  "scope": "Offline documentation, recorded evidence and CLI/configuration inspection; no new infrastructure/browser/chaos run.",
+  "changedFilesScope": "Markdown and new documentary JSON only; no application, test, scenario, configuration or original evidence JSON/binary changed.",
+  "localMarkdownLinksChecked": 289,
+  "bashBlocksParsedWithoutExecution": 6,
+  "originalManifestFilesVerified": 118,
+  "bddRecordedEvidence": {
+    "passed": 4,
+    "browserExecuted": true,
+    "commit": "9a420f175b6bd4ea69f02c8c168b455a47af7ce0",
+    "mode": "headless; no new run"
+  },
+  "operatorRecordedTrials": [
+    {
+      "scenario": "cpu",
+      "status": "PASS",
+      "cleanup": "verified",
+      "stableSeconds": 127.804018,
+      "tAck": null
+    },
+    {
+      "scenario": "requests",
+      "status": "PASS",
+      "cleanup": "verified",
+      "stableSeconds": 127.083757,
+      "tAck": null
+    },
+    {
+      "scenario": "ram",
+      "status": "PASS",
+      "cleanup": "verified",
+      "stableSeconds": 122.360926,
+      "tAck": null
+    },
+    {
+      "scenario": "storage",
+      "status": "PASS",
+      "cleanup": "verified",
+      "stableSeconds": 121.094352,
+      "tAck": null
+    },
+    {
+      "scenario": "network",
+      "status": "PASS",
+      "cleanup": "verified",
+      "stableSeconds": 127.72835,
+      "tAck": null
+    },
+    {
+      "scenario": "disconnect",
+      "status": "PASS",
+      "cleanup": "verified",
+      "stableSeconds": 122.434208,
+      "tAck": null
+    }
+  ],
+  "recordedAlertTransitions": 5,
+  "recordedPersistedLogDocuments": 7,
+  "recordedMlF1": {
+    "Isolation Forest": 0.5783132530120482,
+    "One-Class SVM RBF": 0.43902439024390244
+  },
+  "issueSnapshot": {
+    "closed": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "open": [
+      1,
+      18,
+      19,
+      20
+    ],
+    "independentReview": "optional and not performed, per recorded issue #16 closure"
+  },
+  "newDotnetExecution": {
+    "total": 319,
+    "passed": 319,
+    "failed": 0,
+    "skipped": 0
+  },
+  "configurationAndCli": "Baseline migration dependency, 2d retention, no Compose Logstash, current manage.py flags and wrapper forwarding checked statically.",
+  "result": "PASS"
+}

@@ -7,7 +7,7 @@ Ejecutar desde esta carpeta en PowerShell con Docker Desktop en modo Linux. Este
 .\scripts\smoke-baseline.ps1
 ```
 
-El primer comando genera contraseñas aleatorias en `.env`, ignorado por Git; no reemplaza un `.env` existente. Compila las cuatro imágenes de aplicación secuencialmente, espera a SQL, inicia Users para aplicar las migraciones existentes y agrega el resto. `-SeedDemoData` incorpora solo datos de laboratorio ausentes en la DB aislada; omitirlo si se desea conservar una DB sin demos. El smoke espera roles/medicamentos persistidos, por lo que una DB vacía no pasa la prueba funcional con datos.
+El primer comando genera contraseñas aleatorias en `.env`, ignorado por Git; no reemplaza un `.env` existente. Compila las cuatro imágenes de aplicación secuencialmente y espera a SQL y al Collector. Al iniciar Users, Compose ejecuta antes su dependencia `pharmago-db-migrate`, un contenedor de la imagen Users con `--migrate` que debe terminar correctamente. Después se comprueba la API de roles, se aplica el seed opt-in y se inicia el resto del baseline. `-SeedDemoData` incorpora solo datos de laboratorio ausentes en la DB aislada; omitirlo si se desea conservar una DB sin demos. El smoke espera roles/medicamentos persistidos, por lo que una DB vacía no pasa la prueba funcional con datos.
 
 Para comprobar además el login y guardar su log JSON correlacionado, usar un usuario de demostración del seed o un usuario válido de esta DB:
 

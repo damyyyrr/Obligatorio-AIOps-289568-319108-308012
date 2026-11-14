@@ -14,10 +14,10 @@ Desde la raíz del repositorio:
 
 ```powershell
 git fetch origin
-git switch feature/issue-15-automatizar-escenarios
+git switch obligatorio
 git pull --ff-only
 cd 'Implementacion K8S/Codigo'
-# Construye las cuatro imágenes de ESTA rama, de a una, antes de iniciar los servicios.
+# Construye las cuatro imágenes del obligatorio actualizado, de a una, antes de iniciar los servicios.
 # Si este baseline está activo, detenerlo primero con scripts/stop-baseline.ps1.
 .\scripts\start-baseline.ps1 -SeedDemoData
 if ($LASTEXITCODE -ne 0) { throw 'Revisar el arranque antes de seguir.' }
@@ -53,7 +53,9 @@ Para detener conservando volúmenes, desde Implementacion K8S/Codigo:
 
 El runner BDD no inicia ni detiene infraestructura por su cuenta.
 
-## CI y cierre del trabajo
+## CI, validación realizada y repetición
+
+La [issue #15](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/15) está cerrada como completada. La [evidencia funcional](../../../../docs/evidence/issue-15-20261112/live-after-fix/README.md) registra una ejecución local desde commit limpio, con cuatro escenarios aprobados en Electron headless, `browserExecuted=true`, captura pública revisada y matriz actualizada. Las instrucciones siguientes permiten repetir o revisar la suite; no describen un cierre funcional todavía pendiente.
 
 El workflow bdd.yml tiene comprobaciones automáticas para PRs a obligatorio: Gherkin/pasos/bundle sin navegador y build de Angular por separado. **Ninguna de ellas equivale a E2E aprobado.** La ejecución real es manual con workflow_dispatch y run_live=true en un runner Ubuntu dedicado: construye el baseline con seed, ejecuta los cuatro escenarios, adjunta resumen/captura pública y detiene los contenedores. Tiene timeout y permisos de solo lectura del repositorio. No dispara caos ni despliega a entornos compartidos. El workflow tampoco fue ejecutado durante la preparación local.
 
@@ -63,10 +65,10 @@ npm run check:guards verifica dos rechazos sin infraestructura: un paso sin defi
 
 Para repetir o validar una revisión posterior:
 
-1. Ejecutar desde un commit limpio, comprobar PASS con 4/4 y observar al menos una vez los escenarios en el runner.
+1. Ejecutar desde un commit limpio y comprobar PASS con 4/4, `browserExecuted=true` y ninguna omisión. El runner interactivo es una herramienta opcional para observar pasos y diagnosticar; la validación publicada usó navegador headless.
 2. Revisar resumen y captura antes de copiarlos a una carpeta fechada de docs/evidence/issue-15-...; excluir archivos privados de .runtime.
 3. Documentar commit, PC/capacidad, versiones, resultados y posibles correcciones. Repetir después de corregir fallos, sin ocultarlos.
-4. Actualizar la matriz y el PR, solicitar revisión y pasar el PR de borrador a listo. La issue queda abierta hasta tener evidencia real.
+4. Si la revisión introduce cambios o resultados nuevos, actualizar la matriz y el PR correspondiente y solicitar revisión. Conservar el resultado original y registrar por separado la nueva ejecución.
 
 En AIOps estos escenarios verifican la experiencia del usuario tras desplegar y sirven como base de regresión funcional. No prueban por sí mismos disponibilidad bajo fallas, tiempos de recuperación ni los seis ensayos de caos.
 
