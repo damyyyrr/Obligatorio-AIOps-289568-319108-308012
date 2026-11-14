@@ -8,8 +8,8 @@
     "bytes": 55
   },
   "checks.json": {
-    "sha256": "f884d2fe93ba3217e5715af72b6e254300e97d5c1be8e506581b8cc8258881d5",
-    "bytes": 6587
+    "sha256": "18d0ca79d1c540c9da5708f829b4d0d90afe288052a651a81a2888213263e952",
+    "bytes": 7766
   },
   "environment.json": {
     "sha256": "7ccf47007d478b842458823106a9a8dc6f3777c6a17ac5e0f635f03851687a51",
@@ -29,8 +29,8 @@
     "bytes": 13179
   },
   "README.md": {
-    "sha256": "669a8e4bdf4d4908219b76ae624dd27a1d50b60e3543a09628e4672d166bb8fd",
-    "bytes": 12491
+    "sha256": "f9644c5bd35aa134461d68e5dd312a29e900af8395c21835524c11701566cc60",
+    "bytes": 13441
   },
   "report.json.gz": {
     "sha256": "1b3252ebdd047f80bb83fef0394ece35cad94237df94be367f4ad2ecef61b1a7",
@@ -43,8 +43,8 @@
     "uncompressedSha256": "15b4a4a68f68da1dd08f42520f747e422d3139c72ed7f39ef97d1b238405262a"
   },
   "source-publication.json": {
-    "sha256": "1257aa797b44b72d726d1c09f1299afe145c8bf86d3f3b90dd234325d2200572",
-    "bytes": 1819
+    "sha256": "e71625bbebabf463df3d52b1f7948da924944f0a17fec815949d129044fa2ba2",
+    "bytes": 2059
   },
   "storage-agent-tests.log": {
     "sha256": "52e5a571fbd00af055c611761607558db1de3eea17a1dc29670be0ff0272a358",

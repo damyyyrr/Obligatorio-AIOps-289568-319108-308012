@@ -78,11 +78,13 @@ class FaultAgentTests(unittest.TestCase):
                     deadline = time.monotonic() + 8
                     while time.monotonic() < deadline:
                         status = self.agent("status", scenario, run_id)
-                        if status["active"]:
+                        # storage libera el lock antes de su primera escritura;
+                        # activo aún puede tener payload vacío y ninguna pasada.
+                        if status["active"] and (scenario != "storage" or status["completedPasses"] >= 1):
                             break
                         time.sleep(0.1)
                     else:
-                        self.fail("El agente no llegó a estar activo")
+                        self.fail("El agente no llegó a estar activo con la carga preparada")
                     if scenario == "storage":
                         self.assertEqual(status["bytes"], 4 * 1048576)
                     self.agent("cleanup", scenario, run_id)

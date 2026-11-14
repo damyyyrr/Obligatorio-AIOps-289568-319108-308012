@@ -63,7 +63,7 @@
       "fixturesCreated": [],
       "newInjection": false,
       "errorType": "RuntimeError",
-      "reason": "Precheck: menos de 2 GiB de RAM libre en el host; no se inyectarÃƒÂ¡ carga",
+      "reason": "Precheck: menos de 2 GiB de RAM libre en el host; no se inyectarÃƒÆ’Ã‚Â¡ carga",
       "result": "BLOCKED_BEFORE_INJECTION",
       "ownFixturesRemoved": true,
       "profileStopped": true,
@@ -75,7 +75,7 @@
       "fixturesCreated": [],
       "newInjection": false,
       "errorType": "RuntimeError",
-      "reason": "Precheck: menos de 2 GiB de RAM libre en el host; no se inyectarÃƒÂ¡ carga",
+      "reason": "Precheck: menos de 2 GiB de RAM libre en el host; no se inyectarÃƒÆ’Ã‚Â¡ carga",
       "result": "BLOCKED_BEFORE_INJECTION",
       "ownFixturesRemoved": true,
       "profileStopped": true,
@@ -155,5 +155,24 @@
     "desktopStopCli": "Requested graceful stop with 30-second timeout; CLI returned timeout because Desktop/backend processes were still running. No force-kill. Linux VM subsequently absent; full Desktop process exit not confirmed."
   },
   "documentationUpdate": "operator-doc-update.json",
-  "sourcePublication": "source-publication.json"
+  "sourcePublication": "source-publication.json",
+  "ciTestAdjustment": {
+    "checkedUtc": "2026-11-14T20:49:01.048335+00:00",
+    "initialRunId": 43639271939,
+    "initialRunResult": "FAIL",
+    "initialRunUrl": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/actions/runs/43639271939",
+    "failedAssertion": "test_active_cpu_ram_and_storage_abort_without_remaining_processes: status bytes was 0 instead of 4194304",
+    "cause": "The storage agent releases its lock before the first write; active can be observed before a completed pass.",
+    "correction": "Wait for active and at least one completed storage pass, then retain exact size and cleanup assertions.",
+    "changedSource": "test_fault_agent.py",
+    "previousPublishedSha256": "667615f9585a63ab3b60269e3ef1c0e6140ac977264fd7abc05875a90cb1eae8",
+    "correctedPublishedSha256": "6a4e9d2d95b9031bf3788de2cce125641efd0f6622508e9fb3c1fcfac47bccb7",
+    "runtimeSourcesUnchanged": [
+      "chaos.py",
+      "fault.sh",
+      "probe.py"
+    ],
+    "originalLocalLogsAndLiveReportPreserved": true,
+    "followupResults": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/pull/44/checks"
+  }
 }

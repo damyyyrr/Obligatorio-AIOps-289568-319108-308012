@@ -33,5 +33,7 @@
     }
   },
   "equivalence": "PASS",
-  "originalReportsModified": false
+  "originalReportsModified": false,
+  "publishedAtCommit": "e6f9c1d5021d43e34825a2d192e5b24311badd2b",
+  "subsequentChanges": "The test-only CI synchronization correction is recorded in checks.json; this snapshot retains the original test source used in local validation."
 }
