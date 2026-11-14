@@ -1,0 +1,61 @@
+{
+  ".gitattributes": {
+    "sha256": "730a35ae3d558080083c3103d9ac8100c3f6561678092abe341701dfa331eb1d",
+    "bytes": 29
+  },
+  ".gitignore": {
+    "sha256": "e6a984762121fa6262e02d269666a3672dcee64aadfa3b9a2e79489b2bcbea85",
+    "bytes": 55
+  },
+  "checks.json": {
+    "sha256": "18d0ca79d1c540c9da5708f829b4d0d90afe288052a651a81a2888213263e952",
+    "bytes": 7766
+  },
+  "environment.json": {
+    "sha256": "7ccf47007d478b842458823106a9a8dc6f3777c6a17ac5e0f635f03851687a51",
+    "bytes": 960
+  },
+  "journal.json.gz": {
+    "sha256": "1c8c8b45a89143e767fb4e917da04753901a8274eaeba27e348f45a96b6f232f",
+    "bytes": 404,
+    "uncompressedSha256": "1b7d62402311e315fa155bd4497657d8b20b6801d96722f4e7543c5b44d49a11"
+  },
+  "operator-doc-update.json": {
+    "sha256": "21959fb8f2cdc5ea2348a1217a08e1bfe5ffe914729da3f8b14fa65726066b5d",
+    "bytes": 4839
+  },
+  "operator-package-original-manifest.json": {
+    "sha256": "04a0cad641f30b00bd7f5fad097c23adcc53ec52a06b37d1a438632e851868d3",
+    "bytes": 13179
+  },
+  "README.md": {
+    "sha256": "f9644c5bd35aa134461d68e5dd312a29e900af8395c21835524c11701566cc60",
+    "bytes": 13441
+  },
+  "report.json.gz": {
+    "sha256": "1b3252ebdd047f80bb83fef0394ece35cad94237df94be367f4ad2ecef61b1a7",
+    "bytes": 159756,
+    "uncompressedSha256": "7044d4367dcf472d9b60c683beeb624a70ccf6ab7ffa2110effadbca1dc7a6f5"
+  },
+  "session.json.gz": {
+    "sha256": "891163d47eee4083bac0d866e49d841c77d05efd40bee9a6243be65966398959",
+    "bytes": 665,
+    "uncompressedSha256": "15b4a4a68f68da1dd08f42520f747e422d3139c72ed7f39ef97d1b238405262a"
+  },
+  "source-publication.json": {
+    "sha256": "e71625bbebabf463df3d52b1f7948da924944f0a17fec815949d129044fa2ba2",
+    "bytes": 2059
+  },
+  "storage-agent-tests.log": {
+    "sha256": "52e5a571fbd00af055c611761607558db1de3eea17a1dc29670be0ff0272a358",
+    "bytes": 1213
+  },
+  "storage-controller-final.log": {
+    "sha256": "b6e48d03d5ea73907ba08c109556a6b98614666382985187be2a9a6656d61abf",
+    "bytes": 7384
+  },
+  "summary.json": {
+    "sha256": "61bf7f845995c59ebacf4182b6fa82555474f1ed0c4e3ea164363b19de100982",
+    "bytes": 3372
+  }
+}

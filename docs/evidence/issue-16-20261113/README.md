@@ -4,6 +4,8 @@
 
 Complementa la preparación de [OPS-01 / #16](../issue-16-20261112/README.md) y las [pruebas técnicas anteriores de #17](../issue-17-20261112/fix-after-review/README.md), que conservan sus fechas y resultados originales. No se ejecutaron nuevas fallas para empaquetar estos archivos.
 
+**Actualización del 14/11/2026:** el caso de almacenamiento se reforzó con una ejecución posterior de I/O sostenida. Se mantienen las seis categorías de ensayo y las 37 capturas del operador del 13/11. El [complemento de almacenamiento](#complemento-de-almacenamiento-del-14112026) distingue el nuevo resultado de la evidencia original.
+
 ## Entorno y trazabilidad
 
 - Contexto `pharmago-issue17-validation`, namespace `pharmago`, Minikube con Docker y Calico, un nodo en una PC Windows. Esto no demuestra separación en nodos físicos distintos.
@@ -25,6 +27,26 @@ Complementa la preparación de [OPS-01 / #16](../issue-16-20261112/README.md) y 
 Las cinco reglas terminaron sanas/inactivas en todos los ensayos. CPU sí registró Firing; las pruebas acotadas de RAM/disco/red no implican disparo de sus alertas. La prueba específica de cinco alertas se conserva en [#13](../issue-13-20261112/README.md). Los paneles de latencia media no se usan como prueba de p95.
 
 Una [corrida adicional de solicitudes ejecutada por el agente](ejecucion-asistida/README.md) se guarda aparte por trazabilidad. No se cuenta entre los seis ensayos del operador.
+
+## Complemento de almacenamiento del 14/11/2026
+
+El ensayo original de almacenamiento, incluidas sus capturas, acredita escritura única, aumento de ocupación y limpieza de un archivo de 32 MiB. Para reforzar el alcance de “sobrecarga”, se ejecutó posteriormente el mismo escenario con reescrituras sincronizadas sobre un archivo acotado y telemetría I/O del pod. Sigue siendo el caso de almacenamiento dentro de las seis categorías; los otros cinco ensayos de esta tabla conservan sus resultados y fechas.
+
+El nuevo run `c70c8cae26144765974aa922c828bc86`, ejecutado el 14/11 con asistencia de Codex, terminó **PASS / limpieza verified**:
+
+| Comprobación | Resultado nuevo |
+|---|---|
+| Estímulo | Un archivo de 32 MiB fuera de PVC, 29 pasadas y 928 MiB lógicos escritos; 60 s solicitados |
+| Efecto corroborado | Última muestra activa: 26 pasadas durante 52 s; contador I/O del pod +838.971.392 bytes y pico de tasa aproximado de 15,54 MiB/s |
+| Sondas funcionales | 61/61 HTTP 200 válidas: tres antes, dieciocho durante y cuarenta en recuperación |
+| Recuperación | 125,33 s estables; cinco alertas sanas/inactivas; PVC, PV y deployments sin cambios |
+| Limpieza | Verificada por el controlador y comprobada aparte por el helper; clientes propios retirados y perfil detenido |
+
+El [registro completo del refuerzo](../storage-io-20261114/README.md) enlaza [resumen](../storage-io-20261114/summary.json), [reporte original](../storage-io-20261114/report.json.gz), [journal](../storage-io-20261114/journal.json.gz), [capacidad/versiones](../storage-io-20261114/environment.json) y [sesión](../storage-io-20261114/session.json.gz). Conserva tres arranques bloqueados antes de inyectar, la preparación de caché WSL previa al baseline y el cuarto intento aprobado, manteniendo precheck y observabilidad. La ejecución registra base, árbol modificado y hashes de fuentes.
+
+Las capturas de este documento siguen correspondiendo al 13/11; no hay capturas nuevas de Grafana de la corrida del 14/11 ni se atribuye al operador una nueva observación manual. El resultado nuevo acredita I/O sostenida y continuidad funcional en este entorno. No demuestra saturación del dispositivo ni disco lleno; queda justificar con el equipo/docente si esa carga acotada satisface el alcance académico de “sobrecarga”.
+
+Los reportes, journals, notas y capturas originales se conservan byte a byte. Solo se complementaron este documento y la ficha de almacenamiento, actualizando sus entradas del manifiesto. El [registro de esa actualización](../storage-io-20261114/operator-doc-update.json) conserva los hashes anteriores y nuevos y el [manifiesto previo íntegro](../storage-io-20261114/operator-package-original-manifest.json).
 
 ## Aplicación del proceso de incidentes
 

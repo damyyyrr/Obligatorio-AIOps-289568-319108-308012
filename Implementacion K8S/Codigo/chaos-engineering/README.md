@@ -2,6 +2,8 @@
 
 Controlador de los seis escenarios de #17. **Seis ensayos reales PASS en un laboratorio local con Calico**, con restauración estable y limpieza independiente. Ver [resultados, intentos fallidos y alcance](../../../docs/evidence/issue-17-20261112/fix-after-review/README.md), [plan de incidentes](../../../docs/baseline-incidents.md) y [runbooks](../../../docs/runbooks/incidentes.md). Red y desconexión se verifican sobre conexiones nuevas al backend, registrando por separado la ruta Gateway existente; no se afirma caída total de la aplicación.
 
+**Incremento de almacenamiento del 14/11:** `storage` ahora reescribe y sincroniza un archivo acotado durante el ensayo y exige corroboración de I/O del pod. El [ensayo completo nuevo aprobó](../../../docs/evidence/storage-io-20261114/README.md): 29 pasadas/928 MiB lógicos, 61 sondas 200 válidas y recuperación/limpieza verificadas; incluye tres arranques previos bloqueados por memoria. Los seis PASS anteriores usaron la versión de escritura única y conservan su alcance. La nueva evidencia acredita I/O sostenida, con hashes de fuentes sobre árbol modificado; no demuestra saturación del dispositivo ni aceptación académica de “sobrecarga”.
+
 ## Simulación y pruebas sin infraestructura
 
 Desde la raíz del repo, Python 3.10+; sin dependencias Python adicionales:
@@ -12,7 +14,7 @@ python "$chaos/chaos.py" cpu --context pharmago-issue17
 python -m unittest discover -s $chaos -p 'test_*.py' -v
 ```
 
-`test_chaos.py` contiene 45 pruebas sin infraestructura. Las cinco pruebas de `test_fault_agent.py` se omiten salvo opt-in explícito: ejecutan el shell real en un contenedor efímero con 256 MiB, 0,5 CPU, sin red y sin datos de la aplicación. Requieren una imagen local con las herramientas del contenedor Pharmacy (incluido `flock`):
+`test_chaos.py` contiene 54 pruebas sin infraestructura. Las siete pruebas de `test_fault_agent.py` se omiten salvo opt-in explícito: ejecutan el shell real en un contenedor efímero con 256 MiB, 0,5 CPU, sin red y sin datos de la aplicación. Requieren una imagen local con las herramientas del contenedor Pharmacy (incluido `flock`):
 
 ```powershell
 $env:PHARMAGO_AGENT_TEST_IMAGE = 'pharmago-baseline/pharmacy:local'
@@ -20,7 +22,7 @@ python -m unittest discover -s $chaos -p 'test_fault_agent.py' -v
 Remove-Item Env:PHARMAGO_AGENT_TEST_IMAGE
 ```
 
-Comprueban cancelación antes del arranque de CPU/RAM/disco, aborto con procesos activos, plazo absoluto incluso después de retirar el tombstone, corte de un agente ya iniciado y preservación de controles ajenos. No son los seis experimentos sobre PharmaGo. El workflow `Chaos safety` repite los tests y wrappers en Linux, con un agente aislado sobre la imagen base .NET 6.
+Comprueban cancelación antes del arranque de CPU/RAM/disco, aborto con procesos activos, plazo absoluto incluso después de retirar el tombstone, corte de un agente ya iniciado, preservación de controles ajenos y escritura repetida sobre el mismo archivo con progreso y limpieza. No son los seis experimentos sobre PharmaGo. El workflow `Chaos safety` está configurado para ejecutar los tests y wrappers en Linux, con un agente aislado sobre la imagen base .NET 6; no se afirma una nueva corrida remota por las pruebas locales del incremento.
 
 Sin `--execute` solo se imprime el plan: no se llama a kubectl/Docker ni se escribe en el clúster. Un contexto no especificado, límites inválidos o un operador no identificado para ejecución se rechazan. Los cuatro scripts originales ahora son wrappers de este controlador; **ya no aceptan los argumentos posicionales anteriores** ni disparan carga al ejecutarlos sin opciones. Bash usa `PHARMAGO_PYTHON` o `python`.
 
@@ -29,11 +31,11 @@ Sin `--execute` solo se imprime el plan: no se llama a kubectl/Docker ni se escr
 | `requests` | `load-requests.sh` | GET de catálogo desde un pod de carga separado; máximo 240 solicitudes, 4 workers y 4 req/s, sin reintentos. Deadline y cancelación de su PID propio |
 | `cpu` | `cpu-spike.sh` | Dos bucles dentro de un pod Pharmacy con límites CPU/RAM; PID con identidad de ensayo, trap y timeout |
 | `ram` | `ram-spike.sh` | Bloque residente retenido por dd/FIFO, sin fallback a disco; verifica cgroup finito y margen antes de asignar |
-| `storage` | `volume-spike.sh` | Hasta 64 MiB en directorio exclusivo de /tmp no montado; exige 1 GiB adicional libre y retira solo sus archivos |
+| `storage` | `volume-spike.sh` | Un archivo de hasta 64 MiB en /tmp no montado, reescrito con `notrunc,fdatasync`; un escritor, máximo 1 GiB lógico por ensayo, 30..180 s. Comprueba 1 GiB adicional libre en cada pasada y retira solo sus archivos |
 | `network` | `network-interruption.sh` | NetworkPolicy bloquea conexiones nuevas de clientes/Gateway a Pharmacy; se mide una conexión nueva directa y, separadamente, el Gateway que puede reutilizar conexiones. Retira solo su política |
 | `disconnect` | `component-disconnect.sh` | Añade un selector imposible al Service Pharmacy, sin modificar pods/DB; remueve solo su clave mediante JSON Patch con comprobación de identidad |
 
-CPU, RAM y disco afectan un pod Pharmacy, no todas sus réplicas. Red y desconexión aíslan conexiones nuevas a Pharmacy; el cliente mide el Service directamente y registra por separado catálogo/roles vía Gateway. Una conexión existente puede sobrevivir al cambio de política o endpoints: no se presume que todo tráfico del Gateway se interrumpa. Ningún escenario borra PV/PVC, cambia réplicas, toca SQL, hace seed ni escribe compras. La inyección de disco es ocupación acotada, no llenar el disco del host. No se promete provocar todas las alertas con los valores predeterminados: se registran sus estados reales y no se fuerzan umbrales para mejorar el resultado.
+CPU, RAM y disco afectan un pod Pharmacy, no todas sus réplicas. Red y desconexión aíslan conexiones nuevas a Pharmacy; el cliente mide el Service directamente y registra por separado catálogo/roles vía Gateway. Una conexión existente puede sobrevivir al cambio de política o endpoints: no se presume que todo tráfico del Gateway se interrumpa. Ningún escenario borra PV/PVC, cambia réplicas, toca SQL, hace seed ni escribe compras. La inyección de disco combina ocupación acotada e I/O repetida; no llena el disco del host ni presupone saturación. No se promete provocar todas las alertas con los valores predeterminados: se registran sus estados reales y no se fuerzan umbrales para mejorar el resultado.
 
 ## Entorno necesario antes de ejecutar
 
@@ -84,7 +86,7 @@ python "$chaos/chaos.py" disconnect --context $ctx --operator '<persona>' --dura
 
 No pegar el bloque entero para continuar tras un fallo: ejecutar una línea, comprobar código de salida y evidencia, completar ficha/postmortem y recién entonces pasar al siguiente. Detener si un comando falla. No reducir los pisos de capacidad ni omitir observabilidad para conseguir PASS.
 
-Límites no ampliables por flags: duración 1..180 s, RAM hasta 128 MiB y hasta un tercio del límite del contenedor con margen adicional, disco hasta 64 MiB, 240 solicitudes y cuatro workers. El pod elegido requiere CPU >0 y hasta un core, y memoria entre 64 y 512 MiB. El directorio de inyección es `/tmp/pharmago-chaos-<id-aleatorio>`; no se toca un mount bajo /tmp ni un volumen de negocio.
+Límites no ampliables por flags: duración 1..180 s (almacenamiento: 30..180 s para muestrear I/O), RAM hasta 128 MiB y hasta un tercio del límite del contenedor con margen adicional, archivo de disco hasta 64 MiB y máximo 1 GiB lógico de escritura acumulada, 240 solicitudes y cuatro workers. El agente espacia las pasadas según duración/presupuesto, sin crecer el archivo. El pod elegido requiere CPU >0 y hasta un core, y memoria entre 64 y 512 MiB. El directorio de inyección es `/tmp/pharmago-chaos-<id-aleatorio>`; no se toca un mount bajo /tmp ni un volumen de negocio.
 
 ## Reversión y aborto
 
@@ -104,6 +106,8 @@ La recuperación es idempotente, comprueba namespace/UID/propietario y no adopta
 
 `report.json` guarda muestras de catálogo/roles/login, códigos/latencias sin cuerpos, fingerprints, imágenes/UIDs, métricas/alertas, eventos, limpieza y hashes de los scripts. Credenciales y tokens quedan fuera. El journal no contiene credenciales. Revisar y sanitizar los archivos antes de copiarlos a `docs/evidence/`; el log local del watchdog tampoco se publica sin revisión.
 
-PASS exige efecto observado (429 en carga; incremento real de CPU/RAM; bytes de disco; conexiones nuevas al Service Pharmacy interrumpidas y roles vía Gateway funcionales en red/desconexión), reversión, 120 s de comprobaciones funcionales sin fallos ni nuevos reinicios, alertas sanas/inactivas, catálogo/roles sin cambios y PV/PVC/configuración conservados. El resultado de catálogo vía Gateway se registra separadamente, aunque conserve conexiones previas. Si el CNI ignora la política para conexiones nuevas, un agente no produce incremento medido, falta telemetría, se rompe una comparación o falla limpieza, el resultado es FAIL. Las duraciones solicitadas y los intervalos reales de reversión se registran por separado: las consultas/RPC pueden añadir latencia; el watchdog mantiene su deadline independiente.
+PASS exige efecto observado (429 en carga; incremento real de CPU/RAM; escritura sostenida y telemetría I/O en disco; conexiones nuevas al Service Pharmacy interrumpidas y roles vía Gateway funcionales en red/desconexión), reversión, 120 s de comprobaciones funcionales sin fallos ni nuevos reinicios, alertas sanas/inactivas, catálogo/roles sin cambios y PV/PVC/configuración conservados. El resultado de catálogo vía Gateway se registra separadamente, aunque conserve conexiones previas. Si el CNI ignora la política para conexiones nuevas, un agente no produce incremento medido, falta telemetría, se rompe una comparación o falla limpieza, el resultado es FAIL. Las duraciones solicitadas y los intervalos reales de reversión se registran por separado: las consultas/RPC pueden añadir latencia; el watchdog mantiene su deadline independiente.
+
+Para `storage`, el baseline debe tener `container_fs_writes_bytes_total` y su tasa de un minuto para el pod elegido. La aceptación exige al menos tres pasadas completas, progreso en dos muestras activas, escrituras que abarquen la mitad de la duración solicitada, contador del pod creciente sin reset y al menos dos muestras de tasa mayores que el baseline en más de 1024 bytes/s. Ese margen es un criterio técnico de cambio observable, no un umbral de saturación. Se registra `storageEvidence.classification=sustained_io_observed` y `deviceSaturation=null`: la tasa y el contador no prueban por sí solos saturación del dispositivo ni degradación de usuarios. Los códigos y latencias de las sondas se conservan antes, durante y después para su interpretación. Los [campos cAdvisor](https://github.com/google/cadvisor/blob/master/docs/storage/prometheus.md) describen contadores/tasas, y [GNU dd](https://github.com/coreutils/coreutils/blob/master/src/dd.c) documenta `notrunc` y `fdatasync`.
 
 Las [seis fichas reales](../../../docs/evidence/issue-17-20261112/fix-after-review/README.md) conservan hipótesis, comandos, efectos, tiempos, alertas, recuperación y limpieza. #17 está integrada y cerrada. La [repetición guiada del 13/11](../../../docs/evidence/issue-16-20261113/README.md) y el [cierre acordado de #16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) documentan la aplicación por el operador; la revisión independiente quedó como mejora opcional no realizada. Para otra ejecución, copiar la [ficha](../../../docs/templates/incidente.md) y completar comunicaciones/postmortem reales. Separar inyección solicitada, efecto observado, pod Ready, primera respuesta válida y ventana estable. tAck permanece null en los reportes originales: no inferir TTA, corrección causal, comunicaciones ni promedios de las acciones automáticas. Ver [estado y límites actuales](../../../docs/estado-actual.md).

@@ -33,3 +33,7 @@ El cierre de una issue técnica no resuelve automáticamente las consultas acad�
 ## Cómo leer los antecedentes
 
 Los incrementos del 06–12/11 describen sus fechas, equipos, commits y resultados, incluso intentos rechazados o fallidos. Las actualizaciones enlazan el resultado posterior sin reemplazar los originales. En particular, 290/291 en #8 sigue siendo el resultado histórico del 11/11; 319/319 es la ejecución del 14/11 con más pruebas y con el test corregido.
+
+## Incremento posterior: almacenamiento sostenido
+
+La rama `codex/storage-sustained-io` refuerza el caso de almacenamiento con escritura repetida sobre un archivo limitado y corroboración I/O del pod. El [registro del incremento](evidence/storage-io-20261114/README.md) acredita 54 pruebas de controlador, siete del agente real aislado y un ensayo completo PASS: 29 pasadas, 928 MiB lógicos, 61/61 sondas 200 válidas, recuperación estable y limpieza verificada. Tras tres arranques bloqueados por memoria se liberó caché WSL durante la preparación, antes del baseline; se mantuvieron precheck y observabilidad. La ejecución nueva registra base, árbol modificado y hashes; no sustituye los seis PASS históricos de la tabla ni demuestra saturación del dispositivo. Sigue correspondiendo justificar académicamente el alcance de “sobrecarga”.

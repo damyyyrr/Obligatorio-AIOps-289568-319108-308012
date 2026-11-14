@@ -5,6 +5,7 @@ import ctypes
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -73,6 +74,8 @@ def validate_settings(args):
         raise ValueError("Duración 1..180 s; memoria 1..128 MiB")
     if args.scenario == "storage" and args.megabytes > 64:
         raise ValueError("El ensayo de disco admite hasta 64 MiB")
+    if args.scenario == "storage" and args.duration < 30:
+        raise ValueError("Almacenamiento requiere 30..180 s para observar escrituras sostenidas")
     if not 1 <= args.requests <= 240 or not 1 <= args.concurrency <= 4:
         raise ValueError("Hasta 240 solicitudes y 4 workers")
     if args.execute and not args.operator.strip():
@@ -297,6 +300,10 @@ class Trial:
                        "observations": [], "events": [], "status": "PRECHECK", "liveValidation": True}
         self.report["sourceHashes"] = {name: hashlib.sha256((HERE / name).read_bytes()).hexdigest()
                                        for name in ("chaos.py", "fault.sh", "probe.py")}
+        if args.scenario == "storage":
+            self.report["storageWorkload"] = {"mode": "repeated_fdatasync", "fileMiB": args.megabytes,
+                "durationSeconds": args.duration, "maxWrittenMiB": 1024, "writers": 1,
+                "target": "exclusive /tmp directory outside PVCs", "deviceSaturationRequired": False}
         self.journal = None
         self.future = None
         self.expected = {}
@@ -377,6 +384,8 @@ class Trial:
                 raise RuntimeError("No se observó el agente activo")
             if scenario == "storage" and not any(s.get("bytes") == self.args.megabytes * 1048576 for s in states):
                 raise RuntimeError("No se verificaron los bytes de almacenamiento inyectados")
+            if scenario == "storage":
+                self.check_storage_io(injected_at, states)
             if scenario in ("cpu", "ram"):
                 metric = "cpu" if scenario == "cpu" else "memory"
                 def values(observation):
@@ -388,6 +397,53 @@ class Trial:
                 required = 0.05 if scenario == "cpu" else self.args.megabytes * 1048576 * 0.5
                 if not baseline or not observed or max(observed) - max(baseline) < required:
                     raise RuntimeError("El incremento de recurso no fue observado en las métricas del pod")
+
+    def check_storage_io(self, injected_at, states):
+        window = [s for s in states if s.get("active")
+                  and injected_at <= s.get("timeUtc", "") < self.report["faultRestoredUtc"]]
+        if len(window) < 2:
+            raise RuntimeError("Faltan muestras del progreso de escritura sostenida")
+        final = window[-1]
+        passes = [s.get("completedPasses", 0) for s in window]
+        written = [s.get("bytesWritten", 0) for s in window]
+        if any(type(v) is not int or v < 0 for v in passes + written):
+            raise RuntimeError("Contadores del agente inválidos")
+        if passes != sorted(passes) or written != sorted(written) or max(written) > 1024 * 1048576:
+            raise RuntimeError("Contadores reiniciados o presupuesto de escritura excedido")
+        if final.get("completedPasses", 0) < 3 or final["bytesWritten"] != final["completedPasses"] * self.args.megabytes * 1048576:
+            raise RuntimeError("Una escritura aislada no acredita carga sostenida")
+        span = final.get("lastWriteEpoch", 0) - final.get("firstWriteEpoch", 0)
+        if span < self.args.duration * 0.5:
+            raise RuntimeError("Las escrituras no cubren al menos la mitad del intervalo solicitado")
+
+        def value(observation, metric):
+            series = observation.get("telemetry", {}).get(metric, {}).get("series", [])
+            values = [float(s["value"][1]) for s in series if s["metric"].get("pod") == self.journal["pod"]]
+            if len(values) != 1 or not math.isfinite(values[0]) or values[0] < 0:
+                raise RuntimeError("Falta telemetría I/O válida del pod elegido")
+            return values[0]
+
+        observations = self.report["observations"]
+        before = [o for o in observations if o["timeUtc"] < injected_at]
+        during = [o for o in observations if injected_at <= o["timeUtc"] < self.report["faultRestoredUtc"]]
+        if not before or len(during) < 2:
+            raise RuntimeError("Faltan baseline y muestras I/O durante la inyección")
+        counters = [value(o, "storageWrites") for o in [before[-1], *during]]
+        rates = [value(o, "storageWriteRate") for o in during]
+        baseline_rate = value(before[-1], "storageWriteRate")
+        if counters != sorted(counters) or counters[-1] - counters[0] < self.args.megabytes * 1048576:
+            raise RuntimeError("No se corroboraron escrituras del pod sin reinicio del contador")
+        if sum(rate > baseline_rate + 1024 for rate in rates) < 2:
+            raise RuntimeError("No se observó tasa de escritura superior al baseline en dos muestras")
+        self.report["storageEvidence"] = {
+            "classification": "sustained_io_observed", "fileMiB": self.args.megabytes,
+            "maxWrittenMiB": 1024, "completedPasses": final["completedPasses"],
+            "bytesWrittenByAgent": final["bytesWritten"], "observedWriteSpanSeconds": span,
+            "podWrittenBytesDelta": counters[-1] - counters[0],
+            "baselineWriteBytesPerSecond": baseline_rate, "peakWriteBytesPerSecond": max(rates),
+            "deviceSaturation": None,
+            "interpretation": "Repeated synchronized writes and pod I/O observed; not proof of device saturation, disk full or application failure.",
+        }
 
     def preflight(self):
         namespace_uid = namespace_lab(self.cluster)
@@ -427,6 +483,12 @@ class Trial:
         self.expected = {(s.get("target", "pharmago-api-gateway"), s["path"]): s["fingerprint"]
                          for s in self.report["samples"] if "fingerprint" in s}
         telemetry = self.observe()["telemetry"]
+        if self.args.scenario == "storage":
+            for metric in ("storageWrites", "storageWriteRate"):
+                series = telemetry.get(metric, {}).get("series", [])
+                if not any(s["metric"].get("pod") == target["metadata"]["name"]
+                           and math.isfinite(float(s["value"][1])) and float(s["value"][1]) >= 0 for s in series):
+                    raise RuntimeError("Falta baseline I/O del pod elegido; no inyectar almacenamiento")
         targets = telemetry["targets"]["series"]
         jobs = {x["metric"].get("job") for x in targets}
         required = {"otlp-collector", "pharmago-app-pods", "node-exporter", "kubernetes-cadvisor", "kube-state-metrics"}
@@ -641,7 +703,9 @@ def main():
                           "megabytes": args.megabytes, "requests": args.requests,
                           "maxConcurrency": args.concurrency, "maxRequestsPerSecond": 4,
                           "requiredHostFreeGiB": 2, "restorationWindowSeconds": 120,
-                          "mutations": False, "requiresCniEnforcement": args.scenario == "network"}))
+                          "mutations": False, "requiresCniEnforcement": args.scenario == "network",
+                          "maxStorageFileMiB": 64, "maxStorageWrittenMiB": 1024,
+                          "storageWorkload": "one writer, repeated fdatasync on a fixed-size file"}))
         return 0
     return 0 if Trial(args).run() else 1
 

@@ -61,6 +61,10 @@ class LimitsTests(unittest.TestCase):
         args = chaos.parser().parse_args(["storage", "--context", "test", "--megabytes", "65"])
         with self.assertRaises(ValueError): chaos.validate_settings(args)
 
+    def test_storage_rejects_duration_too_short_for_io_telemetry(self):
+        args = chaos.parser().parse_args(["storage", "--context", "test", "--duration", "29"])
+        with self.assertRaises(ValueError): chaos.validate_settings(args)
+
     def test_execute_needs_operator(self):
         args = chaos.parser().parse_args(["cpu", "--context", "test", "--execute"])
         with self.assertRaises(ValueError): chaos.validate_settings(args)
@@ -258,6 +262,79 @@ class EvidenceTests(unittest.TestCase):
             trial = self.trial(directory, "storage")
             trial.report["injectionStates"] = [{"active": True, "bytes": 100}]
             with self.assertRaises(RuntimeError): trial.check_effect()
+
+    def storage_trial(self, directory):
+        trial = self.trial(directory, "storage")
+        trial.report["injectionStates"] = [
+            {"timeUtc": "2026-11-12T10:00:05Z", "active": True, "bytes": 32 * 1048576,
+             "completedPasses": 1, "bytesWritten": 32 * 1048576, "firstWriteEpoch": 1, "lastWriteEpoch": 1},
+            {"timeUtc": "2026-11-12T10:00:50Z", "active": True, "bytes": 32 * 1048576,
+             "completedPasses": 20, "bytesWritten": 640 * 1048576, "firstWriteEpoch": 1, "lastWriteEpoch": 46},
+        ]
+        trial.report["observations"] = [
+            {"timeUtc": timestamp, "telemetry": {
+                "storageWrites": {"series": [{"metric": {"pod": trial.journal["pod"]}, "value": [0, str(written)]}]},
+                "storageWriteRate": {"series": [{"metric": {"pod": trial.journal["pod"]}, "value": [0, str(rate)]}]},
+            }} for timestamp, written, rate in (
+                ("2026-11-12T09:59:59Z", 0, 100),
+                ("2026-11-12T10:00:20Z", 64 * 1048576, 1000000),
+                ("2026-11-12T10:00:50Z", 512 * 1048576, 2000000),
+            )]
+        return trial
+
+    def test_storage_single_write_is_not_sustained_io(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.storage_trial(directory)
+            trial.report["injectionStates"] = trial.report["injectionStates"][:1]
+            with self.assertRaises(RuntimeError): trial.check_effect()
+
+    def test_storage_requires_target_pod_io_telemetry(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.storage_trial(directory)
+            for observation in trial.report["observations"]:
+                observation["telemetry"]["storageWrites"]["series"][0]["metric"]["pod"] = "other-pod"
+            with self.assertRaises(RuntimeError): trial.check_effect()
+
+    def test_storage_counter_reset_cannot_look_like_written_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.storage_trial(directory)
+            trial.report["observations"][2]["telemetry"]["storageWrites"]["series"][0]["value"][1] = "0"
+            with self.assertRaises(RuntimeError): trial.check_effect()
+
+    def test_storage_no_increase_in_write_rate_cannot_pass(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.storage_trial(directory)
+            for observation in trial.report["observations"][1:]:
+                observation["telemetry"]["storageWriteRate"]["series"][0]["value"][1] = "100"
+            with self.assertRaises(RuntimeError): trial.check_effect()
+
+    def test_storage_over_write_budget_cannot_pass(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.storage_trial(directory)
+            trial.report["injectionStates"][-1]["bytesWritten"] = 1025 * 1048576
+            with self.assertRaises(RuntimeError): trial.check_effect()
+
+    def test_storage_nonfinite_io_metric_cannot_pass(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.storage_trial(directory)
+            trial.report["observations"][1]["telemetry"]["storageWriteRate"]["series"][0]["value"][1] = "NaN"
+            with self.assertRaises(RuntimeError): trial.check_effect()
+
+    def test_storage_progress_after_restoration_cannot_prove_sustained_load(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.storage_trial(directory)
+            trial.report["injectionStates"][-1]["timeUtc"] = "2026-11-12T10:01:05Z"
+            with self.assertRaises(RuntimeError): trial.check_effect()
+
+    def test_storage_sustained_io_does_not_claim_saturation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            trial = self.storage_trial(directory)
+            trial.check_effect()
+            evidence = trial.report["storageEvidence"]
+            self.assertEqual(evidence["classification"], "sustained_io_observed")
+            self.assertEqual(evidence["completedPasses"], 20)
+            self.assertIsNone(evidence["deviceSaturation"])
+            self.assertGreater(evidence["podWrittenBytesDelta"], 0)
 
     def test_process_running_without_cpu_metric_effect_is_not_pass(self):
         with tempfile.TemporaryDirectory() as directory:

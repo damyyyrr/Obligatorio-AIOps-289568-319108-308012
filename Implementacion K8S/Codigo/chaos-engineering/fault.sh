@@ -78,7 +78,7 @@ cleanup() {
             done < "$dir/pids"
         fi
         # Solo nombres exclusivos del agente; no hay borrado recursivo.
-        rm -f "$dir/payload" "$dir/pipe" "$dir/pids" "$dir/owner" || return 3
+        rm -f "$dir/payload" "$dir/progress" "$dir/progress.tmp" "$dir/pipe" "$dir/pids" "$dir/owner" || return 3
         rmdir "$dir" || return 3
     fi
     release_lock
@@ -100,12 +100,17 @@ fi
 take_lock
 if [ "$mode" = status ]; then
     active=false; size=0; stopped=false
+    passes=0; written=0; first_write=0; last_write=0
     if owned; then
         active=true
         [ ! -f "$dir/payload" ] || size=$(wc -c < "$dir/payload")
+        if [ -f "$dir/progress" ] && [ ! -L "$dir/progress" ]; then
+            read -r passes written first_write last_write < "$dir/progress"
+            case "$passes:$written:$first_write:$last_write" in *[!0-9:]*|'') exit 3;; esac
+        fi
     elif [ -e "$dir" ] || [ -L "$dir" ]; then exit 3; fi
     if cancelled; then stopped=true; fi
-    printf '{"active":%s,"bytes":%s,"cancelled":%s}\n' "$active" "$size" "$stopped"
+    printf '{"active":%s,"bytes":%s,"cancelled":%s,"completedPasses":%s,"bytesWritten":%s,"firstWriteEpoch":%s,"lastWriteEpoch":%s}\n' "$active" "$size" "$stopped" "$passes" "$written" "$first_write" "$last_write"
     exit 0
 fi
 if [ "$mode" = clear ]; then
@@ -155,13 +160,46 @@ elif [ "$scenario" = ram ]; then
     printf '%s\n' "$!" >> "$dir/pids"
 elif [ "$scenario" = storage ]; then
     [ "$mb" -le 64 ] || exit 4
-    available=$(df -Pk "$dir" | awk 'NR == 2 {print $4}')
-    case "$available" in *[!0-9]*|'') exit 4;; esac
-    [ "$available" -ge $(( (mb + 1024) * 1024 )) ] || exit 4
-    env PHARMAGO_CHAOS_RUNID="$id" dd if=/dev/zero of="$dir/payload" bs=1048576 count="$mb" conv=fsync 2>/dev/null &
-    writer=$!
-    printf '%s\n' "$writer" >> "$dir/pids"
-    wait "$writer"
+    # Un solo archivo (<=64 MiB), un escritor y <=1024 MiB lógicos por ensayo.
+    # Cada pasada fuerza datos a almacenamiento; no crece el archivo entre pasadas.
+    budget_passes=$((1024 / mb))
+    interval=$(( (seconds + budget_passes - 1) / budget_passes ))
+    [ "$interval" -ge 1 ] || interval=1
+    passes=0; written=0; first_write=0; last_write=0
+    next_write=$current
+    release_lock
+    while [ "$(date +%s)" -lt "$stop_epoch" ]; do
+        take_lock
+        if cancelled || ! owned; then release_lock; break; fi
+        current=$(date +%s)
+        if [ "$current" -ge "$stop_epoch" ] || [ "$passes" -ge "$budget_passes" ]; then
+            release_lock; break
+        fi
+        if [ "$current" -lt "$next_write" ]; then release_lock; sleep 1; continue; fi
+        available=$(df -Pk "$dir" | awk 'NR == 2 {print $4}')
+        case "$available" in *[!0-9]*|'') exit 4;; esac
+        [ "$available" -ge $(( (mb + 1024) * 1024 )) ] || exit 4
+        # El spawn/registro de PID es atómico respecto de cleanup. Cada pasada nueva
+        # vuelve a tomar el mismo lock y comprobar cancelación y deadline.
+        env PHARMAGO_CHAOS_RUNID="$id" dd if=/dev/zero of="$dir/payload" bs=1048576 count="$mb" conv=notrunc,fdatasync 2>/dev/null &
+        writer=$!
+        printf '%s\n' "$writer" >> "$dir/pids"
+        release_lock
+        write_ok=true
+        wait "$writer" || write_ok=false
+        take_lock
+        if cancelled || ! owned; then release_lock; break; fi
+        [ "$write_ok" = true ] || exit 4
+        passes=$((passes + 1)); written=$((passes * mb * 1048576))
+        last_write=$(date +%s)
+        [ "$first_write" -ne 0 ] || first_write=$last_write
+        printf '%s %s %s %s\n' "$passes" "$written" "$first_write" "$last_write" > "$dir/progress.tmp"
+        mv "$dir/progress.tmp" "$dir/progress"
+        next_write=$((last_write + interval))
+        release_lock
+    done
+    printf '{"injected":true,"scenario":"storage","runId":"%s","completedPasses":%s,"bytesWritten":%s,"firstWriteEpoch":%s,"lastWriteEpoch":%s}\n' "$id" "$passes" "$written" "$first_write" "$last_write"
+    exit 0
 fi
 release_lock
 printf '{"injected":true,"scenario":"%s","runId":"%s","observedUtc":"%s"}\n' "$scenario" "$id" "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"

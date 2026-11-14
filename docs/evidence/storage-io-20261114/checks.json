@@ -1,0 +1,178 @@
+{
+  "checkedUtc": "2026-11-14T17:46:23.625119+00:00",
+  "sourceCommit": "baec66bb304fa5d923fb3e604e49a7d5fcacc6bc",
+  "workingTreeDirty": true,
+  "branch": "codex/storage-sustained-io",
+  "python": "3.14.4",
+  "sourceHashes": {
+    "chaos.py": "b1e8a3f4e2b7d8ad492df2636c8eb950f029701a1a846fd09a5eb34602368e51",
+    "fault.sh": "aaf056d792934a8e86ef66a29140f531cb98f332745d7c05d00e07673acd807d",
+    "probe.py": "7217f0629786bcd10997bfa8ee721527c7e5f95845a3ed963ec7e206aa178534",
+    "test_chaos.py": "9e227fe88ac352bd18135c5bda91ffb9c63120a1246a0ffb3bc46464510a54f2",
+    "test_fault_agent.py": "1aab690257788e2c8f4088e1c0cd086217964be1aea45c50a19ee535cebf33c2"
+  },
+  "localTests": {
+    "storage-controller-final.log": {
+      "tests": 54,
+      "result": "PASS",
+      "sha256OriginalLog": "b6e48d03d5ea73907ba08c109556a6b98614666382985187be2a9a6656d61abf"
+    },
+    "storage-agent-tests.log": {
+      "tests": 7,
+      "result": "PASS",
+      "sha256OriginalLog": "52e5a571fbd00af055c611761607558db1de3eea17a1dc29670be0ff0272a358"
+    }
+  },
+  "isolatedAgentContainer": {
+    "image": "pharmago-baseline/pharmacy:local",
+    "imageId": "sha256:fc287af10f371a1d35852046872cebb681ce6f040aa6eba0c1d441133cde04ce",
+    "memoryMiB": 256,
+    "cpus": 0.5,
+    "pidsLimit": 64,
+    "network": "none",
+    "applicationDataMounted": false,
+    "containerRemoved": true
+  },
+  "livePrecheck": {
+    "checkedUtc": "2026-11-14T17:07:05.1532282+00:00",
+    "context": "pharmago-issue17-validation",
+    "status": "BLOCKED_BEFORE_INJECTION",
+    "availableHostBytes": 943869952,
+    "requiredHostBytes": 2147483648,
+    "injected": false,
+    "reason": "Host free memory below existing 2 GiB floor after starting the full laboratory",
+    "dataPreserved": true
+  },
+  "completeLabResult": "PASS",
+  "saturationDemonstrated": false,
+  "scope": "54 controller tests and 7 real-agent tests passed; after three memory-blocked starts, a fourth complete-laboratory attempt passed sustained storage I/O, functional probes, 120-second stable recovery and verified cleanup. Device saturation is not demonstrated.",
+  "labAttempts": [
+    {
+      "checkedUtc": "2026-11-14T17:07:05.1532282+00:00",
+      "context": "pharmago-issue17-validation",
+      "status": "BLOCKED_BEFORE_INJECTION",
+      "availableHostBytes": 943869952,
+      "requiredHostBytes": 2147483648,
+      "injected": false,
+      "reason": "Host free memory below existing 2 GiB floor after starting the full laboratory",
+      "dataPreserved": true
+    },
+    {
+      "startedUtc": "2026-11-14T17:14:14.543120+00:00",
+      "context": "pharmago-issue17-validation",
+      "fixturesCreated": [],
+      "newInjection": false,
+      "errorType": "RuntimeError",
+      "reason": "Precheck: menos de 2 GiB de RAM libre en el host; no se inyectarÃƒÆ’Ã‚Â¡ carga",
+      "result": "BLOCKED_BEFORE_INJECTION",
+      "ownFixturesRemoved": true,
+      "profileStopped": true,
+      "finishedUtc": "2026-11-14T17:14:32.136347+00:00"
+    },
+    {
+      "startedUtc": "2026-11-14T17:27:34.261345+00:00",
+      "context": "pharmago-issue17-validation",
+      "fixturesCreated": [],
+      "newInjection": false,
+      "errorType": "RuntimeError",
+      "reason": "Precheck: menos de 2 GiB de RAM libre en el host; no se inyectarÃƒÆ’Ã‚Â¡ carga",
+      "result": "BLOCKED_BEFORE_INJECTION",
+      "ownFixturesRemoved": true,
+      "profileStopped": true,
+      "finishedUtc": "2026-11-14T17:28:41.176953+00:00"
+    },
+    {
+      "startedUtc": "2026-11-14T17:36:09.594546+00:00",
+      "context": "pharmago-issue17-validation",
+      "fixturesCreated": [
+        {
+          "name": "pharmago-chaos-client",
+          "uid": "11b38ce2-7ce5-412e-909b-2b3bc4d07d53"
+        },
+        {
+          "name": "pharmago-chaos-load",
+          "uid": "45ad4178-4e50-4be5-9b4b-1578cbb680e2"
+        }
+      ],
+      "newInjection": true,
+      "report": ".runtime\\storage-live-retry4\\runs\\c70c8cae26144765974aa922c828bc86\\report.json",
+      "result": "PASS",
+      "cleanup": "verified",
+      "storageEvidence": {
+        "classification": "sustained_io_observed",
+        "fileMiB": 32,
+        "maxWrittenMiB": 1024,
+        "completedPasses": 26,
+        "bytesWrittenByAgent": 872415232,
+        "observedWriteSpanSeconds": 52,
+        "podWrittenBytesDelta": 838971392.0,
+        "baselineWriteBytesPerSecond": 0.0,
+        "peakWriteBytesPerSecond": 16295273.59050445,
+        "deviceSaturation": null,
+        "interpretation": "Repeated synchronized writes and pod I/O observed; not proof of device saturation, disk full or application failure."
+      },
+      "independentAgentCleanup": true,
+      "ownFixturesRemoved": true,
+      "profileStopped": true,
+      "finishedUtc": "2026-11-14T17:44:38.950950+00:00"
+    }
+  ],
+  "liveResult": "summary.json",
+  "cachePreparation": {
+    "distro": "docker-desktop",
+    "WSLVersion": "2.6.1.0",
+    "operation": "sync && echo 3 > /proc/sys/vm/drop_caches",
+    "performedTwice": true,
+    "stages": [
+      "profile stopped",
+      "profile starting, before baseline and injection"
+    ],
+    "duringTrial": false,
+    "persistentConfigurationChanged": false,
+    "userAppClosed": false,
+    "reference": "https://docs.kernel.org/admin-guide/sysctl/vm.html#drop-caches"
+  },
+  "previousEnvironmentClosure": {
+    "checkedUtc": "2026-11-14T17:21:58.108268+00:00",
+    "profileStopped": true,
+    "activeContextRestoredToUnset": true,
+    "dockerServerResponding": false,
+    "wslVmProcessPresent": false,
+    "desktopStopCli": "CLI and its plugin did not finish after more than three minutes; only those matching command/start-time processes were stopped after engine/VM checks. No application or engine process was force-killed."
+  },
+  "finalEnvironment": {
+    "checkedUtc": "2026-11-14T17:48:25.664248+00:00",
+    "profileStopped": true,
+    "activeContextRestoredToUnset": true,
+    "ownFixturesRemoved": true,
+    "independentAgentCleanup": true,
+    "dockerEngineProbe": {
+      "responding": false,
+      "probe": "version",
+      "timedOutSeconds": 5
+    },
+    "wslVmProcessPresent": false,
+    "desktopStopCli": "Requested graceful stop with 30-second timeout; CLI returned timeout because Desktop/backend processes were still running. No force-kill. Linux VM subsequently absent; full Desktop process exit not confirmed."
+  },
+  "documentationUpdate": "operator-doc-update.json",
+  "sourcePublication": "source-publication.json",
+  "ciTestAdjustment": {
+    "checkedUtc": "2026-11-14T20:49:01.048335+00:00",
+    "initialRunId": 43639271939,
+    "initialRunResult": "FAIL",
+    "initialRunUrl": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/actions/runs/43639271939",
+    "failedAssertion": "test_active_cpu_ram_and_storage_abort_without_remaining_processes: status bytes was 0 instead of 4194304",
+    "cause": "The storage agent releases its lock before the first write; active can be observed before a completed pass.",
+    "correction": "Wait for active and at least one completed storage pass, then retain exact size and cleanup assertions.",
+    "changedSource": "test_fault_agent.py",
+    "previousPublishedSha256": "667615f9585a63ab3b60269e3ef1c0e6140ac977264fd7abc05875a90cb1eae8",
+    "correctedPublishedSha256": "6a4e9d2d95b9031bf3788de2cce125641efd0f6622508e9fb3c1fcfac47bccb7",
+    "runtimeSourcesUnchanged": [
+      "chaos.py",
+      "fault.sh",
+      "probe.py"
+    ],
+    "originalLocalLogsAndLiveReportPreserved": true,
+    "followupResults": "https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/pull/44/checks"
+  }
+}
