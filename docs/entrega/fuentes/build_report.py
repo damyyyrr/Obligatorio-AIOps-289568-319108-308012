@@ -79,6 +79,76 @@ def diagram():
     im.save(FIG/'despliegue-laboratorio.png',dpi=(300,300))
     svg.append('</svg>');(FIG/'despliegue-laboratorio.svg').write_text('\n'.join(svg),encoding='utf-8')
 
+def topology_diagram():
+    """Compara la colocación multinodo con el laboratorio de caos en una PC."""
+    w,h=2400,1730
+    im=Image.new('RGB',(w,h),'white');d=ImageDraw.Draw(im)
+    fontroot=Path('C:/Windows/Fonts')
+    svg=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}"><rect width="100%" height="100%" fill="white"/>']
+    def text(x,y,s,size=42,heavy=False,center=False):
+        font=ImageFont.truetype(str(fontroot/('arialbd.ttf' if heavy else 'arial.ttf')),size)
+        d.text((x,y),s,font=font,fill='#111111',anchor='mm' if center else 'lt')
+        svg.append(f'<text x="{x}" y="{y}" font-family="Arial" font-size="{size}" font-weight="{700 if heavy else 400}" dominant-baseline="{"central" if center else "hanging"}" text-anchor="{"middle" if center else "start"}">{sax.escape(s)}</text>')
+    def rect(x,y,x2,y2,fill='#FFFFFF',outline='#999999',width=4):
+        d.rectangle((x,y,x2,y2),fill=fill,outline=outline,width=width)
+        svg.append(f'<rect x="{x}" y="{y}" width="{x2-x}" height="{y2-y}" fill="{fill}" stroke="{outline}" stroke-width="{width}"/>')
+    def arrow(points):
+        x1,y1=points[-2];x2,y2=points[-1]
+        dx,dy=x2-x1,y2-y1;n=math.hypot(dx,dy);ux,uy=dx/n,dy/n
+        a=(x2-22*ux+11*uy,y2-22*uy-11*ux);b=(x2-22*ux-11*uy,y2-22*uy+11*ux)
+        d.line(points,fill='#333333',width=5);d.polygon([(x2,y2),a,b],fill='#333333')
+        coordinates=' '.join(f'{x},{y}' for x,y in points)
+        svg.append(f'<polyline points="{coordinates}" fill="none" stroke="#333333" stroke-width="5"/><polygon points="{x2},{y2} {a[0]},{a[1]} {b[0]},{b[1]}" fill="#333333"/>')
+    def box(x,y,width,title,detail,height=115):
+        rect(x,y,x+width,y+height,fill='#F5F5F5',outline='#777777')
+        text(x+width/2,y+height/2-22,title,44,True,True)
+        text(x+width/2,y+height/2+28,detail,37,False,True)
+
+    rect(20,20,2380,1710,outline='#555555',width=5)
+    text(60,55,'Una PC Windows   |   Docker Desktop y WSL',52,True)
+    rect(60,145,2340,955)
+    text(100,175,'A  Perfil multinodo pharmago-issue3   |   3 nodos Kubernetes',48,True)
+    text(100,235,'Distribución de la issue #3; réplicas de aplicación incorporadas en #7.',37)
+    for x,name,role in [(105,'pharmago-issue3','Gateway y operaciones'),(865,'pharmago-issue3-m02','Users y frontend'),(1625,'pharmago-issue3-m03','Pharmacy')]:
+        rect(x,300,x+670,820,outline='#777777')
+        text(x+335,337,name,36,True,True)
+        text(x+335,382,role,35,False,True)
+    box(145,490,590,'Gateway','1 réplica')
+    box(905,490,590,'Users','2 réplicas')
+    box(1665,490,590,'Pharmacy','2 réplicas')
+    arrow([(735,548),(905,548)])
+    text(820,508,'HTTP',31,False,True)
+    arrow([(440,490),(440,440),(1960,440),(1960,490)])
+    text(1200,418,'HTTP',31,False,True)
+    box(145,630,590,'SQL Server','1 réplica y PVC',95)
+    text(440,755,'Elasticsearch · Prometheus',35,False,True)
+    text(440,797,'Grafana · Collector',35,False,True)
+    box(905,665,275,'Angular','1 pod UI',100)
+    box(1210,665,285,'Kibana','Logs',100)
+    text(100,852,'Flujo funcional: Angular → Gateway → Users / Pharmacy → SQL Server.',39)
+    text(100,905,'PV locales en el nodo de operaciones; Fluent Bit y Node Exporter en cada nodo.',36)
+
+    rect(60,990,2340,1600)
+    text(100,1020,'B  Laboratorio pharmago-issue17-validation   |   1 nodo   |   Calico',46,True)
+    box(120,1190,300,'Angular','1 pod UI')
+    box(550,1190,370,'Gateway','1 réplica')
+    box(1110,1130,390,'Users','2 réplicas')
+    box(1110,1330,390,'Pharmacy','2 réplicas')
+    box(1850,1230,370,'SQL Server','1 réplica y PVC')
+    arrow([(420,1248),(550,1248)])
+    arrow([(920,1220),(1110,1188)])
+    arrow([(920,1275),(1110,1388)])
+    arrow([(1500,1188),(1850,1255)])
+    arrow([(1500,1388),(1850,1315)])
+    text(485,1206,'HTTP',30,False,True)
+    text(1000,1150,'HTTP',30,False,True)
+    text(1680,1195,'SQL',32,False,True)
+    text(100,1485,'OTLP → Collector → Prometheus / Grafana y Jaeger; logs → Fluent Bit → Elasticsearch / Kibana.',34)
+    text(100,1545,'Perfil observado: 17 pods base; clientes efímeros aparte. Las réplicas comparten el mismo nodo.',35)
+    text(65,1650,'Los perfiles se usaron en ejecuciones distintas y no representan hosts físicos independientes.',40)
+    im.save(FIG/'despliegue-topologias.png',dpi=(300,300))
+    svg.append('</svg>');(FIG/'despliegue-topologias.svg').write_text('\n'.join(svg),encoding='utf-8')
+
 def prop(tag,**attrs):
     e=OxmlElement(tag)
     for k,v in attrs.items():e.set(qn('w:'+k),str(v))
@@ -177,7 +247,7 @@ def write_markdown():
     (OUT/'informe-final.md').write_text(text,encoding='utf-8')
 
 def build():
-    diagram();write_markdown();doc=Document();s=doc.sections[0]
+    diagram();topology_diagram();write_markdown();doc=Document();s=doc.sections[0]
     s.page_width=Inches(8.5);s.page_height=Inches(11)
     s.top_margin=Inches(.70);s.bottom_margin=Inches(.68);s.left_margin=Inches(.85);s.right_margin=Inches(.85)
     s.header_distance=Inches(.30);s.footer_distance=Inches(.30);s.different_first_page_header_footer=True

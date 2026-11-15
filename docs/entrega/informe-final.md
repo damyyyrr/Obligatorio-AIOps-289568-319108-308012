@@ -14,7 +14,7 @@ El informe sigue los ocho elementos de la rúbrica y presenta desafíos, decisio
 
 Desplegamos la interfaz Angular, API Gateway, Users y Pharmacy en pods independientes, con Services para el descubrimiento interno. El catálogo recorre Gateway → Pharmacy → SQL; roles y login recorren Gateway → Users → SQL. Users y Pharmacy disponen de dos réplicas; Gateway conserva una. Las imágenes se identifican por tag y digest en cada evidencia. [E2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/aiops-k8s-topology.md)
 
-![Figura 1. Componentes del perfil de caos pharmago-issue17-validation. Un nodo Kubernetes local sobre una única PC; las cajas representan componentes lógicos.](figuras/despliegue-laboratorio.png)
+![Figura 1. Topologías locales: A, tres nodos con Gateway, Users y Pharmacy separados; B, laboratorio de caos con un nodo y Calico. Cada esquema representa una ejecución sobre la misma PC física.](figuras/despliegue-topologias.png)
 
 Se probaron dos topologías: pharmago-issue3 distribuyó Gateway, Users y Pharmacy en tres nodos Kubernetes virtuales mediante etiquetas obligatorias; el perfil de caos usó un solo nodo con Calico. Ambos dependen de una misma PC y ninguno acredita separación en nodos físicos distintos. El equipo adopta este laboratorio local; la separación física es un límite de R01. [E2](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/blob/a1b2d56e20afec0797ceafd6f0a10b795fa72121/docs/aiops-k8s-topology.md)
 

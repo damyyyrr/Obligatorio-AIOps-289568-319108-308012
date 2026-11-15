@@ -7,7 +7,9 @@ Informe con corte de código en `a1b2d56e20afec0797ceafd6f0a10b795fa72121`, merg
 - [Contenido en Markdown](informe-final.md).
 - [Verificación documental](validacion-informe.json).
 
-Incluye los nombres/legajos y docente confirmados por el usuario, las ocho secciones de la rúbrica, diagrama del laboratorio local, resultados reales, reflexión sobre prácticas comprobables y declaración de IA. Registra las decisiones del equipo sobre laboratorio local, recambio de tres servicios, dataset docente, tres integrantes y carga acotada de almacenamiento, conservando los límites de las mediciones. No declara realizada la defensa ni presentada la entrega en Gestión.
+Incluye los nombres/legajos y docente confirmados por el usuario, las ocho secciones de la rúbrica, diagramas de ambos perfiles locales, resultados reales, reflexión sobre prácticas comprobables y declaración de IA. Registra las decisiones del equipo sobre laboratorio local, recambio de tres servicios, dataset docente, tres integrantes y carga acotada de almacenamiento, conservando los límites de las mediciones. No declara realizada la defensa ni presentada la entrega en Gestión.
+
+**Actualización gráfica del 15/11/2026:** la figura 1 de la página 2 muestra ahora ambas topologías: los tres nodos del perfil `pharmago-issue3`, con Gateway, Users y Pharmacy separados, y el laboratorio de caos `pharmago-issue17-validation`, con un nodo y Calico. Las réplicas de aplicación se identifican como el incremento de #7 sobre la distribución de #3. Ambos esquemas se sitúan sobre una PC física y corresponden a ejecuciones distintas. Se mantienen el corte de código, los resultados y las diez páginas; esta edición no ejecuta pruebas ni modifica la infraestructura.
 
 ## Fuentes y reproducción
 

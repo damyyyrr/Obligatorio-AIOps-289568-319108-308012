@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1730" viewBox="0 0 2400 1730"><rect width="100%" height="100%" fill="white"/>
+<rect x="20" y="20" width="2360" height="1690" fill="#FFFFFF" stroke="#555555" stroke-width="5"/>
+<text x="60" y="55" font-family="Arial" font-size="52" font-weight="700" dominant-baseline="hanging" text-anchor="start">Una PC Windows   |   Docker Desktop y WSL</text>
+<rect x="60" y="145" width="2280" height="810" fill="#FFFFFF" stroke="#999999" stroke-width="4"/>
+<text x="100" y="175" font-family="Arial" font-size="48" font-weight="700" dominant-baseline="hanging" text-anchor="start">A  Perfil multinodo pharmago-issue3   |   3 nodos Kubernetes</text>
+<text x="100" y="235" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="hanging" text-anchor="start">Distribución de la issue #3; réplicas de aplicación incorporadas en #7.</text>
+<rect x="105" y="300" width="670" height="520" fill="#FFFFFF" stroke="#777777" stroke-width="4"/>
+<text x="440" y="337" font-family="Arial" font-size="36" font-weight="700" dominant-baseline="central" text-anchor="middle">pharmago-issue3</text>
+<text x="440" y="382" font-family="Arial" font-size="35" font-weight="400" dominant-baseline="central" text-anchor="middle">Gateway y operaciones</text>
+<rect x="865" y="300" width="670" height="520" fill="#FFFFFF" stroke="#777777" stroke-width="4"/>
+<text x="1200" y="337" font-family="Arial" font-size="36" font-weight="700" dominant-baseline="central" text-anchor="middle">pharmago-issue3-m02</text>
+<text x="1200" y="382" font-family="Arial" font-size="35" font-weight="400" dominant-baseline="central" text-anchor="middle">Users y frontend</text>
+<rect x="1625" y="300" width="670" height="520" fill="#FFFFFF" stroke="#777777" stroke-width="4"/>
+<text x="1960" y="337" font-family="Arial" font-size="36" font-weight="700" dominant-baseline="central" text-anchor="middle">pharmago-issue3-m03</text>
+<text x="1960" y="382" font-family="Arial" font-size="35" font-weight="400" dominant-baseline="central" text-anchor="middle">Pharmacy</text>
+<rect x="145" y="490" width="590" height="115" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="440.0" y="525.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Gateway</text>
+<text x="440.0" y="575.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">1 réplica</text>
+<rect x="905" y="490" width="590" height="115" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="1200.0" y="525.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Users</text>
+<text x="1200.0" y="575.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">2 réplicas</text>
+<rect x="1665" y="490" width="590" height="115" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="1960.0" y="525.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Pharmacy</text>
+<text x="1960.0" y="575.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">2 réplicas</text>
+<polyline points="735,548 905,548" fill="none" stroke="#333333" stroke-width="5"/><polygon points="905,548 883.0,537.0 883.0,559.0" fill="#333333"/>
+<text x="820" y="508" font-family="Arial" font-size="31" font-weight="400" dominant-baseline="central" text-anchor="middle">HTTP</text>
+<polyline points="440,490 440,440 1960,440 1960,490" fill="none" stroke="#333333" stroke-width="5"/><polygon points="1960,490 1971.0,468.0 1949.0,468.0" fill="#333333"/>
+<text x="1200" y="418" font-family="Arial" font-size="31" font-weight="400" dominant-baseline="central" text-anchor="middle">HTTP</text>
+<rect x="145" y="630" width="590" height="95" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="440.0" y="655.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">SQL Server</text>
+<text x="440.0" y="705.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">1 réplica y PVC</text>
+<text x="440" y="755" font-family="Arial" font-size="35" font-weight="400" dominant-baseline="central" text-anchor="middle">Elasticsearch · Prometheus</text>
+<text x="440" y="797" font-family="Arial" font-size="35" font-weight="400" dominant-baseline="central" text-anchor="middle">Grafana · Collector</text>
+<rect x="905" y="665" width="275" height="100" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="1042.5" y="693.0" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Angular</text>
+<text x="1042.5" y="743.0" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">1 pod UI</text>
+<rect x="1210" y="665" width="285" height="100" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="1352.5" y="693.0" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Kibana</text>
+<text x="1352.5" y="743.0" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">Logs</text>
+<text x="100" y="852" font-family="Arial" font-size="39" font-weight="400" dominant-baseline="hanging" text-anchor="start">Flujo funcional: Angular → Gateway → Users / Pharmacy → SQL Server.</text>
+<text x="100" y="905" font-family="Arial" font-size="36" font-weight="400" dominant-baseline="hanging" text-anchor="start">PV locales en el nodo de operaciones; Fluent Bit y Node Exporter en cada nodo.</text>
+<rect x="60" y="990" width="2280" height="610" fill="#FFFFFF" stroke="#999999" stroke-width="4"/>
+<text x="100" y="1020" font-family="Arial" font-size="46" font-weight="700" dominant-baseline="hanging" text-anchor="start">B  Laboratorio pharmago-issue17-validation   |   1 nodo   |   Calico</text>
+<rect x="120" y="1190" width="300" height="115" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="270.0" y="1225.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Angular</text>
+<text x="270.0" y="1275.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">1 pod UI</text>
+<rect x="550" y="1190" width="370" height="115" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="735.0" y="1225.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Gateway</text>
+<text x="735.0" y="1275.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">1 réplica</text>
+<rect x="1110" y="1130" width="390" height="115" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="1305.0" y="1165.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Users</text>
+<text x="1305.0" y="1215.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">2 réplicas</text>
+<rect x="1110" y="1330" width="390" height="115" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="1305.0" y="1365.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">Pharmacy</text>
+<text x="1305.0" y="1415.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">2 réplicas</text>
+<rect x="1850" y="1230" width="370" height="115" fill="#F5F5F5" stroke="#777777" stroke-width="4"/>
+<text x="2035.0" y="1265.5" font-family="Arial" font-size="44" font-weight="700" dominant-baseline="central" text-anchor="middle">SQL Server</text>
+<text x="2035.0" y="1315.5" font-family="Arial" font-size="37" font-weight="400" dominant-baseline="central" text-anchor="middle">1 réplica y PVC</text>
+<polyline points="420,1248 550,1248" fill="none" stroke="#333333" stroke-width="5"/><polygon points="550,1248 528.0,1237.0 528.0,1259.0" fill="#333333"/>
+<polyline points="920,1220 1110,1188" fill="none" stroke="#333333" stroke-width="5"/><polygon points="1110,1188 1086.4786351122075,1180.8065728741217 1090.1324393666218,1202.501035634707" fill="#333333"/>
+<polyline points="920,1275 1110,1388" fill="none" stroke="#333333" stroke-width="5"/><polygon points="1110,1388 1096.7142149902684,1367.3000503219164 1085.4685692516941,1386.2086582009351" fill="#333333"/>
+<polyline points="1500,1188 1850,1255" fill="none" stroke="#333333" stroke-width="5"/><polygon points="1850,1255 1830.4605046223905,1240.0598487160144 1826.3241817462458,1261.6675055316962" fill="#333333"/>
+<polyline points="1500,1388 1850,1315" fill="none" stroke="#333333" stroke-width="5"/><polygon points="1850,1315 1826.2175012089483,1308.7236355066307 1830.7094091306735,1330.2601803368198" fill="#333333"/>
+<text x="485" y="1206" font-family="Arial" font-size="30" font-weight="400" dominant-baseline="central" text-anchor="middle">HTTP</text>
+<text x="1000" y="1150" font-family="Arial" font-size="30" font-weight="400" dominant-baseline="central" text-anchor="middle">HTTP</text>
+<text x="1680" y="1195" font-family="Arial" font-size="32" font-weight="400" dominant-baseline="central" text-anchor="middle">SQL</text>
+<text x="100" y="1485" font-family="Arial" font-size="34" font-weight="400" dominant-baseline="hanging" text-anchor="start">OTLP → Collector → Prometheus / Grafana y Jaeger; logs → Fluent Bit → Elasticsearch / Kibana.</text>
+<text x="100" y="1545" font-family="Arial" font-size="35" font-weight="400" dominant-baseline="hanging" text-anchor="start">Perfil observado: 17 pods base; clientes efímeros aparte. Las réplicas comparten el mismo nodo.</text>
+<text x="65" y="1650" font-family="Arial" font-size="40" font-weight="400" dominant-baseline="hanging" text-anchor="start">Los perfiles se usaron en ejecuciones distintas y no representan hosts físicos independientes.</text>
+</svg>

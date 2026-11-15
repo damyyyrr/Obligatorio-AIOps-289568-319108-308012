@@ -1,5 +1,5 @@
 {
-  "checkedUtc": "2026-11-14T23:43:57.934574+00:00",
+  "checkedUtc": "2026-11-15T20:12:01.834891+00:00",
   "result": "PASS",
   "scope": "Document verification only; no new application or infrastructure trials",
   "codeCut": "a1b2d56e20afec0797ceafd6f0a10b795fa72121",
@@ -117,13 +117,21 @@
       "bytes": 4984,
       "sha256": "a16c16e64400e62788c3136b7cb3af1e5df4c14fcd36e10671ae5188ebe69526"
     },
+    "figuras/despliegue-topologias.png": {
+      "bytes": 220936,
+      "sha256": "13a12e194fa74666f9335f237700ae879cc5b7c02160882e6580aec465b90838"
+    },
+    "figuras/despliegue-topologias.svg": {
+      "bytes": 10157,
+      "sha256": "0d0d52976de858c19fa7e98ff424f56ad8d0601b4cb8ca0c11c12724dbd5de1c"
+    },
     "fuentes/build_report.py": {
-      "bytes": 14855,
-      "sha256": "d768c9eaec85bcf9e703504f609100d559f058d5c407beaff15aac7519762132"
+      "bytes": 19331,
+      "sha256": "0eeda15055bd24781a733a0b5bb426f350007e2168931f6f13b73bf25ec56085"
     },
     "fuentes/informe.json": {
-      "bytes": 27864,
-      "sha256": "d81a456520fac993ddd34df35668d6e8c16f39486f379901da273da33af62d2b"
+      "bytes": 27900,
+      "sha256": "4430ebd9bd4bb14e3d304187cc1f258424d2a4f361f18a20e1a98af39203e392"
     },
     "fuentes/link_pdf.py": {
       "bytes": 3343,
@@ -134,20 +142,20 @@
       "sha256": "e954690bc426393d920427b9d3e394b3db06f435df6eea5289d28a02179a0223"
     },
     "informe-final.md": {
-      "bytes": 32190,
-      "sha256": "ddc1fca600fcaa317efb237c02e2306b8285dfdd2f7a0688d919f6b852cae119"
+      "bytes": 32226,
+      "sha256": "80edaa48b4a74b2282167a099958e046572f9ab43255b6fdc0141332118b406b"
     },
     "Informe_Final_AIOps.docx": {
-      "bytes": 174223,
-      "sha256": "e72ade25222c6822530015ecdf60338f6872c9ff6903eb604a595206cbecf970"
+      "bytes": 243094,
+      "sha256": "75428b2419bff08d83b01ed5be3b845295eabc9d829c9a5c6091fedb40bda7da"
     },
     "Informe_Final_AIOps.pdf": {
-      "bytes": 309944,
-      "sha256": "826ec659963b3c11352862df495bb9fa2386bc0522a7d20403359366c1b26c0f"
+      "bytes": 424891,
+      "sha256": "357a36130af3da924333d5c88e35d0f25ddc2f56fa1f024401764e17a8d66094"
     },
     "README.md": {
-      "bytes": 2053,
-      "sha256": "72c3457022e761dcf297571dba080e9a9a3b9425242a966ad3afc6ed9bf47145"
+      "bytes": 2649,
+      "sha256": "ca0af6f2f2939e3a570975d1e5441a00ac2e5c336ee3c1edb476996110cefaac"
     }
   },
   "teamReview": "Content requires review by the three students before submission; no academic approvals or completed defense inferred.",
@@ -163,7 +171,8 @@
     "authority": "Team decision; no teacher approval inferred."
   },
   "visualQa": {
-    "method": "render_docx.py and visual inspection of every page at full resolution",
+    "checkedUtc": "2026-11-15T20:12:03.379215+00:00",
+    "method": "render_docx.py with LibreOffice and Poppler; visual inspection of all ten page PNGs at full resolution",
     "pagesInspected": [
       1,
       2,
@@ -178,6 +187,19 @@
     ],
     "result": "PASS",
     "linkedPdfContentStreamsUnchanged": true,
-    "scope": "Updated team decisions; no new infrastructure trials"
+    "scope": "Figure 1 on page 2 now shows three-node deployment and one-node chaos laboratory on one physical PC; no new infrastructure trials",
+    "unchangedTextPages": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "figureAsset": "figuras/despliegue-topologias.png",
+    "figureEmbeddedInDocxVerified": true
   }
 }
