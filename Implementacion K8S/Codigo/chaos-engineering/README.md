@@ -86,7 +86,7 @@ python "$chaos/chaos.py" disconnect --context $ctx --operator '<persona>' --dura
 
 No pegar el bloque entero para continuar tras un fallo: ejecutar una línea, comprobar código de salida y evidencia, completar ficha/postmortem y recién entonces pasar al siguiente. Detener si un comando falla. No reducir los pisos de capacidad ni omitir observabilidad para conseguir PASS.
 
-Límites no ampliables por flags: duración 1..180 s (almacenamiento: 30..180 s para muestrear I/O), RAM hasta 128 MiB y hasta un tercio del límite del contenedor con margen adicional, archivo de disco hasta 64 MiB y máximo 1 GiB lógico de escritura acumulada, 240 solicitudes y cuatro workers. El agente espacia las pasadas según duración/presupuesto, sin crecer el archivo. El pod elegido requiere CPU >0 y hasta un core, y memoria entre 64 y 512 MiB. El directorio de inyección es `/tmp/pharmago-chaos-<id-aleatorio>`; no se toca un mount bajo /tmp ni un volumen de negocio.
+Límites no ampliables por flags: duración 1..180 s (almacenamiento: 30..180 s para muestrear I/O), RAM hasta 300 MiB, siempre que el estímulo más 32 MiB de margen quepan bajo el límite del contenedor, archivo de disco hasta 64 MiB y máximo 1 GiB lógico de escritura acumulada, 240 solicitudes y cuatro workers. El agente espacia las pasadas según duración/presupuesto, sin crecer el archivo. El pod elegido requiere CPU >0 y hasta un core, y memoria entre 64 y 512 MiB. El directorio de inyección es `/tmp/pharmago-chaos-<id-aleatorio>`; no se toca un mount bajo /tmp ni un volumen de negocio.
 
 ## Reversión y aborto
 
