@@ -1,9 +1,9 @@
 {
-  "checkedUtc": "2026-11-15T20:12:01.834891+00:00",
+  "checkedUtc": "2026-11-16T21:50:58.782097+00:00",
   "result": "PASS",
   "scope": "Document verification only; no new application or infrastructure trials",
-  "codeCut": "a1b2d56e20afec0797ceafd6f0a10b795fa72121",
-  "reportDate": "14 de noviembre de 2026",
+  "codeCut": "bb89cdc5e369c236465ea62be7167ff7f7d96943",
+  "reportDate": "16 de noviembre de 2026",
   "pdfPages": 10,
   "pageLimitIncludesCoverAndContents": true,
   "rubricSections": 8,
@@ -20,11 +20,11 @@
     "9 Reflexión ágil y uso de inteligencia artificial": 10
   },
   "sourceParagraphsVerifiedInDocxAndPdf": 44,
-  "externalPdfLinks": 54,
-  "uniqueExternalUrls": 21,
+  "externalPdfLinks": 58,
+  "uniqueExternalUrls": 23,
   "internalContentsLinks": 9,
   "pdfAndDocxLinkParity": true,
-  "referencedRepositoryFilesVerifiedAtCut": 20,
+  "referencedRepositoryFilesVerifiedAtCut": 39,
   "numericChecks": {
     "processRecoverySeconds": [
       40.57,
@@ -40,14 +40,31 @@
     "storageLogicalMiB": 928,
     "storageValidHttp": 61,
     "storageStableSeconds": 125.329704,
+    "physicalChaosRuns": 7,
+    "physicalChaosPassed": 6,
+    "physicalChaosFailed": 1,
+    "physicalChaosCleanupVerified": 7,
+    "physicalRequestsHttp": {
+      "200": 111,
+      "429": 129
+    },
+    "physicalStoragePasses": 26,
+    "physicalStorageDeviceSaturation": null,
+    "physicalStorageAgentFinalPasses": 29,
+    "physicalStorageAgentLogicalMiB": 928,
+    "physicalNodeServiceMap": {
+      "pharmago-a": "gateway",
+      "pharmago-b": "users",
+      "pharmago-c": "pharmacy"
+    },
     "mlConfusionAndF1": "Match original metrics.csv"
   },
   "sourceEvidenceFiles": {
     "docs/aiops-requirements-matrix.md": {
-      "sha256": "d1ea3f41c59cab3d2f6465536fe2e4870447c17f9ac8ada758b4b01ec879fcb0"
+      "sha256": "9b0cc601ca0902e8f285fb26192023c65f4f04161111f335288b6376e51e9c6e"
     },
     "docs/aiops-k8s-topology.md": {
-      "sha256": "860230148abbad59c98020781d095a885a7444d6bdf729c2963e76e4b7aeda8a"
+      "sha256": "6ede8dad81e7447452a2ae150a34bb81fddba2d8c6903cc75c1912d987bbfea1"
     },
     "docs/evidence/issue-4-20261109/README.md": {
       "sha256": "ddcd4afc27e2e3f3b4c83b95fa9c1b17a212b90d29a45eca01d66d1f3604cc0b"
@@ -65,10 +82,10 @@
       "sha256": "e237c35c0a8ac84a95a8ef9fab22cf743673350d83bae52970d49a171c584800"
     },
     "docs/evidence/issue-8-20261111/README.md": {
-      "sha256": "c39e33aa5493d881f30a3d5c27ca50015ab1d567726aa717377f96656497df6e"
+      "sha256": "d7a59b1b81f4cea39487d7dea71a939926f151a32ef64be0ca635305daaba85c"
     },
     "docs/supuesto-sql.md": {
-      "sha256": "dd29313f2d65135b1c18826220986a39a9a933f3597d3432061b6118fe6a4251"
+      "sha256": "94e68cf5e6dfd9f0a81befc770935ae726edb5df1e59dd37b3a809fbf54fcadf"
     },
     "docs/evidence/issue-6-20261110/README.md": {
       "sha256": "00c629f083f6bea707f124286fed340dc9455b1913fb8607130a96c2f928fc06"
@@ -102,6 +119,63 @@
     },
     "docs/evidence/test-isolation-20261114/README.md": {
       "sha256": "d226827f4fda75e1afffbd536f052aaf52175c7c4035a059fdc9cfa8ec027da2"
+    },
+    "docs/evidence/chaos-3pc-20261116/README.md": {
+      "sha256": "9f4635bafc4d264254ae947b29eb8f84d5ddc57b3bc60f805461cc0d507306b9"
+    },
+    "docs/evidence/chaos-3pc-20261116/summary.json": {
+      "sha256": "0649fd98e6f94e2533a16aae2856c4002454b12a033dfad3edcaebe3f27d3914"
+    },
+    "docs/evidence/chaos-3pc-20261116/nodes.json": {
+      "sha256": "2bca0967896c53768ecd9b79822b4fa597da5064dc9d0febf8db4a9a20a6291a"
+    },
+    "docs/evidence/chaos-3pc-20261116/pods.txt": {
+      "sha256": "ac4473383bb771962b37d1e540e168be98ef48de676125747c1df772c169649a"
+    },
+    "docs/evidence/chaos-3pc-20261116/topologia-3pc.png": {
+      "sha256": "9be5c6409581940f4571be01c0a273a9e72419b461f414def1d731d3d7f68b48"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/cpu-a053806f-journal.json.gz": {
+      "sha256": "f403684e0cfd95b653de08dc4a7e6648129276194b31a50f201c543300953133"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/cpu-a053806f-report.json.gz": {
+      "sha256": "d096dadd7c52ac6a92f914907f6ea169ea469aacd8e4f229ce0f5eedc07380d6"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/disconnect-f278a53d-journal.json.gz": {
+      "sha256": "c6ee6ab5cf11846cddbb2047d5edd4edfbe88c9f14c06dbfaf28ed31fb803537"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/disconnect-f278a53d-report.json.gz": {
+      "sha256": "6e5112fc7f0ced1dc18aa2bf67dadf008f61711a9fdab5a35156157b88451804"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/network-4a616be7-journal.json.gz": {
+      "sha256": "1fab4e46b226ee263363e97659939ecd8242782ffd633695feecef3f747b4517"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/network-4a616be7-report.json.gz": {
+      "sha256": "018c20737df2c3773d28f305298f4528ad516a3cf39b58a4130bf67d1fbf58be"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/network-FAIL-a956bc49-journal.json.gz": {
+      "sha256": "26f633566eb5b56f45445a82791bedd3a90828d33dd0bb626e9c2b182b8b6f18"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/network-FAIL-a956bc49-report.json.gz": {
+      "sha256": "579bcba7b81a2881fe84a5afbfded6a19e8f2cb829442483a2390d8c39f0c6be"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/ram-f8320615-journal.json.gz": {
+      "sha256": "5a677328cd3b7acfa948ffa282147af78283d84ef00f50de7cac40e6e725d5d8"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/ram-f8320615-report.json.gz": {
+      "sha256": "9b0cfa58142168d99aba4a58dcdded110bcbad2a72034b4dc17aa7bda208195d"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/requests-f2a9ead2-journal.json.gz": {
+      "sha256": "315907db2e630a8d76659cc48461f44468ccc4c0cea36bfc2e0b36e99e13fad9"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/requests-f2a9ead2-report.json.gz": {
+      "sha256": "fecaa6ae9b97e2383059a54d89b752bb58ea08201d5b61c6f9b8200153c11d38"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/storage-3d981e0b-journal.json.gz": {
+      "sha256": "12dfe92a2adcb03c843d0ac74524a6726ffec1ad879d3338ef7429ccfbe5ebe8"
+    },
+    "docs/evidence/chaos-3pc-20261116/reports/storage-3d981e0b-report.json.gz": {
+      "sha256": "eddaf443a74bcc3eec89f7b92bc98d78a0856cbdc9952a95460ac9aebe88478c"
     }
   },
   "artifacts": {
@@ -130,32 +204,32 @@
       "sha256": "0eeda15055bd24781a733a0b5bb426f350007e2168931f6f13b73bf25ec56085"
     },
     "fuentes/informe.json": {
-      "bytes": 27900,
-      "sha256": "4430ebd9bd4bb14e3d304187cc1f258424d2a4f361f18a20e1a98af39203e392"
+      "bytes": 28591,
+      "sha256": "7102d60bcaf565de34a47d8ff321011fc256493eb3bc5885b51f5730f329e7e4"
     },
     "fuentes/link_pdf.py": {
       "bytes": 3343,
       "sha256": "259618c7076c8ae5b679a0d3abf137fbdbd53c45c8af7c2f6df376bceee7ca69"
     },
     "fuentes/verify_report.py": {
-      "bytes": 7610,
-      "sha256": "e954690bc426393d920427b9d3e394b3db06f435df6eea5289d28a02179a0223"
+      "bytes": 11845,
+      "sha256": "23bec7de0fcadd749b49d5d1532f329aa4c9863d093aeec6b4491303c01772d1"
     },
     "informe-final.md": {
-      "bytes": 32226,
-      "sha256": "80edaa48b4a74b2282167a099958e046572f9ab43255b6fdc0141332118b406b"
+      "bytes": 33458,
+      "sha256": "a8f8aa11aafc2f27f8ac083e24bab0171cf24290b79c94cad12d47bff1c81e94"
     },
     "Informe_Final_AIOps.docx": {
-      "bytes": 243094,
-      "sha256": "75428b2419bff08d83b01ed5be3b845295eabc9d829c9a5c6091fedb40bda7da"
+      "bytes": 180786,
+      "sha256": "d88e258f6af72f4eed96940f867129dc394290dbcaf32fa1340aae830c001a1b"
     },
     "Informe_Final_AIOps.pdf": {
-      "bytes": 424891,
-      "sha256": "357a36130af3da924333d5c88e35d0f25ddc2f56fa1f024401764e17a8d66094"
+      "bytes": 299841,
+      "sha256": "c881775fd53822bb1614e19083da7748f2f55c464f0e0499b19bdba1b6b3aa37"
     },
     "README.md": {
-      "bytes": 2649,
-      "sha256": "ca0af6f2f2939e3a570975d1e5441a00ac2e5c336ee3c1edb476996110cefaac"
+      "bytes": 2927,
+      "sha256": "b5b2f6e157127f631204a396b2c927275fd2904ca99b452c5fefc110ae544a92"
     }
   },
   "teamReview": "Content requires review by the three students before submission; no academic approvals or completed defense inferred.",
@@ -168,12 +242,14 @@
       "D03",
       "D04"
     ],
-    "authority": "Team decision; no teacher approval inferred."
+    "authority": "Team decision; no teacher approval inferred.",
+    "physicalDeploymentEvidence": "docs/evidence/chaos-3pc-20261116/README.md",
+    "scopeExtension": "Physical deployment and chaos supplement the earlier local D01 scope; rollout and telemetry validations keep their original environments."
   },
   "visualQa": {
-    "checkedUtc": "2026-11-15T20:12:03.379215+00:00",
-    "method": "render_docx.py with LibreOffice and Poppler; visual inspection of all ten page PNGs at full resolution",
-    "pagesInspected": [
+    "reviewedUtc": "2026-11-16T21:50:51.537992+00:00",
+    "result": "PASS",
+    "pagesReviewed": [
       1,
       2,
       3,
@@ -185,21 +261,24 @@
       9,
       10
     ],
-    "result": "PASS",
-    "linkedPdfContentStreamsUnchanged": true,
-    "scope": "Figure 1 on page 2 now shows three-node deployment and one-node chaos laboratory on one physical PC; no new infrastructure trials",
-    "unchangedTextPages": [
-      1,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
+    "renderEngine": "Microsoft Word native Windows PDF export; packaged render_docx.py PNG pipeline at 110 dpi",
+    "checks": [
+      "All ten pages inspected visually",
+      "No clipped text, overlapping content or split table rows",
+      "Three-PC diagram, six-category table, index and page numbering reviewed"
     ],
-    "figureAsset": "figuras/despliegue-topologias.png",
-    "figureEmbeddedInDocxVerified": true
+    "pageImageSha256": {
+      "page-1.png": "d81ddd9ae4cb4aa0521b9ed0282baa8d798828a681a4cf17531f4069352b40d3",
+      "page-2.png": "51c31c8df3068f565779dceab4186559e1ae325df746ba54a83d28042752a42a",
+      "page-3.png": "20a3b02372670e0498af51a63bcd9dc83b7ef6c8dd8c580bfb27ac67149431b9",
+      "page-4.png": "ec2b29d97649188c84e5dbba9a6dde841656a8b064cfefa61f5a9ec6a3e95868",
+      "page-5.png": "860ae4d9ec5599791dde92c9cb2abc75f612f0a7fd1658f345850f84ac73a84d",
+      "page-6.png": "8d021498182b388088e3e9f13390f0b450cf50cad5fc3505090ad16eb0410014",
+      "page-7.png": "87a97bc033f3b6e72e46ccd83d3e815379536967f86c0d95898b589d59261e4a",
+      "page-8.png": "3a14096ba82da6a916db48bcc690aefc656adbacb380e715c4bbfe4bf740b0b6",
+      "page-9.png": "65a04ec0a933a860224ad0735b7f285c5ff798e7f0de4bb24540967457d1857e",
+      "page-10.png": "9615e0bdca870d6fa2bd94ea248f4d4daf6033c042da311233ea019e2a1a91e8"
+    },
+    "scope": "Document layout review only; no infrastructure trials or independent team review inferred."
   }
 }

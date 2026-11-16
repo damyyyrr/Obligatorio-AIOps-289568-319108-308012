@@ -8,10 +8,10 @@ El trabajo integra Kubernetes, monitoreo de logs, métricas y trazas, detección
 
 - [Informe académico en PDF — 10 páginas](docs/entrega/Informe_Final_AIOps.pdf) y [fuentes del informe](docs/entrega/README.md).
 - [Matriz de requisitos y evidencias](docs/aiops-requirements-matrix.md).
-- [Despliegue y caos en tres PCs — 16/11](docs/evidence/chaos-3pc-20261116/README.md), con [diagrama de la topología](docs/evidence/chaos-3pc-20261116/topologia-3pc.png), nodos, pods y reportes.
-- [Estado contrastado al 14/11](docs/estado-actual.md), con las validaciones anteriores y sus límites.
+- [Despliegue y caos en tres PCs](docs/evidence/chaos-3pc-20261116/README.md), con [diagrama de la topología](docs/evidence/chaos-3pc-20261116/topologia-3pc.png), nodos, pods y reportes.
+- [Estado contrastado del proyecto](docs/estado-actual.md), con las validaciones y sus límites.
 
-El informe, la matriz y el estado al 14/11 conservan un corte anterior a la ejecución en tres PCs. Para esa ejecución, consultar la evidencia del 16/11; sus resultados de caos no acreditan por sí solos un rollout sin interrupciones entre las tres PCs.
+El informe y la matriz distinguen las pruebas del laboratorio local de las realizadas en tres PCs. Los resultados de caos no acreditan por sí solos un rollout sin interrupciones entre las tres PCs.
 
 ## Empezar
 
@@ -53,7 +53,7 @@ El proyecto parte del repositorio docente [jirabedra/AIOps](https://github.com/j
 - [BDD Cypress + Cucumber: ejecución de #15](Implementacion%20K8S/Codigo/Frontend/e2e/README.md), cuatro escenarios aprobados en navegador contra el baseline real; [evidencia](docs/evidence/issue-15-20261112/live-after-fix/README.md).
 - [Plan maestro](docs/aiops-master-plan.md), [estado de implementación](docs/AIops-implementation-plan.md) y [matriz de requisitos](docs/aiops-requirements-matrix.md).
 - [Decisiones de alcance del equipo](docs/aiops-open-questions.md), registradas antes de la ejecución en tres PCs; [plan de incidentes](docs/baseline-incidents.md), [seis runbooks](docs/runbooks/incidentes.md) y [algoritmos ML con resultados reproducibles](ml/README.md).
-- [Guía de seis escenarios de caos y recuperación](<Implementacion K8S/Codigo/chaos-engineering/README.md>), [ejecución en tres PCs del 16/11](docs/evidence/chaos-3pc-20261116/README.md) y [repetición local guiada por el operador del 13/11](docs/evidence/issue-16-20261113/README.md). Red/Service se evalúan sobre conexiones nuevas; RAM y almacenamiento conservan los límites de sus ensayos. [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) está cerrada para plan y aplicación guiada local; la revisión independiente quedó como mejora opcional no realizada.
+- [Guía de seis escenarios de caos y recuperación](<Implementacion K8S/Codigo/chaos-engineering/README.md>), [ejecución en tres PCs](docs/evidence/chaos-3pc-20261116/README.md) y [repetición local guiada por el operador del 13/11](docs/evidence/issue-16-20261113/README.md). Red/Service se evalúan sobre conexiones nuevas; RAM y almacenamiento conservan los límites de sus ensayos. [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) está cerrada para plan y aplicación guiada local; la revisión independiente quedó como mejora opcional no realizada.
 - [Suite .NET, 14/11](docs/evidence/test-isolation-20261114/README.md): **319/319 pruebas aprobadas** después de corregir únicamente el aislamiento de una prueba en el PR #42.
 
 Cada integrante toma una issue pendiente y se asigna como responsable. Crear una rama desde `obligatorio`, referenciar la issue en commits y abrir el PR contra `obligatorio`. Revisar dependencias antes de empezar; coordinar cambios compartidos en Compose/manifests y no cerrar una issue por tener archivos escritos sin probarlos. Las prioridades y los hitos permiten filtrar el trabajo sin asignar personas por suposición.
