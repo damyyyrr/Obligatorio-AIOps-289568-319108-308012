@@ -1,6 +1,6 @@
-# Caos sobre tres PCs físicas — 16/11/2026
+# Caos y recuperación en tres PCs físicas
 
-Ejecución de los seis escenarios del controlador de caos con **Gateway, Users y Pharmacy en tres computadoras físicas distintas**, una por integrante. Código en `ae24ebe` (`obligatorio`), árbol limpio, imágenes `k8s-20261116-01`. Resultado: **seis categorías PASS con limpieza verificada**. `network` aprobó en su segundo intento; el primero dio FAIL por un corte de conectividad de la PC A, ajeno al código (ver más abajo).
+Ejecución de los seis escenarios del controlador de caos con **Gateway, Users y Pharmacy en tres computadoras físicas distintas**, una por integrante. Código en `ae24ebe` (`obligatorio`), árbol limpio, imágenes `k8s-20261116-01`. Resultado: **seis categorías PASS con limpieza verificada**. `network` aprobó en su segundo intento; el primero dio FAIL al perderse la evaluación sana de las alertas durante la recuperación (ver más abajo).
 
 ## Topología
 
@@ -35,11 +35,11 @@ Otros ajustes del entorno, sin tocar el código: el puerto 6443 estaba ocupado p
 
 Los runIds completos, tiempos (`injectRequestedUtc`, `faultRestoredUtc`, `tRestore`, `tVerified`) y conteos de sondas están en `summary.json`. Reportes y journals completos, comprimidos, en `reports/`. Ningún escenario dejó política, selector ni archivo propio: `cleanup=verified` en las siete corridas.
 
-## Primer `network`: FAIL por causa externa
+## Primer `network`: FAIL durante la recuperación
 
 La NetworkPolicy se aplicó, cortó las conexiones nuevas a Pharmacy y se retiró correctamente (17:47:20–17:48:25). Durante la ventana de 120 s de estabilidad, entre 17:49:00 y 17:49:45, Users y Pharmacy (PCs B y C) perdieron contacto con SQL y Grafana (PC A): fallaron sus health checks SQL y la consulta de alertas devolvió sin respuesta, por lo que el controlador abortó con `Se perdió evaluación sana de las alertas`.
 
-`tailscale-pc-a-20261116-1749.log` muestra la causa: a las **17:49:27** la PC A perdió salida UDP (`UDP is blocked`), Tailscale cambió de relay DERP (hasta ~4 s de latencia) y dio timeouts al abrir conexiones hacia B y C. Coincide con una caída de señal Wi-Fi de la PC A. No se relaciona con el código ni con el controlador; la repetición con conexión estable aprobó sin cambios. Se conserva el FAIL sin modificar criterios.
+El registro del operador atribuye el episodio a la conectividad de PC A: cita `tailscale-pc-a-20261116-1749.log`, con pérdida de salida UDP a las **17:49:27**, cambio de relay DERP y timeouts, coincidiendo con una caída de señal Wi-Fi. Ese log no está incluido en el repositorio, por lo que la atribución no puede verificarse con el archivo citado. Los reportes publicados acreditan el fallo de evaluación de alertas y la repetición PASS sin cambios de código; se conserva el FAIL sin modificar criterios.
 
 ## Límites
 
@@ -61,10 +61,12 @@ Se suspendió con `kill -STOP` el proceso dotnet de un pod por vez desde el host
 
 Las 8 respuestas no válidas de Users fueron 429 del rate limiting del Gateway sobre la sonda (una ronda por segundo), no efectos de la suspensión; para Pharmacy la sonda bajó a una ronda cada 2 s. Prometheus registró `up` 1 → 0 → 1 solo en el pod suspendido.
 
-## Memoria con el máximo del controlador (128 MiB)
+## Ensayo adicional de memoria con 128 MiB
 
-Se repitió el escenario `ram` con `--megabytes 128`, el máximo que admite el controlador (runId `1b6b4b28`, PASS, limpieza verificada). El working set del pod de Pharmacy pasó de 78 a 209 MiB (55 % de su límite de 384 MiB) y volvió a 79 MiB al retirar el estímulo, sin OOM ni reinicios. Antes de inyectar, el controlador se negó a empezar mientras la alerta de memoria estaba pendiente por el pod auxiliar `kubelet-storage` de la PC B (89 % de 128 MiB); se reinició ese pod y se esperó a que las cinco alertas estuvieran inactivas. Reportes en `reports/ram128-1b6b4b28-*`.
+Se repitió el escenario `ram` con `--megabytes 128`, el máximo admitido por la versión de ese ensayo (código `9786795`; runId `1b6b4b28`, PASS, limpieza verificada). El working set del pod de Pharmacy pasó de 78 a 209 MiB (55 % de su límite de 384 MiB) y volvió a 79 MiB al retirar el estímulo, sin OOM ni reinicios. Antes de inyectar, el controlador se negó a empezar mientras la alerta de memoria estaba pendiente por el pod auxiliar `kubelet-storage` de la PC B (89 % de 128 MiB); se reinició ese pod y se esperó a que las cinco alertas estuvieran inactivas. Reportes en `reports/ram128-1b6b4b28-*`.
+
+El incremento posterior `5c7997a` permite configurar hasta 300 MiB si queda el margen exigido por el contenedor. Ese cambio de límite no convierte el ensayo de 128 MiB en una prueba de 300 MiB ni acredita OOM. Consultar la [guía del controlador](../../../Implementacion%20K8S/Codigo/chaos-engineering/README.md).
 
 ## Sobrecarga de memoria (260 MiB)
 
-Con el tope del controlador ampliado a 300 MiB (commit `5c7997a`: el estímulo más 32 MiB de margen deben caber bajo el límite del contenedor), se corrió `ram --megabytes 260 --duration 150` (runId `0af4ba5d`, PASS, limpieza verificada). El working set del pod de Pharmacy pasó de 80 a 373 MiB, el 97 % de su límite de 384 MiB, y bajó a 106 MiB al retirar el estímulo, sin OOM ni reinicios. La alerta de memoria pasó a Pending a los ~30 s, a Firing un minuto después y volvió a inactiva al retirar el estímulo (`reports/ram260-0af4ba5d-alerta-memoria.log`, horas UTC). Las 73 sondas funcionales fueron 200 válidas, 34 de ellas durante la sobrecarga, con latencia máxima de 1,42 s. Antes de inyectar se reiniciaron los pods auxiliares `kubelet-storage`, cuya propia memoria rozaba el 85 % y mantenía la alerta pendiente; el controlador no inyecta con alertas activas.
+Con el tope del controlador ampliado a 300 MiB (commit `5c7997a`: el estímulo más 32 MiB de margen deben caber bajo el límite del contenedor), se corrió `ram --megabytes 260 --duration 150` (runId `0af4ba5d`, PASS, limpieza verificada). El working set del pod de Pharmacy pasó de 80 a 373 MiB, el 97 % de su límite de 384 MiB, y bajó a 106 MiB al retirar el estímulo, sin OOM ni reinicios adicionales. El [reporte original](reports/ram260-0af4ba5d-report.json.gz) registra la alerta de memoria inactiva → Pending → Firing → Pending → inactiva; Pending se observó unos 29 s después de solicitar la inyección y Firing unos 67 s después de esa observación. Las 73 sondas funcionales fueron 200 válidas, 34 de ellas durante la sobrecarga, con latencia máxima de 1,42 s. Antes de inyectar se reiniciaron los pods auxiliares `kubelet-storage`, cuya propia memoria rozaba el 85 % y mantenía la alerta pendiente; el controlador no inyecta con alertas activas.

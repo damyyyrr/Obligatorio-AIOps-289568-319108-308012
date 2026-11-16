@@ -1,12 +1,23 @@
 # PharmaGo en Kubernetes — despliegue y topología
 
-PowerShell y Bash ejecutan el mismo `manage.py`. Se requiere Python 3.10+, las dependencias fijadas en `requirements.txt`, kubectl, Docker y Minikube para construir/cargar imágenes. El clúster debe existir y ser accesible. No se instala ni se cambia de contexto automáticamente.
+PowerShell y Bash ejecutan el mismo `manage.py`. Para aplicar manifiestos se requieren Python 3.10+, las dependencias fijadas en `requirements.txt`, kubectl y un clúster accesible. El script no instala el clúster ni cambia de contexto automáticamente.
 
-## Preparación
+## Elegir el entorno
+
+| Entorno | Uso documentado | Preparación de imágenes |
+|---|---|---|
+| k3s en tres PCs con Tailscale | Separación física, caos y recuperación de procesos | Construcción Docker e importación en containerd de cada nodo; [procedimiento](../../../docs/aiops-k3s-tailscale.md) |
+| Minikube multinodo en una PC | Colocación lógica y ensayos locales de datos, probes y rollout/rollback | `build-images.ps1` o `.sh`, con perfil Minikube explícito |
+| Minikube de un nodo | Laboratorio local de desarrollo/caos | Mismo flujo, con `-Topology single-node`; no acredita separación física |
+
+Los pasos de render, selección de nodos, Secrets y apply se comparten. El comando `build` de `manage.py` y sus wrappers cargan imágenes mediante Minikube: no sirven para cargar un clúster k3s. Para el despliegue físico, empezar por la [guía k3s/Tailscale](../../../docs/aiops-k3s-tailscale.md); las evidencias originales están en [el registro del laboratorio](../../../docs/evidence/chaos-3pc-20261116/README.md).
+
+## Preparación común
 
 Desde la raíz del repositorio, en PowerShell:
 
 ```powershell
+$k8s = 'Implementacion K8S/Codigo/k8s'
 python -m venv .runtime/k8s-venv
 $python = (Resolve-Path '.runtime/k8s-venv/Scripts/python.exe').Path
 & $python -m pip install -r 'Implementacion K8S/Codigo/k8s/requirements.txt'
@@ -16,7 +27,11 @@ kubectl get nodes --show-labels
 
 En Linux/macOS, usar `.runtime/k8s-venv/bin/python` y exportar su ruta absoluta como `PHARMAGO_PYTHON` para los scripts Bash. Se pueden ejecutar desde cualquier directorio; las rutas con espacios se pasan como argumentos separados.
 
-Elegir un perfil propio y dimensionar CPU/RAM/disco según la suma de requests/límites de los manifiestos y la capacidad libre del host. El conjunto incluye SQL, Elasticsearch, Kibana, Prometheus y Grafana; no se presume que 6 GB sean suficientes. Para un clúster local nuevo, crear explícitamente el perfil con `minikube start -p <perfil> --nodes <cantidad> --memory <MiB-por-nodo> --cpus <cpu-por-nodo>` y seleccionar su contexto con `kubectl config use-context <contexto>`.
+Dimensionar CPU/RAM/disco según la suma de requests/límites de los manifiestos y la capacidad libre del host. El conjunto incluye SQL, Elasticsearch, Kibana, Prometheus y Grafana; no se presume que 6 GB sean suficientes.
+
+**Solo para Minikube:** elegir un perfil propio y crear explícitamente el clúster con `minikube start -p <perfil> --nodes <cantidad> --memory <MiB-por-nodo> --cpus <cpu-por-nodo>`. Seleccionar su contexto con `kubectl config use-context <contexto>`. En k3s se utiliza el kubeconfig del servidor, sin ejecutar comandos Minikube.
+
+## Selección de nodos
 
 El modo predeterminado requiere tres roles de servicio y un único nodo de almacenamiento. Para un clúster nuevo de tres nodos, sustituir los nombres por los de `kubectl get nodes`:
 
@@ -28,7 +43,7 @@ kubectl --context <contexto> label node <nodo-pharmacy> pharmago.io/service=phar
 
 Ver [topología y dimensionamiento](../../../docs/aiops-k8s-topology.md). Las etiquetas se establecen deliberadamente, nunca por el script. El clúster de desarrollo de un solo nodo se puede seguir usando: etiquetar ese nodo `node-type=all` y pasar `-Topology single-node` (PowerShell) o `--topology single-node` (Bash y render). Este modo no es válido para comprobar la separación.
 
-## Construcción y carga
+## Construcción y carga con Minikube
 
 ```powershell
 $k8s = 'Implementacion K8S/Codigo/k8s'
@@ -46,6 +61,8 @@ Elegir un tag nuevo por construcción; se rechaza sobrescribir uno existente. Se
 `build-ui.sh` admite las mismas opciones y construye/carga solo UI; ya no reinicia un Deployment por sorpresa. El despliegue posterior es explícito. Para evitar que el tag seleccionado cambie otras aplicaciones, usar el flujo completo con cuatro imágenes para una instalación integral.
 
 ## Render y despliegue
+
+En ambos entornos, las cuatro imágenes deben estar disponibles en los nodos elegibles antes del apply, con el tag indicado. En k3s, seguir la importación y verificación de la guía física; el apply no construye ni distribuye imágenes.
 
 Antes del primer apply, copiar `secrets.example.json` a `secrets.local.json` y reemplazar ambos valores. Git ignora `secrets.local.json`. Usar una contraseña de SQL Server con la complejidad requerida por SQL y otra para Grafana. Para un clúster con datos previos, usar las contraseñas ya vigentes en SQL y Grafana. Se puede elegir otro archivo ignorado con `-SecretsFile` (PowerShell) o `--secrets-file` (Bash). Ver [guía de datos y recuperación](../../../docs/aiops-k8s-recovery.md).
 
