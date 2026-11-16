@@ -6,12 +6,13 @@ El trabajo integra Kubernetes, monitoreo de logs, métricas y trazas, detección
 
 ## Entrega y evidencias
 
-- [Copia anterior del informe en PDF — 10 páginas](docs/entrega/Informe_Final_AIOps.pdf) y [fuentes de esa versión](docs/entrega/README.md).
+- Informe académico: el PDF final se incorporará a este repositorio.
 - [Matriz de requisitos y evidencias](docs/aiops-requirements-matrix.md).
-- [Despliegue y caos en tres PCs](docs/evidence/chaos-3pc-20261116/README.md), con [diagrama de la topología](docs/evidence/chaos-3pc-20261116/topologia-3pc.png), nodos, pods y reportes.
+- [Índice de evidencias por requisito](docs/evidence/README.md), con las pruebas de cada entorno y sus resultados.
+- [Despliegue, recuperación y caos en tres PCs](docs/evidence/chaos-3pc-20261116/README.md), con [diagrama de la topología](docs/evidence/chaos-3pc-20261116/topologia-3pc.png), nodos, pods y reportes.
 - [Estado contrastado del proyecto](docs/estado-actual.md), con las validaciones y sus límites.
 
-La matriz y el estado del proyecto distinguen las pruebas del laboratorio local de las realizadas en tres PCs. La copia del informe conservada en este repositorio corresponde a un corte anterior; el informe de entrega se prepara por separado. Los resultados de caos no acreditan por sí solos un rollout sin interrupciones entre las tres PCs.
+La matriz y el estado del proyecto distinguen las pruebas del laboratorio local de las realizadas en tres PCs. Los resultados de caos no acreditan por sí solos un rollout sin interrupciones entre las tres PCs.
 
 ## Empezar
 
@@ -24,7 +25,7 @@ cd 'Obligatorio-AIOps-289568-319108-308012'
 
 ### Kubernetes
 
-- **Tres PCs físicas:** consultar la [topología, preparación y resultados con k3s/Tailscale](docs/evidence/chaos-3pc-20261116/README.md). La carpeta `setup/` conserva los scripts usados, incluido el intento inicial con Hamachi y la migración a Tailscale; no constituye un instalador completo desde cero.
+- **Tres PCs físicas:** seguir la [guía de k3s/Tailscale](docs/aiops-k3s-tailscale.md), consultar la [topología](docs/aiops-k8s-topology.md) y contrastar con los [resultados publicados](docs/evidence/chaos-3pc-20261116/README.md). La carpeta `setup/` de esa evidencia conserva el intento inicial con Hamachi y su migración; la guía distingue esos antecedentes de la preparación de un clúster nuevo.
 - **Laboratorio local con Minikube:** seguir la [guía de despliegue Kubernetes](<Implementacion K8S/Codigo/k8s/README-k8s.md>) y la [guía de topología y capacidad](docs/aiops-k8s-topology.md). Requiere Python 3.10+, las dependencias indicadas en la guía, kubectl, Docker y Minikube. Un clúster de tres nodos sobre una PC acredita separación lógica entre nodos.
 
 Seleccionar y comprobar el contexto y la capacidad disponible antes de desplegar. Las pruebas de [recuperación de datos](docs/aiops-k8s-recovery.md), [rollout/rollback](docs/aiops-k8s-rollout.md) y [caos](<Implementacion K8S/Codigo/chaos-engineering/README.md>) tienen guías y evidencias propias.
@@ -45,14 +46,15 @@ Aplicación: http://127.0.0.1:4200. Prometheus: http://127.0.0.1:9090. Grafana: 
 
 Ver la [guía de arranque y diagnóstico](<Implementacion K8S/Codigo/BASELINE.md>) y el [reporte con evidencias](docs/BASELINE_RESULT.md): el 06/11/2026 se verificaron ocho servicios activos y catorce comprobaciones funcionales/de telemetría antes y después de una parada/reinicio.
 
-## Trabajo del equipo
+## Documentación y seguimiento
 
 El proyecto parte del repositorio docente [jirabedra/AIOps](https://github.com/jirabedra/AIOps). Los cambios del equipo se integran en la rama **`obligatorio`**.
 
 - [Issues del obligatorio](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues) y [mapa de trabajo](docs/GITHUB_ISSUES.md).
 - [BDD Cypress + Cucumber: ejecución de #15](Implementacion%20K8S/Codigo/Frontend/e2e/README.md), cuatro escenarios aprobados en navegador contra el baseline real; [evidencia](docs/evidence/issue-15-20261112/live-after-fix/README.md).
-- [Plan maestro](docs/aiops-master-plan.md), [estado de implementación](docs/AIops-implementation-plan.md) y [matriz de requisitos](docs/aiops-requirements-matrix.md).
-- [Decisiones de alcance del equipo](docs/aiops-open-questions.md), registradas antes de la ejecución en tres PCs; [plan de incidentes](docs/baseline-incidents.md), [seis runbooks](docs/runbooks/incidentes.md) y [algoritmos ML con resultados reproducibles](ml/README.md).
+- [Estado del proyecto](docs/estado-actual.md), [matriz de requisitos](docs/aiops-requirements-matrix.md) y [decisiones de alcance](docs/aiops-open-questions.md).
+- [Plan de incidentes](docs/baseline-incidents.md), [seis runbooks](docs/runbooks/incidentes.md) y [algoritmos ML con resultados reproducibles](ml/README.md).
+- Antecedentes de planificación: [plan maestro](docs/historico/aiops-master-plan.md) e [historial de implementación](docs/historico/AIops-implementation-plan.md). Sus pendientes describen los incrementos originales; el estado vigente está en los documentos anteriores.
 - [Guía de seis escenarios de caos y recuperación](<Implementacion K8S/Codigo/chaos-engineering/README.md>), [ejecución en tres PCs](docs/evidence/chaos-3pc-20261116/README.md) y [repetición local guiada por el operador del 13/11](docs/evidence/issue-16-20261113/README.md). Red/Service se evalúan sobre conexiones nuevas; RAM y almacenamiento conservan los límites de sus ensayos. [#16](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues/16) está cerrada para plan y aplicación guiada local; la revisión independiente quedó como mejora opcional no realizada.
 - [Suite .NET, 14/11](docs/evidence/test-isolation-20261114/README.md): **319/319 pruebas aprobadas** después de corregir únicamente el aislamiento de una prueba en el PR #42.
 

@@ -56,6 +56,13 @@ k8s/.port-forward.pids
 *.pfx
 .env
 secrets.local.json
+TOKEN-privado.txt
+TAILSCALE-KEY.txt
+.k3s-token
+.ts-key
+k3s.yaml
+*.kubeconfig
+pharmago-images*.tar
 
 # === Docker ===
 .docker/
