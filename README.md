@@ -1,10 +1,8 @@
 # PharmaGo — Obligatorio AIOps
 
-Fork de [jirabedra/AIOps](https://github.com/jirabedra/AIOps). La rama de integración del equipo es **`obligatorio`**, basada en `feature/k8s`. `main` conserva la referencia original mínima del curso.
+Este repositorio contiene el obligatorio de AIOps desarrollado sobre **PharmaGo**, una aplicación basada en microservicios. El objetivo es desplegarla, observar su funcionamiento y evaluar cómo responde ante fallas y cambios de versión.
 
-Proyecto de AIOps sobre PharmaGo: despliegue Kubernetes, recuperación, rollout/rollback, observabilidad, detección de anomalías, pruebas BDD y gestión de incidentes con seis escenarios de caos.
-
-El **16/11/2026** se documentó una ejecución con Gateway, Users y Pharmacy en **tres PCs físicas distintas**, usando k3s en WSL2 y Tailscale. Las seis categorías de caos registraron PASS con limpieza verificada; el primer intento de red dio FAIL y su repetición aprobó. Los ensayos anteriores de Compose y Minikube se conservan como evidencias de laboratorio local, cada uno con su alcance.
+El trabajo integra Kubernetes, monitoreo de logs, métricas y trazas, detección de anomalías con Isolation Forest y One-Class SVM, pruebas automatizadas y procedimientos de respuesta a incidentes. Incluye el código, las guías de ejecución y las evidencias de las pruebas realizadas, tanto en el laboratorio local como en un despliegue distribuido en tres PCs físicas.
 
 ## Entrega y evidencias
 
@@ -48,6 +46,8 @@ Aplicación: http://127.0.0.1:4200. Prometheus: http://127.0.0.1:9090. Grafana: 
 Ver la [guía de arranque y diagnóstico](<Implementacion K8S/Codigo/BASELINE.md>) y el [reporte con evidencias](docs/BASELINE_RESULT.md): el 06/11/2026 se verificaron ocho servicios activos y catorce comprobaciones funcionales/de telemetría antes y después de una parada/reinicio.
 
 ## Trabajo del equipo
+
+El proyecto parte del repositorio docente [jirabedra/AIOps](https://github.com/jirabedra/AIOps). Los cambios del equipo se integran en la rama **`obligatorio`**.
 
 - [Issues del obligatorio](https://github.com/damyyyrr/Obligatorio-AIOps-289568-319108-308012/issues) y [mapa de trabajo](docs/GITHUB_ISSUES.md).
 - [BDD Cypress + Cucumber: ejecución de #15](Implementacion%20K8S/Codigo/Frontend/e2e/README.md), cuatro escenarios aprobados en navegador contra el baseline real; [evidencia](docs/evidence/issue-15-20261112/live-after-fix/README.md).
