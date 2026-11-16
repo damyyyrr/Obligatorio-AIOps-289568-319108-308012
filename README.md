@@ -6,7 +6,7 @@ El trabajo integra Kubernetes, monitoreo de logs, métricas y trazas, detección
 
 ## Entrega y evidencias
 
-- Informe académico: el PDF final se incorporará a este repositorio.
+- Informe académico: [PDF final del obligatorio AIOps](docs/entrega/Informe_Final_AIOps.pdf).
 - [Matriz de requisitos y evidencias](docs/aiops-requirements-matrix.md).
 - [Índice de evidencias por requisito](docs/evidence/README.md), con las pruebas de cada entorno y sus resultados.
 - [Despliegue, recuperación y caos en tres PCs](docs/evidence/chaos-3pc-20261116/README.md), con [diagrama de la topología](docs/evidence/chaos-3pc-20261116/topologia-3pc.png), nodos, pods y reportes.
