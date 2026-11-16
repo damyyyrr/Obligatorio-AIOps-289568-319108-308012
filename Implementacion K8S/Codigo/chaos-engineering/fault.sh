@@ -9,7 +9,7 @@ case "$id" in *[!a-f0-9]*|'') exit 2;; esac
 case "$scenario" in cpu|ram|storage) ;; *) exit 2;; esac
 case "$seconds:$mb:$until_epoch" in *[!0-9:]*|'') exit 2;; esac
 [ "$seconds" -ge 1 ] && [ "$seconds" -le 180 ] || exit 2
-[ "$mb" -ge 1 ] && [ "$mb" -le 128 ] || exit 2
+[ "$mb" -ge 1 ] && [ "$mb" -le 300 ] || exit 2
 [ -d /tmp ] && [ ! -L /tmp ] || exit 2
 command -v flock >/dev/null || exit 4
 dir="/tmp/pharmago-chaos-$id"
@@ -151,8 +151,9 @@ elif [ "$scenario" = ram ]; then
     fi
     case "$limit:$used" in *[!0-9:]*|'') exit 4;; esac
     bytes=$(( mb * 1048576 ))
-    [ "$limit" -le 1073741824 ] && [ $((bytes * 3)) -le "$limit" ] || exit 4
-    [ $((limit - used)) -ge $((bytes * 2 + 33554432)) ] || exit 4
+    [ "$limit" -le 1073741824 ] || exit 4
+    # Sobrecarga acotada: el estímulo más 32 MiB de margen deben caber bajo el límite del contenedor.
+    [ $((limit - used)) -ge $((bytes + 33554432)) ] || exit 4
     mkfifo "$dir/pipe"
     env PHARMAGO_CHAOS_RUNID="$id" dd if=/dev/zero of="$dir/pipe" bs="$bytes" count=1 2>/dev/null &
     printf '%s\n' "$!" >> "$dir/pids"

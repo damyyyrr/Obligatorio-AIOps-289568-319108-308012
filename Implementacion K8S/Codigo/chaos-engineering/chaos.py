@@ -70,8 +70,8 @@ def limits_safe(container):
 def validate_settings(args):
     if not args.context or args.context.startswith("-"):
         raise ValueError("Se requiere --context explícito")
-    if not 1 <= args.duration <= 180 or not 1 <= args.megabytes <= 128:
-        raise ValueError("Duración 1..180 s; memoria 1..128 MiB")
+    if not 1 <= args.duration <= 180 or not 1 <= args.megabytes <= 300:
+        raise ValueError("Duración 1..180 s; memoria 1..300 MiB")
     if args.scenario == "storage" and args.megabytes > 64:
         raise ValueError("El ensayo de disco admite hasta 64 MiB")
     if args.scenario == "storage" and args.duration < 30:

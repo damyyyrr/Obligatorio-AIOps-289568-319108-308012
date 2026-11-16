@@ -50,7 +50,7 @@ class LimitsTests(unittest.TestCase):
                 self.assertFalse(json.loads(output.getvalue())["mutations"])
 
     def test_reject_unbounded_or_negative_settings(self):
-        for flags in (("--duration", "0"), ("--duration", "181"), ("--megabytes", "129"),
+        for flags in (("--duration", "0"), ("--duration", "181"), ("--megabytes", "301"),
                       ("--megabytes", "0"), ("--requests", "241"), ("--requests", "0"),
                       ("--concurrency", "5"), ("--concurrency", "0")):
             with self.subTest(flags=flags):
