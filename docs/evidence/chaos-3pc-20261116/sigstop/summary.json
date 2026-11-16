@@ -1,0 +1,8 @@
+{
+ "method": "SIGSTOP al proceso dotnet desde el host del nodo (dotnet es PID 1 del contenedor). Sondas desde un pod en pharmago-a por el Service del Gateway; estado de pods cada ~1 s por la API. Tiempo = suspension -> dotacion Ready.",
+ "results": {
+  "gateway": {"node": "pharmago-a", "replicas": 1, "readyAfterSeconds": 37.83, "restarts": 1, "catalogInOutage": {"valid": 2, "total": 21, "noResponse": 19}, "prometheusUp": "1->0->1"},
+  "users": {"node": "pharmago-b", "replicas": 2, "readyAfterSeconds": 43.39, "restarts": 1, "rolesInOutage": {"valid": 32, "total": 40, "noResponse": 0, "http429": 8}, "loginInOutage": {"valid": 5, "total": 5}, "prometheusUp": "1->0->1 solo en el pod suspendido", "note": "los 429 son la cuota de rate limiting del Gateway sobre la propia sonda (1 ronda/s), no fallas por la suspension"},
+  "pharmacy": {"node": "pharmago-c", "replicas": 2, "readyAfterSeconds": 36.33, "restarts": 1, "catalogInOutage": {"valid": 17, "total": 17, "noResponse": 0}, "prometheusUp": "1->0->1 solo en el pod suspendido", "note": "sonda reducida a 1 ronda cada 2 s para quedar bajo la cuota"}
+ }
+}

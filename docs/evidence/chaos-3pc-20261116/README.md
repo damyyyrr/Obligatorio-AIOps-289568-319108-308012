@@ -48,3 +48,19 @@ La NetworkPolicy se aplicó, cortó las conexiones nuevas a Pharmacy y se retir�
 - `operatorDeclared=operador-pc-a`; `tAck=null`: las inyecciones y reversiones fueron automáticas y no se mide reconocimiento humano.
 - `requests` y `storage` conservan el alcance de sus versiones (cuota por instancia; I/O sostenida sin saturación).
 - Las IPs incluidas son de la red privada Tailscale (100.64.0.0/10); el log de Tailscale tiene las IPs públicas redactadas. No se incluyen tokens, claves ni contraseñas.
+
+## Recuperación de procesos (SIGSTOP) en 3 PCs
+
+Se suspendió con `kill -STOP` el proceso dotnet de un pod por vez desde el host de su nodo (dotnet es PID 1 del contenedor y no recibe la señal desde dentro). Un pod sonda en `pharmago-a` consultó catálogo y roles por el Service del Gateway, y login cada pocos segundos; otro proceso registró Ready y reinicios cada ~1 s. Datos y scripts en `sigstop/`.
+
+| Proceso | Nodo | Réplicas | Hasta Ready | Válidas en la ventana | Sin respuesta | Reinicios |
+|---|---|---|---|---|---|---|
+| Gateway | A | 1 | 37,83 s | 2 de 21 (catálogo) | 19 | 1 |
+| Users | B | 2 | 43,39 s | 32 de 40 (roles), 5 de 5 logins | 0 | 1 |
+| Pharmacy | C | 2 | 36,33 s | 17 de 17 (catálogo) | 0 | 1 |
+
+Las 8 respuestas no válidas de Users fueron 429 del rate limiting del Gateway sobre la sonda (una ronda por segundo), no efectos de la suspensión; para Pharmacy la sonda bajó a una ronda cada 2 s. Prometheus registró `up` 1 → 0 → 1 solo en el pod suspendido.
+
+## Memoria con el máximo del controlador (128 MiB)
+
+Se repitió el escenario `ram` con `--megabytes 128`, el máximo que admite el controlador (runId `1b6b4b28`, PASS, limpieza verificada). El working set del pod de Pharmacy pasó de 78 a 209 MiB (55 % de su límite de 384 MiB) y volvió a 79 MiB al retirar el estímulo, sin OOM ni reinicios. Antes de inyectar, el controlador se negó a empezar mientras la alerta de memoria estaba pendiente por el pod auxiliar `kubelet-storage` de la PC B (89 % de 128 MiB); se reinició ese pod y se esperó a que las cinco alertas estuvieran inactivas. Reportes en `reports/ram128-1b6b4b28-*`.
