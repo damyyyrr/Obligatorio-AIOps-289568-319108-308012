@@ -60,3 +60,7 @@ Se suspendió con `kill -STOP` el proceso dotnet de un pod por vez desde el host
 | Pharmacy | C | 2 | 36,33 s | 17 de 17 (catálogo) | 0 | 1 |
 
 Las 8 respuestas no válidas de Users fueron 429 del rate limiting del Gateway sobre la sonda (una ronda por segundo), no efectos de la suspensión; para Pharmacy la sonda bajó a una ronda cada 2 s. Prometheus registró `up` 1 → 0 → 1 solo en el pod suspendido.
+
+## Memoria con el máximo del controlador (128 MiB)
+
+Se repitió el escenario `ram` con `--megabytes 128`, el máximo que admite el controlador (runId `1b6b4b28`, PASS, limpieza verificada). El working set del pod de Pharmacy pasó de 78 a 209 MiB (55 % de su límite de 384 MiB) y volvió a 79 MiB al retirar el estímulo, sin OOM ni reinicios. Antes de inyectar, el controlador se negó a empezar mientras la alerta de memoria estaba pendiente por el pod auxiliar `kubelet-storage` de la PC B (89 % de 128 MiB); se reinició ese pod y se esperó a que las cinco alertas estuvieran inactivas. Reportes en `reports/ram128-1b6b4b28-*`.
