@@ -6,12 +6,12 @@ El trabajo integra Kubernetes, monitoreo de logs, métricas y trazas, detección
 
 ## Entrega y evidencias
 
-- [Informe académico en PDF — 10 páginas](docs/entrega/Informe_Final_AIOps.pdf) y [fuentes del informe](docs/entrega/README.md).
+- [Copia anterior del informe en PDF — 10 páginas](docs/entrega/Informe_Final_AIOps.pdf) y [fuentes de esa versión](docs/entrega/README.md).
 - [Matriz de requisitos y evidencias](docs/aiops-requirements-matrix.md).
 - [Despliegue y caos en tres PCs](docs/evidence/chaos-3pc-20261116/README.md), con [diagrama de la topología](docs/evidence/chaos-3pc-20261116/topologia-3pc.png), nodos, pods y reportes.
 - [Estado contrastado del proyecto](docs/estado-actual.md), con las validaciones y sus límites.
 
-El informe y la matriz distinguen las pruebas del laboratorio local de las realizadas en tres PCs. Los resultados de caos no acreditan por sí solos un rollout sin interrupciones entre las tres PCs.
+La matriz y el estado del proyecto distinguen las pruebas del laboratorio local de las realizadas en tres PCs. La copia del informe conservada en este repositorio corresponde a un corte anterior; el informe de entrega se prepara por separado. Los resultados de caos no acreditan por sí solos un rollout sin interrupciones entre las tres PCs.
 
 ## Empezar
 
