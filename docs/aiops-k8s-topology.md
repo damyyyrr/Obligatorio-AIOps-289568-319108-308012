@@ -1,10 +1,12 @@
-# Topología Kubernetes de PharmaGo — issue #3
+# Topología Kubernetes de PharmaGo
+
+PharmaGo tiene dos entornos documentados: k3s en tres PCs físicas conectadas por Tailscale y laboratorios Minikube sobre una PC. La distribución de servicios por etiquetas es común; la ubicación física y las pruebas acreditadas dependen de cada entorno. [Despliegue físico](aiops-k3s-tailscale.md) · [Despliegue y gestión de manifiestos](<../Implementacion K8S/Codigo/k8s/README-k8s.md>) · [Matriz de requisitos](aiops-requirements-matrix.md)
 
 El modo predeterminado usa un selector obligatorio `pharmago.io/service` distinto por servicio. Un nodo solo puede tener un valor para esa etiqueta, así que Gateway, Users y Pharmacy no comparten un nodo Kubernetes. Desde la #7, Users y Pharmacy tienen dos réplicas y Gateway tiene una. Cada Deployment permite un pod adicional en el mismo grupo durante el rollout (`maxSurge: 1`, `maxUnavailable: 0`). Una anti-afinidad obligatoria entre pods del mismo servicio impediría ese solapamiento en la topología mínima. [Probes y réplicas](aiops-k8s-probes.md) · [Selectores de Kubernetes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) · [RollingUpdate](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-update-deployment)
 
 ```mermaid
 flowchart LR
-  subgraph A["Nodo A · gateway + ops"]
+  subgraph A["PC A · pharmago-a · Gateway y operaciones"]
     G["Gateway"]
     D["SQL Server · PharmaDb"]
     O["Elasticsearch · Prometheus · Grafana · OTLP"]
@@ -12,12 +14,12 @@ flowchart LR
     D --- V
     O --- V
   end
-  subgraph B["Nodo B · users + frontend"]
+  subgraph B["PC B · pharmago-b · Users y frontend"]
     F["UI"]
     U["Users"]
     K["Kibana"]
   end
-  subgraph C["Nodo C · pharmacy"]
+  subgraph C["PC C · pharmago-c · Pharmacy"]
     P["Pharmacy"]
   end
   F --> G
@@ -29,21 +31,27 @@ flowchart LR
   K --> O
 ```
 
-Fluent Bit y Node Exporter ejecutan un pod por nodo como DaemonSets. UI y Kibana comparten la etiqueta `node-type=frontend`; se separó Kibana de SQL y Elasticsearch para distribuir el consumo de RAM. El nodo `ops` guarda SQL, Elasticsearch, Prometheus y Grafana. Con tres nodos se propone compartirlo con Gateway; si se dispone de un cuarto nodo apto, puede ser independiente manteniendo un solo propietario de PV. La UI y la observabilidad no son los microservicios sujetos a separación en este diseño.
+Fluent Bit, Node Exporter y kubelet-storage ejecutan un pod por nodo como DaemonSets. UI y Kibana comparten la etiqueta `node-type=frontend`; el nodo `ops` guarda SQL, Elasticsearch, Prometheus y Grafana junto con Gateway, Jaeger y Collector. La UI y la observabilidad no son los microservicios sujetos a separación en este diseño.
 
 ## Nodos Kubernetes y hosts físicos
 
-| Pods de servicio | Nodo en el ensayo local | Host físico local | Host académico propuesto |
+| Pods de servicio | Nodo k3s | PC física | RAM física / visible para Kubernetes |
 |---|---|---|---|
-| Gateway | `pharmago-issue3` | PC A, Docker Desktop / WSL2 | A |
-| Users | `pharmago-issue3-m02` | PC A, Docker Desktop / WSL2 | B |
-| Pharmacy | `pharmago-issue3-m03` | PC A, Docker Desktop / WSL2 | C |
+| Gateway | `pharmago-a` (server) | A | 16 GB / aproximadamente 7,76 GiB |
+| Users ×2 | `pharmago-b` (agent) | B | 16 GB / aproximadamente 5,79 GiB |
+| Pharmacy ×2 | `pharmago-c` (agent) | C | 8 GB / aproximadamente 2,84 GiB |
 
-La letra describe A, B y C en máquinas físicas distintas. El equipo decidió mantener Minikube sobre una PC (D01): la separación entre nodos Kubernetes verificada es lógica. Un despliegue físico futuro requeriría asociar cada nodo elegible a hardware verificado y registrar el mapa de hosts junto con la distribución de pods. El scheduler conoce nodos Kubernetes y no acredita por sí solo hosts físicos diferentes.
+La [evidencia física](evidence/chaos-3pc-20261116/README.md) registra una PC por integrante, k3s en Ubuntu/WSL2 y Tailscale. El [inventario de nodos](evidence/chaos-3pc-20261116/nodes.json) informa la memoria visible para Kubernetes; no equivale a toda la RAM instalada en Windows. El [inventario de pods](evidence/chaos-3pc-20261116/pods.txt) permite contrastar la asignación y el [diagrama](evidence/chaos-3pc-20261116/topologia-3pc.png) representa ese despliegue.
 
-## Presupuesto de capacidad
+Los laboratorios anteriores usaron `pharmago-issue3`, `pharmago-issue3-m02` y `pharmago-issue3-m03` sobre una PC, y `pharmago-issue17-validation` con un nodo y Calico. Esas evidencias acreditan separación lógica o desarrollo local. No se trasladan automáticamente al entorno físico las pruebas de rollout, recuperación SQL o validación completa de telemetría.
 
-Cada pod de Gateway, Users o Pharmacy pide **100m CPU / 128 MiB** y tiene límites de **500m / 384 MiB**. Durante el surge, Gateway necesita **200m / 256 MiB** en requests y puede consumir hasta **1000m / 768 MiB**. Users y Pharmacy necesitan cada uno **300m / 384 MiB** y tienen límites de **1500m / 1152 MiB** para sus tres pods. Dos réplicas en el mismo host no toleran su pérdida. Tener otro nodo elegible por servicio requiere capacidad disponible, imágenes y definir la ubicación de las réplicas conforme al alcance elegido en D01. El Job de la #5 ejecuta las migraciones antes del rollout. [Migraciones](aiops-sql-migrations.md)
+Las dos réplicas de Users y Pharmacy comparten su PC; no toleran perder ese host. PC A concentra servidor k3s, SQL, Gateway y observabilidad: su conectividad y sus volúmenes locales son puntos únicos de falla. El scheduler conoce nodos y no verifica por sí solo la identidad del hardware.
+
+## Recursos de aplicación y capacidad
+
+Cada pod de Gateway, Users o Pharmacy pide **100m CPU / 128 MiB** y tiene límites de **500m / 384 MiB**. Durante el surge, Gateway necesita **200m / 256 MiB** en requests y puede consumir hasta **1000m / 768 MiB**. Users y Pharmacy necesitan cada uno **300m / 384 MiB** y tienen límites de **1500m / 1152 MiB** para sus tres pods. Tener otro nodo elegible por servicio requiere capacidad, imágenes y una política de colocación que lo permita. El Job de la #5 ejecuta las migraciones antes del rollout. [Migraciones](aiops-sql-migrations.md)
+
+### Referencia de dimensionamiento del laboratorio Minikube
 
 Suma por nodo de la topología de tres nodos en el ensayo de la #3. Incluye los Deployments asignados y los dos DaemonSets de ese ensayo. El pico modela el rollout simultáneo de los tres servicios. Para el presupuesto actual, sumar por nodo `50m / 64 MiB` en requests y `200m / 128 MiB` en límites para `kubelet-storage` (#6). Sumar además `100m / 128 MiB` en requests y `500m / 384 MiB` en límites en los nodos B y C por la segunda réplica (#7). [Métricas de Kubernetes](aiops-k8s-metrics.md)
 
