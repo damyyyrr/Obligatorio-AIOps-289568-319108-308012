@@ -1,0 +1,4 @@
+NAME         STATUS   ROLES           AGE   VERSION        INTERNAL-IP       EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION                      CONTAINER-RUNTIME
+pharmago-a   Ready    control-plane   90m   v1.34.1+k3s1   100.114.33.19     <none>        Ubuntu 24.04.5 LTS   6.18.58.1-microsoft-standard-WSL2   containerd://2.1.4-k3s2
+pharmago-b   Ready    <none>          65m   v1.34.1+k3s1   100.119.211.126   <none>        Ubuntu 24.04.5 LTS   6.18.58.1-microsoft-standard-WSL2   containerd://2.1.4-k3s2
+pharmago-c   Ready    <none>          75m   v1.34.1+k3s1   100.108.90.81     <none>        Ubuntu 24.04.5 LTS   6.18.58.1-microsoft-standard-WSL2   containerd://2.1.4-k3s2

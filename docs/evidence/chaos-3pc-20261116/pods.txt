@@ -1,0 +1,27 @@
+NAME                                         READY   STATUS      RESTARTS   AGE   IP                NODE         NOMINATED NODE   READINESS GATES
+elasticsearch-64ddcc8d85-c9c9k               1/1     Running     0          58m   10.42.0.6         pharmago-a   <none>           <none>
+fluent-bit-fqd95                             1/1     Running     0          53m   10.42.1.5         pharmago-c   <none>           <none>
+fluent-bit-hgrlx                             1/1     Running     0          38m   10.42.2.9         pharmago-b   <none>           <none>
+fluent-bit-z7btl                             1/1     Running     0          53m   10.42.0.8         pharmago-a   <none>           <none>
+grafana-c56d48584-sb9r2                      1/1     Running     0          53m   10.42.0.9         pharmago-a   <none>           <none>
+jaeger-565b478b65-zfd47                      1/1     Running     0          53m   10.42.0.10        pharmago-a   <none>           <none>
+kibana-68c64655b9-h52df                      1/1     Running     0          53m   10.42.2.8         pharmago-b   <none>           <none>
+kube-state-metrics-65669ffcdf-jjwm2          1/1     Running     0          53m   10.42.0.11        pharmago-a   <none>           <none>
+kubelet-storage-6qmnr                        1/1     Running     0          53m   10.42.1.6         pharmago-c   <none>           <none>
+kubelet-storage-r5stx                        1/1     Running     0          53m   10.42.0.12        pharmago-a   <none>           <none>
+kubelet-storage-r9ljm                        1/1     Running     0          53m   10.42.2.4         pharmago-b   <none>           <none>
+node-exporter-87whb                          1/1     Running     0          53m   100.119.211.126   pharmago-b   <none>           <none>
+node-exporter-q2h64                          1/1     Running     0          50m   100.114.33.19     pharmago-a   <none>           <none>
+node-exporter-zkdgn                          1/1     Running     0          53m   100.108.90.81     pharmago-c   <none>           <none>
+otlp-collector-76876cdbff-qg9jr              1/1     Running     0          53m   10.42.0.13        pharmago-a   <none>           <none>
+pharmago-api-gateway-f5bf86c57-xxwg7         1/1     Running     0          53m   10.42.0.7         pharmago-a   <none>           <none>
+pharmago-chaos-client                        1/1     Running     0          34m   10.42.1.8         pharmago-c   <none>           <none>
+pharmago-chaos-load                          1/1     Running     0          34m   10.42.1.9         pharmago-c   <none>           <none>
+pharmago-db-6b7f66c9fc-x8psl                 1/1     Running     0          62m   10.42.0.5         pharmago-a   <none>           <none>
+pharmago-db-migrate-7a51c21d6fbd-nszpx       0/1     Completed   0          35m   10.42.2.10        pharmago-b   <none>           <none>
+pharmago-pharmacy-service-85bbcddd55-l5tt4   1/1     Running     0          53m   10.42.1.3         pharmago-c   <none>           <none>
+pharmago-pharmacy-service-85bbcddd55-rknkv   1/1     Running     0          53m   10.42.1.4         pharmago-c   <none>           <none>
+pharmago-ui-74b566458c-7tlp9                 1/1     Running     0          53m   10.42.2.7         pharmago-b   <none>           <none>
+pharmago-users-service-9cc4c7f75-4hntc       1/1     Running     0          53m   10.42.2.6         pharmago-b   <none>           <none>
+pharmago-users-service-9cc4c7f75-bptdh       1/1     Running     0          53m   10.42.2.5         pharmago-b   <none>           <none>
+prometheus-6494557848-r7rhs                  1/1     Running     0          53m   10.42.0.14        pharmago-a   <none>           <none>

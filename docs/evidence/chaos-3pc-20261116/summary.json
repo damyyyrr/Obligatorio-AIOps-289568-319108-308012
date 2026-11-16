@@ -1,0 +1,154 @@
+{
+  "runs": [
+    {
+      "scenario": "requests",
+      "runId": "f2a9ead2fc65408aa3e216f9332e0b12",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-16T20:30:42.874021+00:00",
+      "injectRequestedUtc": "2026-11-16T20:30:51.536646+00:00",
+      "faultRestoredUtc": "2026-11-16T20:32:07.757728+00:00",
+      "tRestore": "2026-11-16T20:32:12.865498+00:00",
+      "tVerified": "2026-11-16T20:34:20.510096+00:00",
+      "abort": null,
+      "probesDuringFault": {
+        "api-gateway /api/drug 200": 4,
+        "api-gateway /api/roles 200": 4,
+        "api-gateway /api/drug 429": 3,
+        "api-gateway /api/roles 429": 3
+      },
+      "tAck": null,
+      "sourceCommit": "ae24ebea78174cf6d6a48cabbd95743e29bbf3a5",
+      "dirtyTree": false,
+      "loadHttp": {
+        "200": 111,
+        "429": 129
+      }
+    },
+    {
+      "scenario": "cpu",
+      "runId": "a053806fa70945f69cafc4381c4e897f",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-16T20:34:51.191851+00:00",
+      "injectRequestedUtc": "2026-11-16T20:34:59.840769+00:00",
+      "faultRestoredUtc": "2026-11-16T20:37:13.523376+00:00",
+      "tRestore": "2026-11-16T20:37:18.860839+00:00",
+      "tVerified": "2026-11-16T20:39:29.986745+00:00",
+      "abort": null,
+      "probesDuringFault": {
+        "api-gateway /api/drug 200": 13,
+        "api-gateway /api/roles 200": 13
+      },
+      "tAck": null,
+      "sourceCommit": "ae24ebea78174cf6d6a48cabbd95743e29bbf3a5",
+      "dirtyTree": false
+    },
+    {
+      "scenario": "ram",
+      "runId": "f8320615bed04276a584a6b377262d85",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-16T20:39:45.448654+00:00",
+      "injectRequestedUtc": "2026-11-16T20:39:52.448805+00:00",
+      "faultRestoredUtc": "2026-11-16T20:41:03.059068+00:00",
+      "tRestore": "2026-11-16T20:41:08.537649+00:00",
+      "tVerified": "2026-11-16T20:43:15.560881+00:00",
+      "abort": null,
+      "probesDuringFault": {
+        "api-gateway /api/drug 200": 7,
+        "api-gateway /api/roles 200": 7
+      },
+      "tAck": null,
+      "sourceCommit": "ae24ebea78174cf6d6a48cabbd95743e29bbf3a5",
+      "dirtyTree": false
+    },
+    {
+      "scenario": "storage",
+      "runId": "3d981e0bfd854ebbbc9c05c776e1faee",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-16T20:43:31.665895+00:00",
+      "injectRequestedUtc": "2026-11-16T20:43:39.047620+00:00",
+      "faultRestoredUtc": "2026-11-16T20:44:40.993323+00:00",
+      "tRestore": "2026-11-16T20:44:46.422148+00:00",
+      "tVerified": "2026-11-16T20:46:54.547983+00:00",
+      "abort": null,
+      "probesDuringFault": {
+        "api-gateway /api/drug 200": 6,
+        "api-gateway /api/roles 200": 6
+      },
+      "tAck": null,
+      "sourceCommit": "ae24ebea78174cf6d6a48cabbd95743e29bbf3a5",
+      "dirtyTree": false,
+      "storageEvidence": {
+        "classification": "sustained_io_observed",
+        "completedPasses": 26,
+        "deviceSaturation": null
+      }
+    },
+    {
+      "scenario": "network",
+      "runId": "a956bc49a3564eceba89a60e4aa79b1a",
+      "status": "FAIL",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-16T20:47:10.292019+00:00",
+      "injectRequestedUtc": "2026-11-16T20:47:20.318968+00:00",
+      "faultRestoredUtc": "2026-11-16T20:48:25.202509+00:00",
+      "tRestore": null,
+      "tVerified": null,
+      "abort": {
+        "timeUtc": "2026-11-16T20:49:52.855250+00:00",
+        "reason": "Se perdió evaluación sana de las alertas"
+      },
+      "probesDuringFault": {
+        "pharmacy-service /api/drug 0": 6,
+        "api-gateway /api/drug 200": 6,
+        "api-gateway /api/roles 200": 6
+      },
+      "tAck": null,
+      "sourceCommit": "ae24ebea78174cf6d6a48cabbd95743e29bbf3a5",
+      "dirtyTree": false
+    },
+    {
+      "scenario": "disconnect",
+      "runId": "f278a53dd9f3489192cb9ce90b81609b",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-16T20:50:48.231317+00:00",
+      "injectRequestedUtc": "2026-11-16T20:50:56.500478+00:00",
+      "faultRestoredUtc": "2026-11-16T20:52:05.554274+00:00",
+      "tRestore": "2026-11-16T20:52:19.100718+00:00",
+      "tVerified": "2026-11-16T20:54:25.728086+00:00",
+      "abort": null,
+      "probesDuringFault": {
+        "pharmacy-service /api/drug 0": 6,
+        "api-gateway /api/drug 200": 6,
+        "api-gateway /api/roles 200": 6
+      },
+      "tAck": null,
+      "sourceCommit": "ae24ebea78174cf6d6a48cabbd95743e29bbf3a5",
+      "dirtyTree": false
+    },
+    {
+      "scenario": "network",
+      "runId": "4a616be776ac426f8c7576edbb7895fc",
+      "status": "PASS",
+      "cleanup": "verified",
+      "startedUtc": "2026-11-16T20:54:38.647570+00:00",
+      "injectRequestedUtc": "2026-11-16T20:54:47.261408+00:00",
+      "faultRestoredUtc": "2026-11-16T20:55:54.529035+00:00",
+      "tRestore": "2026-11-16T20:55:59.852693+00:00",
+      "tVerified": "2026-11-16T20:58:03.587330+00:00",
+      "abort": null,
+      "probesDuringFault": {
+        "pharmacy-service /api/drug 0": 6,
+        "api-gateway /api/drug 200": 6,
+        "api-gateway /api/roles 200": 6
+      },
+      "tAck": null,
+      "sourceCommit": "ae24ebea78174cf6d6a48cabbd95743e29bbf3a5",
+      "dirtyTree": false
+    }
+  ]
+}

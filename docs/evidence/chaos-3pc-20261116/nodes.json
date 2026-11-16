@@ -1,0 +1,43 @@
+[
+  {
+    "name": "pharmago-a",
+    "labels": {
+      "node-type": "ops",
+      "pharmago.io/service": "gateway"
+    },
+    "internalIP": "100.114.33.19",
+    "kubelet": "v1.34.1+k3s1",
+    "os": "Ubuntu 24.04.5 LTS",
+    "kernel": "6.18.58.1-microsoft-standard-WSL2",
+    "runtime": "containerd://2.1.4-k3s2",
+    "memoryCapacity": "8132484Ki",
+    "cpuCapacity": "16"
+  },
+  {
+    "name": "pharmago-b",
+    "labels": {
+      "node-type": "frontend",
+      "pharmago.io/service": "users"
+    },
+    "internalIP": "100.119.211.126",
+    "kubelet": "v1.34.1+k3s1",
+    "os": "Ubuntu 24.04.5 LTS",
+    "kernel": "6.18.58.1-microsoft-standard-WSL2",
+    "runtime": "containerd://2.1.4-k3s2",
+    "memoryCapacity": "6069012Ki",
+    "cpuCapacity": "12"
+  },
+  {
+    "name": "pharmago-c",
+    "labels": {
+      "pharmago.io/service": "pharmacy"
+    },
+    "internalIP": "100.108.90.81",
+    "kubelet": "v1.34.1+k3s1",
+    "os": "Ubuntu 24.04.5 LTS",
+    "kernel": "6.18.58.1-microsoft-standard-WSL2",
+    "runtime": "containerd://2.1.4-k3s2",
+    "memoryCapacity": "2978564Ki",
+    "cpuCapacity": "12"
+  }
+]
